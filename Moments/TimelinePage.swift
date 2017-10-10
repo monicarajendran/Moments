@@ -23,21 +23,20 @@ class TimelinePage: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        
         do {
             
-        try fetchTheEvents.performFetch()
-
+            try fetchTheEvents.performFetch()
+            
         }
         catch{
             
         }
-        
-        tableView.reloadData()
 
+    }
+    override func viewWillAppear(_ animated: Bool) {
+
+        tableView.reloadData()
+        
     }
     
     @IBAction func addMomentsButton(_ sender: Any) {

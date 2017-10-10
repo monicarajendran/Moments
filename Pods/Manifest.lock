@@ -1,15 +1,31 @@
 PODS:
   - AlecrimCoreData (5.0)
-  - SwiftyJSON (3.1.4)
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
+  - FBSDKCoreKit (4.27.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.27.0):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.27.0):
+    - FBSDKCoreKit
 
 DEPENDENCIES:
   - AlecrimCoreData
-  - SwiftyJSON
+  - FBSDKCoreKit
+  - FBSDKLoginKit
+  - FBSDKShareKit
 
 SPEC CHECKSUMS:
   AlecrimCoreData: f1251de3630f4d4d3a212e405298084c229cef29
-  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  FBSDKCoreKit: ebc6c5f5b3f0e72396041050e2266781a38ac587
+  FBSDKLoginKit: 887be4b7452e1c5a3cc4485ce152529965a0c41e
+  FBSDKShareKit: 4f83956d4ca2960730fe7588a168eb8d535c06dc
 
-PODFILE CHECKSUM: 7c9640cfd65bd47ee225cfec777d7fc10e2d15dd
+PODFILE CHECKSUM: 657ead597d92516075ad2de2ad0e648987430fef
 
 COCOAPODS: 1.3.1

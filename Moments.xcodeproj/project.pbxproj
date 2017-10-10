@@ -16,6 +16,9 @@
 		CE56F15B1F88EBD900CEE704 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE56F1591F88EBD900CEE704 /* LaunchScreen.storyboard */; };
 		CE57A71C1F8AE39C00585633 /* TimelinePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57A71B1F8AE39C00585633 /* TimelinePage.swift */; };
 		CE57A71E1F8AF07200585633 /* momentsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57A71D1F8AF07200585633 /* momentsEntity.swift */; };
+		CE9F47781F8C9DAD0070704C /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F47771F8C9DAD0070704C /* LoginPage.swift */; };
+		CE9F477A1F8CA0DE0070704C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CE9F47791F8CA0DE0070704C /* .gitignore */; };
+		CE9F477C1F8CA4BE0070704C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9F477B1F8CA4BE0070704C /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		CE56F15C1F88EBD900CEE704 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE57A71B1F8AE39C00585633 /* TimelinePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelinePage.swift; sourceTree = "<group>"; };
 		CE57A71D1F8AF07200585633 /* momentsEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = momentsEntity.swift; sourceTree = "<group>"; };
+		CE9F47771F8C9DAD0070704C /* LoginPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginPage.swift; path = ../LoginPage.swift; sourceTree = "<group>"; };
+		CE9F47791F8CA0DE0070704C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		CE9F477B1F8CA4BE0070704C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,8 @@
 		CE56F1411F88EBD900CEE704 = {
 			isa = PBXGroup;
 			children = (
+				CE9F477B1F8CA4BE0070704C /* Default-568h@2x.png */,
+				CE9F47791F8CA0DE0070704C /* .gitignore */,
 				CE56F14C1F88EBD900CEE704 /* Moments */,
 				CE56F14B1F88EBD900CEE704 /* Products */,
 				B9F9C5919F31116FDF597B06 /* Pods */,
@@ -84,6 +92,7 @@
 		CE56F14C1F88EBD900CEE704 /* Moments */ = {
 			isa = PBXGroup;
 			children = (
+				CE9F47771F8C9DAD0070704C /* LoginPage.swift */,
 				CE56F14D1F88EBD900CEE704 /* AppDelegate.swift */,
 				CE56F14F1F88EBD900CEE704 /* AddMomentsPage.swift */,
 				CE57A71D1F8AF07200585633 /* momentsEntity.swift */,
@@ -159,8 +168,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE9F477A1F8CA0DE0070704C /* .gitignore in Resources */,
 				CE56F15B1F88EBD900CEE704 /* LaunchScreen.storyboard in Resources */,
 				CE56F1581F88EBD900CEE704 /* Assets.xcassets in Resources */,
+				CE9F477C1F8CA4BE0070704C /* Default-568h@2x.png in Resources */,
 				CE56F1531F88EBD900CEE704 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -176,12 +187,18 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Moments/Pods-Moments-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AlecrimCoreData/AlecrimCoreData.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlecrimCoreData.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -232,6 +249,7 @@
 				CE57A71C1F8AE39C00585633 /* TimelinePage.swift in Sources */,
 				CE57A71E1F8AF07200585633 /* momentsEntity.swift in Sources */,
 				CE56F1501F88EBD900CEE704 /* AddMomentsPage.swift in Sources */,
+				CE9F47781F8C9DAD0070704C /* LoginPage.swift in Sources */,
 				CE56F14E1F88EBD900CEE704 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

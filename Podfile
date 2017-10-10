@@ -3,7 +3,9 @@ use_frameworks!
 
 target 'Moments' do
    pod ‘AlecrimCoreData’
-   pod 'SwiftyJSON'
+   pod 'FBSDKCoreKit'
+pod 'FBSDKShareKit'
+pod 'FBSDKLoginKit'
 end
 
 
