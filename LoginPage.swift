@@ -8,45 +8,57 @@
 
 import UIKit
 import FBSDKLoginKit
+import FBSDKCoreKit
 
-class LoginPage: UIViewController , FBSDKLoginButtonDelegate  {
-
+class LoginPage: UIViewController  {
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let loginButton = FBSDKLoginButton()
-        
-        loginButton.frame = CGRect(x: 16, y: 200, width: view.frame.width - 32 , height: 50)
-        
-        view.addSubview(loginButton)
-        
-        loginButton.center = view.center
-        
-        loginButton.delegate = self
-
+        self.navigationController?.setNavigationBarHidden(true, animated:false)        
     }
     
-     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+    @IBAction func loginWithFaceBook(_ sender: Any) {
         
-        if error == nil {
-            
-            guard let homeTab = self.storyboard?.instantiateViewController(withIdentifier: "TimelinePage") else { return }
-            
-            navigationController?.pushViewController(homeTab, animated: true)
-            
-        }
+        let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
         
-        else{
-            print(error)
-            print("error occured")
+        fbLoginManager.logIn(withReadPermissions: ["email"], from: self) { (result, error) -> Void in
+            if (error == nil){
+                
+                let fbloginresult : FBSDKLoginManagerLoginResult = result!
+                if (result?.isCancelled)!{
+                    return
+                }
+                if(fbloginresult.grantedPermissions.contains("email"))
+                {
+                    self.getFBUserData()
+                }
+            }
         }
+    }
+    
+    func getFBUserData(){
+        if((FBSDKAccessToken.current()) != nil){
+            
+            activityIndicator.startAnimating()
+            
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
+                if (error == nil){
+                    
+                    print(result)
+                    guard let pushToTimelinePage = self.storyboard?.instantiateViewController(withIdentifier: "TabBar") else {
+                        return
+                    }
+                    
+                    self.navigationController?.pushViewController(pushToTimelinePage, animated: true)
+                    
+                }
+                
+            })
+            
+                   }
         
     }
 
-     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!){
-        
-    }
-
-
-   
 }

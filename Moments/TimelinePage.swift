@@ -23,6 +23,8 @@ class TimelinePage: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("timeline page")
+        self.navigationController?.navigationBar.topItem?.title = "Moments"
         do {
             
             try fetchTheEvents.performFetch()

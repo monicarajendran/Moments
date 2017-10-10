@@ -18,7 +18,8 @@
 		CE57A71E1F8AF07200585633 /* momentsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57A71D1F8AF07200585633 /* momentsEntity.swift */; };
 		CE9F47781F8C9DAD0070704C /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F47771F8C9DAD0070704C /* LoginPage.swift */; };
 		CE9F477A1F8CA0DE0070704C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CE9F47791F8CA0DE0070704C /* .gitignore */; };
-		CE9F477C1F8CA4BE0070704C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9F477B1F8CA4BE0070704C /* Default-568h@2x.png */; };
+		CE9F477E1F8CBD190070704C /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F477D1F8CBD190070704C /* TabBar.swift */; };
+		CE9F47831F8CDA210070704C /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F47821F8CDA210070704C /* SettingsPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +38,8 @@
 		CE57A71D1F8AF07200585633 /* momentsEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = momentsEntity.swift; sourceTree = "<group>"; };
 		CE9F47771F8C9DAD0070704C /* LoginPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginPage.swift; path = ../LoginPage.swift; sourceTree = "<group>"; };
 		CE9F47791F8CA0DE0070704C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		CE9F477B1F8CA4BE0070704C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		CE9F477D1F8CBD190070704C /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		CE9F47821F8CDA210070704C /* SettingsPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +74,6 @@
 		CE56F1411F88EBD900CEE704 = {
 			isa = PBXGroup;
 			children = (
-				CE9F477B1F8CA4BE0070704C /* Default-568h@2x.png */,
 				CE9F47791F8CA0DE0070704C /* .gitignore */,
 				CE56F14C1F88EBD900CEE704 /* Moments */,
 				CE56F14B1F88EBD900CEE704 /* Products */,
@@ -92,11 +93,11 @@
 		CE56F14C1F88EBD900CEE704 /* Moments */ = {
 			isa = PBXGroup;
 			children = (
-				CE9F47771F8C9DAD0070704C /* LoginPage.swift */,
 				CE56F14D1F88EBD900CEE704 /* AppDelegate.swift */,
-				CE56F14F1F88EBD900CEE704 /* AddMomentsPage.swift */,
-				CE57A71D1F8AF07200585633 /* momentsEntity.swift */,
+				CE9F47811F8CC80B0070704C /* ViewControllers */,
+				CE9F477F1F8CC7C50070704C /* Extensions */,
 				CE57A71B1F8AE39C00585633 /* TimelinePage.swift */,
+				CE9F477D1F8CBD190070704C /* TabBar.swift */,
 				CE56F1511F88EBD900CEE704 /* Main.storyboard */,
 				CE56F1571F88EBD900CEE704 /* Assets.xcassets */,
 				CE56F1591F88EBD900CEE704 /* LaunchScreen.storyboard */,
@@ -104,6 +105,24 @@
 				CE56F1541F88EBD900CEE704 /* Moments.xcdatamodeld */,
 			);
 			path = Moments;
+			sourceTree = "<group>";
+		};
+		CE9F477F1F8CC7C50070704C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CE57A71D1F8AF07200585633 /* momentsEntity.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		CE9F47811F8CC80B0070704C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE9F47771F8C9DAD0070704C /* LoginPage.swift */,
+				CE9F47821F8CDA210070704C /* SettingsPage.swift */,
+				CE56F14F1F88EBD900CEE704 /* AddMomentsPage.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,7 +190,6 @@
 				CE9F477A1F8CA0DE0070704C /* .gitignore in Resources */,
 				CE56F15B1F88EBD900CEE704 /* LaunchScreen.storyboard in Resources */,
 				CE56F1581F88EBD900CEE704 /* Assets.xcassets in Resources */,
-				CE9F477C1F8CA4BE0070704C /* Default-568h@2x.png in Resources */,
 				CE56F1531F88EBD900CEE704 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,9 +266,11 @@
 				CE56F1561F88EBD900CEE704 /* Moments.xcdatamodeld in Sources */,
 				CE57A71C1F8AE39C00585633 /* TimelinePage.swift in Sources */,
 				CE57A71E1F8AF07200585633 /* momentsEntity.swift in Sources */,
+				CE9F47831F8CDA210070704C /* SettingsPage.swift in Sources */,
 				CE56F1501F88EBD900CEE704 /* AddMomentsPage.swift in Sources */,
 				CE9F47781F8C9DAD0070704C /* LoginPage.swift in Sources */,
 				CE56F14E1F88EBD900CEE704 /* AppDelegate.swift in Sources */,
+				CE9F477E1F8CBD190070704C /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
