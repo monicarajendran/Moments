@@ -3,6 +3,8 @@ use_frameworks!
 
 target 'Moments' do
    pod ‘AlecrimCoreData’
+   pod 'SwiftyJSON'
 end
+
 
 

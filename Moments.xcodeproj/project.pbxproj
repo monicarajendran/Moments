@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		18A9270E4991541ADFA6DDC2 /* Pods_Moments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1850306574A9C6D2E45E9944 /* Pods_Moments.framework */; };
 		CE56F14E1F88EBD900CEE704 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE56F14D1F88EBD900CEE704 /* AppDelegate.swift */; };
-		CE56F1501F88EBD900CEE704 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE56F14F1F88EBD900CEE704 /* ViewController.swift */; };
+		CE56F1501F88EBD900CEE704 /* AddMomentsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE56F14F1F88EBD900CEE704 /* AddMomentsPage.swift */; };
 		CE56F1531F88EBD900CEE704 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE56F1511F88EBD900CEE704 /* Main.storyboard */; };
 		CE56F1561F88EBD900CEE704 /* Moments.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1541F88EBD900CEE704 /* Moments.xcdatamodeld */; };
 		CE56F1581F88EBD900CEE704 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE56F1571F88EBD900CEE704 /* Assets.xcassets */; };
 		CE56F15B1F88EBD900CEE704 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE56F1591F88EBD900CEE704 /* LaunchScreen.storyboard */; };
+		CE57A71C1F8AE39C00585633 /* TimelinePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57A71B1F8AE39C00585633 /* TimelinePage.swift */; };
+		CE57A71E1F8AF07200585633 /* momentsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57A71D1F8AF07200585633 /* momentsEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,12 +24,14 @@
 		9E5B88024B1FAA29C5D07176 /* Pods-Moments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moments.release.xcconfig"; path = "Pods/Target Support Files/Pods-Moments/Pods-Moments.release.xcconfig"; sourceTree = "<group>"; };
 		CE56F14A1F88EBD900CEE704 /* Moments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moments.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE56F14D1F88EBD900CEE704 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE56F14F1F88EBD900CEE704 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CE56F14F1F88EBD900CEE704 /* AddMomentsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMomentsPage.swift; sourceTree = "<group>"; };
 		CE56F1521F88EBD900CEE704 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE56F1551F88EBD900CEE704 /* Moments.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Moments.xcdatamodel; sourceTree = "<group>"; };
 		CE56F1571F88EBD900CEE704 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE56F15A1F88EBD900CEE704 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE56F15C1F88EBD900CEE704 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE57A71B1F8AE39C00585633 /* TimelinePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelinePage.swift; sourceTree = "<group>"; };
+		CE57A71D1F8AF07200585633 /* momentsEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = momentsEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +85,9 @@
 			isa = PBXGroup;
 			children = (
 				CE56F14D1F88EBD900CEE704 /* AppDelegate.swift */,
-				CE56F14F1F88EBD900CEE704 /* ViewController.swift */,
+				CE56F14F1F88EBD900CEE704 /* AddMomentsPage.swift */,
+				CE57A71D1F8AF07200585633 /* momentsEntity.swift */,
+				CE57A71B1F8AE39C00585633 /* TimelinePage.swift */,
 				CE56F1511F88EBD900CEE704 /* Main.storyboard */,
 				CE56F1571F88EBD900CEE704 /* Assets.xcassets */,
 				CE56F1591F88EBD900CEE704 /* LaunchScreen.storyboard */,
@@ -170,10 +176,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Moments/Pods-Moments-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AlecrimCoreData/AlecrimCoreData.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlecrimCoreData.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -221,7 +229,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE56F1561F88EBD900CEE704 /* Moments.xcdatamodeld in Sources */,
-				CE56F1501F88EBD900CEE704 /* ViewController.swift in Sources */,
+				CE57A71C1F8AE39C00585633 /* TimelinePage.swift in Sources */,
+				CE57A71E1F8AF07200585633 /* momentsEntity.swift in Sources */,
+				CE56F1501F88EBD900CEE704 /* AddMomentsPage.swift in Sources */,
 				CE56F14E1F88EBD900CEE704 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -386,6 +396,7 @@
 				CE56F1611F88EBD900CEE704 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
