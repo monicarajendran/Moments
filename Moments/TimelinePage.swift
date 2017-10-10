@@ -55,6 +55,7 @@ class TimelinePage: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         
         return self.fetchTheEvents.numberOfSections()
+        //number of  entities 
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
