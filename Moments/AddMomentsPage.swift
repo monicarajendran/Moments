@@ -17,6 +17,7 @@ class AddMomentsPage: UIViewController {
         toolBar.isHidden = true
     }
     
+    @IBOutlet var datePickerFolder: UIView!
     @IBOutlet weak var pickADate: UIButton!
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -96,6 +97,11 @@ class AddMomentsPage: UIViewController {
     }
     
     @IBAction func pickADateButtonAction(_ sender: Any) {
+        UIView.animate(withDuration: 0.7, delay: 0.0, usingSpringWithDamping: 0.5,
+                                   initialSpringVelocity: 0.5, options: [], animations:
+            {
+                self.datePickerFolder.transform = CGAffineTransform(scaleX: 1, y: 1)
+        }, completion: nil)
         
         datePicker.isHidden = false
         toolBar.isHidden = false
@@ -113,7 +119,7 @@ class AddMomentsPage: UIViewController {
         pickADate.setTitle("\(dateAsString)", for: .normal)
        
         datePicker.isHidden = true
-        
+            
         toolBar.isHidden = true
             
     }

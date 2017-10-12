@@ -7,23 +7,25 @@
 //
 
 import UIKit
+
 import AlecrimCoreData
 
 class TimelinePage: UITableViewController {
-
+    
     lazy var fetchTheMoments : FetchRequestController<Moments> = {
         
         let sortDescriptorss = NSSortDescriptor(key: "momentName", ascending: true)
-    
+        
         let query = container.viewContext.moment.sort(using: [sortDescriptorss])
         
         return query.toFetchRequestController()
         
     }()
+
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        self.navigationController?.navigationBar.topItem?.title = "Moments"
         
         do {
             
@@ -33,16 +35,26 @@ class TimelinePage: UITableViewController {
         catch{
             
         }
-
-
-    }
-    override func viewWillAppear(_ animated: Bool) {
         
-        tableView.reloadData()
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.navigationController?.navigationBar.topItem?.title = "Moments"
+        
+        self.tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMomentsButton(_:)))
 
-            }
+        tableView.reloadData()
+    }
     
-    @IBAction func addMomentsButton(_ sender: Any) {
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        self.tabBarController?.navigationItem.rightBarButtonItem = nil
+    }
+    
+    func addMomentsButton(_ sender: UIBarButtonItem) {
         
         guard let addMomentsPage = storyboard?.instantiateViewController(withIdentifier: "AddMomentsPage")
             
@@ -51,17 +63,16 @@ class TimelinePage: UITableViewController {
                 return
         }
         navigationController?.present(addMomentsPage, animated: true)
-        
     }
-        
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         
         return self.fetchTheMoments.numberOfSections()
-
+        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+        
         return fetchTheMoments.numberOfObjects(inSection: section)
     }
     
@@ -73,7 +84,7 @@ class TimelinePage: UITableViewController {
         let getTheEventObject = fetchTheMoments.object(at: indexPath)
         
         cell.textLabel?.text = getTheEventObject.momentName
-
+        
         return cell
     }
     

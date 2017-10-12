@@ -13,8 +13,7 @@ class TabBar: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.setHidesBackButton(true, animated: false)
-
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
     override func didReceiveMemoryWarning() {

@@ -9,19 +9,17 @@
 import UIKit
 import FBSDKLoginKit
 
-class SettingsPage: UIViewController {
+class SettingsPage: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Settings"
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.navigationController?.navigationBar.topItem?.title = "Settings"
+
     }
-    
-    @IBAction func singOutbutton(_ sender: Any) {
+    func logOut(){
         
         let loginManager: FBSDKLoginManager = FBSDKLoginManager()
         loginManager.logOut()
@@ -32,4 +30,18 @@ class SettingsPage: UIViewController {
         navigationController?.setViewControllers([pushToLoginPage], animated: true)
     }
     
+    
+    @IBAction func logOutButton(_ sender: Any) {
+        let alert = UIAlertController(title: "Are You Sure", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
+        
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in self.logOut()} ))
+        
+        self.present(alert, animated: true, completion: nil)
+        
+    
+    }
+    
+
 }

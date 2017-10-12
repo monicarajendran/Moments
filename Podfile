@@ -6,6 +6,7 @@ target 'Moments' do
    pod 'FBSDKCoreKit'
 pod 'FBSDKShareKit'
 pod 'FBSDKLoginKit'
+pod’NVActivityIndicatorView’
 end
 
 

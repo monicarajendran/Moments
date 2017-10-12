@@ -6,26 +6,31 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
-  - FBSDKCoreKit (4.27.0):
+  - FBSDKCoreKit (4.27.1):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.27.0):
+  - FBSDKLoginKit (4.27.1):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.27.0):
+  - FBSDKShareKit (4.27.1):
     - FBSDKCoreKit
+  - NVActivityIndicatorView (4.0.0):
+    - NVActivityIndicatorView/Presenter (= 4.0.0)
+  - NVActivityIndicatorView/Presenter (4.0.0)
 
 DEPENDENCIES:
   - AlecrimCoreData
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
+  - NVActivityIndicatorView
 
 SPEC CHECKSUMS:
   AlecrimCoreData: f1251de3630f4d4d3a212e405298084c229cef29
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  FBSDKCoreKit: ebc6c5f5b3f0e72396041050e2266781a38ac587
-  FBSDKLoginKit: 887be4b7452e1c5a3cc4485ce152529965a0c41e
-  FBSDKShareKit: 4f83956d4ca2960730fe7588a168eb8d535c06dc
+  FBSDKCoreKit: 03365dad5d790249196ffad8be4f6d8a2d98f932
+  FBSDKLoginKit: 66ff53b73cffd967ab773e32fac39e90a60e6d46
+  FBSDKShareKit: 6a6a0ef9e850c741e4e1d7a7d21335205e997ec1
+  NVActivityIndicatorView: 54c9b93b6f25a4f467512680c0c90c09a1095cf2
 
-PODFILE CHECKSUM: 657ead597d92516075ad2de2ad0e648987430fef
+PODFILE CHECKSUM: 6f84b4356d46bf8a10558849e472c9390bc60753
 
 COCOAPODS: 1.3.1
