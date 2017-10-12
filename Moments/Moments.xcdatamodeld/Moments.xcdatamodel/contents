@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Events" representedClassName="Events" syncable="YES" codeGenerationType="class">
-        <attribute name="dataofTheEvent" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="eventName" optional="YES" attributeType="String" syncable="YES"/>
+    <entity name="Moments" representedClassName="Moments" syncable="YES" codeGenerationType="class">
+        <attribute name="dateOfTheMoment" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="dayOfTheMoment" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="momentDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="momentID" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="momentName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="monthNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Events" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="Moments" positionX="-63" positionY="-18" width="128" height="150"/>
     </elements>
 </model>

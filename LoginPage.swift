@@ -39,6 +39,7 @@ class LoginPage: UIViewController  {
     }
     
     func getFBUserData(){
+        
         if((FBSDKAccessToken.current()) != nil){
             
             activityIndicator.startAnimating()
@@ -46,7 +47,8 @@ class LoginPage: UIViewController  {
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
                 if (error == nil){
                     
-                    print(result)
+                   // print(result)
+                    
                     guard let pushToTimelinePage = self.storyboard?.instantiateViewController(withIdentifier: "TabBar") else {
                         return
                     }

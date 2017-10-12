@@ -11,11 +11,11 @@ import AlecrimCoreData
 
 class TimelinePage: UITableViewController {
 
-    lazy var fetchTheEvents : FetchRequestController<Events> = {
+    lazy var fetchTheMoments : FetchRequestController<Moments> = {
         
-        let sortDescriptorss = NSSortDescriptor(key: "eventName", ascending: true)
-        
-        let query = container.viewContext.event.sort(using: [sortDescriptorss])
+        let sortDescriptorss = NSSortDescriptor(key: "momentName", ascending: true)
+    
+        let query = container.viewContext.moment.sort(using: [sortDescriptorss])
         
         return query.toFetchRequestController()
         
@@ -23,23 +23,24 @@ class TimelinePage: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("timeline page")
         self.navigationController?.navigationBar.topItem?.title = "Moments"
+        
         do {
             
-            try fetchTheEvents.performFetch()
+            try fetchTheMoments.performFetch()
             
         }
         catch{
             
         }
 
+
     }
     override func viewWillAppear(_ animated: Bool) {
-
-        tableView.reloadData()
         
-    }
+        tableView.reloadData()
+
+            }
     
     @IBAction func addMomentsButton(_ sender: Any) {
         
@@ -55,13 +56,13 @@ class TimelinePage: UITableViewController {
         
     override func numberOfSections(in tableView: UITableView) -> Int {
         
-        return self.fetchTheEvents.numberOfSections()
-        //number of  entities 
+        return self.fetchTheMoments.numberOfSections()
+
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return fetchTheEvents.numberOfObjects(inSection: section)
+        return fetchTheMoments.numberOfObjects(inSection: section)
     }
     
     
@@ -69,10 +70,10 @@ class TimelinePage: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         
-        let getTheEventObject = fetchTheEvents.object(at: indexPath)
+        let getTheEventObject = fetchTheMoments.object(at: indexPath)
         
-        cell.textLabel?.text = getTheEventObject.eventName
-        
+        cell.textLabel?.text = getTheEventObject.momentName
+
         return cell
     }
     
