@@ -171,7 +171,8 @@
 				TargetAttributes = {
 					CE56F1491F88EBD900CEE704 = {
 						CreatedOnToolsVersion = 8.2.1;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 2UBVJ7AR3B;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -408,11 +409,15 @@
 			baseConfigurationReference = 58F4A050201D5624A7031821 /* Pods-Moments.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 2UBVJ7AR3B;
 				INFOPLIST_FILE = Moments/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.full.Moments;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "979795b5-6cb9-42a5-884b-3558d270cb43";
+				PROVISIONING_PROFILE_SPECIFIER = "Moments Dev Provisioning Profile";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -421,11 +426,16 @@
 			baseConfigurationReference = 9E5B88024B1FAA29C5D07176 /* Pods-Moments.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 2UBVJ7AR3B;
 				INFOPLIST_FILE = Moments/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.full.Moments;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d7363f46-a247-45f3-a06a-c0d35fffaa35";
+				PROVISIONING_PROFILE_SPECIFIER = "Moments Dist Provisioning Profile";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
