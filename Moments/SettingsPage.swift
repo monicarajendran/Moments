@@ -24,6 +24,7 @@ class SettingsPage: UITableViewController {
         let loginManager: FBSDKLoginManager = FBSDKLoginManager()
         loginManager.logOut()
         
+        
         guard let pushToLoginPage = storyboard?.instantiateViewController(withIdentifier: "LoginPage") else {
             return
         }
@@ -32,7 +33,8 @@ class SettingsPage: UITableViewController {
     
     
     @IBAction func logOutButton(_ sender: Any) {
-        let alert = UIAlertController(title: "Are You Sure", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        
+        let alert = UIAlertController(title: "Are You Sure", message: "Logout", preferredStyle: UIAlertControllerStyle.alert)
         
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
         

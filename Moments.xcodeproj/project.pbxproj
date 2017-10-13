@@ -96,11 +96,11 @@
 			isa = PBXGroup;
 			children = (
 				CE56F14D1F88EBD900CEE704 /* AppDelegate.swift */,
+				CE9F477D1F8CBD190070704C /* TabBar.swift */,
+				CE9469311F8F384E0091D315 /* NavigationController.swift */,
 				CE9F47811F8CC80B0070704C /* ViewControllers */,
 				CE9F477F1F8CC7C50070704C /* Extensions */,
 				CE9469301F8F2FF00091D315 /* TableViewControllers */,
-				CE9F477D1F8CBD190070704C /* TabBar.swift */,
-				CE9469311F8F384E0091D315 /* NavigationController.swift */,
 				CE56F1511F88EBD900CEE704 /* Main.storyboard */,
 				CE56F1571F88EBD900CEE704 /* Assets.xcassets */,
 				CE56F1591F88EBD900CEE704 /* LaunchScreen.storyboard */,
@@ -113,6 +113,7 @@
 		CE9469301F8F2FF00091D315 /* TableViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CE9F47821F8CDA210070704C /* SettingsPage.swift */,
 				CE57A71B1F8AE39C00585633 /* TimelinePage.swift */,
 			);
 			name = TableViewControllers;
@@ -130,7 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				CE9F47771F8C9DAD0070704C /* LoginPage.swift */,
-				CE9F47821F8CDA210070704C /* SettingsPage.swift */,
 				CE56F14F1F88EBD900CEE704 /* AddMomentsPage.swift */,
 			);
 			name = ViewControllers;

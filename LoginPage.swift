@@ -14,12 +14,23 @@ import NVActivityIndicatorView
 
 class LoginPage: UIViewController  {
     
-    
+    let activitydata = ActivityData()
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(aimation(sender:)) , name: NSNotification.Name(rawValue: "Dissmiss the safariview controller"), object: nil)
+    }
+    
+    func aimation(sender: Notification){
+        
+        NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+
+    }
     @IBAction func loginWithFaceBook(_ sender: Any) {
         
         let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
@@ -27,11 +38,8 @@ class LoginPage: UIViewController  {
         fbLoginManager.logIn(withReadPermissions: ["email"], from: self) { (result, error) -> Void in
             
                 if (error == nil){
-                    let activityData = ActivityData()
                     
-                    NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
-                    
-                    NVActivityIndicatorPresenter.sharedInstance.setMessage("Logging in..")
+                    NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activitydata)
                     
                     let fbloginresult : FBSDKLoginManagerLoginResult = result!
                 if (result?.isCancelled)!{

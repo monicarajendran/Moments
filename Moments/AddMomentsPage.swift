@@ -8,22 +8,35 @@
 
 import UIKit
 
-class AddMomentsPage: UIViewController {
+class AddMomentsPage: UIViewController , UITextViewDelegate {
     
     override func viewDidLoad() {
         
+        
         super.viewDidLoad()
+        momentDescription.delegate = self
+        momentDescription.text = "placehler"
+        momentDescription.textColor = UIColor.lightGray
+        momentDescription.layer.cornerRadius = 5
+        momentDescription.layer.borderWidth = 0.1
+        momentDescription.layer.borderColor = UIColor.black.cgColor
+        
+        pickADate.layer.cornerRadius = 10
+        pickADate.layer.borderWidth = 0.5
+        pickADate.layer.borderColor = UIColor.black.cgColor
+        
         datePicker.isHidden = true
+        
         toolBar.isHidden = true
     }
     
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet var datePickerFolder: UIView!
     @IBOutlet weak var pickADate: UIButton!
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var momentName: UITextField!
-    
-    @IBOutlet weak var momentDescription: UITextField!
+    @IBOutlet weak var momentDescription: UITextView!
     
     
    
@@ -59,6 +72,7 @@ class AddMomentsPage: UIViewController {
             else {
                 
                 alertMessage("All Fields Required")
+                
                 return
         }
         
@@ -97,12 +111,7 @@ class AddMomentsPage: UIViewController {
     }
     
     @IBAction func pickADateButtonAction(_ sender: Any) {
-        UIView.animate(withDuration: 0.7, delay: 0.0, usingSpringWithDamping: 0.5,
-                                   initialSpringVelocity: 0.5, options: [], animations:
-            {
-                self.datePickerFolder.transform = CGAffineTransform(scaleX: 1, y: 1)
-        }, completion: nil)
-        
+       
         datePicker.isHidden = false
         toolBar.isHidden = false
         
@@ -116,8 +125,9 @@ class AddMomentsPage: UIViewController {
         
         let dateAsString = dateFormatter.string(from: datePicker.date)
         
-        pickADate.setTitle("\(dateAsString)", for: .normal)
-       
+        dateLabel.text = dateAsString
+        dateLabel.isEnabled = true
+
         datePicker.isHidden = true
             
         toolBar.isHidden = true
