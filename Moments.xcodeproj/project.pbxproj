@@ -9,11 +9,18 @@
 /* Begin PBXBuildFile section */
 		18A9270E4991541ADFA6DDC2 /* Pods_Moments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1850306574A9C6D2E45E9944 /* Pods_Moments.framework */; };
 		CE56F14E1F88EBD900CEE704 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE56F14D1F88EBD900CEE704 /* AppDelegate.swift */; };
-		CE56F1501F88EBD900CEE704 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE56F14F1F88EBD900CEE704 /* ViewController.swift */; };
+		CE56F1501F88EBD900CEE704 /* AddMomentsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE56F14F1F88EBD900CEE704 /* AddMomentsPage.swift */; };
 		CE56F1531F88EBD900CEE704 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE56F1511F88EBD900CEE704 /* Main.storyboard */; };
 		CE56F1561F88EBD900CEE704 /* Moments.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1541F88EBD900CEE704 /* Moments.xcdatamodeld */; };
 		CE56F1581F88EBD900CEE704 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE56F1571F88EBD900CEE704 /* Assets.xcassets */; };
 		CE56F15B1F88EBD900CEE704 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE56F1591F88EBD900CEE704 /* LaunchScreen.storyboard */; };
+		CE57A71C1F8AE39C00585633 /* TimelinePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57A71B1F8AE39C00585633 /* TimelinePage.swift */; };
+		CE57A71E1F8AF07200585633 /* momentsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57A71D1F8AF07200585633 /* momentsEntity.swift */; };
+		CE9469321F8F384E0091D315 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9469311F8F384E0091D315 /* NavigationController.swift */; };
+		CE9F47781F8C9DAD0070704C /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F47771F8C9DAD0070704C /* LoginPage.swift */; };
+		CE9F477A1F8CA0DE0070704C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CE9F47791F8CA0DE0070704C /* .gitignore */; };
+		CE9F477E1F8CBD190070704C /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F477D1F8CBD190070704C /* TabBar.swift */; };
+		CE9F47831F8CDA210070704C /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F47821F8CDA210070704C /* SettingsPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,12 +29,19 @@
 		9E5B88024B1FAA29C5D07176 /* Pods-Moments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moments.release.xcconfig"; path = "Pods/Target Support Files/Pods-Moments/Pods-Moments.release.xcconfig"; sourceTree = "<group>"; };
 		CE56F14A1F88EBD900CEE704 /* Moments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moments.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE56F14D1F88EBD900CEE704 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE56F14F1F88EBD900CEE704 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CE56F14F1F88EBD900CEE704 /* AddMomentsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMomentsPage.swift; sourceTree = "<group>"; };
 		CE56F1521F88EBD900CEE704 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE56F1551F88EBD900CEE704 /* Moments.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Moments.xcdatamodel; sourceTree = "<group>"; };
 		CE56F1571F88EBD900CEE704 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE56F15A1F88EBD900CEE704 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE56F15C1F88EBD900CEE704 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE57A71B1F8AE39C00585633 /* TimelinePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelinePage.swift; sourceTree = "<group>"; };
+		CE57A71D1F8AF07200585633 /* momentsEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = momentsEntity.swift; sourceTree = "<group>"; };
+		CE9469311F8F384E0091D315 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		CE9F47771F8C9DAD0070704C /* LoginPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginPage.swift; path = ../LoginPage.swift; sourceTree = "<group>"; };
+		CE9F47791F8CA0DE0070704C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		CE9F477D1F8CBD190070704C /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		CE9F47821F8CDA210070704C /* SettingsPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +76,7 @@
 		CE56F1411F88EBD900CEE704 = {
 			isa = PBXGroup;
 			children = (
+				CE9F47791F8CA0DE0070704C /* .gitignore */,
 				CE56F14C1F88EBD900CEE704 /* Moments */,
 				CE56F14B1F88EBD900CEE704 /* Products */,
 				B9F9C5919F31116FDF597B06 /* Pods */,
@@ -81,7 +96,11 @@
 			isa = PBXGroup;
 			children = (
 				CE56F14D1F88EBD900CEE704 /* AppDelegate.swift */,
-				CE56F14F1F88EBD900CEE704 /* ViewController.swift */,
+				CE9F47811F8CC80B0070704C /* ViewControllers */,
+				CE9F477F1F8CC7C50070704C /* Extensions */,
+				CE9469301F8F2FF00091D315 /* TableViewControllers */,
+				CE9F477D1F8CBD190070704C /* TabBar.swift */,
+				CE9469311F8F384E0091D315 /* NavigationController.swift */,
 				CE56F1511F88EBD900CEE704 /* Main.storyboard */,
 				CE56F1571F88EBD900CEE704 /* Assets.xcassets */,
 				CE56F1591F88EBD900CEE704 /* LaunchScreen.storyboard */,
@@ -89,6 +108,32 @@
 				CE56F1541F88EBD900CEE704 /* Moments.xcdatamodeld */,
 			);
 			path = Moments;
+			sourceTree = "<group>";
+		};
+		CE9469301F8F2FF00091D315 /* TableViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE57A71B1F8AE39C00585633 /* TimelinePage.swift */,
+			);
+			name = TableViewControllers;
+			sourceTree = "<group>";
+		};
+		CE9F477F1F8CC7C50070704C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CE57A71D1F8AF07200585633 /* momentsEntity.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		CE9F47811F8CC80B0070704C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE9F47771F8C9DAD0070704C /* LoginPage.swift */,
+				CE9F47821F8CDA210070704C /* SettingsPage.swift */,
+				CE56F14F1F88EBD900CEE704 /* AddMomentsPage.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,6 +198,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE9F477A1F8CA0DE0070704C /* .gitignore in Resources */,
 				CE56F15B1F88EBD900CEE704 /* LaunchScreen.storyboard in Resources */,
 				CE56F1581F88EBD900CEE704 /* Assets.xcassets in Resources */,
 				CE56F1531F88EBD900CEE704 /* Main.storyboard in Resources */,
@@ -170,10 +216,20 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Moments/Pods-Moments-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AlecrimCoreData/AlecrimCoreData.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlecrimCoreData.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -221,8 +277,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE56F1561F88EBD900CEE704 /* Moments.xcdatamodeld in Sources */,
-				CE56F1501F88EBD900CEE704 /* ViewController.swift in Sources */,
+				CE57A71C1F8AE39C00585633 /* TimelinePage.swift in Sources */,
+				CE57A71E1F8AF07200585633 /* momentsEntity.swift in Sources */,
+				CE9F47831F8CDA210070704C /* SettingsPage.swift in Sources */,
+				CE9469321F8F384E0091D315 /* NavigationController.swift in Sources */,
+				CE56F1501F88EBD900CEE704 /* AddMomentsPage.swift in Sources */,
+				CE9F47781F8C9DAD0070704C /* LoginPage.swift in Sources */,
 				CE56F14E1F88EBD900CEE704 /* AppDelegate.swift in Sources */,
+				CE9F477E1F8CBD190070704C /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +448,7 @@
 				CE56F1611F88EBD900CEE704 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
