@@ -15,7 +15,6 @@ class AddMomentsPage: UIViewController , UITextViewDelegate {
         
         super.viewDidLoad()
         momentDescription.delegate = self
-        momentDescription.text = "placehler"
         momentDescription.textColor = UIColor.lightGray
         momentDescription.layer.cornerRadius = 5
         momentDescription.layer.borderWidth = 0.1

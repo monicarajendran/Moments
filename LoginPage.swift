@@ -19,18 +19,13 @@ class LoginPage: UIViewController  {
         
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         
-        NotificationCenter.default.addObserver(self, selector: #selector(aimation(sender:)) , name: NSNotification.Name(rawValue: "Dissmiss the safariview controller"), object: nil)
-    }
-    
-    func aimation(sender: Notification){
-        
-        NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+        loginLabel.layer.cornerRadius = 25
 
     }
+    
+    @IBOutlet weak var loginLabel: UIButton!
+    
     @IBAction func loginWithFaceBook(_ sender: Any) {
         
         let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
@@ -39,14 +34,17 @@ class LoginPage: UIViewController  {
             
                 if (error == nil){
                     
-                    NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activitydata)
-                    
                     let fbloginresult : FBSDKLoginManagerLoginResult = result!
                 if (result?.isCancelled)!{
+                    
+                    NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+
                     return
                 }
+                    
                 if(fbloginresult.grantedPermissions.contains("email"))
                 {
+                    NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activitydata)
                     self.getFBUserData()
                 }
             }
@@ -60,7 +58,6 @@ class LoginPage: UIViewController  {
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
                 if (error == nil){
                     
-                   // print(result)
                     NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
 
                     guard let pushToTimelinePage = self.storyboard?.instantiateViewController(withIdentifier: "TabBar") else {
