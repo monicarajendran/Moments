@@ -14,6 +14,7 @@ class AddMomentsPage: UIViewController , UITextViewDelegate {
         
         
         super.viewDidLoad()
+        
         momentDescription.delegate = self
         momentDescription.textColor = UIColor.lightGray
         momentDescription.layer.cornerRadius = 5
@@ -27,6 +28,11 @@ class AddMomentsPage: UIViewController , UITextViewDelegate {
         datePicker.isHidden = true
         
         toolBar.isHidden = true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.view.endEditing(true)
     }
     
     @IBOutlet weak var dateLabel: UILabel!
@@ -111,6 +117,9 @@ class AddMomentsPage: UIViewController , UITextViewDelegate {
     
     @IBAction func pickADateButtonAction(_ sender: Any) {
        
+        self.momentDescription.resignFirstResponder()
+        self.momentName.resignFirstResponder()
+        
         datePicker.isHidden = false
         toolBar.isHidden = false
         
