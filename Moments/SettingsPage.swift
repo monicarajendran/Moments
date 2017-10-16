@@ -13,6 +13,7 @@ class SettingsPage: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         
@@ -24,24 +25,31 @@ class SettingsPage: UITableViewController {
         let loginManager: FBSDKLoginManager = FBSDKLoginManager()
         loginManager.logOut()
         
-        guard let pushToLoginPage = storyboard?.instantiateViewController(withIdentifier: "LoginPage") else {
+        
+        guard let pushToLoginPage = storyboard?.instantiateViewController(withIdentifier: "LoginPage")
+            
+            else {
+                
             return
         }
+        
         navigationController?.setViewControllers([pushToLoginPage], animated: true)
     }
     
-    
-    @IBAction func logOutButton(_ sender: Any) {
-        let alert = UIAlertController(title: "Are You Sure", message: "", preferredStyle: UIAlertControllerStyle.alert)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
+        if indexPath.row == 0 {
+            
+            let alert = UIAlertController(title: "Are You Sure", message: "Logout", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
+            
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in self.logOut()} ))
+            
+            self.present(alert, animated: true, completion: nil)
+            
+        }
         
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in self.logOut()} ))
-        
-        self.present(alert, animated: true, completion: nil)
-        
-    
     }
-    
 
 }

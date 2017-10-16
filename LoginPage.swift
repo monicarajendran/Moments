@@ -14,11 +14,17 @@ import NVActivityIndicatorView
 
 class LoginPage: UIViewController  {
     
-    
+    let activitydata = ActivityData()
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        loginLabel.layer.cornerRadius = 25
+
     }
+    
+    @IBOutlet weak var loginLabel: UIButton!
     
     @IBAction func loginWithFaceBook(_ sender: Any) {
         
@@ -27,18 +33,18 @@ class LoginPage: UIViewController  {
         fbLoginManager.logIn(withReadPermissions: ["email"], from: self) { (result, error) -> Void in
             
                 if (error == nil){
-                    let activityData = ActivityData()
-                    
-                    NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
-                    
-                    NVActivityIndicatorPresenter.sharedInstance.setMessage("Logging in..")
                     
                     let fbloginresult : FBSDKLoginManagerLoginResult = result!
                 if (result?.isCancelled)!{
+                    
+                    NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+
                     return
                 }
+                    
                 if(fbloginresult.grantedPermissions.contains("email"))
                 {
+                    NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activitydata)
                     self.getFBUserData()
                 }
             }
@@ -52,7 +58,6 @@ class LoginPage: UIViewController  {
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
                 if (error == nil){
                     
-                   // print(result)
                     NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
 
                     guard let pushToTimelinePage = self.storyboard?.instantiateViewController(withIdentifier: "TabBar") else {
