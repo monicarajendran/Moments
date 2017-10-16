@@ -18,6 +18,7 @@ class LoginPage: UIViewController  {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        self.navigationItem.setHidesBackButton(true, animated: false)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
         loginLabel.layer.cornerRadius = 25
@@ -34,7 +35,10 @@ class LoginPage: UIViewController  {
             
                 if (error == nil){
                     
+                    print(result)
+                    
                     let fbloginresult : FBSDKLoginManagerLoginResult = result!
+                    
                 if (result?.isCancelled)!{
                     
                     NVActivityIndicatorPresenter.sharedInstance.stopAnimating()

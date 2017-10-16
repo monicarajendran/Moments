@@ -15,8 +15,6 @@ class AddMomentsPage: UIViewController , UITextViewDelegate {
         
         super.viewDidLoad()
         
-        momentDescription.delegate = self
-        momentDescription.textColor = UIColor.lightGray
         momentDescription.layer.cornerRadius = 5
         momentDescription.layer.borderWidth = 0.1
         momentDescription.layer.borderColor = UIColor.black.cgColor
@@ -116,12 +114,26 @@ class AddMomentsPage: UIViewController , UITextViewDelegate {
     }
     
     @IBAction func pickADateButtonAction(_ sender: Any) {
-       
+        
+    
         self.momentDescription.resignFirstResponder()
         self.momentName.resignFirstResponder()
         
+//        UIView.animate(withDuration: 0.5, delay: 0.0,
+//                       options: [],
+//                       animations: {
+//                        
+//                       self.toolBar.center.y =  -242
+//                       self.datePicker.center.y -= 200
+//                    
+//        },
+//                       completion: nil
+//        )
+
+        
         datePicker.isHidden = false
         toolBar.isHidden = false
+        
         
     }
     

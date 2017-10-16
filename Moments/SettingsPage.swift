@@ -23,8 +23,16 @@ class SettingsPage: UITableViewController {
     func logOut(){
         
         let loginManager: FBSDKLoginManager = FBSDKLoginManager()
-        loginManager.logOut()
         
+        FBSDKGraphRequest(graphPath: "me/permissions/", parameters: nil, httpMethod: "DELETE").start(completionHandler: {(connection,result,error)-> Void in
+            
+            print("the delete permission is \(result)")
+            
+        })
+        
+
+        
+        loginManager.logOut()
         
         guard let pushToLoginPage = storyboard?.instantiateViewController(withIdentifier: "LoginPage")
             
