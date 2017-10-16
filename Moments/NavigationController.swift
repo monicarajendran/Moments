@@ -15,11 +15,11 @@ class NavigationController: UINavigationController {
         super.viewDidLoad()
         
         
-        if FBSDKAccessToken.current() == nil {
+        if FBSDKAccessToken.current() != nil {
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let homeViewController = mainStoryboard.instantiateViewController(withIdentifier:"LoginPage") as! LoginPage
+            let homeViewController = mainStoryboard.instantiateViewController(withIdentifier:"TabBar") as! TabBar
             let rootView = UINavigationController(rootViewController: homeViewController)
             
             if let window = appDelegate.window {

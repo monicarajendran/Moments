@@ -18,8 +18,8 @@ class LoginPage: UIViewController  {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.navigationItem.setHidesBackButton(true, animated: false)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
         
         loginLabel.layer.cornerRadius = 25
 
@@ -35,7 +35,6 @@ class LoginPage: UIViewController  {
             
                 if (error == nil){
                     
-                    print(result)
                     
                     let fbloginresult : FBSDKLoginManagerLoginResult = result!
                     
@@ -61,6 +60,17 @@ class LoginPage: UIViewController  {
             
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
                 if (error == nil){
+                    
+                    print(result)
+                    
+                    if  let jsonResult = result as? [String: Any] {
+                        
+                        if let id = jsonResult["id"] {
+                            
+                        
+                            
+                        }
+                    }
                     
                     NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
 

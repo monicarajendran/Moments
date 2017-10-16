@@ -94,12 +94,13 @@ class AddMomentsPage: UIViewController , UITextViewDelegate {
             moments.momentDescription = momentDescription
             
             do {
+                
                 try context.save()
             }
                 
             catch{
                 
-                print("error",error)
+                print("Error:",error)
             }
             
         }
@@ -115,7 +116,6 @@ class AddMomentsPage: UIViewController , UITextViewDelegate {
     
     @IBAction func pickADateButtonAction(_ sender: Any) {
         
-    
         self.momentDescription.resignFirstResponder()
         self.momentName.resignFirstResponder()
         

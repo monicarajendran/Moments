@@ -12,6 +12,8 @@ import AlecrimCoreData
 
 class TimelinePage: UITableViewController {
     
+    @IBOutlet var searchBar: UITableView!
+    
     lazy var fetchTheMoments : FetchRequestController<Moments> = {
         
         let sortDescriptorss = NSSortDescriptor(key: "momentName", ascending: true)
@@ -43,8 +45,6 @@ class TimelinePage: UITableViewController {
         
         self.navigationController?.navigationBar.topItem?.title = "Moments"
         
-        self.tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMomentsButton(_:)))
-
         tableView.reloadData()
     }
     
@@ -54,7 +54,7 @@ class TimelinePage: UITableViewController {
         self.tabBarController?.navigationItem.rightBarButtonItem = nil
     }
     
-    func addMomentsButton(_ sender: UIBarButtonItem) {
+       @IBAction func addMomentsButton(_ sender: UIBarButtonItem) {
         
         guard let addMomentsPage = storyboard?.instantiateViewController(withIdentifier: "AddMomentsPage")
             
@@ -64,6 +64,7 @@ class TimelinePage: UITableViewController {
         }
         navigationController?.present(addMomentsPage, animated: true)
     }
+    
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         
