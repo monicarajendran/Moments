@@ -10,7 +10,9 @@ import UIKit
 
 import AlecrimCoreData
 
-class TimelinePage: UITableViewController {
+var isSearching = false
+
+class TimelinePage: UITableViewController , UISearchBarDelegate {
     
     @IBOutlet var searchBar: UITableView!
     
@@ -24,10 +26,18 @@ class TimelinePage: UITableViewController {
         
     }()
 
-    
     override func viewDidLoad() {
-        
+
         super.viewDidLoad()
+        
+        searchBar.delegate = self
+        
+        self.queryTheDataFromDisk()
+        
+        tableView.tableFooterView = UIView(frame: .zero)
+    }
+    
+    func queryTheDataFromDisk() {
         
         do {
             
@@ -36,10 +46,18 @@ class TimelinePage: UITableViewController {
         }
         catch{
             
+            print("error occured")
         }
+    }
+    
+    func testPredicat() {
         
+        let tempPredicate = NSPredicate(format: "title == %@", "test")
+        
+        try! fetchTheMoments.refresh(using: tempPredicate, keepOriginalPredicate: true)
         
     }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -62,6 +80,7 @@ class TimelinePage: UITableViewController {
                 
                 return
         }
+        
         navigationController?.present(addMomentsPage, animated: true)
     }
     
@@ -89,6 +108,17 @@ class TimelinePage: UITableViewController {
         return cell
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if !(searchBar.text?.isEmpty)! {
+            
+            isSearching = true
+            let predicate = NSPredicate(format: "momentName = %@", searchText)
+            let filteredDataFromCore = container.viewContext.moment.filter(using: predicate)
+            
+        }
+        
+    }
     
     /*
      // Override to support conditional editing of the table view.

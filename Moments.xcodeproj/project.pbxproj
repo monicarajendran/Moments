@@ -173,6 +173,7 @@
 					CE56F1491F88EBD900CEE704 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 2UBVJ7AR3B;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -410,6 +411,7 @@
 			baseConfigurationReference = 58F4A050201D5624A7031821 /* Pods-Moments.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 2UBVJ7AR3B;
 				INFOPLIST_FILE = Moments/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -417,6 +419,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "979795b5-6cb9-42a5-884b-3558d270cb43";
 				PROVISIONING_PROFILE_SPECIFIER = "Moments Dev Provisioning Profile";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -427,6 +430,7 @@
 			baseConfigurationReference = 9E5B88024B1FAA29C5D07176 /* Pods-Moments.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 2UBVJ7AR3B;
 				INFOPLIST_FILE = Moments/Info.plist;

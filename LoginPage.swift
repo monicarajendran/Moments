@@ -15,7 +15,20 @@ import NVActivityIndicatorView
 class LoginPage: UIViewController  {
     
     let activitydata = ActivityData()
+    
     override func viewDidLoad() {
+        
+       // self.view.backgroundColor = UIColor(patternImage: UIImage(named: "blueBackground.png")!)
+        
+//        UIGraphicsBeginImageContext(self.view.frame.size)
+//        
+//        UIImage(named: "blueBackground.png")?.draw(in: self.view.bounds)
+//        
+//        let image: UIImage! = UIGraphicsGetImageFromCurrentImageContext()
+//        
+//        UIGraphicsEndImageContext()
+//        
+//        self.view.backgroundColor = UIColor(patternImage: image)
         
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
