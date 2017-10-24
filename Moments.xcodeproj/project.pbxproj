@@ -14,8 +14,8 @@
 		CE56F1561F88EBD900CEE704 /* Moments.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1541F88EBD900CEE704 /* Moments.xcdatamodeld */; };
 		CE56F1581F88EBD900CEE704 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE56F1571F88EBD900CEE704 /* Assets.xcassets */; };
 		CE56F15B1F88EBD900CEE704 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE56F1591F88EBD900CEE704 /* LaunchScreen.storyboard */; };
-		CE57A71C1F8AE39C00585633 /* TimelinePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57A71B1F8AE39C00585633 /* TimelinePage.swift */; };
 		CE57A71E1F8AF07200585633 /* momentsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57A71D1F8AF07200585633 /* momentsEntity.swift */; };
+		CE5C5E5F1F9F543000CE6EB4 /* TimeLinePage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C5E5E1F9F543000CE6EB4 /* TimeLinePage2.swift */; };
 		CE9469321F8F384E0091D315 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9469311F8F384E0091D315 /* NavigationController.swift */; };
 		CE9DF7051F9AF9260016153E /* MomentsDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9DF7041F9AF9260016153E /* MomentsDetailPage.swift */; };
 		CE9F47781F8C9DAD0070704C /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F47771F8C9DAD0070704C /* LoginPage.swift */; };
@@ -36,8 +36,8 @@
 		CE56F1571F88EBD900CEE704 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE56F15A1F88EBD900CEE704 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE56F15C1F88EBD900CEE704 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE57A71B1F8AE39C00585633 /* TimelinePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelinePage.swift; sourceTree = "<group>"; };
 		CE57A71D1F8AF07200585633 /* momentsEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = momentsEntity.swift; sourceTree = "<group>"; };
+		CE5C5E5E1F9F543000CE6EB4 /* TimeLinePage2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLinePage2.swift; sourceTree = "<group>"; };
 		CE9469311F8F384E0091D315 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		CE9DF7041F9AF9260016153E /* MomentsDetailPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentsDetailPage.swift; sourceTree = "<group>"; };
 		CE9F47771F8C9DAD0070704C /* LoginPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginPage.swift; path = ../LoginPage.swift; sourceTree = "<group>"; };
@@ -110,8 +110,8 @@
 		CE9469301F8F2FF00091D315 /* TableViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CE5C5E5E1F9F543000CE6EB4 /* TimeLinePage2.swift */,
 				CE9F47821F8CDA210070704C /* SettingsPage.swift */,
-				CE57A71B1F8AE39C00585633 /* TimelinePage.swift */,
 			);
 			name = TableViewControllers;
 			sourceTree = "<group>";
@@ -298,7 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE56F1561F88EBD900CEE704 /* Moments.xcdatamodeld in Sources */,
-				CE57A71C1F8AE39C00585633 /* TimelinePage.swift in Sources */,
+				CE5C5E5F1F9F543000CE6EB4 /* TimeLinePage2.swift in Sources */,
 				CE57A71E1F8AF07200585633 /* momentsEntity.swift in Sources */,
 				CE9DF7051F9AF9260016153E /* MomentsDetailPage.swift in Sources */,
 				CE9F47831F8CDA210070704C /* SettingsPage.swift in Sources */,
