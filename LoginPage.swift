@@ -17,25 +17,24 @@ class LoginPage: UIViewController  {
     let activitydata = ActivityData()
     
     override func viewDidLoad() {
-        
-       // self.view.backgroundColor = UIColor(patternImage: UIImage(named: "blueBackground.png")!)
-        
-//        UIGraphicsBeginImageContext(self.view.frame.size)
-//        
-//        UIImage(named: "blueBackground.png")?.draw(in: self.view.bounds)
-//        
-//        let image: UIImage! = UIGraphicsGetImageFromCurrentImageContext()
-//        
-//        UIGraphicsEndImageContext()
-//        
-//        self.view.backgroundColor = UIColor(patternImage: image)
-        
         super.viewDidLoad()
+        
+        //        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "blueeBackground.png")!)
+        //
+        //        UIGraphicsBeginImageContext(self.view.frame.size)
+        //
+        //        UIImage(named: "blueeBackground.png")?.draw(in: self.view.bounds)
+        //
+        //        let image: UIImage! = UIGraphicsGetImageFromCurrentImageContext()
+        //
+        //        UIGraphicsEndImageContext()
+        //
+        //       self.view.backgroundColor = UIColor(patternImage:image)
+        
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        self.navigationItem.setHidesBackButton(true, animated: false)
         
         loginLabel.layer.cornerRadius = 25
-
+        
     }
     
     @IBOutlet weak var loginLabel: UIButton!
@@ -46,18 +45,19 @@ class LoginPage: UIViewController  {
         
         fbLoginManager.logIn(withReadPermissions: ["email"], from: self) { (result, error) -> Void in
             
-                if (error == nil){
-                    
-                    
-                    let fbloginresult : FBSDKLoginManagerLoginResult = result!
-                    
-                if (result?.isCancelled)!{
+            if (error == nil)
+            {
+                
+                let fbloginresult : FBSDKLoginManagerLoginResult = result!
+                
+                if (result?.isCancelled)!
+                {
                     
                     NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
-
+                    
                     return
                 }
-                    
+                
                 if(fbloginresult.grantedPermissions.contains("email"))
                 {
                     NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activitydata)
@@ -74,31 +74,22 @@ class LoginPage: UIViewController  {
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
                 if (error == nil){
                     
-                    print(result)
-                    
                     if  let jsonResult = result as? [String: Any] {
                         
-                        if let id = jsonResult["id"] {
-                            
+                        // if let id = jsonResult["id"] {
                         
-                            
-                        }
-                    }
-                    
-                    NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
-
-                    guard let pushToTimelinePage = self.storyboard?.instantiateViewController(withIdentifier: "TabBar") else {
-                        return
-                    }
-                    
-                    self.navigationController?.pushViewController(pushToTimelinePage, animated: true)
-                    
+                    //}
                 }
                 
+                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                
+                guard let pushToTimelinePage = self.storyboard?.instantiateViewController(withIdentifier: "TabBar") else {
+                    return
+                }
+                
+                self.navigationController?.pushViewController(pushToTimelinePage, animated: true)
+                }
             })
-            
-                   }
-        
+        }
     }
-
 }

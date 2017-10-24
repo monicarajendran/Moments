@@ -60,6 +60,8 @@ class SettingsPage: UITableViewController {
         
         if indexPath.row == 0 {
             
+            container.viewContext.moment.deleteAll()
+            
             alertMessage()
             logOut()
             

@@ -18,13 +18,17 @@ class AddMomentsPage: UIViewController , UITextViewDelegate {
     @IBOutlet weak var momentName: UITextField!
     @IBOutlet weak var momentDescription: UITextView!
     
+    //creating this layout for animatiion of date picker
     @IBOutlet weak var datePickerBottomCons: NSLayoutConstraint!
     
+    let dateFormatter = DateFormatter()
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         momentName.becomeFirstResponder()
+        
         momentDescription.delegate = self
         momentDescription.textColor = UIColor.lightGray
         momentDescription.text = "Describe the Moment.."
@@ -58,6 +62,7 @@ class AddMomentsPage: UIViewController , UITextViewDelegate {
         if textView.text == "Describe the Moment.." {
             
             textView.text = ""
+            
             momentDescription.textColor = .black
         }
         
@@ -69,6 +74,7 @@ class AddMomentsPage: UIViewController , UITextViewDelegate {
         if textView.text == "" {
             
             textView.textColor = .lightGray
+            
             textView.text = "Describe the Moment.."
             
         }
@@ -86,17 +92,21 @@ class AddMomentsPage: UIViewController , UITextViewDelegate {
         
     }
     
-    func dateComponents() -> (day: Int, month:Int, year: Int){
+    func dateComponents() -> (day: Int, month:Int, year: Int,nameOftheMonth: String,nameOfTheday: String){
         
         let components = datePicker.calendar.dateComponents([.day,.month,.year], from: datePicker.date)
         
-        let day = components.day
+        let dayNumber = components.day
         
-        let month = components.month
+        let monthNumber = components.month
         
-        let year = components.year
+        let yearNumber = components.year
         
-        return (day!,month!,year!)
+        let nameOftheMonth = dateFormatter.monthSymbols[monthNumber! - 1 ]
+        
+        let nameOfTheday = dateFormatter.weekdaySymbols[(dayNumber! - 1)%7]
+        
+        return (dayNumber!,monthNumber!,yearNumber!,nameOftheMonth,nameOfTheday)
         
     }
     
@@ -117,19 +127,26 @@ class AddMomentsPage: UIViewController , UITextViewDelegate {
             
             return
         }
+        
         container.performBackgroundTask { context  in
             
             let moments = context.moment.create()
             
             moments.momentName = momentName
             
-            moments.dayOfTheMoment = Int16(self.dateComponents().day)
+            moments.momentDescription = momentDescription
             
-            moments.year = Int16(self.dateComponents().year)
+            moments.rawDateOfTheMoment = dateLabelText
+            
+            moments.momentDayAsNum = Int16(self.dateComponents().day)
+            
+            moments.momentYear = Int16(self.dateComponents().year)
             
             moments.monthNumber = Int16(self.dateComponents().month)
             
-            moments.momentDescription = momentDescription
+            moments.momentDayAsName = self.dateComponents().nameOfTheday
+            
+            moments.monthName = self.dateComponents().nameOftheMonth
             
             do {
                 
@@ -142,6 +159,7 @@ class AddMomentsPage: UIViewController , UITextViewDelegate {
             }
             
         }
+
         dismiss(animated: true, completion: nil)
         
     }
@@ -173,8 +191,6 @@ class AddMomentsPage: UIViewController , UITextViewDelegate {
     }
     
     @IBAction func doneButtonOnToolBar(_ sender: Any) {
-        
-        let dateFormatter = DateFormatter()
         
         dateFormatter.dateStyle = .long
         

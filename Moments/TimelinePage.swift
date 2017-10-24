@@ -10,15 +10,19 @@ import UIKit
 
 import AlecrimCoreData
 
-var isSearching = false
-
-class TimelinePage: UITableViewController , UISearchBarDelegate {
+class TimelinePage: UITableViewController , UISearchBarDelegate , UITextViewDelegate{
     
-    @IBOutlet var searchBar: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    var searchBarActive = false
+    
+    var getTheMomentObject = Moments()
+
+    var filteredObjects = Table<Moments>(context: container.viewContext)
     
     lazy var fetchTheMoments : FetchRequestController<Moments> = {
         
-        let sortDescriptorss = NSSortDescriptor(key: "momentName", ascending: true)
+        let sortDescriptorss = NSSortDescriptor(key: "dateAdded", ascending: false)
         
         let query = container.viewContext.moment.sort(using: [sortDescriptorss])
         
@@ -37,25 +41,49 @@ class TimelinePage: UITableViewController , UISearchBarDelegate {
         tableView.tableFooterView = UIView(frame: .zero)
     }
     
+      func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        /*
+         
+         if string is kind of number 
+         check for date, month, year
+         
+         if string is kind of letters,
+         then monthname, momentName
+         
+         */
+        
+        
+        print("entered search bar")
+        
+    let searchPredicate = NSPredicate(format: "momentName CONTAINS[c] %@", searchText)
+        
+       filteredObjects = container.viewContext.moment.filter(using: searchPredicate)
+        
+        print(searchText)
+        
+        print("fetched objects: \(filteredObjects.count())")
+        
+        if filteredObjects.count() == 0 {
+            searchBarActive = false
+        }
+        else{
+            searchBarActive = true
+        }
+        
+        tableView.reloadData()
+
+    }
+    
     func queryTheDataFromDisk() {
         
         do {
-            
             try fetchTheMoments.performFetch()
-            
         }
         catch{
             
             print("error occured")
         }
-    }
-    
-    func testPredicat() {
-        
-        let tempPredicate = NSPredicate(format: "title == %@", "test")
-        
-        try! fetchTheMoments.refresh(using: tempPredicate, keepOriginalPredicate: true)
-        
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -84,40 +112,62 @@ class TimelinePage: UITableViewController , UISearchBarDelegate {
         navigationController?.present(addMomentsPage, animated: true)
     }
     
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         
-        return self.fetchTheMoments.numberOfSections()
+        if searchBarActive{
+            
+            return 1
+        }
+        else {
+            
+            return self.fetchTheMoments.numberOfSections()
+
+        }
         
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return fetchTheMoments.numberOfObjects(inSection: section)
+        if searchBarActive {
+
+        return filteredObjects.execute().count
+            
+        }
+            
+        else{
+            return fetchTheMoments.sections[section].numberOfObjects
+        }
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         
-        let getTheEventObject = fetchTheMoments.object(at: indexPath)
+        if searchBarActive{
+            getTheMomentObject = filteredObjects.execute()[indexPath.row]
+        }
+        else{
+         getTheMomentObject = fetchTheMoments.object(at: indexPath)
+        }
         
-        cell.textLabel?.text = getTheEventObject.momentName
+        cell.textLabel?.text = getTheMomentObject.momentName
+        
+        cell.detailTextLabel?.text = getTheMomentObject.rawDateOfTheMoment
         
         return cell
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if !(searchBar.text?.isEmpty)! {
-            
-            isSearching = true
-            let predicate = NSPredicate(format: "momentName = %@", searchText)
-            let filteredDataFromCore = container.viewContext.moment.filter(using: predicate)
-            
-        }
+        guard let pushToDetailMomentPage = storyboard?.instantiateViewController(withIdentifier: "MomentsDetailPage") as? MomentsDetailPage  else {   return  }
         
+        pushToDetailMomentPage.momentNameFromDb = getTheMomentObject.momentName!
+        
+        pushToDetailMomentPage.momentDateFromDb = getTheMomentObject.rawDateOfTheMoment!
+        
+        pushToDetailMomentPage.momentDescriptionFromDb = getTheMomentObject.momentDescription!
+        
+        navigationController?.pushViewController(pushToDetailMomentPage, animated: true)
     }
     
     /*
