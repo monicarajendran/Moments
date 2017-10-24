@@ -14,12 +14,12 @@ class NavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        if FBSDKAccessToken.current() == nil {
+        if FBSDKAccessToken.current() != nil {
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let homeViewController = mainStoryboard.instantiateViewController(withIdentifier:"LoginPage") as! LoginPage
+            
+            let homeViewController = storyboard?.instantiateViewController(withIdentifier:"TabBar") as! TabBar
+            
             let rootView = UINavigationController(rootViewController: homeViewController)
             
             if let window = appDelegate.window {
@@ -28,10 +28,8 @@ class NavigationController: UINavigationController {
                 
             }
             
-
-            
-            }
-            
         }
         
     }
+    
+}

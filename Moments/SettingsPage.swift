@@ -15,38 +15,55 @@ class SettingsPage: UITableViewController {
         super.viewDidLoad()
         
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         
         self.navigationController?.navigationBar.topItem?.title = "Settings"
 
     }
+    
     func logOut(){
         
         let loginManager: FBSDKLoginManager = FBSDKLoginManager()
+        
+        FBSDKGraphRequest(graphPath: "me/permissions/", parameters: nil, httpMethod: "DELETE").start(completionHandler: {(connection,result,error)-> Void in
+            
+            print("the delete permission is \(result)")
+            
+        })
+        
         loginManager.logOut()
         
-        
-        guard let pushToLoginPage = storyboard?.instantiateViewController(withIdentifier: "LoginPage")
+        guard let pushToLoginPage = self.storyboard?.instantiateViewController(withIdentifier: "LoginPage")
             
             else {
                 
             return
         }
         
-        navigationController?.setViewControllers([pushToLoginPage], animated: true)
+        tabBarController?.navigationController?.setViewControllers([pushToLoginPage], animated: true)
     }
+    
+    func alertMessage(){
+        
+        let alert = UIAlertController(title: "Are You Sure", message: "Logout", preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
+        
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in self.logOut()} ))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.row == 0 {
             
-            let alert = UIAlertController(title: "Are You Sure", message: "Logout", preferredStyle: UIAlertControllerStyle.alert)
+            container.viewContext.moment.deleteAll()
             
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
-            
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in self.logOut()} ))
-            
-            self.present(alert, animated: true, completion: nil)
+            alertMessage()
+            logOut()
             
         }
         

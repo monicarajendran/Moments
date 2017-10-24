@@ -17,6 +17,7 @@
 		CE57A71C1F8AE39C00585633 /* TimelinePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57A71B1F8AE39C00585633 /* TimelinePage.swift */; };
 		CE57A71E1F8AF07200585633 /* momentsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57A71D1F8AF07200585633 /* momentsEntity.swift */; };
 		CE9469321F8F384E0091D315 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9469311F8F384E0091D315 /* NavigationController.swift */; };
+		CE9DF7051F9AF9260016153E /* MomentsDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9DF7041F9AF9260016153E /* MomentsDetailPage.swift */; };
 		CE9F47781F8C9DAD0070704C /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F47771F8C9DAD0070704C /* LoginPage.swift */; };
 		CE9F477A1F8CA0DE0070704C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CE9F47791F8CA0DE0070704C /* .gitignore */; };
 		CE9F477E1F8CBD190070704C /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F477D1F8CBD190070704C /* TabBar.swift */; };
@@ -38,6 +39,7 @@
 		CE57A71B1F8AE39C00585633 /* TimelinePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelinePage.swift; sourceTree = "<group>"; };
 		CE57A71D1F8AF07200585633 /* momentsEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = momentsEntity.swift; sourceTree = "<group>"; };
 		CE9469311F8F384E0091D315 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		CE9DF7041F9AF9260016153E /* MomentsDetailPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentsDetailPage.swift; sourceTree = "<group>"; };
 		CE9F47771F8C9DAD0070704C /* LoginPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginPage.swift; path = ../LoginPage.swift; sourceTree = "<group>"; };
 		CE9F47791F8CA0DE0070704C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		CE9F477D1F8CBD190070704C /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
@@ -95,17 +97,12 @@
 		CE56F14C1F88EBD900CEE704 /* Moments */ = {
 			isa = PBXGroup;
 			children = (
-				CE56F14D1F88EBD900CEE704 /* AppDelegate.swift */,
-				CE9F477D1F8CBD190070704C /* TabBar.swift */,
-				CE9469311F8F384E0091D315 /* NavigationController.swift */,
+				CE998C8D1F9DF4A000FBF050 /* Supporting Files  */,
+				CE998C8C1F9DBE4E00FBF050 /* Main files */,
 				CE9F47811F8CC80B0070704C /* ViewControllers */,
 				CE9F477F1F8CC7C50070704C /* Extensions */,
 				CE9469301F8F2FF00091D315 /* TableViewControllers */,
-				CE56F1511F88EBD900CEE704 /* Main.storyboard */,
-				CE56F1571F88EBD900CEE704 /* Assets.xcassets */,
-				CE56F1591F88EBD900CEE704 /* LaunchScreen.storyboard */,
 				CE56F15C1F88EBD900CEE704 /* Info.plist */,
-				CE56F1541F88EBD900CEE704 /* Moments.xcdatamodeld */,
 			);
 			path = Moments;
 			sourceTree = "<group>";
@@ -119,6 +116,27 @@
 			name = TableViewControllers;
 			sourceTree = "<group>";
 		};
+		CE998C8C1F9DBE4E00FBF050 /* Main files */ = {
+			isa = PBXGroup;
+			children = (
+				CE56F14D1F88EBD900CEE704 /* AppDelegate.swift */,
+				CE9F477D1F8CBD190070704C /* TabBar.swift */,
+				CE9469311F8F384E0091D315 /* NavigationController.swift */,
+			);
+			name = "Main files";
+			sourceTree = "<group>";
+		};
+		CE998C8D1F9DF4A000FBF050 /* Supporting Files  */ = {
+			isa = PBXGroup;
+			children = (
+				CE56F1511F88EBD900CEE704 /* Main.storyboard */,
+				CE56F1571F88EBD900CEE704 /* Assets.xcassets */,
+				CE56F1591F88EBD900CEE704 /* LaunchScreen.storyboard */,
+				CE56F1541F88EBD900CEE704 /* Moments.xcdatamodeld */,
+			);
+			name = "Supporting Files ";
+			sourceTree = "<group>";
+		};
 		CE9F477F1F8CC7C50070704C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +148,7 @@
 		CE9F47811F8CC80B0070704C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CE9DF7041F9AF9260016153E /* MomentsDetailPage.swift */,
 				CE9F47771F8C9DAD0070704C /* LoginPage.swift */,
 				CE56F14F1F88EBD900CEE704 /* AddMomentsPage.swift */,
 			);
@@ -172,6 +191,7 @@
 					CE56F1491F88EBD900CEE704 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 2UBVJ7AR3B;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -280,6 +300,7 @@
 				CE56F1561F88EBD900CEE704 /* Moments.xcdatamodeld in Sources */,
 				CE57A71C1F8AE39C00585633 /* TimelinePage.swift in Sources */,
 				CE57A71E1F8AF07200585633 /* momentsEntity.swift in Sources */,
+				CE9DF7051F9AF9260016153E /* MomentsDetailPage.swift in Sources */,
 				CE9F47831F8CDA210070704C /* SettingsPage.swift in Sources */,
 				CE9469321F8F384E0091D315 /* NavigationController.swift in Sources */,
 				CE56F1501F88EBD900CEE704 /* AddMomentsPage.swift in Sources */,
@@ -409,6 +430,7 @@
 			baseConfigurationReference = 58F4A050201D5624A7031821 /* Pods-Moments.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 2UBVJ7AR3B;
 				INFOPLIST_FILE = Moments/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -416,6 +438,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "979795b5-6cb9-42a5-884b-3558d270cb43";
 				PROVISIONING_PROFILE_SPECIFIER = "Moments Dev Provisioning Profile";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -426,6 +449,7 @@
 			baseConfigurationReference = 9E5B88024B1FAA29C5D07176 /* Pods-Moments.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 2UBVJ7AR3B;
 				INFOPLIST_FILE = Moments/Info.plist;
