@@ -8,6 +8,8 @@
 
 import UIKit
 import FBSDKLoginKit
+import AlecrimCoreData
+import CoreData
 
 class SettingsPage: UITableViewController {
     
@@ -46,11 +48,11 @@ class SettingsPage: UITableViewController {
     
     func alertMessage(){
         
-        let alert = UIAlertController(title: "Are You Sure", message: "Logout", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "", message: "Are You Sure you want to Logout", preferredStyle: UIAlertControllerStyle.alert)
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
         
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in self.logOut()} ))
+        alert.addAction(UIAlertAction(title: "Logout", style: UIAlertActionStyle.destructive, handler: { action in self.logOut()} ))
         
         self.present(alert, animated: true, completion: nil)
     }
@@ -60,7 +62,17 @@ class SettingsPage: UITableViewController {
         
         if indexPath.row == 0 {
             
-            container.viewContext.moment.deleteAll()
+            
+            let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Moment")
+            
+            let bactchDeleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+            
+            do{
+                try container.viewContext.execute(bactchDeleteRequest)
+            }
+            catch{
+                
+            }
             
             alertMessage()
             logOut()

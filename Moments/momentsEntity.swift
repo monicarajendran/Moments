@@ -12,8 +12,8 @@ import AlecrimCoreData
 
 extension NSManagedObjectContext{
     
-    var moment: Table<Moments> {
-        return Table<Moments>(context : self)
+    var moment: Table<Moment> {
+        return Table<Moment>(context : self)
     }
     
 }

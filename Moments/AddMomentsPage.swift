@@ -130,23 +130,23 @@ class AddMomentsPage: UIViewController , UITextViewDelegate {
         
         container.performBackgroundTask { context  in
             
-            let moments = context.moment.create()
+            let moment = context.moment.create()
             
-            moments.momentName = momentName
+            moment.momentName = momentName
             
-            moments.momentDescription = momentDescription
+            moment.momentDescription = momentDescription
             
-            moments.rawDateOfTheMoment = dateLabelText
+            moment.rawDate = dateLabelText
             
-            moments.momentDayAsNum = Int16(self.dateComponents().day)
+            moment.momentDayAsNum = Int16(self.dateComponents().day)
             
-            moments.momentYear = Int16(self.dateComponents().year)
+            moment.momentYear = Int16(self.dateComponents().year)
             
-            moments.monthNumber = Int16(self.dateComponents().month)
+            moment.monthNumber = Int16(self.dateComponents().month)
             
-            moments.momentDayAsName = self.dateComponents().nameOfTheday
+            moment.momentDayAsName = self.dateComponents().nameOfTheday
             
-            moments.monthName = self.dateComponents().nameOftheMonth
+            moment.monthName = self.dateComponents().nameOftheMonth
             
             do {
                 
