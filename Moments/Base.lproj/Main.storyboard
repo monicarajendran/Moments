@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Time Line Page2-->
+        <!--Time Line Page-->
         <scene sceneID="kjw-Ue-Vy1">
             <objects>
-                <viewController storyboardIdentifier="TimeLinePage2" automaticallyAdjustsScrollViewInsets="NO" id="1sq-fA-N6o" customClass="TimeLinePage2" customModule="Moments" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TimeLinePage2" automaticallyAdjustsScrollViewInsets="NO" id="1sq-fA-N6o" customClass="TimeLinePage" customModule="Moments" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JeI-D2-20n"/>
                         <viewControllerLayoutGuide type="bottom" id="g1F-aw-VHc"/>
@@ -30,18 +30,18 @@
                                         <rect key="frame" x="0.0" y="12" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zVj-3L-gHf" id="Clz-ma-rVf">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dUH-5P-5Qd">
-                                                    <rect key="frame" x="15" y="17" width="34" height="21"/>
+                                                    <rect key="frame" x="15" y="18" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lim-JP-7ll">
-                                                    <rect key="frame" x="15" y="38" width="44" height="15"/>
+                                                    <rect key="frame" x="15" y="38.5" width="44" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -58,6 +58,7 @@
                             </tableView>
                             <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OkN-Lx-ewv">
                                 <rect key="frame" x="0.0" y="64" width="375" height="50"/>
+                                <color key="backgroundColor" red="0.99114269497488461" green="1" blue="0.98945765648257866" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="JcL-Gy-Sdq"/>
                                 </constraints>
@@ -93,14 +94,14 @@
                     <navigationItem key="navigationItem" id="rNT-tp-gaa">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="nys-3F-Vpq">
                             <connections>
-                                <action selector="addMomentsButton:" destination="1sq-fA-N6o" id="Ejg-mI-TUz"/>
+                                <action selector="addMomentsButton:" destination="1sq-fA-N6o" id="zdu-KU-cEu"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="noResultsFound" destination="dXn-nn-ieK" id="41d-8P-2uX"/>
-                        <outlet property="tableView" destination="1hc-7E-UiN" id="3xO-r1-oR5"/>
-                        <outlet property="timelineSearchBar" destination="OkN-Lx-ewv" id="f6a-gx-4Dt"/>
+                        <outlet property="noResultsFound" destination="dXn-nn-ieK" id="KLk-be-w2e"/>
+                        <outlet property="tableView" destination="1hc-7E-UiN" id="9hw-Ik-33Y"/>
+                        <outlet property="timelineSearchBar" destination="OkN-Lx-ewv" id="oxA-37-XE0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cGN-9D-WoC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -265,7 +266,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jSh-4y-s1i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3618.4000000000001" y="-706.59670164917543"/>
+            <point key="canvasLocation" x="3380" y="-648"/>
         </scene>
         <!--Add Moments Page-->
         <scene sceneID="2E3-Rg-fTR">
@@ -279,28 +280,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="24A-13-IKB">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
-                                <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.0"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                    <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Add Moments" id="YHg-Wu-qn9">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="nvd-15-Uxq">
-                                            <connections>
-                                                <action selector="cancelButton:" destination="a9O-s2-gaz" id="5sh-CJ-Rpa"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="MYO-QO-3Pr">
-                                            <connections>
-                                                <action selector="saveButton:" destination="a9O-s2-gaz" id="MUZ-sp-LuQ"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Moment Name Here.." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2w3-Sf-YBg">
                                 <rect key="frame" x="31" y="96" width="313" height="30"/>
                                 <constraints>
@@ -394,6 +373,28 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <navigationBar contentMode="top" translatesAutoresizingMaskIntoConstraints="NO" id="24A-13-IKB">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.0"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                    <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Add Moments" id="YHg-Wu-qn9">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="nvd-15-Uxq">
+                                            <connections>
+                                                <action selector="cancelButton:" destination="a9O-s2-gaz" id="5sh-CJ-Rpa"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="MYO-QO-3Pr">
+                                            <connections>
+                                                <action selector="saveButton:" destination="a9O-s2-gaz" id="MUZ-sp-LuQ"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -568,7 +569,7 @@
                                         <rect key="frame" x="0.0" y="35" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7MV-fn-HP4" id="xGx-IC-okU">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Logout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwP-6l-jSU">
@@ -629,9 +630,12 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EyG-Hk-OmA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Timeline" image="icons8-Timeline-20" id="xDE-Uv-sQP"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dIO-ZD-ux2">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dIO-ZD-ux2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -647,4 +651,5 @@
         <image name="icons8-Settings-20" width="20" height="20"/>
         <image name="icons8-Timeline-20" width="20" height="20"/>
     </resources>
+    <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		18A9270E4991541ADFA6DDC2 /* Pods_Moments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1850306574A9C6D2E45E9944 /* Pods_Moments.framework */; };
+		CE504E871FA076B600035F34 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE504E861FA076B600035F34 /* CloudKit.framework */; };
 		CE56F14E1F88EBD900CEE704 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE56F14D1F88EBD900CEE704 /* AppDelegate.swift */; };
 		CE56F1501F88EBD900CEE704 /* AddMomentsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE56F14F1F88EBD900CEE704 /* AddMomentsPage.swift */; };
 		CE56F1531F88EBD900CEE704 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE56F1511F88EBD900CEE704 /* Main.storyboard */; };
@@ -15,7 +16,7 @@
 		CE56F1581F88EBD900CEE704 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE56F1571F88EBD900CEE704 /* Assets.xcassets */; };
 		CE56F15B1F88EBD900CEE704 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE56F1591F88EBD900CEE704 /* LaunchScreen.storyboard */; };
 		CE57A71E1F8AF07200585633 /* momentsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57A71D1F8AF07200585633 /* momentsEntity.swift */; };
-		CE5C5E5F1F9F543000CE6EB4 /* TimeLinePage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C5E5E1F9F543000CE6EB4 /* TimeLinePage2.swift */; };
+		CE5C5E5F1F9F543000CE6EB4 /* TimeLinePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C5E5E1F9F543000CE6EB4 /* TimeLinePage.swift */; };
 		CE9469321F8F384E0091D315 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9469311F8F384E0091D315 /* NavigationController.swift */; };
 		CE9DF7051F9AF9260016153E /* MomentsDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9DF7041F9AF9260016153E /* MomentsDetailPage.swift */; };
 		CE9F47781F8C9DAD0070704C /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F47771F8C9DAD0070704C /* LoginPage.swift */; };
@@ -28,6 +29,8 @@
 		1850306574A9C6D2E45E9944 /* Pods_Moments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F4A050201D5624A7031821 /* Pods-Moments.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moments.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Moments/Pods-Moments.debug.xcconfig"; sourceTree = "<group>"; };
 		9E5B88024B1FAA29C5D07176 /* Pods-Moments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moments.release.xcconfig"; path = "Pods/Target Support Files/Pods-Moments/Pods-Moments.release.xcconfig"; sourceTree = "<group>"; };
+		CE43EED81FA05C5E000C0AC9 /* Moments.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Moments.entitlements; sourceTree = "<group>"; };
+		CE504E861FA076B600035F34 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		CE56F14A1F88EBD900CEE704 /* Moments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moments.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE56F14D1F88EBD900CEE704 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE56F14F1F88EBD900CEE704 /* AddMomentsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMomentsPage.swift; sourceTree = "<group>"; };
@@ -37,11 +40,11 @@
 		CE56F15A1F88EBD900CEE704 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE56F15C1F88EBD900CEE704 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE57A71D1F8AF07200585633 /* momentsEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = momentsEntity.swift; sourceTree = "<group>"; };
-		CE5C5E5E1F9F543000CE6EB4 /* TimeLinePage2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLinePage2.swift; sourceTree = "<group>"; };
+		CE5C5E5E1F9F543000CE6EB4 /* TimeLinePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLinePage.swift; sourceTree = "<group>"; };
 		CE9469311F8F384E0091D315 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		CE9DF7041F9AF9260016153E /* MomentsDetailPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentsDetailPage.swift; sourceTree = "<group>"; };
 		CE9F47771F8C9DAD0070704C /* LoginPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginPage.swift; path = ../LoginPage.swift; sourceTree = "<group>"; };
-		CE9F47791F8CA0DE0070704C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		CE9F47791F8CA0DE0070704C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 		CE9F477D1F8CBD190070704C /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		CE9F47821F8CDA210070704C /* SettingsPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -52,6 +55,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18A9270E4991541ADFA6DDC2 /* Pods_Moments.framework in Frameworks */,
+				CE504E871FA076B600035F34 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +65,7 @@
 		877684109052C4AABD5626D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE504E861FA076B600035F34 /* CloudKit.framework */,
 				1850306574A9C6D2E45E9944 /* Pods_Moments.framework */,
 			);
 			name = Frameworks;
@@ -78,7 +83,6 @@
 		CE56F1411F88EBD900CEE704 = {
 			isa = PBXGroup;
 			children = (
-				CE9F47791F8CA0DE0070704C /* .gitignore */,
 				CE56F14C1F88EBD900CEE704 /* Moments */,
 				CE56F14B1F88EBD900CEE704 /* Products */,
 				B9F9C5919F31116FDF597B06 /* Pods */,
@@ -97,6 +101,7 @@
 		CE56F14C1F88EBD900CEE704 /* Moments */ = {
 			isa = PBXGroup;
 			children = (
+				CE43EED81FA05C5E000C0AC9 /* Moments.entitlements */,
 				CE998C8D1F9DF4A000FBF050 /* Supporting Files  */,
 				CE998C8C1F9DBE4E00FBF050 /* Main files */,
 				CE9F47811F8CC80B0070704C /* ViewControllers */,
@@ -110,7 +115,7 @@
 		CE9469301F8F2FF00091D315 /* TableViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CE5C5E5E1F9F543000CE6EB4 /* TimeLinePage2.swift */,
+				CE5C5E5E1F9F543000CE6EB4 /* TimeLinePage.swift */,
 				CE9F47821F8CDA210070704C /* SettingsPage.swift */,
 			);
 			name = TableViewControllers;
@@ -129,6 +134,7 @@
 		CE998C8D1F9DF4A000FBF050 /* Supporting Files  */ = {
 			isa = PBXGroup;
 			children = (
+				CE9F47791F8CA0DE0070704C /* .gitignore */,
 				CE56F1511F88EBD900CEE704 /* Main.storyboard */,
 				CE56F1571F88EBD900CEE704 /* Assets.xcassets */,
 				CE56F1591F88EBD900CEE704 /* LaunchScreen.storyboard */,
@@ -193,6 +199,14 @@
 						DevelopmentTeam = 2UBVJ7AR3B;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -298,7 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE56F1561F88EBD900CEE704 /* Moments.xcdatamodeld in Sources */,
-				CE5C5E5F1F9F543000CE6EB4 /* TimeLinePage2.swift in Sources */,
+				CE5C5E5F1F9F543000CE6EB4 /* TimeLinePage.swift in Sources */,
 				CE57A71E1F8AF07200585633 /* momentsEntity.swift in Sources */,
 				CE9DF7051F9AF9260016153E /* MomentsDetailPage.swift in Sources */,
 				CE9F47831F8CDA210070704C /* SettingsPage.swift in Sources */,
@@ -431,12 +445,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Moments/Moments.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: samson sunny (25734HHUD3)";
 				DEVELOPMENT_TEAM = 2UBVJ7AR3B;
 				INFOPLIST_FILE = Moments/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.full.Moments;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "979795b5-6cb9-42a5-884b-3558d270cb43";
+				PROVISIONING_PROFILE = "cdb6d5ea-e59b-47a6-a09a-c2d7eb037c38";
 				PROVISIONING_PROFILE_SPECIFIER = "Moments Dev Provisioning Profile";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -450,6 +466,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Moments/Moments.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 2UBVJ7AR3B;
 				INFOPLIST_FILE = Moments/Info.plist;

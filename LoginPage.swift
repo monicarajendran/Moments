@@ -10,7 +10,7 @@ import UIKit
 import FBSDKLoginKit
 import FBSDKCoreKit
 import NVActivityIndicatorView
-
+import CloudKit
 
 class LoginPage: UIViewController  {
     

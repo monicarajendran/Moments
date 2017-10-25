@@ -71,7 +71,7 @@ class SettingsPage: UITableViewController {
                 try container.viewContext.execute(bactchDeleteRequest)
             }
             catch{
-                
+                print("Error Occoured")
             }
             
             alertMessage()
