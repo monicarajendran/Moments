@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class AddMomentsPage: UIViewController , UITextViewDelegate {
     
@@ -148,6 +149,21 @@ class AddMomentsPage: UIViewController , UITextViewDelegate {
             
             moment.monthName = self.dateComponents().nameOftheMonth
             
+            let record = CKRecord(recordType: "Moments")
+            
+            record["momentName"] = momentName as NSString?
+            record["momentDescription"] = momentDescription as NSString?
+            record["momentDate"] = dateLabelText as NSString?
+            
+
+            publicDb.save(record, completionHandler: {(record,error)-> Void in
+                guard let record = record else {
+                    print("error",error as Any)
+                    return
+                }
+                print("sucess",record)
+            })
+        
             do {
                 
                 try context.save()

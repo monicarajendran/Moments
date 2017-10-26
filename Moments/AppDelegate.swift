@@ -11,8 +11,12 @@ import CoreData
 import AlecrimCoreData
 import FBSDKCoreKit
 import NVActivityIndicatorView
+import CloudKit
 
 let container = PersistentContainer(name: "Moments")
+let customContainer = CKContainer(identifier: "iCloud.com.full.moments")
+let publicDb = customContainer.publicCloudDatabase
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate  {
@@ -22,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     
     {
+        let navigationBarAppearence = UINavigationBar.appearance()
+        
+        navigationBarAppearence.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
        

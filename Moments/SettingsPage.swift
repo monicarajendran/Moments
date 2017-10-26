@@ -60,7 +60,7 @@ class SettingsPage: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.row == 0 {
+        if indexPath.row == 1 {
             
             
             let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Moment")
@@ -77,6 +77,13 @@ class SettingsPage: UITableViewController {
             alertMessage()
             logOut()
             
+        }
+        else {
+            guard let iCloudData = storyboard?.instantiateViewController(withIdentifier: "ViewController")
+                else {
+                    return
+            }
+            navigationController?.pushViewController(iCloudData, animated: true)
         }
         
     }

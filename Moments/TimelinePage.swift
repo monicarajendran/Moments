@@ -62,7 +62,11 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
             
             timelineSearchBar.resignFirstResponder()
         }
-        
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBar.setShowsCancelButton(true, animated: true)
+        return true
+    }
         func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
             
             /*
@@ -74,7 +78,6 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
              then monthname, momentName
              
              */
-            
             
             print("entered search bar")
             
@@ -123,6 +126,7 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
             searchBar.text = nil
             
             searchBarActive = false
+            searchBar.setShowsCancelButton(false, animated: true)
             tableView.reloadData()
         }
         override func viewDidDisappear(_ animated: Bool) {
@@ -143,7 +147,7 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         
     }
     
-                func numberOfSections(in tableView: UITableView) -> Int {
+        func numberOfSections(in tableView: UITableView) -> Int {
             
             if searchBarActive{
                 

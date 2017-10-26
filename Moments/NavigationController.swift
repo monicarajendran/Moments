@@ -15,7 +15,7 @@ class NavigationController: UINavigationController {
         super.viewDidLoad()
         
         if FBSDKAccessToken.current() != nil {
-            
+
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             
             let homeViewController = storyboard?.instantiateViewController(withIdentifier:"TabBar") as! TabBar

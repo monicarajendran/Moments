@@ -23,6 +23,8 @@ class MomentsDetailPage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.tintColor = UIColor.white
+        
         tabBarController?.tabBar.isHidden = true
         navigationItem.title = momentNameFromDb
         nameOfTheMoment.text = momentNameFromDb
