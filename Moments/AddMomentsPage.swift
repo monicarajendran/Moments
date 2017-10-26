@@ -9,8 +9,9 @@
 import UIKit
 import CloudKit
 
-class AddMomentsPage: UIViewController , UITextViewDelegate {
+class AddMomentsPage: UIViewController , UITextViewDelegate , UINavigationBarDelegate {
     
+    @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet var datePickerFolder: UIView!
     @IBOutlet weak var pickADate: UIButton!
@@ -27,7 +28,7 @@ class AddMomentsPage: UIViewController , UITextViewDelegate {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+        navBar.delegate = self
         momentName.becomeFirstResponder()
         
         momentDescription.delegate = self
@@ -45,6 +46,14 @@ class AddMomentsPage: UIViewController , UITextViewDelegate {
         
         toolBar.isHidden = true
         
+       let navBarTitleColour = UINavigationBar.appearance()
+        navBarTitleColour.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+    }
+    
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        
+        return UIBarPosition.topAttached
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -112,7 +121,7 @@ class AddMomentsPage: UIViewController , UITextViewDelegate {
     }
     
     @IBAction func saveButton(_ sender: Any) {
-        
+    
         guard let momentName = momentName.text , let momentDescription = momentDescription.text , !momentName.isEmpty , momentDescription != "Describe the Moment.."
             
             else {
@@ -181,7 +190,7 @@ class AddMomentsPage: UIViewController , UITextViewDelegate {
     }
     
     @IBAction func cancelButton(_ sender: Any) {
-        
+    
         dismiss(animated: true, completion: nil)
         
     }
