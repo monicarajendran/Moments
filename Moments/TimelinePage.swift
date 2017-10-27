@@ -19,123 +19,129 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
     
     @IBOutlet weak var noResultsFound: UILabel!
     
-        var searchBarActive = false
+    var searchBarActive = false
     
-        var searchBarText = String()
+    var searchBarText = String()
+    
+    var getTheMomentObject = Moment()
+    
+    var filteredObjects = Table<Moment>(context: container.viewContext)
+    
+    lazy var fetchTheMoments : FetchRequestController<Moment> = {
         
-        var getTheMomentObject = Moment()
+        let sortDescriptorss = NSSortDescriptor(key: "name", ascending: false)
         
-        var filteredObjects = Table<Moment>(context: container.viewContext)
+        let query = container.viewContext.moment.sort(using: [sortDescriptorss])
         
-        lazy var fetchTheMoments : FetchRequestController<Moment> = {
-            
-            let sortDescriptorss = NSSortDescriptor(key: "dateAdded", ascending: false)
-            
-            let query = container.viewContext.moment.sort(using: [sortDescriptorss])
-            
-            return query.toFetchRequestController()
-            
-        }()
+        return query.toFetchRequestController()
         
-        override func viewDidLoad() {
-            
-            super.viewDidLoad()
-            
-            tableView.delegate = self
-            
-            timelineSearchBar.delegate = self
-            
-            self.queryTheDataFromDisk()
-            
-            tableView.tableFooterView = UIView(frame: .zero)
-        }
+    }()
+    
+    override func viewDidLoad() {
         
-        override func viewDidAppear(_ animated: Bool) {
-            super.viewDidAppear(animated)
-            
-            self.navigationController?.navigationBar.topItem?.title = "Moments"
-            noResultsFound.isHidden = true
-            self.tableView.reloadData()
-        }
+        super.viewDidLoad()
         
-         func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-            
-            timelineSearchBar.resignFirstResponder()
-        }
+        tableView.delegate = self
+        
+        timelineSearchBar.delegate = self
+        
+        self.queryTheDataFromDisk()
+        
+        tableView.tableFooterView = UIView(frame: .zero)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.navigationController?.navigationBar.topItem?.title = "Moments"
+        noResultsFound.isHidden = true
+        self.tableView.reloadData()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        
+        timelineSearchBar.resignFirstResponder()
+    }
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         searchBar.setShowsCancelButton(true, animated: true)
         return true
     }
-        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-            
-            /*
-             
-             if string is kind of number
-             check for date, month, year
-             
-             if string is kind of letters,
-             then monthname, momentName
-             
-             */
-            
-            print("entered search bar")
-            
-            let searchPredicate = NSPredicate(format: "momentName CONTAINS[c] %@ || momentDescription CONTAINS[c] %@ || rawDate CONTAINS[c] %@",searchText,searchText,searchText)
-            
-            filteredObjects = container.viewContext.moment.filter(using: searchPredicate)
-            
-            print(searchText)
-            
-            searchBarText = searchText
-            
-            print("fetched objects: \(filteredObjects.count())")
-            
-            if filteredObjects.count() == 0 {
-                
-                searchBarActive = false
-                
-            }
-            else{
-                
-                self.tableView.backgroundView = .none
-                
-                searchBarActive = true
-            }
-            
-            self.tableView.reloadData()
-            
-        }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        func queryTheDataFromDisk() {
-            
-            do {
-                try fetchTheMoments.performFetch()
-            }
-            catch{
-                
-                print("error occured")
-            }
-        }
+        /*
+         
+         if string is kind of number
+         check for date, month, year
+         
+         if string is kind of letters,
+         then monthname, momentName
+         
+         */
         
-        func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-            
-            searchBar.resignFirstResponder()
-            
-            searchBarText = ""
-            searchBar.text = nil
+        print("entered search bar")
+        
+        
+        let searchPredicate = NSPredicate(format: "searchToken CONTAINS[c] %@",searchText)
+        
+        filteredObjects = container.viewContext.moment.filter(using: searchPredicate)
+        
+        print(searchText)
+        
+        searchBarText = searchText
+        
+        print("fetched objects: \(filteredObjects.count())")
+        
+        if filteredObjects.count() == 0 {
             
             searchBarActive = false
-            searchBar.setShowsCancelButton(false, animated: true)
-            tableView.reloadData()
-        }
-        override func viewDidDisappear(_ animated: Bool) {
-            super.viewDidDisappear(animated)
             
-            self.tabBarController?.navigationItem.rightBarButtonItem = nil
         }
-    @IBAction func addMomentsButton(_ sender: UIBarButtonItem) {
+        else{
+            
+            self.tableView.backgroundView = .none
+            
+            searchBarActive = true
+        }
+        
+        self.tableView.reloadData()
+        
+    }
     
+    func queryTheDataFromDisk() {
+        
+        do {
+            try fetchTheMoments.performFetch()
+        }
+        catch{
+            
+            print("error occured")
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchBar.resignFirstResponder()
+        
+        searchBarText = ""
+        searchBar.text = nil
+        
+        searchBarActive = false
+        searchBar.setShowsCancelButton(false, animated: true)
+        tableView.reloadData()
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        self.tabBarController?.navigationItem.rightBarButtonItem = nil
+    }
+    @IBAction func addMomentsButton(_ sender: UIBarButtonItem) {
+        
         guard let addMomentsPage = storyboard?.instantiateViewController(withIdentifier: "AddMomentsPage")
             
             else{
@@ -147,89 +153,97 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         
     }
     
-        func numberOfSections(in tableView: UITableView) -> Int {
-            
-            if searchBarActive{
-                
-                return 1
-            }
-            else {
-                
-                return self.fetchTheMoments.numberOfSections()
-                
-            }
-            
-        }
+    func numberOfSections(in tableView: UITableView) -> Int {
         
-         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchBarActive{
             
-            if searchBarActive {
-                
-                return filteredObjects.execute().count
-                
-            }
-                
-            else{
-                
-                return fetchTheMoments.sections[section].numberOfObjects
-                
-            }
+            return 1
         }
-        
-         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        else {
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+            return self.fetchTheMoments.numberOfSections()
             
-            if searchBarActive {
-                
-                getTheMomentObject = filteredObjects.execute()[indexPath.row]
-            }
-            else{
-                
-                getTheMomentObject = fetchTheMoments.object(at: indexPath)
-            }
-            if (filteredObjects.count() == 0 && !searchBarText.isEmpty) {
-               
-                cell.isHidden = true
-                noResultsFound.isHidden = false
-            }
-                
-            else {
-                
-                noResultsFound.isHidden = true
-            }
-            
-            cell.textLabel?.text = getTheMomentObject.momentName
-            
-            cell.detailTextLabel?.text = getTheMomentObject.rawDate
-                        
-            return cell
-        }
-        
-         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            
-            timelineSearchBar.resignFirstResponder()
-            
-            guard let pushToDetailMomentPage = storyboard?.instantiateViewController(withIdentifier: "MomentsDetailPage") as? MomentsDetailPage  else {   return  }
-            
-            if searchBarActive{
-                
-                getTheMomentObject = filteredObjects.execute()[indexPath.row]
-            }
-            else{
-                
-                getTheMomentObject = fetchTheMoments.object(at: indexPath)
-            }
-            pushToDetailMomentPage.momentNameFromDb = getTheMomentObject.momentName!
-            
-            pushToDetailMomentPage.momentDateFromDb = getTheMomentObject.rawDate!
-            
-            pushToDetailMomentPage.momentDescriptionFromDb = getTheMomentObject.momentDescription!
-            
-            navigationController?.pushViewController(pushToDetailMomentPage, animated: true)
         }
         
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if searchBarActive {
+            
+            return filteredObjects.execute().count
+            
+        }
+            
+        else{
+            
+            return fetchTheMoments.sections[section].numberOfObjects
+            
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        
+        if searchBarActive {
+            
+            getTheMomentObject = filteredObjects.execute()[indexPath.row]
+        }
+        else{
+            
+            getTheMomentObject = fetchTheMoments.object(at: indexPath)
+        }
+        if (filteredObjects.count() == 0 && !searchBarText.isEmpty) {
+            
+            cell.isHidden = true
+            noResultsFound.isHidden = false
+        }
+            
+        else {
+            
+            noResultsFound.isHidden = true
+        }
+        
+        cell.textLabel?.text = getTheMomentObject.name
+        
+        let timeAsSeconds = getTheMomentObject.momentTime / 1000
+        
+        let date = Date(timeIntervalSince1970: TimeInterval(timeAsSeconds))
+        
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateStyle = .long
+        
+        cell.detailTextLabel?.text = dateFormatter.string(from: date)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        timelineSearchBar.resignFirstResponder()
+        
+        guard let pushToDetailMomentPage = storyboard?.instantiateViewController(withIdentifier: "MomentsDetailPage") as? MomentsDetailPage  else {   return  }
+        
+        if searchBarActive{
+            
+            getTheMomentObject = filteredObjects.execute()[indexPath.row]
+        }
+        else{
+            
+            getTheMomentObject = fetchTheMoments.object(at: indexPath)
+        }
+        pushToDetailMomentPage.momentNameFromDb = getTheMomentObject.name!
+        
+        pushToDetailMomentPage.momentDateFromDb = getTheMomentObject.name!
+        
+        pushToDetailMomentPage.momentDescriptionFromDb = getTheMomentObject.desc!
+        
+        navigationController?.pushViewController(pushToDetailMomentPage, animated: true)
+    }
+    
+}
 
 
 

@@ -13,9 +13,11 @@ import CoreData
 
 class SettingsPage: UITableViewController {
     
+    @IBOutlet weak var userEmail: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       userEmail.text = UserDefaults.standard.string(forKey: "email")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,7 +50,7 @@ class SettingsPage: UITableViewController {
     
     func alertMessage(){
         
-        let alert = UIAlertController(title: "", message: "Are You Sure you want to Logout", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Logout", message: "Are You Sure you want to Logout", preferredStyle: UIAlertControllerStyle.alert)
         
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
         
@@ -60,8 +62,9 @@ class SettingsPage: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.row == 1 {
+        switch (indexPath.section, indexPath.row) {
             
+        case (1,0) :
             
             let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Moment")
             
@@ -76,16 +79,10 @@ class SettingsPage: UITableViewController {
             
             alertMessage()
             logOut()
-            
+
+        default:
+            print("No cases are matched")
         }
-        else {
-            guard let iCloudData = storyboard?.instantiateViewController(withIdentifier: "ViewController")
-                else {
-                    return
-            }
-            navigationController?.pushViewController(iCloudData, animated: true)
-        }
-        
     }
 
 }

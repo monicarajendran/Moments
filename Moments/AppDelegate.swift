@@ -14,9 +14,6 @@ import NVActivityIndicatorView
 import CloudKit
 
 let container = PersistentContainer(name: "Moments")
-let customContainer = CKContainer(identifier: "iCloud.com.full.moments")
-let publicDb = customContainer.publicCloudDatabase
-
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate  {

@@ -9,6 +9,8 @@
 import UIKit
 import CloudKit
 
+let record = CKRecord(recordType: "Moment")
+
 class AddMomentsPage: UIViewController , UITextViewDelegate , UINavigationBarDelegate {
     
     @IBOutlet weak var navBar: UINavigationBar!
@@ -30,6 +32,7 @@ class AddMomentsPage: UIViewController , UITextViewDelegate , UINavigationBarDel
         super.viewDidLoad()
         navBar.delegate = self
         momentName.becomeFirstResponder()
+        momentName.autocapitalizationType = .sentences
         
         momentDescription.delegate = self
         momentDescription.textColor = UIColor.lightGray
@@ -78,7 +81,7 @@ class AddMomentsPage: UIViewController , UITextViewDelegate , UINavigationBarDel
         
         textView.becomeFirstResponder()
     }
-    
+
     func textViewDidEndEditing(_ textView: UITextView) {
         
         if textView.text == "" {
@@ -102,21 +105,17 @@ class AddMomentsPage: UIViewController , UITextViewDelegate , UINavigationBarDel
         
     }
     
-    func dateComponents() -> (day: Int, month:Int, year: Int,nameOftheMonth: String,nameOfTheday: String){
+    func dateComponents() -> (day: Int, month:Int, year: Int){
         
         let components = datePicker.calendar.dateComponents([.day,.month,.year], from: datePicker.date)
         
-        let dayNumber = components.day
+        let day = components.day
         
-        let monthNumber = components.month
+        let month = components.month
         
-        let yearNumber = components.year
+        let year = components.year
         
-        let nameOftheMonth = dateFormatter.monthSymbols[monthNumber! - 1 ]
-        
-        let nameOfTheday = dateFormatter.weekdaySymbols[(dayNumber! - 1)%7]
-        
-        return (dayNumber!,monthNumber!,yearNumber!,nameOftheMonth,nameOfTheday)
+        return (day!,month!,year!)
         
     }
     
@@ -142,42 +141,39 @@ class AddMomentsPage: UIViewController , UITextViewDelegate , UINavigationBarDel
             
             let moment = context.moment.create()
             
-            moment.momentName = momentName
+            moment.name = momentName
             
-            moment.momentDescription = momentDescription
+            moment.desc = momentDescription
             
-            moment.rawDate = dateLabelText
+            let seconds = self.datePicker.date.timeIntervalSince1970
             
-            moment.momentDayAsNum = Int16(self.dateComponents().day)
+            self.dateFormatter.dateStyle = .long
             
-            moment.momentYear = Int16(self.dateComponents().year)
+            let timeString = self.dateFormatter.string(from: self.datePicker.date)
             
-            moment.monthNumber = Int16(self.dateComponents().month)
+            moment.momentTime = Int64(seconds)
             
-            moment.momentDayAsName = self.dateComponents().nameOfTheday
+            let currentDate = Date().timeIntervalSince1970 * 1000
             
-            moment.monthName = self.dateComponents().nameOftheMonth
+            moment.createdAt = Int64(currentDate)
             
-            let record = CKRecord(recordType: "Moments")
+            moment.modifiedAt = Int64(currentDate)
             
-            record["momentName"] = momentName as NSString?
-            record["momentDescription"] = momentDescription as NSString?
-            record["momentDate"] = dateLabelText as NSString?
+            moment.searchToken = momentName + " " + momentDescription + " " + timeString
             
-
-            publicDb.save(record, completionHandler: {(record,error)-> Void in
-                guard let record = record else {
-                    print("error",error as Any)
-                    return
-                }
-                print("sucess",record)
-            })
-        
+            moment.day = Int16(self.dateComponents().day)
+            
+            moment.month = Int16(self.dateComponents().month)
+            
+            moment.year = Int16(self.dateComponents().year)
+            
             do {
                 
                 try context.save()
-            }
                 
+                CloudSyncServices.addRecordToIColud(record: moment.toICloudRecord())
+                
+            }
             catch{
                 
                 print("Error:",error)
@@ -244,5 +240,24 @@ class AddMomentsPage: UIViewController , UITextViewDelegate , UINavigationBarDel
         
     }
     
+}
+
+
+
+extension Moment {
+    
+    func toICloudRecord() -> CKRecord {
+        
+        record["name"] = self.name as CKRecordValue?
+        record["desc"] = self.desc as CKRecordValue?
+        record["momentTime"] = self.momentTime as CKRecordValue?
+        record["creaatedAt"] = self.createdAt as CKRecordValue?
+        record["modifiedAt"] = self.modifiedAt as CKRecordValue?
+        record["day"] = self.day as CKRecordValue?
+        record["month"] = self.month as CKRecordValue?
+        record["year"] = self.year as CKRecordValue?
+       
+        return record
+    }
 }
 
