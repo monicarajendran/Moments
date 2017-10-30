@@ -241,23 +241,3 @@ class AddMomentsPage: UIViewController , UITextViewDelegate , UINavigationBarDel
     }
     
 }
-
-
-
-extension Moment {
-    
-    func toICloudRecord() -> CKRecord {
-        
-        record["name"] = self.name as CKRecordValue?
-        record["desc"] = self.desc as CKRecordValue?
-        record["momentTime"] = self.momentTime as CKRecordValue?
-        record["creaatedAt"] = self.createdAt as CKRecordValue?
-        record["modifiedAt"] = self.modifiedAt as CKRecordValue?
-        record["day"] = self.day as CKRecordValue?
-        record["month"] = self.month as CKRecordValue?
-        record["year"] = self.year as CKRecordValue?
-       
-        return record
-    }
-}
-

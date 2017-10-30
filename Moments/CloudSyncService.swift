@@ -30,4 +30,24 @@ class CloudSyncServices {
         
     }
     
+    static func fetchRecordFromICloud()-> CKRecord{
+        
+        let recordID = record.recordID
+        
+        privateDb.fetch(withRecordID: recordID, completionHandler: {(record,error) -> Void in
+            
+            guard let record = record else {
+                
+                print("error fetching the record",error as Any)
+                return
+            }
+            
+            print("successfully record is fetched",record)
+            
+        })
+        
+       return record
+
+    }
+    
 }

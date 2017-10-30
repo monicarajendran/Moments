@@ -21,22 +21,7 @@ class LoginPage: UIViewController  {
         
         loginLabel.layer.cornerRadius = 25
 
-        let recordID = record.recordID
-
-        CloudSyncServices.privateDb.fetch(withRecordID: recordID, completionHandler: {(record,error) -> Void in
-            
-            guard let record = record else {
-                
-                print("error fetching the record",error as Any)
-                return
-            }
-                        
-            print("successfully record is fetched",record)
-            
-        })
-        
-        
-    self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
 
     }
     @IBOutlet weak var loginLabel: UIButton!

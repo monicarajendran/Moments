@@ -49,6 +49,15 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         
         tableView.tableFooterView = UIView(frame: .zero)
         
+        if fetchTheMoments.fetchedObjects?.count == 0 {
+            
+
+          let obj = container.viewContext.moment.create().fromICloudRecord()
+            
+            getTheMomentObject = obj
+            
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -224,7 +233,7 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         
         timelineSearchBar.resignFirstResponder()
         
-        guard let pushToDetailMomentPage = storyboard?.instantiateViewController(withIdentifier: "MomentsDetailPage") as? MomentsDetailPage  else {   return  }
+        guard let pushToDetailMomentPage = storyboard?.instantiateViewController(withIdentifier: "MomentsDetailPage")  as? MomentsDetailPage else {   return  }
         
         if searchBarActive{
             

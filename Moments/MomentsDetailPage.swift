@@ -11,9 +11,7 @@ import UIKit
 class MomentsDetailPage: UIViewController {
     
     @IBOutlet weak var nameOfTheMoment: UILabel!
-    
     @IBOutlet weak var dateOfTheMoment: UILabel!
-    
     @IBOutlet weak var descriptionOfTheMoment: UITextView!
     
     var momentNameFromDb = String()

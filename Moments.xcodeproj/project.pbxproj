@@ -24,6 +24,7 @@
 		CE9F477A1F8CA0DE0070704C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CE9F47791F8CA0DE0070704C /* .gitignore */; };
 		CE9F477E1F8CBD190070704C /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F477D1F8CBD190070704C /* TabBar.swift */; };
 		CE9F47831F8CDA210070704C /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F47821F8CDA210070704C /* SettingsPage.swift */; };
+		CEA33A671FA4300D0032E0E8 /* MomentExtenion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA33A661FA4300D0032E0E8 /* MomentExtenion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		CE9F47791F8CA0DE0070704C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 		CE9F477D1F8CBD190070704C /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		CE9F47821F8CDA210070704C /* SettingsPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
+		CEA33A661FA4300D0032E0E8 /* MomentExtenion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentExtenion.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 		CE9F477F1F8CC7C50070704C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CEA33A661FA4300D0032E0E8 /* MomentExtenion.swift */,
 				CE57A71D1F8AF07200585633 /* momentsEntity.swift */,
 			);
 			name = Extensions;
@@ -323,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE56F1561F88EBD900CEE704 /* Moments.xcdatamodeld in Sources */,
+				CEA33A671FA4300D0032E0E8 /* MomentExtenion.swift in Sources */,
 				CE5C5E5F1F9F543000CE6EB4 /* TimeLinePage.swift in Sources */,
 				CE57A71E1F8AF07200585633 /* momentsEntity.swift in Sources */,
 				CE9DF7051F9AF9260016153E /* MomentsDetailPage.swift in Sources */,
