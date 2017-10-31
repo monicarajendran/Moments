@@ -9,8 +9,6 @@
 import UIKit
 import CloudKit
 
-let record = CKRecord(recordType: "Moment")
-
 class AddMomentsPage: UIViewController , UITextViewDelegate , UINavigationBarDelegate {
     
     @IBOutlet weak var navBar: UINavigationBar!
@@ -30,26 +28,22 @@ class AddMomentsPage: UIViewController , UITextViewDelegate , UINavigationBarDel
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         navBar.delegate = self
-        momentName.becomeFirstResponder()
-        momentName.autocapitalizationType = .sentences
         
-        momentDescription.delegate = self
-        momentDescription.textColor = UIColor.lightGray
-        momentDescription.text = "Describe the Moment.."
-        momentDescription.layer.cornerRadius = 5
-        momentDescription.layer.borderWidth = 0.1
-        momentDescription.layer.borderColor = UIColor.black.cgColor
+        momentNameCus()
         
-        pickADate.layer.cornerRadius = 10
-        pickADate.layer.borderWidth = 0.5
-        pickADate.layer.borderColor = UIColor.black.cgColor
+        momentDescriptionCus()
+        
+        pickADateCus()
         
         datePicker.isHidden = true
         
         toolBar.isHidden = true
         
+        
        let navBarTitleColour = UINavigationBar.appearance()
+        
         navBarTitleColour.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
     }
     
@@ -172,7 +166,7 @@ class AddMomentsPage: UIViewController , UITextViewDelegate , UINavigationBarDel
                 try context.save()
                 
                 CloudSyncServices.addRecordToIColud(record: moment.toICloudRecord())
-                
+
             }
             catch{
                 

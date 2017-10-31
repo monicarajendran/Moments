@@ -37,10 +37,15 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         
     }()
     
+    let dateFormatter = DateFormatter()
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
+        dateFormatter.dateStyle = .long
+        
+
         tableView.delegate = self
         
         timelineSearchBar.delegate = self
@@ -49,15 +54,10 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         
         tableView.tableFooterView = UIView(frame: .zero)
         
-        if fetchTheMoments.fetchedObjects?.count == 0 {
-            
-
-          let obj = container.viewContext.moment.create().fromICloudRecord()
-            
-            getTheMomentObject = obj
-            
-        }
+        let moment = container.viewContext.moment.create()
         
+        print(CloudSyncServices.fetchRecordFromICloud(record: moment.toICloudRecord()))
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -220,10 +220,6 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         
         let date = Date(timeIntervalSince1970: TimeInterval(timeAsSeconds))
         
-        let dateFormatter = DateFormatter()
-        
-        dateFormatter.dateStyle = .long
-        
         cell.detailTextLabel?.text = dateFormatter.string(from: date)
         
         return cell
@@ -245,7 +241,11 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         }
         pushToDetailMomentPage.momentNameFromDb = getTheMomentObject.name!
         
-        pushToDetailMomentPage.momentDateFromDb = getTheMomentObject.name!
+        let timeAsSeconds = getTheMomentObject.momentTime / 1000
+        
+        let date = Date(timeIntervalSince1970: TimeInterval(timeAsSeconds))
+        
+        pushToDetailMomentPage.momentDateFromDb = dateFormatter.string(from: date)
         
         pushToDetailMomentPage.momentDescriptionFromDb = getTheMomentObject.desc!
         

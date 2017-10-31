@@ -30,22 +30,30 @@ class CloudSyncServices {
         
     }
     
-    static func fetchRecordFromICloud()-> CKRecord{
+    static func fetchRecordFromICloud(record: CKRecord)-> CKRecord{
         
-        let recordID = record.recordID
+        let predicate = NSPredicate(value: true)
         
-        privateDb.fetch(withRecordID: recordID, completionHandler: {(record,error) -> Void in
-            
-            guard let record = record else {
-                
-                print("error fetching the record",error as Any)
-                return
-            }
-            
-            print("successfully record is fetched",record)
-            
-        })
+        let query = CKQuery(recordType: "Moment", predicate: predicate)
         
+        let queryOperation = CKQueryOperation(query: query)
+        
+        var momentRecord : [CKRecord] = []
+        
+        queryOperation.recordFetchedBlock = { record in
+            
+            momentRecord.append(record)
+            
+        }
+        
+        queryOperation.queryCompletionBlock = { cursor , error in
+            
+            print(momentRecord)
+            
+        }
+        
+        customContainer.privateCloudDatabase.add(queryOperation)
+        print(momentRecord.count)
        return record
 
     }

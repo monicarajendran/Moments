@@ -13,6 +13,8 @@ extension Moment {
     
     func toICloudRecord() -> CKRecord {
         
+        let record = CKRecord(recordType: "Moment")
+
         record["name"] = self.name as CKRecordValue?
         record["desc"] = self.desc as CKRecordValue?
         record["momentTime"] = self.momentTime as CKRecordValue?
@@ -25,7 +27,7 @@ extension Moment {
         return record
     }
     
-    func fromICloudRecord() -> Moment{
+    func fromICloudRecord(record: CKRecord) -> Moment{
 
         self.name = record.object(forKey: "name") as! String?
         self.desc = record.object(forKey: "desc") as! String?
