@@ -21,9 +21,7 @@
 		CE56F15B1F88EBD900CEE704 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE56F1591F88EBD900CEE704 /* LaunchScreen.storyboard */; };
 		CE57A71E1F8AF07200585633 /* momentsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57A71D1F8AF07200585633 /* momentsEntity.swift */; };
 		CE5C5E5F1F9F543000CE6EB4 /* TimeLinePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C5E5E1F9F543000CE6EB4 /* TimeLinePage.swift */; };
-		CE9469321F8F384E0091D315 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9469311F8F384E0091D315 /* NavigationController.swift */; };
 		CE9DF7051F9AF9260016153E /* MomentsDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9DF7041F9AF9260016153E /* MomentsDetailPage.swift */; };
-		CE9F47781F8C9DAD0070704C /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F47771F8C9DAD0070704C /* LoginPage.swift */; };
 		CE9F477A1F8CA0DE0070704C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CE9F47791F8CA0DE0070704C /* .gitignore */; };
 		CE9F477E1F8CBD190070704C /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F477D1F8CBD190070704C /* TabBar.swift */; };
 		CE9F47831F8CDA210070704C /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F47821F8CDA210070704C /* SettingsPage.swift */; };
@@ -50,9 +48,7 @@
 		CE56F15C1F88EBD900CEE704 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE57A71D1F8AF07200585633 /* momentsEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = momentsEntity.swift; sourceTree = "<group>"; };
 		CE5C5E5E1F9F543000CE6EB4 /* TimeLinePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLinePage.swift; sourceTree = "<group>"; };
-		CE9469311F8F384E0091D315 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		CE9DF7041F9AF9260016153E /* MomentsDetailPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentsDetailPage.swift; sourceTree = "<group>"; };
-		CE9F47771F8C9DAD0070704C /* LoginPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginPage.swift; path = ../LoginPage.swift; sourceTree = "<group>"; };
 		CE9F47791F8CA0DE0070704C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 		CE9F477D1F8CBD190070704C /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		CE9F47821F8CDA210070704C /* SettingsPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
@@ -130,7 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				CE29E2981FA34867001647E7 /* Service Classes */,
-				CE43EED81FA05C5E000C0AC9 /* Moments.entitlements */,
 				CE998C8D1F9DF4A000FBF050 /* Supporting Files  */,
 				CE998C8C1F9DBE4E00FBF050 /* Main files */,
 				CE9F47811F8CC80B0070704C /* ViewControllers */,
@@ -154,7 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				CE9F477D1F8CBD190070704C /* TabBar.swift */,
-				CE9469311F8F384E0091D315 /* NavigationController.swift */,
 			);
 			name = "Main files";
 			sourceTree = "<group>";
@@ -168,6 +162,7 @@
 				CE56F1571F88EBD900CEE704 /* Assets.xcassets */,
 				CE56F1591F88EBD900CEE704 /* LaunchScreen.storyboard */,
 				CE56F1541F88EBD900CEE704 /* Moments.xcdatamodeld */,
+				CE43EED81FA05C5E000C0AC9 /* Moments.entitlements */,
 			);
 			name = "Supporting Files ";
 			sourceTree = "<group>";
@@ -186,7 +181,6 @@
 			isa = PBXGroup;
 			children = (
 				CE9DF7041F9AF9260016153E /* MomentsDetailPage.swift */,
-				CE9F47771F8C9DAD0070704C /* LoginPage.swift */,
 				CE56F14F1F88EBD900CEE704 /* AddMomentsPage.swift */,
 			);
 			name = ViewControllers;
@@ -351,10 +345,8 @@
 				CE29E2971FA3485C001647E7 /* CloudSyncService.swift in Sources */,
 				CE4DCBD21FA6F551003666DE /* Textfield.swift in Sources */,
 				CE9F47831F8CDA210070704C /* SettingsPage.swift in Sources */,
-				CE9469321F8F384E0091D315 /* NavigationController.swift in Sources */,
 				CE4DCBD61FA6FB8E003666DE /* Button.swift in Sources */,
 				CE56F1501F88EBD900CEE704 /* AddMomentsPage.swift in Sources */,
-				CE9F47781F8C9DAD0070704C /* LoginPage.swift in Sources */,
 				CE56F14E1F88EBD900CEE704 /* AppDelegate.swift in Sources */,
 				CE9F477E1F8CBD190070704C /* TabBar.swift in Sources */,
 			);
