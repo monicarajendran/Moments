@@ -27,16 +27,17 @@ extension Moment {
         return record
     }
     
+    
     func fromICloudRecord(record: CKRecord) -> Moment{
 
         self.name = record.object(forKey: "name") as! String?
         self.desc = record.object(forKey: "desc") as! String?
-        self.momentTime = record.object(forKey: "momentTime") as? Int64 ?? 00
-        self.createdAt = record.object(forKey: "createdAt") as! Int64? ?? 00
-        self.modifiedAt = (record.object(forKey: "modifiedAt") as! Int64?) ?? 00
-        self.day = (record.object(forKey: "day") as! Int16?) ?? 00
-        self.month = (record.object(forKey: "month") as! Int16?) ?? 00
-        self.year = (record.object(forKey: "year") as! Int16?) ?? 00
+        self.momentTime = record.object(forKey: "momentTime") as! NSNumber? as! Int64
+        self.createdAt = record.object(forKey: "createdAt") as! NSNumber? as! Int64
+        self.modifiedAt = record.object(forKey: "modifiedAt") as! NSNumber? as! Int64
+        self.day = record.object(forKey: "day") as! NSNumber? as! Int16
+        self.month = record.object(forKey: "month") as! NSNumber? as! Int16
+        self.year = record.object(forKey: "year") as! NSNumber? as! Int16
         
         return self
     }

@@ -30,7 +30,7 @@ class CloudSyncServices {
         
     }
     
-    static func fetchRecordFromICloud(record: CKRecord)-> CKRecord{
+    static func fetchRecordFromICloud(record: CKRecord){ //-> CKRecord{
         
         let predicate = NSPredicate(value: true)
         
@@ -53,8 +53,10 @@ class CloudSyncServices {
         }
         
         customContainer.privateCloudDatabase.add(queryOperation)
+        
         print(momentRecord.count)
-       return record
+        
+        //return record
 
     }
     

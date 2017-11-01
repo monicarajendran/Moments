@@ -45,7 +45,6 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         
         dateFormatter.dateStyle = .long
         
-
         tableView.delegate = self
         
         timelineSearchBar.delegate = self
@@ -54,9 +53,7 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         
         tableView.tableFooterView = UIView(frame: .zero)
         
-        let moment = container.viewContext.moment.create()
-        
-        print(CloudSyncServices.fetchRecordFromICloud(record: moment.toICloudRecord()))
+        //print(CloudSyncServices.fetchRecordFromICloud(record: moment.toICloudRecord()))
 
     }
     
@@ -65,11 +62,8 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         
         self.navigationController?.navigationBar.topItem?.title = "Moments"
         noResultsFound.isHidden = true
+        
         self.tableView.reloadData()
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -78,6 +72,7 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
     }
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+    
         searchBar.setShowsCancelButton(true, animated: true)
         return true
     }
@@ -144,11 +139,13 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         searchBar.setShowsCancelButton(false, animated: true)
         tableView.reloadData()
     }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
         self.tabBarController?.navigationItem.rightBarButtonItem = nil
     }
+    
     @IBAction func addMomentsButton(_ sender: UIBarButtonItem) {
         
         guard let addMomentsPage = storyboard?.instantiateViewController(withIdentifier: "AddMomentsPage")
@@ -173,7 +170,7 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
             return self.fetchTheMoments.numberOfSections()
             
         }
-        
+       
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -184,11 +181,12 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
             
         }
             
-        else{
+        else {
             
             return fetchTheMoments.sections[section].numberOfObjects
             
         }
+       
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -199,10 +197,11 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
             
             getTheMomentObject = filteredObjects.execute()[indexPath.row]
         }
-        else{
+        else {
             
             getTheMomentObject = fetchTheMoments.object(at: indexPath)
         }
+      
         if (filteredObjects.count() == 0 && !searchBarText.isEmpty) {
             
             cell.isHidden = true
@@ -216,9 +215,9 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         
         cell.textLabel?.text = getTheMomentObject.name
         
-        let timeAsSeconds = getTheMomentObject.momentTime / 1000
+        let timeAsSeconds = getTheMomentObject.momentTime
         
-        let date = Date(timeIntervalSince1970: TimeInterval(timeAsSeconds))
+        let date = Date(timeIntervalSinceReferenceDate: TimeInterval(timeAsSeconds))
         
         cell.detailTextLabel?.text = dateFormatter.string(from: date)
         
@@ -235,15 +234,16 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
             
             getTheMomentObject = filteredObjects.execute()[indexPath.row]
         }
+            
         else{
             
             getTheMomentObject = fetchTheMoments.object(at: indexPath)
         }
         pushToDetailMomentPage.momentNameFromDb = getTheMomentObject.name!
         
-        let timeAsSeconds = getTheMomentObject.momentTime / 1000
+        let timeAsSeconds = getTheMomentObject.momentTime
         
-        let date = Date(timeIntervalSince1970: TimeInterval(timeAsSeconds))
+        let date = Date(timeIntervalSinceReferenceDate: TimeInterval(timeAsSeconds))
         
         pushToDetailMomentPage.momentDateFromDb = dateFormatter.string(from: date)
         

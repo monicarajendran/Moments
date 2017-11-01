@@ -139,7 +139,7 @@ class AddMomentsPage: UIViewController , UITextViewDelegate , UINavigationBarDel
             
             moment.desc = momentDescription
             
-            let seconds = self.datePicker.date.timeIntervalSince1970
+            let seconds = self.datePicker.date.timeIntervalSinceReferenceDate
             
             self.dateFormatter.dateStyle = .long
             
@@ -147,7 +147,7 @@ class AddMomentsPage: UIViewController , UITextViewDelegate , UINavigationBarDel
             
             moment.momentTime = Int64(seconds)
             
-            let currentDate = Date().timeIntervalSince1970 * 1000
+            let currentDate = Date().timeIntervalSinceReferenceDate
             
             moment.createdAt = Int64(currentDate)
             
