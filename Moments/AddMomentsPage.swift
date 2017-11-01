@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import CloudKit
 
-class AddMomentsPage: UIViewController , UITextViewDelegate {
+class AddMomentsPage: UIViewController , UITextViewDelegate , UINavigationBarDelegate {
     
+    @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet var datePickerFolder: UIView!
     @IBOutlet weak var pickADate: UIButton!
@@ -27,23 +29,28 @@ class AddMomentsPage: UIViewController , UITextViewDelegate {
         
         super.viewDidLoad()
         
-        momentName.becomeFirstResponder()
+        navBar.delegate = self
         
-        momentDescription.delegate = self
-        momentDescription.textColor = UIColor.lightGray
-        momentDescription.text = "Describe the Moment.."
-        momentDescription.layer.cornerRadius = 5
-        momentDescription.layer.borderWidth = 0.1
-        momentDescription.layer.borderColor = UIColor.black.cgColor
+        momentNameCus()
         
-        pickADate.layer.cornerRadius = 10
-        pickADate.layer.borderWidth = 0.5
-        pickADate.layer.borderColor = UIColor.black.cgColor
+        momentDescriptionCus()
+        
+        pickADateCus()
         
         datePicker.isHidden = true
         
         toolBar.isHidden = true
         
+        
+       let navBarTitleColour = UINavigationBar.appearance()
+        
+        navBarTitleColour.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+    }
+    
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        
+        return UIBarPosition.topAttached
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,7 +75,7 @@ class AddMomentsPage: UIViewController , UITextViewDelegate {
         
         textView.becomeFirstResponder()
     }
-    
+
     func textViewDidEndEditing(_ textView: UITextView) {
         
         if textView.text == "" {
@@ -92,26 +99,22 @@ class AddMomentsPage: UIViewController , UITextViewDelegate {
         
     }
     
-    func dateComponents() -> (day: Int, month:Int, year: Int,nameOftheMonth: String,nameOfTheday: String){
+    func dateComponents() -> (day: Int, month:Int, year: Int){
         
         let components = datePicker.calendar.dateComponents([.day,.month,.year], from: datePicker.date)
         
-        let dayNumber = components.day
+        let day = components.day
         
-        let monthNumber = components.month
+        let month = components.month
         
-        let yearNumber = components.year
+        let year = components.year
         
-        let nameOftheMonth = dateFormatter.monthSymbols[monthNumber! - 1 ]
-        
-        let nameOfTheday = dateFormatter.weekdaySymbols[(dayNumber! - 1)%7]
-        
-        return (dayNumber!,monthNumber!,yearNumber!,nameOftheMonth,nameOfTheday)
+        return (day!,month!,year!)
         
     }
     
     @IBAction func saveButton(_ sender: Any) {
-        
+    
         guard let momentName = momentName.text , let momentDescription = momentDescription.text , !momentName.isEmpty , momentDescription != "Describe the Moment.."
             
             else {
@@ -132,27 +135,39 @@ class AddMomentsPage: UIViewController , UITextViewDelegate {
             
             let moment = context.moment.create()
             
-            moment.momentName = momentName
+            moment.name = momentName
             
-            moment.momentDescription = momentDescription
+            moment.desc = momentDescription
             
-            moment.rawDate = dateLabelText
+            let seconds = self.datePicker.date.timeIntervalSinceReferenceDate
             
-            moment.momentDayAsNum = Int16(self.dateComponents().day)
+            self.dateFormatter.dateStyle = .long
             
-            moment.momentYear = Int16(self.dateComponents().year)
+            let timeString = self.dateFormatter.string(from: self.datePicker.date)
             
-            moment.monthNumber = Int16(self.dateComponents().month)
+            moment.momentTime = Int64(seconds)
             
-            moment.momentDayAsName = self.dateComponents().nameOfTheday
+            let currentDate = Date().timeIntervalSinceReferenceDate
             
-            moment.monthName = self.dateComponents().nameOftheMonth
+            moment.createdAt = Int64(currentDate)
+            
+            moment.modifiedAt = Int64(currentDate)
+            
+            moment.searchToken = momentName + " " + momentDescription + " " + timeString
+            
+            moment.day = Int16(self.dateComponents().day)
+            
+            moment.month = Int16(self.dateComponents().month)
+            
+            moment.year = Int16(self.dateComponents().year)
             
             do {
                 
                 try context.save()
-            }
                 
+                CloudSyncServices.addRecordToIColud(record: moment.toICloudRecord())
+
+            }
             catch{
                 
                 print("Error:",error)
@@ -165,7 +180,7 @@ class AddMomentsPage: UIViewController , UITextViewDelegate {
     }
     
     @IBAction func cancelButton(_ sender: Any) {
-        
+    
         dismiss(animated: true, completion: nil)
         
     }
@@ -220,4 +235,3 @@ class AddMomentsPage: UIViewController , UITextViewDelegate {
     }
     
 }
-

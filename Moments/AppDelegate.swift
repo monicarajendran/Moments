@@ -11,6 +11,7 @@ import CoreData
 import AlecrimCoreData
 import FBSDKCoreKit
 import NVActivityIndicatorView
+import CloudKit
 
 let container = PersistentContainer(name: "Moments")
 
@@ -22,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     
     {
+        let navigationBarAppearence = UINavigationBar.appearance()
+        
+        navigationBarAppearence.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
        

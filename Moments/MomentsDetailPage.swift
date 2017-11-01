@@ -11,9 +11,7 @@ import UIKit
 class MomentsDetailPage: UIViewController {
     
     @IBOutlet weak var nameOfTheMoment: UILabel!
-    
     @IBOutlet weak var dateOfTheMoment: UILabel!
-    
     @IBOutlet weak var descriptionOfTheMoment: UITextView!
     
     var momentNameFromDb = String()
@@ -22,6 +20,8 @@ class MomentsDetailPage: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.tintColor = UIColor.white
         
         tabBarController?.tabBar.isHidden = true
         navigationItem.title = momentNameFromDb
