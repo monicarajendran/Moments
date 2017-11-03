@@ -9,9 +9,8 @@
 /* Begin PBXBuildFile section */
 		18A9270E4991541ADFA6DDC2 /* Pods_Moments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1850306574A9C6D2E45E9944 /* Pods_Moments.framework */; };
 		CE29E2971FA3485C001647E7 /* CloudSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE29E2961FA3485C001647E7 /* CloudSyncService.swift */; };
-		CE4DCBD21FA6F551003666DE /* Textfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4DCBD11FA6F551003666DE /* Textfield.swift */; };
 		CE4DCBD41FA6F9BE003666DE /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4DCBD31FA6F9BE003666DE /* TextView.swift */; };
-		CE4DCBD61FA6FB8E003666DE /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4DCBD51FA6FB8E003666DE /* Button.swift */; };
+		CE4DCBD61FA6FB8E003666DE /* ThemeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4DCBD51FA6FB8E003666DE /* ThemeColors.swift */; };
 		CE504E871FA076B600035F34 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE504E861FA076B600035F34 /* CloudKit.framework */; };
 		CE56F14E1F88EBD900CEE704 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE56F14D1F88EBD900CEE704 /* AppDelegate.swift */; };
 		CE56F1501F88EBD900CEE704 /* AddMomentsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE56F14F1F88EBD900CEE704 /* AddMomentsPage.swift */; };
@@ -21,11 +20,14 @@
 		CE56F15B1F88EBD900CEE704 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE56F1591F88EBD900CEE704 /* LaunchScreen.storyboard */; };
 		CE57A71E1F8AF07200585633 /* momentsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57A71D1F8AF07200585633 /* momentsEntity.swift */; };
 		CE5C5E5F1F9F543000CE6EB4 /* TimeLinePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C5E5E1F9F543000CE6EB4 /* TimeLinePage.swift */; };
+		CE8F26E31FAB578200E71417 /* ColorsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F26E21FAB578200E71417 /* ColorsPage.swift */; };
+		CE8F26E51FAB582C00E71417 /* ColorsPageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F26E41FAB582C00E71417 /* ColorsPageExtension.swift */; };
 		CE9DF7051F9AF9260016153E /* MomentsDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9DF7041F9AF9260016153E /* MomentsDetailPage.swift */; };
 		CE9F477A1F8CA0DE0070704C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CE9F47791F8CA0DE0070704C /* .gitignore */; };
 		CE9F477E1F8CBD190070704C /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F477D1F8CBD190070704C /* TabBar.swift */; };
 		CE9F47831F8CDA210070704C /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F47821F8CDA210070704C /* SettingsPage.swift */; };
-		CEA33A671FA4300D0032E0E8 /* MomentExtenion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA33A661FA4300D0032E0E8 /* MomentExtenion.swift */; };
+		CEA33A671FA4300D0032E0E8 /* MomentICloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA33A661FA4300D0032E0E8 /* MomentICloud.swift */; };
+		CEA3E0D51FA9E70600F4D8A3 /* NewMomentsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA3E0D41FA9E70600F4D8A3 /* NewMomentsPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,13 +36,12 @@
 		9E5B88024B1FAA29C5D07176 /* Pods-Moments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moments.release.xcconfig"; path = "Pods/Target Support Files/Pods-Moments/Pods-Moments.release.xcconfig"; sourceTree = "<group>"; };
 		CE29E2961FA3485C001647E7 /* CloudSyncService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudSyncService.swift; sourceTree = "<group>"; };
 		CE43EED81FA05C5E000C0AC9 /* Moments.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Moments.entitlements; sourceTree = "<group>"; };
-		CE4DCBD11FA6F551003666DE /* Textfield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Textfield.swift; path = ../Textfield.swift; sourceTree = "<group>"; };
 		CE4DCBD31FA6F9BE003666DE /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
-		CE4DCBD51FA6FB8E003666DE /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		CE4DCBD51FA6FB8E003666DE /* ThemeColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeColors.swift; sourceTree = "<group>"; };
 		CE504E861FA076B600035F34 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		CE56F14A1F88EBD900CEE704 /* Moments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moments.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE56F14D1F88EBD900CEE704 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE56F14F1F88EBD900CEE704 /* AddMomentsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMomentsPage.swift; sourceTree = "<group>"; };
+		CE56F14F1F88EBD900CEE704 /* AddMomentsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddMomentsPage.swift; path = Moments/AddMomentsPage.swift; sourceTree = "<group>"; };
 		CE56F1521F88EBD900CEE704 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE56F1551F88EBD900CEE704 /* Moments.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Moments.xcdatamodel; sourceTree = "<group>"; };
 		CE56F1571F88EBD900CEE704 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -48,11 +49,14 @@
 		CE56F15C1F88EBD900CEE704 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE57A71D1F8AF07200585633 /* momentsEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = momentsEntity.swift; sourceTree = "<group>"; };
 		CE5C5E5E1F9F543000CE6EB4 /* TimeLinePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLinePage.swift; sourceTree = "<group>"; };
+		CE8F26E21FAB578200E71417 /* ColorsPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsPage.swift; sourceTree = "<group>"; };
+		CE8F26E41FAB582C00E71417 /* ColorsPageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsPageExtension.swift; sourceTree = "<group>"; };
 		CE9DF7041F9AF9260016153E /* MomentsDetailPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentsDetailPage.swift; sourceTree = "<group>"; };
 		CE9F47791F8CA0DE0070704C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 		CE9F477D1F8CBD190070704C /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		CE9F47821F8CDA210070704C /* SettingsPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
-		CEA33A661FA4300D0032E0E8 /* MomentExtenion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentExtenion.swift; sourceTree = "<group>"; };
+		CEA33A661FA4300D0032E0E8 /* MomentICloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentICloud.swift; sourceTree = "<group>"; };
+		CEA3E0D41FA9E70600F4D8A3 /* NewMomentsPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMomentsPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,19 +98,19 @@
 			name = "Service Classes";
 			sourceTree = "<group>";
 		};
-		CE4DCBD71FA6FC0B003666DE /* AddMomentsExtension */ = {
+		CE4DCBD71FA6FC0B003666DE /* NewMomentsExtension */ = {
 			isa = PBXGroup;
 			children = (
-				CE4DCBD51FA6FB8E003666DE /* Button.swift */,
+				CE4DCBD51FA6FB8E003666DE /* ThemeColors.swift */,
 				CE4DCBD31FA6F9BE003666DE /* TextView.swift */,
-				CE4DCBD11FA6F551003666DE /* Textfield.swift */,
 			);
-			name = AddMomentsExtension;
+			name = NewMomentsExtension;
 			sourceTree = "<group>";
 		};
 		CE56F1411F88EBD900CEE704 = {
 			isa = PBXGroup;
 			children = (
+				CE56F14F1F88EBD900CEE704 /* AddMomentsPage.swift */,
 				CE56F14C1F88EBD900CEE704 /* Moments */,
 				CE56F14B1F88EBD900CEE704 /* Products */,
 				B9F9C5919F31116FDF597B06 /* Pods */,
@@ -139,6 +143,8 @@
 		CE9469301F8F2FF00091D315 /* TableViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CEA3E0D41FA9E70600F4D8A3 /* NewMomentsPage.swift */,
+				CE8F26E21FAB578200E71417 /* ColorsPage.swift */,
 				CE5C5E5E1F9F543000CE6EB4 /* TimeLinePage.swift */,
 				CE9F47821F8CDA210070704C /* SettingsPage.swift */,
 			);
@@ -170,8 +176,9 @@
 		CE9F477F1F8CC7C50070704C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				CE4DCBD71FA6FC0B003666DE /* AddMomentsExtension */,
-				CEA33A661FA4300D0032E0E8 /* MomentExtenion.swift */,
+				CE4DCBD71FA6FC0B003666DE /* NewMomentsExtension */,
+				CE8F26E41FAB582C00E71417 /* ColorsPageExtension.swift */,
+				CEA33A661FA4300D0032E0E8 /* MomentICloud.swift */,
 				CE57A71D1F8AF07200585633 /* momentsEntity.swift */,
 			);
 			name = Extensions;
@@ -181,7 +188,6 @@
 			isa = PBXGroup;
 			children = (
 				CE9DF7041F9AF9260016153E /* MomentsDetailPage.swift */,
-				CE56F14F1F88EBD900CEE704 /* AddMomentsPage.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -337,18 +343,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE56F1561F88EBD900CEE704 /* Moments.xcdatamodeld in Sources */,
-				CEA33A671FA4300D0032E0E8 /* MomentExtenion.swift in Sources */,
+				CE8F26E51FAB582C00E71417 /* ColorsPageExtension.swift in Sources */,
+				CEA33A671FA4300D0032E0E8 /* MomentICloud.swift in Sources */,
 				CE5C5E5F1F9F543000CE6EB4 /* TimeLinePage.swift in Sources */,
 				CE4DCBD41FA6F9BE003666DE /* TextView.swift in Sources */,
 				CE57A71E1F8AF07200585633 /* momentsEntity.swift in Sources */,
 				CE9DF7051F9AF9260016153E /* MomentsDetailPage.swift in Sources */,
 				CE29E2971FA3485C001647E7 /* CloudSyncService.swift in Sources */,
-				CE4DCBD21FA6F551003666DE /* Textfield.swift in Sources */,
 				CE9F47831F8CDA210070704C /* SettingsPage.swift in Sources */,
-				CE4DCBD61FA6FB8E003666DE /* Button.swift in Sources */,
+				CE4DCBD61FA6FB8E003666DE /* ThemeColors.swift in Sources */,
+				CE8F26E31FAB578200E71417 /* ColorsPage.swift in Sources */,
 				CE56F1501F88EBD900CEE704 /* AddMomentsPage.swift in Sources */,
 				CE56F14E1F88EBD900CEE704 /* AppDelegate.swift in Sources */,
 				CE9F477E1F8CBD190070704C /* TabBar.swift in Sources */,
+				CEA3E0D51FA9E70600F4D8A3 /* NewMomentsPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

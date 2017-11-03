@@ -148,14 +148,18 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
     
     @IBAction func addMomentsButton(_ sender: UIBarButtonItem) {
         
-        guard let addMomentsPage = storyboard?.instantiateViewController(withIdentifier: "AddMomentsPage")
+        guard let newMomentsPage = storyboard?.instantiateViewController(withIdentifier: "NewMomentsPage")
             
             else{
                 
                 return
         }
+
+        let navController = UINavigationController(rootViewController: newMomentsPage)
         
-        navigationController?.present(addMomentsPage, animated: true)
+        self.present(navController, animated:true, completion: nil)
+
+
         
     }
     
