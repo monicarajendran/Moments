@@ -10,7 +10,7 @@ import Foundation
 
 import UIKit
 
-extension ColorsPage {
+extension ColorsPageViewController {
     
     func themeColors(){
         

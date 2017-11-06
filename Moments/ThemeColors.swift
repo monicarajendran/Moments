@@ -9,7 +9,7 @@
 import Foundation
 import  UIKit
 
-extension NewMomentsPage {
+extension NewMomentsPageViewController {
     
    static func hexaStringColor(index: Int) -> String{
         
@@ -34,7 +34,7 @@ extension NewMomentsPage {
         case 7:
             hexaColor = "#AB47BC"
         case 8:
-            hexaColor = "#AB47BC"
+            hexaColor = "#AFB42B"
         case 9:
             hexaColor = "#EF6C00"
         case 10:

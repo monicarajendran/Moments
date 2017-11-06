@@ -29,7 +29,7 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
     
     lazy var fetchTheMoments : FetchRequestController<Moment> = {
         
-        let sortDescriptorss = NSSortDescriptor(key: "name", ascending: false)
+        let sortDescriptorss = NSSortDescriptor(key: "createdAt", ascending: false)
         
         let query = container.viewContext.moment.sort(using: [sortDescriptorss])
         
@@ -148,7 +148,7 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
     
     @IBAction func addMomentsButton(_ sender: UIBarButtonItem) {
         
-        guard let newMomentsPage = storyboard?.instantiateViewController(withIdentifier: "NewMomentsPage")
+        guard let newMomentsPage = storyboard?.instantiateViewController(withIdentifier: "NewMomentsPageViewController")
             
             else{
                 
@@ -192,10 +192,10 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         }
        
     }
-    
+      
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! MomentsTableViewCell
         
         if searchBarActive {
             
@@ -217,17 +217,34 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
             noResultsFound.isHidden = true
         }
         
-        cell.textLabel?.text = getTheMomentObject.name
+        cell.momentName.text = getTheMomentObject.name
+        cell.momentDescription.text = getTheMomentObject.desc
+        
+        cell.date.text = "\(getTheMomentObject.day)"
+        
+        if let color = getTheMomentObject.color
+        {
+            cell.viewForCell.backgroundColor = UIColor(hexString: color )
+        }
         
         let timeAsSeconds = getTheMomentObject.momentTime
         
         let date = Date(timeIntervalSinceReferenceDate: TimeInterval(timeAsSeconds))
         
-        cell.detailTextLabel?.text = dateFormatter.string(from: date)
+        dateFormatter.dateFormat = "EEE"
+        
+        cell.day.text = dateFormatter.string(from: date)
+        
+        cell.viewForCell.layer.cornerRadius = 5
+        
+        dateFormatter.dateFormat = "MMMM , yyyy"
+        
+        cell.cellHeader.text = dateFormatter.string(from: date)
         
         return cell
     }
     
+   
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         timelineSearchBar.resignFirstResponder()
@@ -243,6 +260,7 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
             
             getTheMomentObject = fetchTheMoments.object(at: indexPath)
         }
+        
         pushToDetailMomentPage.momentNameFromDb = getTheMomentObject.name!
         
         let timeAsSeconds = getTheMomentObject.momentTime

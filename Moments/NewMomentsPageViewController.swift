@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewMomentsPage: UITableViewController , UITextFieldDelegate {
+class NewMomentsPageViewController: UITableViewController , UITextFieldDelegate {
     
     @IBOutlet weak var momentName: UITextField!
     
@@ -22,11 +22,14 @@ class NewMomentsPage: UITableViewController , UITextFieldDelegate {
     
     @IBOutlet weak var datePickerBottomConst: NSLayoutConstraint!
     @IBOutlet weak var viewForPicker: UIView!
-    
+
+    let dateFormatter = DateFormatter()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         toolBar.setValue(true, forKey: "hidesShadow")
+        
         viewForPicker.isHidden = true
         datePickerBottomConst.constant = -267
         
@@ -35,10 +38,8 @@ class NewMomentsPage: UITableViewController , UITextFieldDelegate {
         //hides the navigation bar hairline
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         
-        momentName.returnKeyType = UIReturnKeyType.next
         momentName.autocapitalizationType = .words
         
-        momentDescription.returnKeyType = .next
         momentDescription.autocapitalizationType = .sentences
         
     }
@@ -72,7 +73,102 @@ class NewMomentsPage: UITableViewController , UITextFieldDelegate {
         return true
     }
     
+    func dateComponents() -> (day: Int, month:Int, year: Int){
+        
+        let components = datePicker.calendar.dateComponents([.day,.month,.year], from: datePicker.date)
+        
+        let day = components.day
+        
+        let month = components.month
+        
+        let year = components.year
+        
+        return (day!,month!,year!)
+        
+    }
+    
+    func alertMessage(_ alertMsg: String){
+        
+        let alert = UIAlertController(title: "Alert!", message: alertMsg, preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+
     @IBAction func createButton(_ sender: Any) {
+        
+        guard let momentName = momentName.text , let momentDescription = momentDescription.text , !momentName.isEmpty , momentDescription != "Describe the Moment.."
+            
+            else {
+                
+                alertMessage("All Fields Required")
+                
+                return
+        }
+        
+        guard  let dateLabelText = chooseDate.text , !dateLabelText.isEmpty else {
+            
+            alertMessage("Choose a Date")
+            
+            return
+        }
+        
+        guard let hexaColour = UserDefaults.standard.string(forKey: "colorChosen") else {
+            
+            return
+        }
+
+        
+        container.performBackgroundTask { context  in
+            
+            let moment = context.moment.create()
+            
+            moment.name = momentName
+            
+            moment.desc = momentDescription
+            
+            let seconds = self.datePicker.date.timeIntervalSinceReferenceDate
+            
+            self.dateFormatter.dateStyle = .long
+            
+            let timeString = self.dateFormatter.string(from: self.datePicker.date)
+            
+            moment.momentTime = Int64(seconds)
+            
+            let currentDate = Date().timeIntervalSinceReferenceDate
+            
+            moment.createdAt = Int64(currentDate)
+            
+            moment.modifiedAt = Int64(currentDate)
+            
+            moment.searchToken = momentName + " " + momentDescription + " " + timeString
+            
+            moment.day = Int16(self.dateComponents().day)
+            
+            moment.month = Int16(self.dateComponents().month)
+            
+            moment.year = Int16(self.dateComponents().year)
+            
+            moment.color = hexaColour
+            
+            do {
+                
+                try context.save()
+                
+                CloudSyncServices.addRecordToIColud(record: moment.toICloudRecord())
+                
+            }
+            catch{
+                
+                print("Error:",error)
+            }
+            
+        }
+        
+        dismiss(animated: true, completion: nil)
+        
         
     }
     
@@ -116,8 +212,6 @@ class NewMomentsPage: UITableViewController , UITextFieldDelegate {
     
     @IBAction func toolBarDone(_ sender: UIBarButtonItem) {
         
-        let dateFormatter = DateFormatter()
-        
         dateFormatter.dateFormat = "dd/MMM/yy"
         
         chooseDate.text = dateFormatter.string(from: datePicker.date)
@@ -132,12 +226,13 @@ class NewMomentsPage: UITableViewController , UITextFieldDelegate {
         switch (indexPath.section,indexPath.row) {
             
         case (2,0):
-            
+            momentDescription.resignFirstResponder()
+            momentName.resignFirstResponder()
             datePickerShowAnimation()
             
         case (3,0):
             
-            guard let pushToColorsPage = storyboard?.instantiateViewController(withIdentifier: "ColorsPage") else {
+            guard let pushToColorsPage = storyboard?.instantiateViewController(withIdentifier: "ColorsPageViewController") else {
                 return
             }
             

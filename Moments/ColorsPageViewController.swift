@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ColorsPage: UITableViewController {
+class ColorsPageViewController: UITableViewController {
     
     
     @IBOutlet weak var red: UILabel!
@@ -33,12 +33,35 @@ class ColorsPage: UITableViewController {
     
     @IBOutlet weak var none: UILabel!
     
+    var label : UILabel!
+    
+    func showAlert(){
+        
+        label = UILabel(frame: CGRect(x: 100, y: 5, width: 200, height: 15))
+        label.layer.backgroundColor = UIColor.brown.cgColor
+        label.alpha = 0.7
+        
+        label.text = "Theme Color Updated!"
+        label.textColor = .white
+        self.view.addSubview(label)
+
+        Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.dismissAlert), userInfo: nil, repeats: true)
+    }
+    
+    func dismissAlert(){
+    
+    label.removeFromSuperview()
+    
+    }
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Choose Color"
         
         themeColors()
+        
         circleShape()
         
 
@@ -54,9 +77,10 @@ class ColorsPage: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-       let hexaColor = NewMomentsPage.hexaStringColor(index: indexPath.row)
+       let hexaColor = NewMomentsPageViewController.hexaStringColor(index: indexPath.row)
         
         UserDefaults.standard.set(hexaColor, forKey: "colorChosen")
+        showAlert()
     }
 
 
