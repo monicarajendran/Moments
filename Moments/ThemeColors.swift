@@ -18,7 +18,7 @@ extension NewMomentsPageViewController {
         switch index {
             
         case 0:
-            hexaColor = "#C62828"
+            hexaColor = "#E73F39"
         case 1:
             hexaColor = "#039BE5"
         case 2:
@@ -38,7 +38,7 @@ extension NewMomentsPageViewController {
         case 9:
             hexaColor = "#EF6C00"
         case 10:
-            hexaColor = "#F0EDF1"
+            hexaColor = "#AEAEAE"
         default:
             print("None")
         }

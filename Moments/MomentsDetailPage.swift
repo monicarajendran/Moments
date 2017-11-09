@@ -23,7 +23,8 @@ class MomentsDetailPage: UIViewController {
         
         navigationController?.navigationBar.tintColor = UIColor.white
         
-        tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+        
         navigationItem.title = momentNameFromDb
         nameOfTheMoment.text = momentNameFromDb
         dateOfTheMoment.text = momentDateFromDb
@@ -32,9 +33,8 @@ class MomentsDetailPage: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        
         tabBarController?.tabBar.isHidden = false
     }
    
-
-
 }

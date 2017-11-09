@@ -8,11 +8,16 @@
 
 import UIKit
 
-class ColorsPageViewController: UITableViewController {
+protocol ColorsViewControllerDelegate {
+    
+    func selectedColor(color: MomentColors)
+}
+
+class ColorsViewController: UITableViewController {
     
     
     @IBOutlet weak var red: UILabel!
-
+    
     @IBOutlet weak var blue: UILabel!
     
     @IBOutlet weak var pink: UILabel!
@@ -31,57 +36,52 @@ class ColorsPageViewController: UITableViewController {
     
     @IBOutlet weak var orange: UILabel!
     
-    @IBOutlet weak var none: UILabel!
-    
-    var label : UILabel!
-    
-    func showAlert(){
+    @IBOutlet weak var gray: UILabel!
         
-        label = UILabel(frame: CGRect(x: 100, y: 5, width: 200, height: 15))
-        label.layer.backgroundColor = UIColor.brown.cgColor
-        label.alpha = 0.7
-        
-        label.text = "Theme Color Updated!"
-        label.textColor = .white
-        self.view.addSubview(label)
-
-        Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.dismissAlert), userInfo: nil, repeats: true)
-    }
+    var delegate : ColorsViewControllerDelegate?
     
-    func dismissAlert(){
+    var selectedColor : MomentColors?
     
-    label.removeFromSuperview()
-    
-    }
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Choose Color"
         
+        
+        let arrayOfLabels = [red,blue,pink,indigo,teal,cyan,pestoGreen,purple,lime,orange,gray]
+        
+        for i in 0..<arrayOfLabels.count{
+            
+            circleShapeForLabel(label: arrayOfLabels[i]!)
+            
+        }
+        
         themeColors()
         
-        circleShape()
-        
-
         tableView.tableFooterView = UIView()
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        if selectedColor?.hashValue == indexPath.row {
+            cell.accessoryType = .checkmark
+        }
         
     }
     
     @IBAction func cancel(_ sender: Any) {
         
         dismiss(animated: true, completion: nil)
-    
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-       let hexaColor = NewMomentsPageViewController.hexaStringColor(index: indexPath.row)
+        let color = MomentColors.allCases[indexPath.row]
         
-        UserDefaults.standard.set(hexaColor, forKey: "colorChosen")
-        showAlert()
+        delegate?.selectedColor(color: color)
+        
+        dismiss(animated: true, completion: nil)
+        
     }
-
-
 }

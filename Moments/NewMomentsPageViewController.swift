@@ -24,6 +24,13 @@ class NewMomentsPageViewController: UITableViewController , UITextFieldDelegate 
     @IBOutlet weak var viewForPicker: UIView!
 
     let dateFormatter = DateFormatter()
+        
+    var selectedColor : MomentColors? = MomentColors.red
+    
+    func navRightBarButton(sender: UIBarButtonItem){
+        print("right item")
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,20 +49,14 @@ class NewMomentsPageViewController: UITableViewController , UITextFieldDelegate 
         
         momentDescription.autocapitalizationType = .sentences
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         
-        guard let hexaColour = UserDefaults.standard.string(forKey: "colorChosen") else {
+    }
+        override func viewWillAppear(_ animated: Bool) {
+        
+        color.backgroundColor = selectedColor?.uicolor()
             
-            return
-        }
-        
-        //UIColor(hexaString:) is defined using extension
-        color.backgroundColor =  UIColor(hexString: hexaColour)
-        
-    }
-    
+            }
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         if textField == self.momentName {
@@ -115,12 +116,6 @@ class NewMomentsPageViewController: UITableViewController , UITextFieldDelegate 
             return
         }
         
-        guard let hexaColour = UserDefaults.standard.string(forKey: "colorChosen") else {
-            
-            return
-        }
-
-        
         container.performBackgroundTask { context  in
             
             let moment = context.moment.create()
@@ -150,8 +145,9 @@ class NewMomentsPageViewController: UITableViewController , UITextFieldDelegate 
             moment.month = Int16(self.dateComponents().month)
             
             moment.year = Int16(self.dateComponents().year)
-            
-            moment.color = hexaColour
+    
+            moment.color = self.selectedColor?.rawValue
+
             
             do {
                 
@@ -168,7 +164,6 @@ class NewMomentsPageViewController: UITableViewController , UITextFieldDelegate 
         }
         
         dismiss(animated: true, completion: nil)
-        
         
     }
     
@@ -220,7 +215,6 @@ class NewMomentsPageViewController: UITableViewController , UITextFieldDelegate 
         
     }
     
-   
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         switch (indexPath.section,indexPath.row) {
@@ -232,17 +226,32 @@ class NewMomentsPageViewController: UITableViewController , UITextFieldDelegate 
             
         case (3,0):
             
-            guard let pushToColorsPage = storyboard?.instantiateViewController(withIdentifier: "ColorsPageViewController") else {
+            guard let pushToColorsPage = storyboard?.instantiateViewController(withIdentifier: "ColorsViewController") as? ColorsViewController else {
                 return
             }
+            pushToColorsPage.delegate = self
+            
+            pushToColorsPage.selectedColor = selectedColor
             
             let navController = UINavigationController(rootViewController: pushToColorsPage)
+            
             navigationController?.present(navController, animated: true, completion: nil)
             
         default:
+            
             print("Default Case")
         }
         
     }
     
+  }
+
+extension NewMomentsPageViewController: ColorsViewControllerDelegate {
+    
+    func selectedColor(color: MomentColors) {
+        
+         selectedColor = color
+    
+        
+    }
 }
