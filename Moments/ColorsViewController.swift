@@ -47,16 +47,22 @@ class ColorsViewController: UITableViewController {
         
         title = "Choose Color"
         
-        
         let arrayOfLabels = [red,blue,pink,indigo,teal,cyan,pestoGreen,purple,lime,orange,gray]
         
-        for i in 0..<arrayOfLabels.count{
+        for index in 0..<arrayOfLabels.count{
             
-            circleShapeForLabel(label: arrayOfLabels[i]!)
+            circleShapeForLabel(label: arrayOfLabels[index]!)
             
+            for colorIndex in 0..<MomentColors.allCases.count {
+                
+            if index == colorIndex {
+                
+                arrayOfLabels[index]?.backgroundColor = UIColor(hexString: MomentColors.allCases[colorIndex].rawValue)
+                
+                }
+            }
+
         }
-        
-        themeColors()
         
         tableView.tableFooterView = UIView()
         

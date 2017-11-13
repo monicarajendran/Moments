@@ -1,14 +1,15 @@
-//
-//  NewMomentsPage.swift
-//  Moments
-//
-//  Created by user on 01/11/17.
-//  Copyright © 2017 user. All rights reserved.
-//
-
-import UIKit
-
-class NewMomentsPageViewController: UITableViewController , UITextFieldDelegate {
+ //
+ //  NewMomentsPage.swift
+ //  Moments
+ //
+ //  Created by user on 01/11/17.
+ //  Copyright © 2017 user. All rights reserved.
+ //
+ 
+ import UIKit
+ import CloudKit
+ 
+ class NewMomentsPageViewController: UITableViewController , UITextFieldDelegate {
     
     @IBOutlet weak var momentName: UITextField!
     
@@ -22,16 +23,15 @@ class NewMomentsPageViewController: UITableViewController , UITextFieldDelegate 
     
     @IBOutlet weak var datePickerBottomConst: NSLayoutConstraint!
     @IBOutlet weak var viewForPicker: UIView!
-
-    let dateFormatter = DateFormatter()
-        
-    var selectedColor : MomentColors? = MomentColors.red
     
-    func navRightBarButton(sender: UIBarButtonItem){
-        print("right item")
-    }
-
-
+    let dateFormatter = DateFormatter()
+    
+    var mode = MomentMode.create.rawValue
+    
+    var createdMoment : Moment?
+    
+    var selectedColor : MomentColors?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,14 +49,47 @@ class NewMomentsPageViewController: UITableViewController , UITextFieldDelegate 
         
         momentDescription.autocapitalizationType = .sentences
         
-        
-    }
-        override func viewWillAppear(_ animated: Bool) {
-        
-        color.backgroundColor = selectedColor?.uicolor()
+        if mode == MomentMode.edit.rawValue {
             
-            }
-
+            title = "Moment Details"
+            
+            momentName.text = createdMoment?.name
+            
+            momentDescription.text = createdMoment?.desc
+            
+            selectedColor = MomentColors(rawValue: (createdMoment?.color)!)
+            
+            let time = createdMoment?.momentTime
+            
+            let date = Date(timeIntervalSince1970: TimeInterval(time!))
+            
+            dateFormatter.dateFormat = "dd/MMM/yy"
+            
+            chooseDate.text = dateFormatter.string(from: date)
+            
+            color.backgroundColor = UIColor(hexString: (createdMoment?.color)!)
+            
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(editMoment(sender:)))
+            
+            
+        }
+        else{
+            
+            title = "New Moment"
+            
+            selectedColor = MomentColors.red
+            
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(NewMomentsPageViewController.close))
+            
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: .plain, target: self, action: #selector(createMoment(sender:)))
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        color.backgroundColor = UIColor(hexString: (selectedColor?.rawValue)!)
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         if textField == self.momentName {
@@ -97,81 +130,123 @@ class NewMomentsPageViewController: UITableViewController , UITextFieldDelegate 
         self.present(alert, animated: true, completion: nil)
         
     }
-
-    @IBAction func createButton(_ sender: Any) {
+    
+    func saveMoment(moment: Moment) -> Moment{
         
         guard let momentName = momentName.text , let momentDescription = momentDescription.text , !momentName.isEmpty , momentDescription != "Describe the Moment.."
             
             else {
-                
                 alertMessage("All Fields Required")
                 
-                return
+                return moment
         }
         
         guard  let dateLabelText = chooseDate.text , !dateLabelText.isEmpty else {
             
             alertMessage("Choose a Date")
             
-            return
+            return moment
         }
         
-        container.performBackgroundTask { context  in
+        moment.name = momentName
+        
+        moment.desc = momentDescription
+        
+        let seconds = self.datePicker.date.timeIntervalSince1970
+        
+        self.dateFormatter.dateStyle = .long
+        
+        let timeString = self.dateFormatter.string(from: self.datePicker.date)
+        
+        moment.momentTime = Int64(seconds)
+        
+        let currentDate = Date().timeIntervalSince1970
+        
+        moment.createdAt = Int64(currentDate)
+        
+        moment.modifiedAt = Int64(currentDate)
+        
+        moment.searchToken = momentName + " " + momentDescription + " " + timeString
+        
+        moment.day = Int16(self.dateComponents().day)
+        
+        moment.month = Int16(self.dateComponents().month)
+        
+        moment.year = Int16(self.dateComponents().year)
+        
+        moment.color = self.selectedColor?.rawValue
+        
+        do {
             
-            let moment = context.moment.create()
-            
-            moment.name = momentName
-            
-            moment.desc = momentDescription
-            
-            let seconds = self.datePicker.date.timeIntervalSinceReferenceDate
-            
-            self.dateFormatter.dateStyle = .long
-            
-            let timeString = self.dateFormatter.string(from: self.datePicker.date)
-            
-            moment.momentTime = Int64(seconds)
-            
-            let currentDate = Date().timeIntervalSinceReferenceDate
-            
-            moment.createdAt = Int64(currentDate)
-            
-            moment.modifiedAt = Int64(currentDate)
-            
-            moment.searchToken = momentName + " " + momentDescription + " " + timeString
-            
-            moment.day = Int16(self.dateComponents().day)
-            
-            moment.month = Int16(self.dateComponents().month)
-            
-            moment.year = Int16(self.dateComponents().year)
-    
-            moment.color = self.selectedColor?.rawValue
-
-            
-            do {
-                
-                try context.save()
-                
-                CloudSyncServices.addRecordToIColud(record: moment.toICloudRecord())
-                
-            }
-            catch{
-                
-                print("Error:",error)
-            }
+            try container.viewContext.save()
             
         }
+        catch{
+            
+            print("Error:",error)
+        }
         
-        dismiss(animated: true, completion: nil)
+        return moment
         
     }
     
+    func  createMoment(sender: UIBarButtonItem) {
+        
+        print("create method called")
+        
+        var moment = container.viewContext.moment.create()
+        
+        moment.momentID = NSUUID().uuidString
+        
+        moment = saveMoment(moment: moment)
+        
+        CloudSyncServices.addRecordToIColud(record: moment.toICloudRecord())
+        
+        close()
+        
+    }
     
-    @IBAction func cancelButton(_ sender: Any) {
+    func editMoment(sender: UIBarButtonItem){
         
-        dismiss(animated: true, completion: nil)
+        let editedMoment = saveMoment(moment: createdMoment!)
         
+        updateMoment(moment: editedMoment)
+        
+        close()
+        
+    }
+    
+    func updateMoment(moment: Moment) {
+        
+        /// have check return
+        
+        CloudSyncServices.privateDb.fetch(withRecordID: CKRecordID(recordName: moment.momentID!)) { (record, error) in
+            
+            guard let record = record
+                
+                else {
+                    print("error in updating the record", error as Any)
+                    return
+                     }
+            
+            moment.updateICloudRecord(record: record)
+            
+            CloudSyncServices.addRecordToIColud(record: record)
+            
+        }
+        
+    }
+
+    func close (){
+        
+        if MomentMode.create.rawValue == mode {
+            
+            dismiss(animated: true, completion: nil)
+        }
+        else {
+            
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     func datePickerHideAnimation(){
@@ -182,14 +257,12 @@ class NewMomentsPageViewController: UITableViewController , UITextFieldDelegate 
         }, completion: nil)
         
         self.viewForPicker.backgroundColor = UIColor.clear
-        
     }
     
     func datePickerShowAnimation(){
         
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
-            
-            
+
             self.viewForPicker.isHidden = false
             self.viewForPicker.backgroundColor = .white
             
@@ -197,12 +270,13 @@ class NewMomentsPageViewController: UITableViewController , UITextFieldDelegate 
             self.view.layoutIfNeeded()
             
         }, completion: nil)
-
+        
     }
     
     @IBAction func toolBarCancel(_ sender: Any) {
         
         datePickerHideAnimation()
+        
     }
     
     @IBAction func toolBarDone(_ sender: UIBarButtonItem) {
@@ -220,12 +294,13 @@ class NewMomentsPageViewController: UITableViewController , UITextFieldDelegate 
         switch (indexPath.section,indexPath.row) {
             
         case (2,0):
+            
             momentDescription.resignFirstResponder()
             momentName.resignFirstResponder()
             datePickerShowAnimation()
             
         case (3,0):
-            
+          
             guard let pushToColorsPage = storyboard?.instantiateViewController(withIdentifier: "ColorsViewController") as? ColorsViewController else {
                 return
             }
@@ -241,17 +316,14 @@ class NewMomentsPageViewController: UITableViewController , UITextFieldDelegate 
             
             print("Default Case")
         }
-        
     }
-    
-  }
-
-extension NewMomentsPageViewController: ColorsViewControllerDelegate {
+}
+ 
+ extension NewMomentsPageViewController: ColorsViewControllerDelegate {
     
     func selectedColor(color: MomentColors) {
         
-         selectedColor = color
-    
+        selectedColor = color
         
     }
-}
+ }

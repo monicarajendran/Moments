@@ -21,8 +21,10 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
     
     var searchBarActive = false
         
-    var searchBarText = String()
-        
+    var searchBarText = ""
+    
+    var getTheMomentObject = Moment()
+    
     var filteredObjects = Table<Moment>(context: container.viewContext)
     
     lazy var fetchTheMoments : FetchRequestController<Moment> = {
@@ -55,10 +57,6 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         
         //to remove the bottom and top line of the search bar
         timelineSearchBar.backgroundImage = UIImage()
-        
-        
-        //print(CloudSyncServices.fetchRecordFromICloud(record: moment.toICloudRecord()))
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -68,8 +66,16 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         noResultsFound.isHidden = true
         
         self.tableView.reloadData()
+        
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        //settings page will not get the right bar by doing this
+        self.tabBarController?.navigationItem.rightBarButtonItem = nil
+    }
+
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         
         timelineSearchBar.resignFirstResponder()
@@ -93,7 +99,6 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
          */
         
         print("entered search bar")
-        
         
         let searchPredicate = NSPredicate(format: "searchToken CONTAINS[c] %@",searchText)
         
@@ -124,7 +129,7 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
     func queryTheDataFromDisk() {
         
         do {
-            try fetchTheMoments.performFetch()
+            try fetchTheMoments.performFetch()            
         }
         catch{
             
@@ -144,26 +149,19 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         tableView.reloadData()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        self.tabBarController?.navigationItem.rightBarButtonItem = nil
-    }
-    
     @IBAction func addMomentsButton(_ sender: UIBarButtonItem) {
         
         guard let newMomentsPage = storyboard?.instantiateViewController(withIdentifier: "NewMomentsPageViewController") as? NewMomentsPageViewController
             
             else{
-                
                 return
         }
+        
+        newMomentsPage.mode = MomentMode.create.rawValue
         
         let navController = UINavigationController(rootViewController: newMomentsPage)
         
         self.present(navController, animated:true, completion: nil)
-
-
         
     }
     
@@ -174,11 +172,8 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
             return 1
         }
         else {
-            
             return self.fetchTheMoments.numberOfSections()
-            
-        }
-       
+             }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -186,17 +181,14 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         if searchBarActive {
             
             return filteredObjects.execute().count
-            
-        }
+            }
             
         else {
             
             return fetchTheMoments.sections[section].numberOfObjects
-            
         }
-       
     }
-      
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! MomentsTableViewCell
@@ -229,15 +221,14 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         
         if let color = getTheMomentObject.color
         {
-            
           
-            cell.viewForCell.backgroundColor = MomentColors(rawValue: color)?.uicolor()
-            cell.viewForDate.backgroundColor = MomentColors(rawValue: color)?.uicolor()
+            cell.viewForCell.backgroundColor = UIColor(hexString: color)
+            cell.viewForDate.backgroundColor = UIColor(hexString: color)
         }
         
         let timeAsSeconds = getTheMomentObject.momentTime
         
-        let date = Date(timeIntervalSinceReferenceDate: TimeInterval(timeAsSeconds))
+        let date = Date(timeIntervalSince1970: TimeInterval(timeAsSeconds))
         
         dateFormatter.dateFormat = "EEE"
         
@@ -251,18 +242,26 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         
         return cell
     }
-    
    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         timelineSearchBar.resignFirstResponder()
         
         guard let pushToDetailMomentPage = storyboard?.instantiateViewController(withIdentifier: "NewMomentsPageViewController")  as? NewMomentsPageViewController else {   return  }
-                
+        
+        pushToDetailMomentPage.mode = MomentMode.edit.rawValue
+        
+        if searchBarActive{
+            
+            getTheMomentObject = filteredObjects.execute()[indexPath.row]
+        }
+        else{
+            
+            getTheMomentObject = fetchTheMoments.object(at: indexPath)
+        }
+        
+        pushToDetailMomentPage.createdMoment = getTheMomentObject
+        
         navigationController?.pushViewController(pushToDetailMomentPage, animated: true)
     }
-    
 }
-
-
-
