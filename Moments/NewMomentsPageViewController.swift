@@ -82,12 +82,21 @@
             navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(NewMomentsPageViewController.close))
             
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: .plain, target: self, action: #selector(createMoment(sender:)))
+            
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
         color.backgroundColor = UIColor(hexString: (selectedColor?.rawValue)!)
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        if (MomentMode.create.rawValue == mode) && (indexPath == [4,0]) {
+            
+            cell.isHidden = true
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -288,7 +297,11 @@
         datePickerHideAnimation()
         
     }
-    
+//    func scrollToFirstRow(){
+//        let indexPath = NSIndexPath(row: 0, section: 1) as? IndexPath
+//        self.tableView.scrollToRow(at: indexPath! , at: .top, animated: true)
+//    }
+//    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         switch (indexPath.section,indexPath.row) {
@@ -298,6 +311,7 @@
             momentDescription.resignFirstResponder()
             momentName.resignFirstResponder()
             datePickerShowAnimation()
+            //scrollToFirstRow()
             
         case (3,0):
           
@@ -311,6 +325,17 @@
             let navController = UINavigationController(rootViewController: pushToColorsPage)
             
             navigationController?.present(navController, animated: true, completion: nil)
+            
+//        case (4,0):
+//            
+//            let alert = UIAlertController(title: "Delete", message: "Would you like to delete", preferredStyle: UIAlertControllerStyle.alert)
+//            
+//            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+//            
+//            alert.addAction(UIAlertAction(title: "DELETE", style: UIAlertActionStyle.destructive, handler: #selector(close())))
+//            self.present(alert, animated: true, completion: nil)
+//            guard let createdMoment = createdMoment else { return }
+//            container.viewContext.moment.delete(createdMoment)
             
         default:
             

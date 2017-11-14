@@ -28,6 +28,10 @@ class CloudSyncServices {
             print("successful",record)
         
         })
+    
+    
+  
+    
     }
     
     // func to fetch record by id 
