@@ -12,8 +12,9 @@ import AlecrimCoreData
 import CoreData
 
 class SettingsPage: UITableViewController {
-        
+    
     @IBOutlet weak var labelVersion: UILabel!
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,7 +32,7 @@ class SettingsPage: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         switch (indexPath.section, indexPath.row) {
-        case (1,0):
+        case (0,0):
             
             guard let feedBackPage = storyboard?.instantiateViewController(withIdentifier: "FeedBackViewController") else { return }
             navigationController?.pushViewController(feedBackPage, animated: true)

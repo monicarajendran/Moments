@@ -91,12 +91,24 @@
         color.backgroundColor = UIColor(hexString: (selectedColor?.rawValue)!)
     }
     
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if (MomentMode.create.rawValue == mode) && (indexPath == [4,0]) {
-            
-            cell.isHidden = true
+            return 0.0
         }
+        else {
+            return 44.0
+        }
+    }
+ 
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        if (MomentMode.create.rawValue == mode) && (section == 4) {
+            return 0.0
+        }
+        else {
+            return 22.0
+        }
+
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -245,6 +257,19 @@
         }
         
     }
+    
+    func deleteMoment(moment: Moment){
+        
+        CloudSyncServices.privateDb.delete(withRecordID: CKRecordID(recordName: moment.momentID!), completionHandler: { rec , err in
+            guard let record = rec else {
+                print("oopssss",err)
+                return
+            }
+            print("successfully deleted",record)
+
+        })
+        
+}
 
     func close (){
         
@@ -286,6 +311,9 @@
         
         datePickerHideAnimation()
         
+        if mode == MomentMode.edit.rawValue{
+        scrolDown()
+        }
     }
     
     @IBAction func toolBarDone(_ sender: UIBarButtonItem) {
@@ -296,12 +324,19 @@
         
         datePickerHideAnimation()
         
+        if mode == MomentMode.edit.rawValue{
+            scrolDown()
+        }
     }
-//    func scrollToFirstRow(){
-//        let indexPath = NSIndexPath(row: 0, section: 1) as? IndexPath
-//        self.tableView.scrollToRow(at: indexPath! , at: .top, animated: true)
-//    }
-//    
+    func scrolDown(){
+        let indexPath = NSIndexPath(row: 0,section: 0) as IndexPath
+        self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+    }
+    func scrollToFirstRow(){
+        let indexPath = NSIndexPath(row: 0, section: 1) as? IndexPath
+        self.tableView.scrollToRow(at: indexPath! , at: .top, animated: true)
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         switch (indexPath.section,indexPath.row) {
@@ -311,8 +346,11 @@
             momentDescription.resignFirstResponder()
             momentName.resignFirstResponder()
             datePickerShowAnimation()
-            //scrollToFirstRow()
             
+            //to get the date picker full view
+            if mode == MomentMode.edit.rawValue {
+                scrollToFirstRow()
+            }
         case (3,0):
           
             guard let pushToColorsPage = storyboard?.instantiateViewController(withIdentifier: "ColorsViewController") as? ColorsViewController else {
@@ -326,16 +364,27 @@
             
             navigationController?.present(navController, animated: true, completion: nil)
             
-//        case (4,0):
-//            
-//            let alert = UIAlertController(title: "Delete", message: "Would you like to delete", preferredStyle: UIAlertControllerStyle.alert)
-//            
-//            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-//            
-//            alert.addAction(UIAlertAction(title: "DELETE", style: UIAlertActionStyle.destructive, handler: #selector(close())))
-//            self.present(alert, animated: true, completion: nil)
-//            guard let createdMoment = createdMoment else { return }
-//            container.viewContext.moment.delete(createdMoment)
+        case (4,0):
+            
+            let alert = UIAlertController(title: "Delete", message: "Would you like to delete", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+            
+            alert.addAction(UIAlertAction(title: "DELETE", style: UIAlertActionStyle.destructive, handler: { action in
+                
+                self.deleteMoment(moment: self.createdMoment!)
+                
+                guard let createdMoment = self.createdMoment else { return }
+                
+                container.viewContext.delete(createdMoment)
+                
+                try!   container.viewContext.save()
+
+                self.navigationController?.popViewController(animated: true) } ))
+            
+            self.present(alert, animated: true, completion: nil)
+            
+            
             
         default:
             

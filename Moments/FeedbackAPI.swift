@@ -47,17 +47,21 @@ enum Feedback : URLRequestConvertible{
 
 
 class FeedBackService {
+   
+    typealias completionHandler = (_ alertMsg: String?) -> Void
     
-   static func sendFeedBack(feedback : Feedback) {
+    static func sendFeedBack(feedback : Feedback,completion: completionHandler?) {
         
-         Alamofire.request(feedback).responseData { (response) in
+         Alamofire.request(feedback).responseString { (response) in
         
             switch response.result {
             case .success(let value):
                 print("success",value)
+                completion?("Feedback sent Successfully")
                 
             case .failure(let error):
                 print("failed to send the feedback",error)
+                completion?("Something went wrong")
                 
             }
         }
@@ -65,7 +69,7 @@ class FeedBackService {
     
    static func feedBack(text: String) -> [String:String]{
         
-        let appVersion = UIApplication.version()
+        let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? ""
         let currentDevice = UIDevice.current
         let deviceName = currentDevice.name
         let deviceId = currentDevice.identifierForVendor?.uuidString ?? ""
