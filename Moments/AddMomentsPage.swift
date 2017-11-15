@@ -24,33 +24,29 @@ class AddMomentsPage: UIViewController , UITextViewDelegate , UINavigationBarDel
     @IBOutlet weak var datePickerBottomCons: NSLayoutConstraint!
     
     let dateFormatter = DateFormatter()
-
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         navBar.delegate = self
         
-        momentNameCus()
+        //momentNameCus()
         
         momentDescriptionCus()
         
-        pickADateCus()
+      //  pickADate()
         
         datePicker.isHidden = true
         
         toolBar.isHidden = true
         
-        
-       let navBarTitleColour = UINavigationBar.appearance()
-        
-        navBarTitleColour.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
     }
     
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         
         return UIBarPosition.topAttached
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,7 +71,7 @@ class AddMomentsPage: UIViewController , UITextViewDelegate , UINavigationBarDel
         
         textView.becomeFirstResponder()
     }
-
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         
         if textView.text == "" {
@@ -85,10 +81,10 @@ class AddMomentsPage: UIViewController , UITextViewDelegate , UINavigationBarDel
             textView.text = "Describe the Moment.."
             
         }
-
+        
         textView.resignFirstResponder()
     }
-
+    
     func alertMessage(_ alertMsg: String){
         
         let alert = UIAlertController(title: "Alert!", message: alertMsg, preferredStyle: UIAlertControllerStyle.alert)
@@ -114,7 +110,7 @@ class AddMomentsPage: UIViewController , UITextViewDelegate , UINavigationBarDel
     }
     
     @IBAction func saveButton(_ sender: Any) {
-    
+        
         guard let momentName = momentName.text , let momentDescription = momentDescription.text , !momentName.isEmpty , momentDescription != "Describe the Moment.."
             
             else {
@@ -166,7 +162,7 @@ class AddMomentsPage: UIViewController , UITextViewDelegate , UINavigationBarDel
                 try context.save()
                 
                 CloudSyncServices.addRecordToIColud(record: moment.toICloudRecord())
-
+                
             }
             catch{
                 
@@ -174,13 +170,13 @@ class AddMomentsPage: UIViewController , UITextViewDelegate , UINavigationBarDel
             }
             
         }
-
+        
         dismiss(animated: true, completion: nil)
         
     }
     
     @IBAction func cancelButton(_ sender: Any) {
-    
+        
         dismiss(animated: true, completion: nil)
         
     }

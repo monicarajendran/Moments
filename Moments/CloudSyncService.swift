@@ -16,19 +16,25 @@ class CloudSyncServices {
    static let customContainer = CKContainer(identifier: "iCloud.com.full.moments")
 
    static func addRecordToIColud(record: CKRecord){
-        
+    
         privateDb.save(record, completionHandler: { (record,error) -> Void in
             
             guard let record = record else{
-                print("error occured")
+            
+                print("error occured",error as Any)
                 return
             }
             
             print("successful",record)
         
         })
-        
+    
+    
+  
+    
     }
+    
+    // func to fetch record by id 
     
     static func fetchRecordFromICloud(record: CKRecord){ //-> CKRecord{
         

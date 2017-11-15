@@ -20,8 +20,8 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
     @IBOutlet weak var noResultsFound: UILabel!
     
     var searchBarActive = false
-    
-    var searchBarText = String()
+        
+    var searchBarText = ""
     
     var getTheMomentObject = Moment()
     
@@ -29,7 +29,7 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
     
     lazy var fetchTheMoments : FetchRequestController<Moment> = {
         
-        let sortDescriptorss = NSSortDescriptor(key: "name", ascending: false)
+        let sortDescriptorss = NSSortDescriptor(key: "momentTime", ascending: false)
         
         let query = container.viewContext.moment.sort(using: [sortDescriptorss])
         
@@ -53,8 +53,10 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         
         tableView.tableFooterView = UIView(frame: .zero)
         
-        //print(CloudSyncServices.fetchRecordFromICloud(record: moment.toICloudRecord()))
-
+        navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+        
+        //to remove the bottom and top line of the search bar
+        timelineSearchBar.backgroundImage = UIImage()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -64,8 +66,16 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         noResultsFound.isHidden = true
         
         self.tableView.reloadData()
+        
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        //settings page will not get the right bar by doing this
+        self.tabBarController?.navigationItem.rightBarButtonItem = nil
+    }
+
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         
         timelineSearchBar.resignFirstResponder()
@@ -90,10 +100,9 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         
         print("entered search bar")
         
-        
         let searchPredicate = NSPredicate(format: "searchToken CONTAINS[c] %@",searchText)
         
-        filteredObjects = container.viewContext.moment.filter(using: searchPredicate)
+        filteredObjects = container.viewContext.moment.filter(using: searchPredicate).sort(using: NSSortDescriptor(key: "createdAt", ascending: false))
         
         print(searchText)
         
@@ -120,7 +129,7 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
     func queryTheDataFromDisk() {
         
         do {
-            try fetchTheMoments.performFetch()
+            try fetchTheMoments.performFetch()            
         }
         catch{
             
@@ -140,22 +149,19 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         tableView.reloadData()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        self.tabBarController?.navigationItem.rightBarButtonItem = nil
-    }
-    
     @IBAction func addMomentsButton(_ sender: UIBarButtonItem) {
         
-        guard let addMomentsPage = storyboard?.instantiateViewController(withIdentifier: "AddMomentsPage")
+        guard let newMomentsPage = storyboard?.instantiateViewController(withIdentifier: "NewMomentsPageViewController") as? NewMomentsPageViewController
             
             else{
-                
                 return
         }
         
-        navigationController?.present(addMomentsPage, animated: true)
+        newMomentsPage.mode = MomentMode.create.rawValue
+        
+        let navController = UINavigationController(rootViewController: newMomentsPage)
+        
+        self.present(navController, animated:true, completion: nil)
         
     }
     
@@ -166,11 +172,8 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
             return 1
         }
         else {
-            
             return self.fetchTheMoments.numberOfSections()
-            
-        }
-       
+             }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -178,20 +181,17 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         if searchBarActive {
             
             return filteredObjects.execute().count
-            
-        }
+            }
             
         else {
             
             return fetchTheMoments.sections[section].numberOfObjects
-            
         }
-       
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! MomentsTableViewCell
         
         if searchBarActive {
             
@@ -213,46 +213,55 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
             noResultsFound.isHidden = true
         }
         
-        cell.textLabel?.text = getTheMomentObject.name
+        cell.momentName.text = getTheMomentObject.name
+        
+        cell.momentDescription.text = getTheMomentObject.desc
+        
+        cell.date.text = "\(String(format: "%02d", getTheMomentObject.day))"
+        
+        if let color = getTheMomentObject.color
+        {
+          
+            cell.viewForCell.backgroundColor = UIColor(hexString: color)
+            cell.viewForDate.backgroundColor = UIColor(hexString: color)
+        }
         
         let timeAsSeconds = getTheMomentObject.momentTime
         
-        let date = Date(timeIntervalSinceReferenceDate: TimeInterval(timeAsSeconds))
+        let date = Date(timeIntervalSince1970: TimeInterval(timeAsSeconds))
         
-        cell.detailTextLabel?.text = dateFormatter.string(from: date)
+        dateFormatter.dateFormat = "EEE"
+        
+        cell.day.text = dateFormatter.string(from: date).uppercased()
+        
+        cell.viewForCell.layer.cornerRadius = 5
+        
+        dateFormatter.dateFormat = "MMMM yyyy"
+        
+        cell.cellHeader.text = dateFormatter.string(from: date)
         
         return cell
     }
-    
+   
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         timelineSearchBar.resignFirstResponder()
         
-        guard let pushToDetailMomentPage = storyboard?.instantiateViewController(withIdentifier: "MomentsDetailPage")  as? MomentsDetailPage else {   return  }
+        guard let pushToDetailMomentPage = storyboard?.instantiateViewController(withIdentifier: "NewMomentsPageViewController")  as? NewMomentsPageViewController else {   return  }
+        
+        pushToDetailMomentPage.mode = MomentMode.edit.rawValue
         
         if searchBarActive{
             
             getTheMomentObject = filteredObjects.execute()[indexPath.row]
         }
-            
         else{
             
             getTheMomentObject = fetchTheMoments.object(at: indexPath)
         }
-        pushToDetailMomentPage.momentNameFromDb = getTheMomentObject.name!
         
-        let timeAsSeconds = getTheMomentObject.momentTime
-        
-        let date = Date(timeIntervalSinceReferenceDate: TimeInterval(timeAsSeconds))
-        
-        pushToDetailMomentPage.momentDateFromDb = dateFormatter.string(from: date)
-        
-        pushToDetailMomentPage.momentDescriptionFromDb = getTheMomentObject.desc!
+        pushToDetailMomentPage.createdMoment = getTheMomentObject
         
         navigationController?.pushViewController(pushToDetailMomentPage, animated: true)
     }
-    
 }
-
-
-
