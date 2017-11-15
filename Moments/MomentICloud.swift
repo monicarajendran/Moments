@@ -13,8 +13,10 @@ extension Moment {
     
     func toICloudRecord() -> CKRecord {
         
-        let record = CKRecord(recordType: "Moment")
+        let recordID = CKRecordID(recordName: self.momentID!)
 
+        let record = CKRecord(recordType: "Moment", recordID: recordID)
+        
         record["name"] = self.name as CKRecordValue?
         record["desc"] = self.desc as CKRecordValue?
         record["momentTime"] = self.momentTime as CKRecordValue?
@@ -23,10 +25,23 @@ extension Moment {
         record["day"] = self.day as CKRecordValue?
         record["month"] = self.month as CKRecordValue?
         record["year"] = self.year as CKRecordValue?
-        
+        record["momentID"] = self.momentID as CKRecordValue?
+                
         return record
     }
     
+    func updateICloudRecord(record: CKRecord){
+        
+            record.setObject(self.name as CKRecordValue?, forKey: "name")
+            record.setObject(self.desc as CKRecordValue?, forKey: "desc")
+            record.setObject(self.momentTime as CKRecordValue?, forKey: "momentTime")
+            record.setObject(self.createdAt as CKRecordValue?, forKey: "createdAt")
+            record.setObject(self.modifiedAt as CKRecordValue?, forKey: "modifiedAt")
+            record.setObject(self.day as CKRecordValue?, forKey: "day")
+            record.setObject(self.month as CKRecordValue?, forKey: "month")
+            record.setObject(self.year as CKRecordValue?, forKey: "year")
+        
+    }
     
     func fromICloudRecord(record: CKRecord) -> Moment{
 
@@ -38,8 +53,10 @@ extension Moment {
         self.day = record.object(forKey: "day") as! NSNumber? as! Int16
         self.month = record.object(forKey: "month") as! NSNumber? as! Int16
         self.year = record.object(forKey: "year") as! NSNumber? as! Int16
+        self.momentID = record.object(forKey: "momentID") as! String?
         
         return self
     }
-}
+    
+  }
 
