@@ -218,7 +218,7 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         cell.momentDescription.text = getTheMomentObject.desc
         
         cell.date.text = "\(String(format: "%02d", getTheMomentObject.day))"
-        
+
         if let color = getTheMomentObject.color
         {
           

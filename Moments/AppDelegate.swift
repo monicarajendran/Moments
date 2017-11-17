@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 import AlecrimCoreData
-import FBSDKCoreKit
 import NVActivityIndicatorView
 import CloudKit
 

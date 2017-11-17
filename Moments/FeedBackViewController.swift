@@ -8,6 +8,8 @@
 
 import UIKit
 
+import ActionSheetPicker_3_0
+
 class FeedBackViewController: UIViewController {
     
     @IBOutlet weak var feedBackText: UITextView!
@@ -19,39 +21,44 @@ class FeedBackViewController: UIViewController {
         
         title = "Feedback"
         
+        feedBackText.becomeFirstResponder()
+        
+        self.navigationController?.navigationBar.topItem?.title = " "
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Send", style: .plain, target: self, action: #selector(sendFeedBack(sender:)))
     }
+
     override func viewDidLayoutSubviews() {
         
         self.feedBackText.setContentOffset(.zero, animated: false)
-
+        
     }
+    
     func sendFeedBack(sender: UIBarButtonItem){
         
-        if feedBackText.text.characters.count > 30 {
+        if feedBackText.text.characters.count > 10 {
             
-            let alert = UIAlertController(title: "THANKYOU!", message: "Thankyou for your feedback", preferredStyle: UIAlertControllerStyle.alert)
+                FeedBackService.sendFeedBack(feedback: Feedback.feedback(text: self.feedBackText.text),completion: nil)
             
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: self.close))
+                let alert = UIAlertController(title: "THANKYOU!", message: "Thankyou for your feedback", preferredStyle: UIAlertControllerStyle.alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                    
+                    _ = self.navigationController?.popViewController(animated: true)
+                    
+                }))
+                
+                self.present(alert, animated: true, completion: nil)
+            }
             
-            self.present(alert, animated: true, completion: nil)
-            
-        FeedBackService.sendFeedBack(feedback: Feedback.feedback(text: feedBackText.text),completion: nil)
-        
-        }
         else {
+            
             emptyFieldAlert()
         }
     }
-    
-    func close(action: UIAlertAction) {
-        self.navigationController?.popViewController(animated: true)
-
-    }
-    
     func emptyFieldAlert(){
         
-        let alert = UIAlertController(title: "", message: "Please Enter a minimum of 30 characters", preferredStyle: .alert)
+        let alert = UIAlertController(title: "", message: "Please Enter a minimum of 10 characters", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         

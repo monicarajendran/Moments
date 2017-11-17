@@ -73,7 +73,6 @@ class ColorsViewController: UITableViewController {
         if selectedColor?.hashValue == indexPath.row {
             cell.accessoryType = .checkmark
         }
-        
     }
     
     @IBAction func cancel(_ sender: Any) {
