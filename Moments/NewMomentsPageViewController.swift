@@ -56,6 +56,8 @@
             
             let date = Date(timeIntervalSince1970: TimeInterval(time!))
             
+            datePicker = date
+            
             dateFormatter.dateFormat = "dd/MMM/yy"
             
             chooseDate.setTitle(dateFormatter.string(from: date), for: .normal)
@@ -175,10 +177,12 @@
         dateFormatter.dateFormat = "dd"
         
         moment.day = Int16(self.dateFormatter.string(from: datePicker))!
-        
-//      moment.month = Int16(self.dateComponents().month)
-      
-//      moment.year = Int16(self.dateComponents().year)
+//        dateFormatter.dateFormat = "EEE"
+//
+//        moment.month = (Int16(self.dateFormatter.string(from: datePicker)))!
+//        dateFormatter.dateFormat = "yyyy"
+//
+//        moment.year = Int16(self.dateFormatter.string(from: datePicker))!
         
         moment.color = self.selectedColor?.rawValue
         
