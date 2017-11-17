@@ -12,11 +12,13 @@
  
  class NewMomentsPageViewController: UITableViewController , UITextFieldDelegate {
     
-    @IBOutlet weak var momentName: UITextField!
+    @IBOutlet weak var chooseDate: UIButton!
     
-    @IBOutlet weak var momentDescription: UITextField!
+    @IBOutlet weak var momentNameTextFeild: UITextField!
     
-    @IBOutlet weak var color: UILabel!
+    @IBOutlet weak var momentDescTextFeild: UITextField!
+    
+    @IBOutlet weak var momentColorLabel: UILabel!
     
     let dateFormatter = DateFormatter()
     
@@ -26,19 +28,23 @@
     
     var selectedColor : MomentColors?
     
-    var datePicker = Date()
+    var momentDate = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        color.layer.cornerRadius = color.frame.size.width / 2
+        momentColorLabel.layer.cornerRadius = momentColorLabel.frame.size.width / 2
         
         //hides the navigation bar hairline
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-        chooseDate.setTitle("Choose a Date", for: .normal)
-        momentName.autocapitalizationType = .words
         
-        momentDescription.autocapitalizationType = .sentences
+        chooseDate.setTitle("Choose a Date", for: .normal)
+        
+        momentNameTextFeild.autocapitalizationType = .words
+        
+        momentDescTextFeild.autocapitalizationType = .sentences
+        
+        momentNameTextFeild.becomeFirstResponder()
         
         if mode == MomentMode.edit.rawValue {
             
@@ -46,9 +52,9 @@
             
             navigationController?.navigationBar.topItem?.title = " "
             
-            momentName.text = createdMoment?.name
+            momentNameTextFeild.text = createdMoment?.name
             
-            momentDescription.text = createdMoment?.desc
+            momentDescTextFeild.text = createdMoment?.desc
             
             selectedColor = MomentColors(rawValue: (createdMoment?.color)!)
             
@@ -56,13 +62,13 @@
             
             let date = Date(timeIntervalSince1970: TimeInterval(time!))
             
-            datePicker = date
+            momentDate = date
             
-            dateFormatter.dateFormat = "dd/MMM/yy"
+            dateFormatter.dateFormat = MomentDateFormat.short.rawValue
             
             chooseDate.setTitle(dateFormatter.string(from: date), for: .normal)
             
-            color.backgroundColor = UIColor(hexString: (createdMoment?.color)!)
+            momentColorLabel.backgroundColor = UIColor(hexString: (createdMoment?.color)!)
             
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(editMoment(sender:)))
             
@@ -82,7 +88,7 @@
     
     override func viewWillAppear(_ animated: Bool) {
         
-        color.backgroundColor = UIColor(hexString: (selectedColor?.rawValue)!)
+        momentColorLabel.backgroundColor = UIColor(hexString: (selectedColor?.rawValue)!)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -103,39 +109,37 @@
         else {
             return 22.0
         }
-
     }
-    @IBOutlet weak var chooseDate: UIButton!
     
     @IBAction func chooseADate(_ sender: UIButton) {
         
-        let datePickers = ActionSheetDatePicker(title: "", datePickerMode: UIDatePickerMode.date, selectedDate: NSDate() as Date!, doneBlock: {
+        let datePicker = ActionSheetDatePicker(title: "", datePickerMode: UIDatePickerMode.date, selectedDate: NSDate() as Date!, doneBlock: {
             picker, value, index in
             
-            self.datePicker = value as! Date
+            self.momentDate = value as! Date
             
-            self.dateFormatter.dateFormat = "dd/MMM/yy"
+            self.dateFormatter.dateFormat = MomentDateFormat.short.rawValue
             
-            self.chooseDate.setTitle(self.dateFormatter.string(from: self.datePicker), for: .normal)
+            self.chooseDate.setTitle(self.dateFormatter.string(from: self.momentDate), for: .normal)
             
             return
             
         }, cancel: { ActionStringCancelBlock in return }, origin: (sender as UIButton).superview!.superview)
         
-        datePickers?.show()
+        datePicker?.show()
 
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        if textField == self.momentName {
+        if textField == self.momentNameTextFeild {
             
-            momentDescription.becomeFirstResponder()
+            momentDescTextFeild.becomeFirstResponder()
         }
         
-        if textField == self.momentDescription {
+        if textField == self.momentDescTextFeild {
             
-            momentDescription.resignFirstResponder()
+            momentDescTextFeild.resignFirstResponder()
             
         }
         
@@ -154,15 +158,15 @@
     
     func saveMoment(moment: Moment) -> Moment{
         
-        moment.name = momentName.text
+        moment.name = momentNameTextFeild.text
         
-        moment.desc = momentDescription.text
+        moment.desc = momentDescTextFeild.text
         
-        let seconds = datePicker.timeIntervalSince1970//self.datePicker.date.timeIntervalSince1970
+        let seconds = momentDate.timeIntervalSince1970//self.datePicker.date.timeIntervalSince1970
         
         self.dateFormatter.dateStyle = .long
         
-        let timeString = self.dateFormatter.string(from: datePicker)
+        let timeString = self.dateFormatter.string(from: momentDate)
         
         moment.momentTime = Int64(seconds)
         
@@ -172,11 +176,11 @@
         
         moment.modifiedAt = Int64(currentDate)
         
-        moment.searchToken = momentName.text! + " " + momentDescription.text! + " " + timeString
+        moment.searchToken = momentNameTextFeild.text! + " " + momentDescTextFeild.text! + " " + timeString
         
-        dateFormatter.dateFormat = "dd"
+        dateFormatter.dateFormat = MomentDateFormat.date.rawValue
         
-        moment.day = Int16(self.dateFormatter.string(from: datePicker))!
+        moment.day = Int16(self.dateFormatter.string(from: momentDate))!
 //        dateFormatter.dateFormat = "EEE"
 //
 //        moment.month = (Int16(self.dateFormatter.string(from: datePicker)))!
@@ -204,12 +208,13 @@
     
     func  createMoment(sender: UIBarButtonItem) {
         
-        guard let momentNamee = momentName.text , let momentDesc = momentDescription.text ,!momentNamee.isEmpty , !momentDesc.isEmpty  else {
+        guard let momentName = momentNameTextFeild.text , let momentDesc = momentDescTextFeild.text ,!momentName.isEmpty , !momentDesc.isEmpty  else {
             
             alertMessage("All Fields Required")
 
             return
         }
+        
         guard   "Choose a Date" != chooseDate.currentTitle else {
             alertMessage("Choose a Date")
             return
@@ -231,13 +236,13 @@
         
         let editedMoment = saveMoment(moment: createdMoment!)
         
-        updateICloudMoment(moment: editedMoment)
+        updateICloud(moment: editedMoment)
         
         close()
         
     }
     
-    func updateICloudMoment(moment: Moment) {
+    func updateICloud(moment: Moment) {
         
         /// have check return
         
@@ -257,7 +262,7 @@
         }
     }
     
-    func deleteICloudMoment(moment: Moment){
+    func deleteICloud(moment: Moment){
         
         CloudSyncServices.privateDb.delete(withRecordID: CKRecordID(recordName: moment.momentID!), completionHandler: { rec , err in
             guard let record = rec else {
@@ -287,19 +292,19 @@
             
         case (2,0):
             
-            momentDescription.resignFirstResponder()
-            momentName.resignFirstResponder()
+            momentDescTextFeild.resignFirstResponder()
+            momentNameTextFeild.resignFirstResponder()
             
         case (3,0):
           
-            guard let pushToColorsPage = storyboard?.instantiateViewController(withIdentifier: "ColorsViewController") as? ColorsViewController else {
+            guard let colorsVC = storyboard?.instantiateViewController(withIdentifier: "ColorsViewController") as? ColorsViewController else {
                 return
             }
-            pushToColorsPage.delegate = self
+            colorsVC.delegate = self
             
-            pushToColorsPage.selectedColor = selectedColor
+            colorsVC.selectedColor = selectedColor
             
-            let navController = UINavigationController(rootViewController: pushToColorsPage)
+            let navController = UINavigationController(rootViewController: colorsVC)
             
             navigationController?.present(navController, animated: true, completion: nil)
             
@@ -311,10 +316,10 @@
             
             alert.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.destructive, handler: { action in
                 
-                self.deleteICloudMoment(moment: self.createdMoment!)
-                
                 guard let createdMoment = self.createdMoment else { return }
                 
+                self.deleteICloud(moment: createdMoment)
+
                 container.viewContext.delete(createdMoment)
                 
                 try!   container.viewContext.save()

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		18A9270E4991541ADFA6DDC2 /* Pods_Moments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1850306574A9C6D2E45E9944 /* Pods_Moments.framework */; };
+		CE25E9E11FBED73A00F96AA3 /* MomentDateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE25E9E01FBED73A00F96AA3 /* MomentDateFormat.swift */; };
 		CE29E2971FA3485C001647E7 /* CloudSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE29E2961FA3485C001647E7 /* CloudSyncService.swift */; };
 		CE504E871FA076B600035F34 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE504E861FA076B600035F34 /* CloudKit.framework */; };
 		CE56F14E1F88EBD900CEE704 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE56F14D1F88EBD900CEE704 /* AppDelegate.swift */; };
@@ -37,6 +38,7 @@
 		1850306574A9C6D2E45E9944 /* Pods_Moments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F4A050201D5624A7031821 /* Pods-Moments.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moments.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Moments/Pods-Moments.debug.xcconfig"; sourceTree = "<group>"; };
 		9E5B88024B1FAA29C5D07176 /* Pods-Moments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moments.release.xcconfig"; path = "Pods/Target Support Files/Pods-Moments/Pods-Moments.release.xcconfig"; sourceTree = "<group>"; };
+		CE25E9E01FBED73A00F96AA3 /* MomentDateFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentDateFormat.swift; sourceTree = "<group>"; };
 		CE29E2961FA3485C001647E7 /* CloudSyncService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudSyncService.swift; sourceTree = "<group>"; };
 		CE43EED81FA05C5E000C0AC9 /* Moments.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Moments.entitlements; sourceTree = "<group>"; };
 		CE504E861FA076B600035F34 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -181,6 +183,7 @@
 		CE9F477F1F8CC7C50070704C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CE25E9E01FBED73A00F96AA3 /* MomentDateFormat.swift */,
 				CE8C4B221FB1E64200F5A437 /* MomentColors.swift */,
 				CE91EDAC1FB5679000CF6747 /* UIColor.swift */,
 				CE91EDAA1FB561D700CF6747 /* MomentMode.swift */,
@@ -347,6 +350,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE25E9E11FBED73A00F96AA3 /* MomentDateFormat.swift in Sources */,
 				CE56F1561F88EBD900CEE704 /* Moments.xcdatamodeld in Sources */,
 				CE618CC11FB9A29F0010171F /* FeedBackViewController.swift in Sources */,
 				CE65F0F11FBAC29D00FAA2FC /* FeedbackAPI.swift in Sources */,
