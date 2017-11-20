@@ -45,7 +45,6 @@ enum Feedback : URLRequestConvertible{
     
 }
 
-
 class FeedBackService {
    
     typealias completionHandler = (_ alertMsg: String?) -> Void

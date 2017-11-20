@@ -197,7 +197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cGN-9D-WoC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1248" y="-454"/>
+            <point key="canvasLocation" x="1366" y="-457"/>
         </scene>
         <!--New Moment-->
         <scene sceneID="wjr-Et-IRB">
@@ -391,7 +391,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r6H-S4-hJM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2296" y="-456"/>
+            <point key="canvasLocation" x="2801" y="-457"/>
         </scene>
         <!--Colors View Controller-->
         <scene sceneID="Zwk-hz-LYw">
@@ -842,7 +842,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LDb-G1-dbR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3298" y="-455"/>
+            <point key="canvasLocation" x="4191" y="-457"/>
         </scene>
         <!--Tab Bar-->
         <scene sceneID="a7o-5Y-j8y">
@@ -862,7 +862,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GMC-yj-rlZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="25" y="-149"/>
+            <point key="canvasLocation" x="-316" y="-113"/>
         </scene>
         <!--Settings Page-->
         <scene sceneID="zgv-Yj-9Lu">
@@ -952,7 +952,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W3U-9l-zCU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1244" y="296"/>
+            <point key="canvasLocation" x="1366" y="296"/>
         </scene>
         <!--Feed Back View Controller-->
         <scene sceneID="xwD-pY-f22">
@@ -1001,13 +1001,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ivu-oO-pSa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1743" y="296"/>
+            <point key="canvasLocation" x="2078" y="296"/>
         </scene>
-        <!--Timeline-->
+        <!--Moments-->
         <scene sceneID="QDw-f9-six">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EyG-Hk-OmA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Timeline" image="icons8-Timeline-20" id="xDE-Uv-sQP"/>
+                    <tabBarItem key="tabBarItem" title="Moments" image="icons8-Timeline-20" id="xDE-Uv-sQP"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dIO-ZD-ux2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1042,7 +1042,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ihz-f7-Fja" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1743" y="-455"/>
+            <point key="canvasLocation" x="2079" y="-455"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="D97-7c-cdO">
@@ -1060,7 +1060,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ED-dE-3vM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2794" y="-455"/>
+            <point key="canvasLocation" x="3487" y="-457"/>
         </scene>
         <!--Settings-->
         <scene sceneID="xHl-2i-ODH">

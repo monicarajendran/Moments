@@ -10,6 +10,10 @@ import UIKit
 
 import ActionSheetPicker_3_0
 
+import MBProgressHUD
+
+import Firebase
+
 class FeedBackViewController: UIViewController {
     
     @IBOutlet weak var feedBackText: UITextView!
@@ -38,17 +42,18 @@ class FeedBackViewController: UIViewController {
         
         if feedBackText.text.characters.count > 10 {
             
-                FeedBackService.sendFeedBack(feedback: Feedback.feedback(text: self.feedBackText.text),completion: nil)
+            FeedBackService.sendFeedBack(feedback: Feedback.feedback(text: self.feedBackText.text),completion: nil)
             
-                let alert = UIAlertController(title: "THANKYOU!", message: "Thankyou for your feedback", preferredStyle: UIAlertControllerStyle.alert)
-                
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
-                    
-                    _ = self.navigationController?.popViewController(animated: true)
-                    
-                }))
-                
-                self.present(alert, animated: true, completion: nil)
+            Analytics.logEvent("feedback_sent", parameters: nil)
+
+                let hud = MomentHud.showHUD(vc: self.view)
+            
+                hud.label.text = "Thankyou for feedback"
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                _ = self.navigationController?.popViewController(animated: true)
+            })
+      
             }
             
         else {
@@ -56,6 +61,7 @@ class FeedBackViewController: UIViewController {
             emptyFieldAlert()
         }
     }
+    
     func emptyFieldAlert(){
         
         let alert = UIAlertController(title: "", message: "Please Enter a minimum of 10 characters", preferredStyle: .alert)

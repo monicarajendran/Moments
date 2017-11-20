@@ -6,6 +6,8 @@ target 'Moments' do
     pod ’NVActivityIndicatorView’
     pod ‘Alamofire’
     pod ’ActionSheetPicker-3.0’
+    pod ‘MBProgressHUD’
+    pod ‘Firebase/Core’
 end
 
 
