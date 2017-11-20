@@ -11,6 +11,8 @@ import UIKit
 
 import AlecrimCoreData
 
+import Firebase
+
 class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UISearchBarDelegate{
     
     @IBOutlet weak var timelineSearchBar: UISearchBar!
@@ -23,7 +25,7 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         
     var searchBarText = ""
     
-    var getTheMomentObject = Moment()
+    var momentObject = Moment()
     
     var filteredObjects = Table<Moment>(context: container.viewContext)
     
@@ -99,6 +101,8 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
          */
         
         print("entered search bar")
+        
+        Analytics.logEvent("moment_search", parameters: ["search_word": searchBar.text ?? ""])
         
         let searchPredicate = NSPredicate(format: "searchToken CONTAINS[c] %@",searchText)
         
@@ -195,11 +199,11 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         
         if searchBarActive {
             
-            getTheMomentObject = filteredObjects.execute()[indexPath.row]
+            momentObject = filteredObjects.execute()[indexPath.row]
         }
         else {
             
-            getTheMomentObject = fetchTheMoments.object(at: indexPath)
+            momentObject = fetchTheMoments.object(at: indexPath)
         }
       
         if (filteredObjects.count() == 0 && !searchBarText.isEmpty) {
@@ -213,30 +217,30 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
             noResultsFound.isHidden = true
         }
         
-        cell.momentName.text = getTheMomentObject.name
+        cell.momentName.text = momentObject.name
         
-        cell.momentDescription.text = getTheMomentObject.desc
+        cell.momentDescription.text = momentObject.desc
         
-        cell.date.text = "\(String(format: "%02d", getTheMomentObject.day))"
+        cell.date.text = "\(String(format: "%02d", momentObject.day))"
 
-        if let color = getTheMomentObject.color
+        if let color = momentObject.color
         {
           
             cell.viewForCell.backgroundColor = UIColor(hexString: color)
             cell.viewForDate.backgroundColor = UIColor(hexString: color)
         }
         
-        let timeAsSeconds = getTheMomentObject.momentTime
+        let timeAsSeconds = momentObject.momentTime
         
         let date = Date(timeIntervalSince1970: TimeInterval(timeAsSeconds))
         
-        dateFormatter.dateFormat = "EEE"
+        dateFormatter.dateFormat = MomentDateFormat.day.rawValue
         
         cell.day.text = dateFormatter.string(from: date).uppercased()
         
         cell.viewForCell.layer.cornerRadius = 5
         
-        dateFormatter.dateFormat = "MMMM yyyy"
+        dateFormatter.dateFormat = MomentDateFormat.monthAndYear.rawValue
         
         cell.cellHeader.text = dateFormatter.string(from: date)
         
@@ -253,14 +257,14 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
         
         if searchBarActive{
             
-            getTheMomentObject = filteredObjects.execute()[indexPath.row]
+            momentObject = filteredObjects.execute()[indexPath.row]
         }
         else{
             
-            getTheMomentObject = fetchTheMoments.object(at: indexPath)
+            momentObject = fetchTheMoments.object(at: indexPath)
         }
         
-        pushToDetailMomentPage.createdMoment = getTheMomentObject
+        pushToDetailMomentPage.createdMoment = momentObject
         
         navigationController?.pushViewController(pushToDetailMomentPage, animated: true)
     }
