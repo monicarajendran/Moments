@@ -198,8 +198,6 @@
             print("Error:",error)
         }
         
-       // close()
-
         return moment
     
     }

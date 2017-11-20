@@ -13,7 +13,7 @@ import AlecrimCoreData
 
 import Firebase
 
-class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UISearchBarDelegate{
+class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UISearchBarDelegate{
     
     @IBOutlet weak var timelineSearchBar: UISearchBar!
     
@@ -44,6 +44,8 @@ class TimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        UserDefaults.standard.set(true, forKey: "first_run")
         
         dateFormatter.dateStyle = .long
         
