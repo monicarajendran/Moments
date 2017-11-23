@@ -45,7 +45,9 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         
         super.viewDidLoad()
         
-        UserDefaults.standard.set(true, forKey: "first_run")
+        UserDefaults.standard.set(true, forKey: "firstRun")
+        
+        UserDefaults.standard.synchronize()
         
         dateFormatter.dateStyle = .long
         

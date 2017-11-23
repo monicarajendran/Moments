@@ -11,59 +11,107 @@ import CloudKit
 
 class CloudSyncServices {
     
-   static let privateDb = customContainer.privateCloudDatabase
+    static let privateDb = customContainer.privateCloudDatabase
     
-   static let customContainer = CKContainer(identifier: "iCloud.com.full.moments")
-
-   static func addRecordToIColud(record: CKRecord){
+    static let customContainer = CKContainer(identifier: "iCloud.com.full.moments")
     
+    static func addRecordToIColud(record: CKRecord){
+        
         privateDb.save(record, completionHandler: { (record,error) -> Void in
             
             guard let record = record else{
-            
+                
                 print("error occured",error as Any)
                 return
             }
             
             print("successful",record)
-        
         })
-    
-    
-  
-    
+        
     }
     
-    // func to fetch record by id 
+    typealias completionHandler  = (_ momentRec : [CKRecord]) -> Void
     
-    static func fetchRecordFromICloud(record: CKRecord){ //-> CKRecord{
+    typealias batchHandler  = (_ momentRec : [CKRecord]) -> Void
+    
+    // do (batch { save to core data }, comption : { move to next view })
+    // func do cursor = nil, batchHandler, competionHandler
+    /*
+     
+     let queryOps
+     let records = []
+     
+     if curosr  {
+        query = query(cursor)
+     }else {
+     query = Moment query
+     
+     }
+     
+     query set limit
+     
+     query fetch block {
+     
+      record add to records
+     }
+     
+     query completion block {
+     
+        call batch handler ()
+     
+        reset records
+     
+        if cursor = nil {
+            call completion
+     }else {
+        call same method
+     }
+     
+     // run in icloud
+     }
+     
+     */
+
+    static func fetchAllMomentsWithCursor(cursor : CKQueryCursor? = nil , batch :@escaping batchHandler, completion: @escaping completionHandler){
         
-        let predicate = NSPredicate(value: true)
+        var queryOperation : CKQueryOperation
+        var momentRec : [CKRecord] = []
         
-        let query = CKQuery(recordType: "Moment", predicate: predicate)
+        if let cursor = cursor {
+            
+            queryOperation = CKQueryOperation(cursor: cursor)
+        }
+        else {
+            
+            let query = CKQuery(recordType: "Moment", predicate: NSPredicate(value: true))
+            
+             queryOperation = CKQueryOperation(query: query)
+        }
         
-        let queryOperation = CKQueryOperation(query: query)
-        
-        var momentRecord : [CKRecord] = []
+        queryOperation.resultsLimit = 10
         
         queryOperation.recordFetchedBlock = { record in
             
-            momentRecord.append(record)
-            
+            momentRec.append(record)
         }
         
-        queryOperation.queryCompletionBlock = { cursor , error in
+        queryOperation.queryCompletionBlock = { cursor , err in
+           
+            if err == nil {
+                
+            batch(momentRec)
             
-            print(momentRecord)
+            momentRec = []
             
-        }
-        
+            if cursor == nil {
+                completion([])
+                print("fetching all mometns is done")
+            }
+            else {
+                self.fetchAllMomentsWithCursor(cursor: cursor, batch: batch, completion: completion)
+            }
+         }
+       }
         customContainer.privateCloudDatabase.add(queryOperation)
-        
-        print(momentRecord.count)
-        
-        //return record
-
-    }
-    
+   }
 }

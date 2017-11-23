@@ -58,7 +58,7 @@
             
             momentDescTextFeild.text = createdMoment?.desc
             
-            selectedColor = MomentColors(rawValue: (createdMoment?.color)!)
+            selectedColor = MomentColors(rawValue: (createdMoment?.color) ?? "")
             
             let time = createdMoment?.momentTime
             
@@ -70,7 +70,7 @@
             
             chooseDate.setTitle(dateFormatter.string(from: date), for: .normal)
             
-            momentColorLabel.backgroundColor = UIColor(hexString: (createdMoment?.color)!)
+            momentColorLabel.backgroundColor = UIColor(hexString: (createdMoment?.color) ?? "")
             
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(editMoment(sender:)))
             
@@ -92,7 +92,7 @@
     
     override func viewWillAppear(_ animated: Bool) {
         
-        momentColorLabel.backgroundColor = UIColor(hexString: (selectedColor?.rawValue)!)
+        momentColorLabel.backgroundColor = UIColor(hexString: (selectedColor?.rawValue) ?? "")
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

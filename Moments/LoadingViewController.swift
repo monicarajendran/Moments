@@ -11,20 +11,46 @@ import MBProgressHUD
 import CloudKit
 
 class LoadingViewController: UIViewController {
-
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        activityIndicator.startAnimating()
+        navigationController?.setNavigationBarHidden(true, animated: false)
+     
+        fetchICloudRecord()
         
-        let loadingHud = MBProgressHUD.showAdded(to: self.view, animated: true)
-        loadingHud.mode = .indeterminate
-        loadingHud.label.text = "Please wait"
-        loadingHud.detailsLabel.text = "Loading"
-        loadingHud.bezelView.backgroundColor = .black
-        loadingHud.contentColor = .white
-        
-        // Do any additional setup after loading the view.
     }
     
-    
-
+    func fetchICloudRecord(){
+        
+        CloudSyncServices.fetchAllMomentsWithCursor(batch: { (bathMomentRec) in
+            print(bathMomentRec)
+            
+            for momentRec in bathMomentRec {
+  
+                let momentObj = container.viewContext.moment.create()
+                
+              let _ = momentObj.fromICloudRecordToMoment(record: momentRec)
+                
+            do {
+                
+                try container.viewContext.save()
+            }
+            catch {
+                print("Error in saving iCloud moment into coredata")
+                }
+            }
+        },
+        completion: { moment in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1 , execute: {
+                guard let tabBar = self.storyboard?.instantiateViewController(withIdentifier: "TabBar") else {
+                    return }
+                self.navigationController?.pushViewController(tabBar, animated: false)
+            })
+            
+        })
+    }
 }
