@@ -93,6 +93,7 @@
     override func viewWillAppear(_ animated: Bool) {
         
         momentColorLabel.backgroundColor = UIColor(hexString: (selectedColor?.rawValue) ?? "")
+    
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -127,7 +128,7 @@
         datePicker?.show()
 
     }
-    
+ 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         if textField == self.momentNameTextFeild {
