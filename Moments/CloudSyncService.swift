@@ -32,7 +32,7 @@ class CloudSyncServices {
     
     typealias completionHandler  = (_ momentRec : [CKRecord]) -> Void
     
-    typealias batchHandler  = (_ momentRec : [CKRecord]) -> Void
+    typealias batchHandler  = (_ momentRec : [CKRecord] , _ error : Error?) -> Void
     
     // do (batch { save to core data }, comption : { move to next view })
     // func do cursor = nil, batchHandler, competionHandler
@@ -75,7 +75,7 @@ class CloudSyncServices {
     static func fetchAllMomentsWithCursor(cursor : CKQueryCursor? = nil , batch :@escaping batchHandler, completion: @escaping completionHandler){
         
         var queryOperation : CKQueryOperation
-        var momentRec : [CKRecord] = []
+        var momentRecord : [CKRecord] = []
         
         if let cursor = cursor {
             
@@ -92,26 +92,33 @@ class CloudSyncServices {
         
         queryOperation.recordFetchedBlock = { record in
             
-            momentRec.append(record)
+            momentRecord.append(record)
         }
         
         queryOperation.queryCompletionBlock = { cursor , err in
            
             if err == nil {
-                
-            batch(momentRec)
+
+                batch(momentRecord, err)
             
-            momentRec = []
+                momentRecord = []
             
             if cursor == nil {
                 completion([])
-                print("fetching all mometns is done")
+                print("fetching all moments is done")
             }
             else {
                 self.fetchAllMomentsWithCursor(cursor: cursor, batch: batch, completion: completion)
             }
          }
-       }
+            else{
+                
+                if err?.localizedDescription == "This request requires an authenticated account"{
+                batch(momentRecord,err)
+                }
+                print("error in fetching icloud moments")
+            }
+        }
         customContainer.privateCloudDatabase.add(queryOperation)
    }
 }

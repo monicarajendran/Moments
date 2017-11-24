@@ -26,7 +26,8 @@ class LoadingViewController: UIViewController {
     
     func fetchICloudRecord(){
         
-        CloudSyncServices.fetchAllMomentsWithCursor(batch: { (bathMomentRec) in
+        CloudSyncServices.fetchAllMomentsWithCursor(batch: { (bathMomentRec , error) in
+            if error == nil {
             print(bathMomentRec)
             
             for momentRec in bathMomentRec {
@@ -43,6 +44,14 @@ class LoadingViewController: UIViewController {
                 print("Error in saving iCloud moment into coredata")
                 }
             }
+        }
+         else {
+                let alert = UIAlertController(title: "Error", message: "Signin With ICloud", preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                
+                self.present(alert, animated: true, completion: nil)
+            }
         },
         completion: { moment in
             DispatchQueue.main.asyncAfter(deadline: .now() + 1 , execute: {
@@ -50,7 +59,6 @@ class LoadingViewController: UIViewController {
                     return }
                 self.navigationController?.pushViewController(tabBar, animated: false)
             })
-            
         })
     }
 }
