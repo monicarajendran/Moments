@@ -25,7 +25,6 @@ class SettingsPage: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         self.navigationController?.navigationBar.topItem?.title = "Settings"
-
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

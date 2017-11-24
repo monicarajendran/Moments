@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		18A9270E4991541ADFA6DDC2 /* Pods_Moments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1850306574A9C6D2E45E9944 /* Pods_Moments.framework */; };
+		CE1A149F1FC46FB30015CC91 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1A149E1FC46FB30015CC91 /* MainNavigationController.swift */; };
 		CE25E9E11FBED73A00F96AA3 /* MomentDateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE25E9E01FBED73A00F96AA3 /* MomentDateFormat.swift */; };
 		CE29E2971FA3485C001647E7 /* CloudSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE29E2961FA3485C001647E7 /* CloudSyncService.swift */; };
 		CE43495E1FBEEFF000775B0C /* MomentHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE43495D1FBEEFF000775B0C /* MomentHud.swift */; };
 		CE4D350F1FC2A8130083E4F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE4D350E1FC2A8130083E4F1 /* GoogleService-Info.plist */; };
+		CE4D35131FC2FFB10083E4F1 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D35121FC2FFB10083E4F1 /* LoadingViewController.swift */; };
 		CE504E871FA076B600035F34 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE504E861FA076B600035F34 /* CloudKit.framework */; };
 		CE56F14E1F88EBD900CEE704 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE56F14D1F88EBD900CEE704 /* AppDelegate.swift */; };
 		CE56F1531F88EBD900CEE704 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE56F1511F88EBD900CEE704 /* Main.storyboard */; };
@@ -19,7 +21,7 @@
 		CE56F1581F88EBD900CEE704 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE56F1571F88EBD900CEE704 /* Assets.xcassets */; };
 		CE56F15B1F88EBD900CEE704 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE56F1591F88EBD900CEE704 /* LaunchScreen.storyboard */; };
 		CE57A71E1F8AF07200585633 /* momentsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57A71D1F8AF07200585633 /* momentsEntity.swift */; };
-		CE5C5E5F1F9F543000CE6EB4 /* TimeLinePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C5E5E1F9F543000CE6EB4 /* TimeLinePage.swift */; };
+		CE5C5E5F1F9F543000CE6EB4 /* MomentsTimeLinePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C5E5E1F9F543000CE6EB4 /* MomentsTimeLinePage.swift */; };
 		CE618CC11FB9A29F0010171F /* FeedBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE618CC01FB9A29F0010171F /* FeedBackViewController.swift */; };
 		CE65F0F11FBAC29D00FAA2FC /* FeedbackAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE65F0F01FBAC29D00FAA2FC /* FeedbackAPI.swift */; };
 		CE8C4B231FB1E64200F5A437 /* MomentColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8C4B221FB1E64200F5A437 /* MomentColors.swift */; };
@@ -40,11 +42,13 @@
 		1850306574A9C6D2E45E9944 /* Pods_Moments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F4A050201D5624A7031821 /* Pods-Moments.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moments.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Moments/Pods-Moments.debug.xcconfig"; sourceTree = "<group>"; };
 		9E5B88024B1FAA29C5D07176 /* Pods-Moments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moments.release.xcconfig"; path = "Pods/Target Support Files/Pods-Moments/Pods-Moments.release.xcconfig"; sourceTree = "<group>"; };
+		CE1A149E1FC46FB30015CC91 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		CE25E9E01FBED73A00F96AA3 /* MomentDateFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentDateFormat.swift; sourceTree = "<group>"; };
 		CE29E2961FA3485C001647E7 /* CloudSyncService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudSyncService.swift; sourceTree = "<group>"; };
 		CE43495D1FBEEFF000775B0C /* MomentHud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentHud.swift; path = ../MomentHud.swift; sourceTree = "<group>"; };
 		CE43EED81FA05C5E000C0AC9 /* Moments.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Moments.entitlements; sourceTree = "<group>"; };
 		CE4D350E1FC2A8130083E4F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CE4D35121FC2FFB10083E4F1 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		CE504E861FA076B600035F34 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		CE56F14A1F88EBD900CEE704 /* Moments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moments.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE56F14D1F88EBD900CEE704 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -54,7 +58,7 @@
 		CE56F15A1F88EBD900CEE704 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE56F15C1F88EBD900CEE704 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE57A71D1F8AF07200585633 /* momentsEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = momentsEntity.swift; sourceTree = "<group>"; };
-		CE5C5E5E1F9F543000CE6EB4 /* TimeLinePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLinePage.swift; sourceTree = "<group>"; };
+		CE5C5E5E1F9F543000CE6EB4 /* MomentsTimeLinePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentsTimeLinePage.swift; sourceTree = "<group>"; };
 		CE618CC01FB9A29F0010171F /* FeedBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedBackViewController.swift; sourceTree = "<group>"; };
 		CE65F0F01FBAC29D00FAA2FC /* FeedbackAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackAPI.swift; sourceTree = "<group>"; };
 		CE8C4B221FB1E64200F5A437 /* MomentColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentColors.swift; sourceTree = "<group>"; };
@@ -148,7 +152,7 @@
 				CEA8346C1FAC51530017933B /* MomentsTableViewCell.swift */,
 				CEA3E0D41FA9E70600F4D8A3 /* NewMomentsPageViewController.swift */,
 				CE8F26E21FAB578200E71417 /* ColorsViewController.swift */,
-				CE5C5E5E1F9F543000CE6EB4 /* TimeLinePage.swift */,
+				CE5C5E5E1F9F543000CE6EB4 /* MomentsTimeLinePage.swift */,
 				CE9F47821F8CDA210070704C /* SettingsPage.swift */,
 			);
 			name = TableViewControllers;
@@ -157,6 +161,7 @@
 		CE998C8C1F9DBE4E00FBF050 /* Main files */ = {
 			isa = PBXGroup;
 			children = (
+				CE1A149E1FC46FB30015CC91 /* MainNavigationController.swift */,
 				CE9F477D1F8CBD190070704C /* TabBar.swift */,
 			);
 			name = "Main files";
@@ -196,6 +201,7 @@
 		CE9F47811F8CC80B0070704C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CE4D35121FC2FFB10083E4F1 /* LoadingViewController.swift */,
 				CE618CC01FB9A29F0010171F /* FeedBackViewController.swift */,
 				CE9DF7041F9AF9260016153E /* MomentsDetailPage.swift */,
 			);
@@ -361,7 +367,7 @@
 				CE65F0F11FBAC29D00FAA2FC /* FeedbackAPI.swift in Sources */,
 				CE8F26E51FAB582C00E71417 /* ColorsPageExtension.swift in Sources */,
 				CEA33A671FA4300D0032E0E8 /* MomentICloud.swift in Sources */,
-				CE5C5E5F1F9F543000CE6EB4 /* TimeLinePage.swift in Sources */,
+				CE5C5E5F1F9F543000CE6EB4 /* MomentsTimeLinePage.swift in Sources */,
 				CE57A71E1F8AF07200585633 /* momentsEntity.swift in Sources */,
 				CE91EDAD1FB5679000CF6747 /* UIColor.swift in Sources */,
 				CE8C4B231FB1E64200F5A437 /* MomentColors.swift in Sources */,
@@ -369,10 +375,12 @@
 				CE29E2971FA3485C001647E7 /* CloudSyncService.swift in Sources */,
 				CE9F47831F8CDA210070704C /* SettingsPage.swift in Sources */,
 				CE8F26E31FAB578200E71417 /* ColorsViewController.swift in Sources */,
+				CE1A149F1FC46FB30015CC91 /* MainNavigationController.swift in Sources */,
 				CE91EDAB1FB561D700CF6747 /* MomentMode.swift in Sources */,
 				CEA8346D1FAC51530017933B /* MomentsTableViewCell.swift in Sources */,
 				CE56F14E1F88EBD900CEE704 /* AppDelegate.swift in Sources */,
 				CE9F477E1F8CBD190070704C /* TabBar.swift in Sources */,
+				CE4D35131FC2FFB10083E4F1 /* LoadingViewController.swift in Sources */,
 				CEA3E0D51FA9E70600F4D8A3 /* NewMomentsPageViewController.swift in Sources */,
 				CE43495E1FBEEFF000775B0C /* MomentHud.swift in Sources */,
 			);

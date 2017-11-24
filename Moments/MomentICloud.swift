@@ -26,6 +26,7 @@ extension Moment {
         record["month"] = self.month as CKRecordValue?
         record["year"] = self.year as CKRecordValue?
         record["momentID"] = self.momentID as CKRecordValue?
+        record["color"] = self.color as CKRecordValue?
                 
         return record
     }
@@ -40,23 +41,24 @@ extension Moment {
             record.setObject(self.day as CKRecordValue?, forKey: "day")
             record.setObject(self.month as CKRecordValue?, forKey: "month")
             record.setObject(self.year as CKRecordValue?, forKey: "year")
-        
+            record.setObject(self.color as CKRecordValue?, forKey: "color")
     }
     
-    func fromICloudRecord(record: CKRecord) -> Moment{
-
-        self.name = record.object(forKey: "name") as! String?
-        self.desc = record.object(forKey: "desc") as! String?
-        self.momentTime = record.object(forKey: "momentTime") as! NSNumber? as! Int64
-        self.createdAt = record.object(forKey: "createdAt") as! NSNumber? as! Int64
-        self.modifiedAt = record.object(forKey: "modifiedAt") as! NSNumber? as! Int64
-        self.day = record.object(forKey: "day") as! NSNumber? as! Int16
-        self.month = record.object(forKey: "month") as! NSNumber? as! Int16
-        self.year = record.object(forKey: "year") as! NSNumber? as! Int16
-        self.momentID = record.object(forKey: "momentID") as! String?
+     func fromICloudRecordToMoment(record: CKRecord) -> (Moment) {
+        print(record)
+        
+        self.name = record.object(forKey: "name") as? String? ?? " "
+        self.desc = record.object(forKey: "desc") as? String? ?? " "
+        self.momentTime = record.object(forKey: "momentTime") as? NSNumber? as? Int64 ?? 0
+        self.createdAt = record.object(forKey: "createdAt") as? NSNumber? as? Int64 ?? 0
+        self.modifiedAt = record.object(forKey: "modifiedAt") as? NSNumber? as? Int64 ?? 0
+        self.day = record.object(forKey: "day") as? NSNumber? as? Int16 ?? 0
+        self.month = record.object(forKey: "month") as? NSNumber? as? Int16 ?? 0
+        self.year = record.object(forKey: "year") as? NSNumber? as? Int16 ?? 0
+        self.momentID = record.object(forKey: "momentID") as? String? ?? " "
+        self.color = record.object(forKey: "color") as? String? ?? " "
         
         return self
     }
-    
-  }
+}
 

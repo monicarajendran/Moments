@@ -50,6 +50,8 @@
         
         if mode == MomentMode.edit.rawValue {
             
+            momentNameTextFeild.resignFirstResponder()
+            
             title = createdMoment?.name
             
             navigationController?.navigationBar.topItem?.title = " "
@@ -58,7 +60,7 @@
             
             momentDescTextFeild.text = createdMoment?.desc
             
-            selectedColor = MomentColors(rawValue: (createdMoment?.color)!)
+            selectedColor = MomentColors(rawValue: (createdMoment?.color) ?? "")
             
             let time = createdMoment?.momentTime
             
@@ -70,7 +72,7 @@
             
             chooseDate.setTitle(dateFormatter.string(from: date), for: .normal)
             
-            momentColorLabel.backgroundColor = UIColor(hexString: (createdMoment?.color)!)
+            momentColorLabel.backgroundColor = UIColor(hexString: (createdMoment?.color) ?? "")
             
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(editMoment(sender:)))
             
@@ -92,7 +94,8 @@
     
     override func viewWillAppear(_ animated: Bool) {
         
-        momentColorLabel.backgroundColor = UIColor(hexString: (selectedColor?.rawValue)!)
+        momentColorLabel.backgroundColor = UIColor(hexString: (selectedColor?.rawValue) ?? "")
+    
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -127,7 +130,7 @@
         datePicker?.show()
 
     }
-    
+ 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         if textField == self.momentNameTextFeild {
@@ -139,9 +142,15 @@
             
             momentDescTextFeild.resignFirstResponder()
             
+            chooseADate(chooseDate)
+            
         }
         
         return true
+    }
+    
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        view.endEditing(true)
     }
     
     func alertMessage(_ alertMsg: String){
@@ -198,8 +207,6 @@
             print("Error:",error)
         }
         
-       // close()
-
         return moment
     
     }
@@ -337,15 +344,15 @@
                 Analytics.logEvent("moment_deleted", parameters: nil)
                 
                 try!   container.viewContext.save()
-
-                _ = self.navigationController?.popViewController(animated: true) } ))
-            
-            self.present(alert, animated: true, completion: nil)
-            
-            let hud = MomentHud.showHUD(vc: self.view)
-            
-            hud.label.text = "Moment deleted successfully"
-            
+                
+                let hud = MomentHud.showHUD(vc: self.view)
+                
+                hud.label.text = "Moment deleted successfully"
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {                _ = self.navigationController?.popViewController(animated: true) })
+                
+            } ))
+                self.present(alert, animated: true, completion: nil)
+          
         default:
             
             print("Default Case")

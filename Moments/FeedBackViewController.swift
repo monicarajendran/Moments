@@ -31,7 +31,11 @@ class FeedBackViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Send", style: .plain, target: self, action: #selector(sendFeedBack(sender:)))
     }
-
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        feedBackText.resignFirstResponder()
+    }
+    
     override func viewDidLayoutSubviews() {
         
         self.feedBackText.setContentOffset(.zero, animated: false)
