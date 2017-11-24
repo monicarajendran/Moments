@@ -50,6 +50,8 @@
         
         if mode == MomentMode.edit.rawValue {
             
+            momentNameTextFeild.resignFirstResponder()
+            
             title = createdMoment?.name
             
             navigationController?.navigationBar.topItem?.title = " "
@@ -140,9 +142,15 @@
             
             momentDescTextFeild.resignFirstResponder()
             
+            chooseADate(chooseDate)
+            
         }
         
         return true
+    }
+    
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        view.endEditing(true)
     }
     
     func alertMessage(_ alertMsg: String){
@@ -336,15 +344,15 @@
                 Analytics.logEvent("moment_deleted", parameters: nil)
                 
                 try!   container.viewContext.save()
-
-                _ = self.navigationController?.popViewController(animated: true) } ))
-            
-            self.present(alert, animated: true, completion: nil)
-            
-            let hud = MomentHud.showHUD(vc: self.view)
-            
-            hud.label.text = "Moment deleted successfully"
-            
+                
+                let hud = MomentHud.showHUD(vc: self.view)
+                
+                hud.label.text = "Moment deleted successfully"
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {                _ = self.navigationController?.popViewController(animated: true) })
+                
+            } ))
+                self.present(alert, animated: true, completion: nil)
+          
         default:
             
             print("Default Case")
