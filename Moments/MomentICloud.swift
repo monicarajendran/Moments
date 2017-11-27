@@ -27,6 +27,7 @@ extension Moment {
         record["year"] = self.year as CKRecordValue?
         record["momentID"] = self.momentID as CKRecordValue?
         record["color"] = self.color as CKRecordValue?
+        record["searchToken"] = self.searchToken as CKRecordValue?
                 
         return record
     }
@@ -42,6 +43,8 @@ extension Moment {
             record.setObject(self.month as CKRecordValue?, forKey: "month")
             record.setObject(self.year as CKRecordValue?, forKey: "year")
             record.setObject(self.color as CKRecordValue?, forKey: "color")
+            record.setObject(self.searchToken as CKRecordValue?, forKey: "searchToken")
+
     }
     
      func fromICloudRecordToMoment(record: CKRecord) -> (Moment) {
@@ -57,6 +60,8 @@ extension Moment {
         self.year = record.object(forKey: "year") as? NSNumber? as? Int16 ?? 0
         self.momentID = record.object(forKey: "momentID") as? String? ?? " "
         self.color = record.object(forKey: "color") as? String? ?? " "
+        self.searchToken = record.object(forKey: "searchToken") as? String? ?? " "
+
         
         return self
     }

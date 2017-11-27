@@ -25,7 +25,7 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         
     var searchBarText = ""
     
-    var momentObject = Moment()
+    var momentObject : Moment?
     
     var filteredObjects = Table<Moment>(context: container.viewContext)
     
@@ -221,22 +221,22 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
             noResultsFound.isHidden = true
         }
         
-        cell.momentName.text = momentObject.name
+        cell.momentName.text = momentObject?.name
         
-        cell.momentDescription.text = momentObject.desc
+        cell.momentDescription.text = momentObject?.desc
         
-        cell.date.text = "\(String(format: "%02d", momentObject.day))"
+        cell.date.text = "\(String(format: "%02d", momentObject?.day ?? 0))"
 
-        if let color = momentObject.color
+        if let color = momentObject?.color
         {
           
             cell.viewForCell.backgroundColor = UIColor(hexString: color)
             cell.viewForDate.backgroundColor = UIColor(hexString: color)
         }
         
-        let timeAsSeconds = momentObject.momentTime
+        let timeAsSeconds = momentObject?.momentTime
         
-        let date = Date(timeIntervalSince1970: TimeInterval(timeAsSeconds))
+        let date = Date(timeIntervalSince1970: TimeInterval(timeAsSeconds ?? 0))
         
         dateFormatter.dateFormat = MomentDateFormat.day.rawValue
         
