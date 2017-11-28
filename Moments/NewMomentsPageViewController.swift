@@ -348,6 +348,7 @@
                 let hud = MomentHud.showHUD(vc: self.view)
                 
                 hud.label.text = "Moment deleted successfully"
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {                _ = self.navigationController?.popViewController(animated: true) })
                 
             } ))
