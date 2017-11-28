@@ -13,7 +13,7 @@ class CloudSyncServices {
     
     static let privateDb = customContainer.privateCloudDatabase
     
-    static let customContainer = CKContainer(identifier: "iCloud.com.full.moments")
+    static let customContainer = CKContainer(identifier: "iCloud.com.fullCreative.Moments")
     
     static func addRecordToIColud(record: CKRecord){
         

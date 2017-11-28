@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -530,10 +529,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Indigo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUI-SJ-Vho">
-                                                    <rect key="frame" x="104" y="21" width="100" height="40"/>
+                                                    <rect key="frame" x="104" y="10" width="100" height="40"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="6zo-AP-rJ2"/>
-                                                        <constraint firstAttribute="height" constant="40" id="w2T-MF-H8f"/>
+                                                        <constraint firstAttribute="height" constant="40" id="f2m-m9-BcI"/>
+                                                        <constraint firstAttribute="width" constant="100" id="vlp-we-4dY"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -541,10 +540,10 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="eUI-SJ-Vho" firstAttribute="top" secondItem="qSD-wf-8Fz" secondAttribute="top" constant="10" id="7UY-h2-ozW"/>
                                                 <constraint firstItem="AUa-uR-b68" firstAttribute="top" secondItem="qSD-wf-8Fz" secondAttribute="top" constant="10" id="Bra-3N-LPe"/>
-                                                <constraint firstItem="eUI-SJ-Vho" firstAttribute="top" secondItem="qSD-wf-8Fz" secondAttribute="topMargin" constant="10" id="C3v-7k-lFB"/>
+                                                <constraint firstItem="eUI-SJ-Vho" firstAttribute="leading" secondItem="AUa-uR-b68" secondAttribute="trailing" constant="28" id="OvV-Tc-puH"/>
                                                 <constraint firstItem="AUa-uR-b68" firstAttribute="leading" secondItem="qSD-wf-8Fz" secondAttribute="leading" constant="36" id="S8z-R3-YJx"/>
-                                                <constraint firstItem="eUI-SJ-Vho" firstAttribute="leading" secondItem="AUa-uR-b68" secondAttribute="trailing" constant="28" id="nxe-7r-GYW"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

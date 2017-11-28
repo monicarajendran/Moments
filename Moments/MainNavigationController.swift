@@ -14,16 +14,16 @@ class MainNavigationController: UINavigationController {
         super.viewDidLoad()
         
         if UserDefaults.standard.bool(forKey: "firstRun") == false {
-            
+
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let homeViewController = mainStoryboard.instantiateViewController(withIdentifier:"LoadingViewController") as! LoadingViewController
             let rootView = UINavigationController(rootViewController: homeViewController)
-            
+
             if let window = appDelegate.window {
-                
+
                 window.rootViewController = rootView
-                
+
             }
         }
     }
