@@ -130,7 +130,7 @@
         datePicker?.show()
 
     }
- 
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         if textField == self.momentNameTextFeild {
@@ -148,7 +148,6 @@
         
         return true
     }
-    
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         view.endEditing(true)
     }

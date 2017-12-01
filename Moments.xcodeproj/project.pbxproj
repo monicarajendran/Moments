@@ -20,6 +20,9 @@
 		CE56F1581F88EBD900CEE704 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE56F1571F88EBD900CEE704 /* Assets.xcassets */; };
 		CE56F15B1F88EBD900CEE704 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE56F1591F88EBD900CEE704 /* LaunchScreen.storyboard */; };
 		CE57A71E1F8AF07200585633 /* momentsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57A71D1F8AF07200585633 /* momentsEntity.swift */; };
+		CE58A29A1FCEE38700FD336B /* PasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58A2991FCEE38700FD336B /* PasscodeViewController.swift */; };
+		CE58A29C1FCEF76D00FD336B /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58A29B1FCEF76D00FD336B /* LaunchViewController.swift */; };
+		CE58A29E1FCEFB8A00FD336B /* MomentPasscodeMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58A29D1FCEFB8A00FD336B /* MomentPasscodeMode.swift */; };
 		CE5C5E5F1F9F543000CE6EB4 /* MomentsTimeLinePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C5E5E1F9F543000CE6EB4 /* MomentsTimeLinePage.swift */; };
 		CE618CC11FB9A29F0010171F /* FeedBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE618CC01FB9A29F0010171F /* FeedBackViewController.swift */; };
 		CE65F0F11FBAC29D00FAA2FC /* FeedbackAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE65F0F01FBAC29D00FAA2FC /* FeedbackAPI.swift */; };
@@ -27,6 +30,8 @@
 		CE8C4B231FB1E64200F5A437 /* MomentColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8C4B221FB1E64200F5A437 /* MomentColors.swift */; };
 		CE8F26E31FAB578200E71417 /* ColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F26E21FAB578200E71417 /* ColorsViewController.swift */; };
 		CE8F26E51FAB582C00E71417 /* ColorsPageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F26E41FAB582C00E71417 /* ColorsPageExtension.swift */; };
+		CE90F7A31FCFC93D00100F28 /* SHA1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90F7A21FCFC93C00100F28 /* SHA1.swift */; };
+		CE90F7A51FCFEB1300100F28 /* PasscodeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90F7A41FCFEB1300100F28 /* PasscodeSettingsViewController.swift */; };
 		CE91EDAB1FB561D700CF6747 /* MomentMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91EDAA1FB561D700CF6747 /* MomentMode.swift */; };
 		CE91EDAD1FB5679000CF6747 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91EDAC1FB5679000CF6747 /* UIColor.swift */; };
 		CE9DF7051F9AF9260016153E /* MomentsDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9DF7041F9AF9260016153E /* MomentsDetailPage.swift */; };
@@ -57,6 +62,9 @@
 		CE56F15A1F88EBD900CEE704 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE56F15C1F88EBD900CEE704 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE57A71D1F8AF07200585633 /* momentsEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = momentsEntity.swift; sourceTree = "<group>"; };
+		CE58A2991FCEE38700FD336B /* PasscodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeViewController.swift; sourceTree = "<group>"; };
+		CE58A29B1FCEF76D00FD336B /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		CE58A29D1FCEFB8A00FD336B /* MomentPasscodeMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentPasscodeMode.swift; sourceTree = "<group>"; };
 		CE5C5E5E1F9F543000CE6EB4 /* MomentsTimeLinePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentsTimeLinePage.swift; sourceTree = "<group>"; };
 		CE618CC01FB9A29F0010171F /* FeedBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedBackViewController.swift; sourceTree = "<group>"; };
 		CE65F0F01FBAC29D00FAA2FC /* FeedbackAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackAPI.swift; sourceTree = "<group>"; };
@@ -64,6 +72,8 @@
 		CE8C4B221FB1E64200F5A437 /* MomentColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentColors.swift; sourceTree = "<group>"; };
 		CE8F26E21FAB578200E71417 /* ColorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsViewController.swift; sourceTree = "<group>"; };
 		CE8F26E41FAB582C00E71417 /* ColorsPageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsPageExtension.swift; sourceTree = "<group>"; };
+		CE90F7A21FCFC93C00100F28 /* SHA1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SHA1.swift; path = "../../../../Downloads/sha1-swift-master/SHA1.swift"; sourceTree = "<group>"; };
+		CE90F7A41FCFEB1300100F28 /* PasscodeSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeSettingsViewController.swift; sourceTree = "<group>"; };
 		CE91EDAA1FB561D700CF6747 /* MomentMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentMode.swift; sourceTree = "<group>"; };
 		CE91EDAC1FB5679000CF6747 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		CE9DF7041F9AF9260016153E /* MomentsDetailPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentsDetailPage.swift; sourceTree = "<group>"; };
@@ -149,6 +159,7 @@
 		CE9469301F8F2FF00091D315 /* TableViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CE90F7A41FCFEB1300100F28 /* PasscodeSettingsViewController.swift */,
 				CEA8346C1FAC51530017933B /* MomentsTableViewCell.swift */,
 				CEA3E0D41FA9E70600F4D8A3 /* NewMomentsPageViewController.swift */,
 				CE8F26E21FAB578200E71417 /* ColorsViewController.swift */,
@@ -161,6 +172,7 @@
 		CE998C8C1F9DBE4E00FBF050 /* Main files */ = {
 			isa = PBXGroup;
 			children = (
+				CE90F7A21FCFC93C00100F28 /* SHA1.swift */,
 				CE1A149E1FC46FB30015CC91 /* MainNavigationController.swift */,
 				CE9F477D1F8CBD190070704C /* TabBar.swift */,
 			);
@@ -186,6 +198,7 @@
 		CE9F477F1F8CC7C50070704C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CE58A29D1FCEFB8A00FD336B /* MomentPasscodeMode.swift */,
 				CE43495D1FBEEFF000775B0C /* MomentHud.swift */,
 				CE25E9E01FBED73A00F96AA3 /* MomentDateFormat.swift */,
 				CE8C4B221FB1E64200F5A437 /* MomentColors.swift */,
@@ -201,6 +214,8 @@
 		CE9F47811F8CC80B0070704C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CE58A29B1FCEF76D00FD336B /* LaunchViewController.swift */,
+				CE58A2991FCEE38700FD336B /* PasscodeViewController.swift */,
 				CE4D35121FC2FFB10083E4F1 /* LoadingViewController.swift */,
 				CE618CC01FB9A29F0010171F /* FeedBackViewController.swift */,
 				CE9DF7041F9AF9260016153E /* MomentsDetailPage.swift */,
@@ -368,6 +383,7 @@
 				CE8F26E51FAB582C00E71417 /* ColorsPageExtension.swift in Sources */,
 				CEA33A671FA4300D0032E0E8 /* MomentICloud.swift in Sources */,
 				CE5C5E5F1F9F543000CE6EB4 /* MomentsTimeLinePage.swift in Sources */,
+				CE58A29C1FCEF76D00FD336B /* LaunchViewController.swift in Sources */,
 				CE57A71E1F8AF07200585633 /* momentsEntity.swift in Sources */,
 				CE91EDAD1FB5679000CF6747 /* UIColor.swift in Sources */,
 				CE8C4B231FB1E64200F5A437 /* MomentColors.swift in Sources */,
@@ -378,9 +394,13 @@
 				CE1A149F1FC46FB30015CC91 /* MainNavigationController.swift in Sources */,
 				CE91EDAB1FB561D700CF6747 /* MomentMode.swift in Sources */,
 				CEA8346D1FAC51530017933B /* MomentsTableViewCell.swift in Sources */,
+				CE58A29E1FCEFB8A00FD336B /* MomentPasscodeMode.swift in Sources */,
 				CE56F14E1F88EBD900CEE704 /* AppDelegate.swift in Sources */,
 				CE9F477E1F8CBD190070704C /* TabBar.swift in Sources */,
 				CE4D35131FC2FFB10083E4F1 /* LoadingViewController.swift in Sources */,
+				CE90F7A31FCFC93D00100F28 /* SHA1.swift in Sources */,
+				CE58A29A1FCEE38700FD336B /* PasscodeViewController.swift in Sources */,
+				CE90F7A51FCFEB1300100F28 /* PasscodeSettingsViewController.swift in Sources */,
 				CEA3E0D51FA9E70600F4D8A3 /* NewMomentsPageViewController.swift in Sources */,
 				CE43495E1FBEEFF000775B0C /* MomentHud.swift in Sources */,
 			);

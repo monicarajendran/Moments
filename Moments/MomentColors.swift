@@ -22,6 +22,7 @@ enum MomentColors : String {
     case lime = "AFB42B"
     case orange = "EF6C00"
     case gray = "AEAEAE"
+    case green = "32D375"
     
     static let allCases = [red,blue,pink,indigo,teal,cyan,pestoGreen,purple,lime,orange,gray]
     

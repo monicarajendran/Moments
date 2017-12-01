@@ -79,7 +79,7 @@ class FeedBackService {
         
         let feedbackParameter = "\(text)<br><br>-------------Application Info -------------<br>Application version: \(appVersion)<br><br>------------- Device Info -------------<br>Device ID: \(deviceId)<br>Device Name: \(deviceName)<br>Device Model: \(deviceModal)<br>DeviceOs Version: \(deviceOSVersion)"
         
-        let feedBack: [String: String] = ["tag": "feedBack", "loopKey": "agtzfmxvb3BhYmFja3IRCxIETG9vcBiAgKCBz82QCgw","card_title": "IOS Full Learn Feedback","card_desc": feedbackParameter]
+        let feedBack: [String: String] = ["tag": "feedBack", "loopKey": "agtzfmxvb3BhYmFja3IRCxIETG9vcBiAgKCBz82QCgw","card_title": "IOS Full Moments Feedback","card_desc": feedbackParameter]
         
         return feedBack
         
