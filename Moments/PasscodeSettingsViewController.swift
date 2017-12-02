@@ -14,9 +14,10 @@ class PasscodeSettingsViewController: UITableViewController {
         super.viewDidLoad()
     }
     override func viewWillAppear(_ animated: Bool) {
+        
         title = "TouchID & Passcode"
-        changePasscode.isEnabled = false
         passcodeCheck()
+        
     }
     
     @IBOutlet weak var passcode: UISwitch!
@@ -31,27 +32,33 @@ class PasscodeSettingsViewController: UITableViewController {
     
             passcode.isOn = true
             touchID.isOn = true
-            
-            changePasscode.isEnabled = true
-            
+            touchID.isEnabled = true
             UserDefaults.standard.set(true, forKey: "touchEnabled")
+            tableView.cellForRow(at: [2,0])?.isHidden = false
+
         }
         else{
+            
             touchID.isOn = false
+            touchID.isEnabled = false
             passcode.isOn = false
+            tableView.cellForRow(at: [2,0])?.isHidden = true
         }
     }
     
     @IBAction func passcodeSwitch(_ sender: UISwitch) {
     
     if sender.isOn {
+        
             passcodeCheck()
             guard let passcodeVc = storyboard?.instantiateViewController(withIdentifier: "PasscodeViewController") else { return }
             navigationController?.pushViewController(passcodeVc, animated: true)
         }
         
     else{
+        
         touchID.isOn = false
+        tableView.cellForRow(at: [2,0])?.isHidden = true
         UserDefaults.standard.removeObject(forKey: "passcodeEnabled")
         
         }
@@ -60,21 +67,43 @@ class PasscodeSettingsViewController: UITableViewController {
     @IBAction func touchIDSwitch(_ sender: UISwitch) {
         
     if touchID.isOn {
+        
             UserDefaults.standard.set(true, forKey: "touchEnabled")
             UserDefaults.standard.synchronize()
             
         }
         else{
+        
             UserDefaults.standard.removeObject(forKey: "touchEnabled")
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+     return 44.0
+    }
+
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        if indexPath == [2,0]{
+            
+        if !UserDefaults.standard.bool(forKey: "passcodeEnabled"){
+            cell.isHidden = true
+            }
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath == [2,0] {
+            
             guard let passcodeVc = self.storyboard?.instantiateViewController(withIdentifier: "PasscodeViewController") else {
                 return }
             self.navigationController?.pushViewController(passcodeVc, animated: true)
         }
     }
 }
+
+
+
+
+

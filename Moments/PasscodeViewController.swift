@@ -20,11 +20,13 @@ class PasscodeViewController: UIViewController {
     var mode = MomentPasscode.setPAsscode.rawValue
     
     var setPasscode = ""
+    
     var arrayOfTextFields : [UITextField] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Passcode Lock"
+        
         passcodeSubHeading.alpha = 0.6
         
         arrayOfTextFields = [textField1,textField2,textField3,textField4]
@@ -54,11 +56,11 @@ class PasscodeViewController: UIViewController {
             case textField2:
                 textField3.becomeFirstResponder()
                 textField2.backgroundColor = UIColor(hexString: MomentColors.blue.rawValue)
-
+                
             case textField3:
                 textField4.becomeFirstResponder()
                 textField3.backgroundColor = UIColor(hexString: MomentColors.blue.rawValue)
-
+                
             case textField4:
                 textField4.backgroundColor = UIColor(hexString: MomentColors.blue.rawValue)
                 textField4.resignFirstResponder()
@@ -73,21 +75,21 @@ class PasscodeViewController: UIViewController {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                         
                         self.passcodeSubHeading.text = "Confirm Passcode"
-
+                        
                         for textFields in self.arrayOfTextFields {
                             textFields.text = nil
                             textFields.backgroundColor = .white
                             self.textField1.becomeFirstResponder()
-
+                            
                         }
                     })
-                
-                mode = MomentPasscode.confirmPasscode.rawValue
                     
-                print("setpasscode",setPasscode)
-                
+                    mode = MomentPasscode.confirmPasscode.rawValue
+                    
+                    print("setpasscode",setPasscode)
+                    
                 }
-                 
+                    
                     // confirm mode
                 else {
                     
@@ -109,15 +111,18 @@ class PasscodeViewController: UIViewController {
                         UserDefaults.standard.set(hashPasscode, forKey: "hashPasscode")
                         
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-
+                            
                             self.navigationController?.popViewController(animated: true)})
                     }
                         
                     else {
+                        
                         UserDefaults.standard.removeObject(forKey: "passcodeEnabled")
                         for textFields in self.arrayOfTextFields {
                             textFields.backgroundColor = UIColor(hexString: MomentColors.red.rawValue)
+                            
                         }
+                        
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                             for textFields in self.arrayOfTextFields {
                                 textFields.text = nil

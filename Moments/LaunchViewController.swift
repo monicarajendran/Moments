@@ -9,34 +9,39 @@
 import UIKit
 import LocalAuthentication
 
+protocol AppTextfieldDelegate: class {
+    func backspacePressed()
+}
 
-class LaunchViewController: UIViewController , UITextFieldDelegate , UIKeyInput  {
-    var hasText: Bool = true
+class AppTextfield: UITextField {
     
-    func insertText(_ text: String) {
+    weak var textfiledDelegate: AppTextfieldDelegate?
+    
+    override func deleteBackward() {
         
+        textfiledDelegate?.backspacePressed()
+        super.deleteBackward()
     }
-    
-    
+}
+
+
+class LaunchViewController: UIViewController, UITextFieldDelegate, AppTextfieldDelegate  {
+
     @IBOutlet weak var textField1: UITextField!
-    @IBOutlet weak var textField2: UITextField!
-    @IBOutlet weak var textField3: UITextField!
-    @IBOutlet weak var textField4: UITextField!
+    @IBOutlet weak var textField2: AppTextfield!
+    @IBOutlet weak var textField3: AppTextfield!
+    @IBOutlet weak var textField4: AppTextfield!
     
     var arrayOfTextFields : [UITextField] = []
-    
-    func deleteBackward() {
-        
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupDelegates()
+        
         navigationController?.setNavigationBarHidden(true, animated: true)
         
         arrayOfTextFields = [textField1,textField2,textField3,textField4]
-        
-        textField1.becomeFirstResponder()
         
         for textFields in arrayOfTextFields {
             textFields.addTarget(self, action: #selector(textfieldDidChange(textFeild:)), for: .editingChanged)
@@ -46,6 +51,17 @@ class LaunchViewController: UIViewController , UITextFieldDelegate , UIKeyInput 
             textField1.resignFirstResponder()
             authenticationWithTouchID()
         }
+        else{
+            
+            textField1.becomeFirstResponder()
+        }
+    }
+    
+    func setupDelegates() {
+        
+        self.textField2.textfiledDelegate = self
+        self.textField3.textfiledDelegate = self
+        self.textField4.textfiledDelegate = self
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -114,15 +130,23 @@ class LaunchViewController: UIViewController , UITextFieldDelegate , UIKeyInput 
         }
     }
     
+    
+    func backspacePressed() {
+        
+        print("back button pressed")
+    }
+    
     func notifyUser(title: String , message: String){
         
         DispatchQueue.main.async {
             
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
             
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in        self.textField1.becomeFirstResponder()
+}))
             
             self.present(alert, animated: true, completion: nil)
+
         }
     }
     
@@ -148,7 +172,7 @@ class LaunchViewController: UIViewController , UITextFieldDelegate , UIKeyInput 
             default:
                 print("default case ")
             }
-            textField1.becomeFirstResponder()
+
             return
         }
         
@@ -193,8 +217,6 @@ class LaunchViewController: UIViewController , UITextFieldDelegate , UIKeyInput 
             }
         })
         //}
-        
-        textField1.becomeFirstResponder()
     }
 }
 

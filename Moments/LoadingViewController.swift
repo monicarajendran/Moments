@@ -24,6 +24,7 @@ class LoadingViewController: UIViewController {
         
     }
     
+    
     func fetchICloudRecord(){
         
         CloudSyncServices.fetchAllMomentsWithCursor(batch: { (bathMomentRec , error) in
@@ -46,7 +47,7 @@ class LoadingViewController: UIViewController {
             }
         }
          else {
-                let alert = UIAlertController(title: "Error", message: "Signin With ICloud", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Error", message: "Sign In iCloud", preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 
