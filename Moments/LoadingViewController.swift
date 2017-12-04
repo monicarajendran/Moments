@@ -17,14 +17,11 @@ class LoadingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        activityIndicator.startAnimating()
         navigationController?.setNavigationBarHidden(true, animated: false)
-     
+        activityIndicator.startAnimating()
         fetchICloudRecord()
-        
     }
-    
-    
+
     func fetchICloudRecord(){
         
         CloudSyncServices.fetchAllMomentsWithCursor(batch: { (bathMomentRec , error) in

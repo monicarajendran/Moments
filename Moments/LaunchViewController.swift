@@ -15,11 +15,11 @@ protocol AppTextfieldDelegate: class {
 
 class AppTextfield: UITextField {
     
-    weak var textfiledDelegate: AppTextfieldDelegate?
+    var textfieldDelegate: AppTextfieldDelegate?
     
     override func deleteBackward() {
         
-        textfiledDelegate?.backspacePressed()
+        textfieldDelegate?.backspacePressed()
         super.deleteBackward()
     }
 }
@@ -33,6 +33,7 @@ class LaunchViewController: UIViewController, UITextFieldDelegate, AppTextfieldD
     @IBOutlet weak var textField4: AppTextfield!
     
     var arrayOfTextFields : [UITextField] = []
+    var activeTextField = UITextField()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +49,6 @@ class LaunchViewController: UIViewController, UITextFieldDelegate, AppTextfieldD
         }
         
         if UserDefaults.standard.bool(forKey: "touchEnabled"){
-            textField1.resignFirstResponder()
             authenticationWithTouchID()
         }
         else{
@@ -59,9 +59,9 @@ class LaunchViewController: UIViewController, UITextFieldDelegate, AppTextfieldD
     
     func setupDelegates() {
         
-        self.textField2.textfiledDelegate = self
-        self.textField3.textfiledDelegate = self
-        self.textField4.textfiledDelegate = self
+        self.textField2.textfieldDelegate = self
+        self.textField3.textfieldDelegate = self
+        self.textField4.textfieldDelegate = self
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -130,10 +130,22 @@ class LaunchViewController: UIViewController, UITextFieldDelegate, AppTextfieldD
         }
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.activeTextField = textField
+    }
     
     func backspacePressed() {
         
+        activeTextField.resignFirstResponder()
+        
+        let perviousTextField = view.viewWithTag(activeTextField.tag - 1) as? UITextField
+        
+        perviousTextField?.text = nil
+        perviousTextField?.backgroundColor = .white
+        perviousTextField?.becomeFirstResponder()
+        
         print("back button pressed")
+        
     }
     
     func notifyUser(title: String , message: String){
@@ -152,6 +164,8 @@ class LaunchViewController: UIViewController, UITextFieldDelegate, AppTextfieldD
     
     func authenticationWithTouchID(){
         
+        textField1.resignFirstResponder()
+
         let authenticationContext = LAContext()
         
         var error : NSError?
@@ -205,8 +219,12 @@ class LaunchViewController: UIViewController, UITextFieldDelegate, AppTextfieldD
                 case LAError.authenticationFailed?:
                     self.notifyUser(title: "Authenticaion failed", message: "Try Again?")
                     
+                case LAError.userFallback?:
+                    self.textField1.becomeFirstResponder()
+                    
                 case LAError.touchIDLockout?:
                     self.notifyUser(title: "Too many Failed attempts", message: "Use Passcode to unlock")
+                    
                 case LAError.touchIDNotEnrolled?:
                     self.notifyUser(title: "Fingerorint is not enrolled", message: "ok")
                     
