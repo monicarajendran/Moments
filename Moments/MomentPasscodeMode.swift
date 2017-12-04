@@ -12,4 +12,5 @@ enum MomentPasscode : String {
     case setPAsscode = "set"
     case confirmPasscode = "confirm"
     case enterPasscode = "enter"
+    case reviewPasscode = "review"
 }

@@ -214,11 +214,11 @@
 		CE9F47811F8CC80B0070704C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CE4D35121FC2FFB10083E4F1 /* LoadingViewController.swift */,
 				CE58A29B1FCEF76D00FD336B /* LaunchViewController.swift */,
 				CE58A2991FCEE38700FD336B /* PasscodeViewController.swift */,
-				CE4D35121FC2FFB10083E4F1 /* LoadingViewController.swift */,
-				CE618CC01FB9A29F0010171F /* FeedBackViewController.swift */,
 				CE9DF7041F9AF9260016153E /* MomentsDetailPage.swift */,
+				CE618CC01FB9A29F0010171F /* FeedBackViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";

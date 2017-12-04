@@ -17,13 +17,11 @@ class LoadingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        activityIndicator.startAnimating()
         navigationController?.setNavigationBarHidden(true, animated: false)
-     
+        activityIndicator.startAnimating()
         fetchICloudRecord()
-        
     }
-    
+
     func fetchICloudRecord(){
         
         CloudSyncServices.fetchAllMomentsWithCursor(batch: { (bathMomentRec , error) in
@@ -46,7 +44,7 @@ class LoadingViewController: UIViewController {
             }
         }
          else {
-                let alert = UIAlertController(title: "Error", message: "Signin With ICloud", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Error", message: "Sign In iCloud", preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 

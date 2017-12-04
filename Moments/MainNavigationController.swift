@@ -13,7 +13,7 @@ class MainNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if UserDefaults.standard.bool(forKey: "firstRun") == false {
+        if !UserDefaults.standard.bool(forKey: "firstRun") {
             setRootviewController(indentifier: "LoadingViewController")
         }
         else if UserDefaults.standard.bool(forKey: "passcodeEnabled") {
@@ -36,8 +36,7 @@ class MainNavigationController: UINavigationController {
                 
                 window.rootViewController = rootView
                 
-            }
+        }
     }
-    
 }
 

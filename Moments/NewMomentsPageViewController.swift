@@ -166,7 +166,7 @@
         
         moment.name = momentNameTextFeild.text
         
-        moment.desc = momentDescTextFeild.text
+        moment.desc = momentDescTextFeild.text ?? " "
         
         let seconds = momentDate.timeIntervalSince1970//self.datePicker.date.timeIntervalSince1970
         
@@ -212,7 +212,7 @@
     
     func  createMoment(sender: UIBarButtonItem) {
         
-        guard let momentName = momentNameTextFeild.text , let momentDesc = momentDescTextFeild.text ,!momentName.isEmpty , !momentDesc.isEmpty  else {
+        guard let momentName = momentNameTextFeild.text , !momentName.isEmpty   else {
             
             alertMessage("All Fields Required")
 
@@ -293,6 +293,9 @@
     
     func close (){
         
+        momentNameTextFeild.resignFirstResponder()
+        momentDescTextFeild.resignFirstResponder()
+        
             if MomentMode.create.rawValue == self.mode {
                 
                 self.dismiss(animated: true, completion: nil)
@@ -300,6 +303,7 @@
             else {
                 _ = self.navigationController?.popViewController(animated: true)
             }
+        
     }
    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
