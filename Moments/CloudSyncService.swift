@@ -34,44 +34,6 @@ class CloudSyncServices {
     
     typealias batchHandler  = (_ momentRec : [CKRecord] , _ error : Error?) -> Void
     
-    // do (batch { save to core data }, comption : { move to next view })
-    // func do cursor = nil, batchHandler, competionHandler
-    /*
-     
-     let queryOps
-     let records = []
-     
-     if curosr  {
-        query = query(cursor)
-     }else {
-     query = Moment query
-     
-     }
-     
-     query set limit
-     
-     query fetch block {
-     
-      record add to records
-     }
-     
-     query completion block {
-     
-        call batch handler ()
-     
-        reset records
-     
-        if cursor = nil {
-            call completion
-     }else {
-        call same method
-     }
-     
-     // run in icloud
-     }
-     
-     */
-
     static func fetchAllMomentsWithCursor(cursor : CKQueryCursor? = nil , batch :@escaping batchHandler, completion: @escaping completionHandler){
         
         var queryOperation : CKQueryOperation

@@ -38,6 +38,7 @@
 		CE9F477A1F8CA0DE0070704C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CE9F47791F8CA0DE0070704C /* .gitignore */; };
 		CE9F477E1F8CBD190070704C /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F477D1F8CBD190070704C /* TabBar.swift */; };
 		CE9F47831F8CDA210070704C /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F47821F8CDA210070704C /* SettingsPage.swift */; };
+		CEA272ED1FE4D5D00071937E /* ActionSheetDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA272EC1FE4D5D00071937E /* ActionSheetDatePicker.swift */; };
 		CEA33A671FA4300D0032E0E8 /* MomentICloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA33A661FA4300D0032E0E8 /* MomentICloud.swift */; };
 		CEA3E0D51FA9E70600F4D8A3 /* NewMomentsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA3E0D41FA9E70600F4D8A3 /* NewMomentsPageViewController.swift */; };
 		CEA8346D1FAC51530017933B /* MomentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA8346C1FAC51530017933B /* MomentsTableViewCell.swift */; };
@@ -80,6 +81,7 @@
 		CE9F47791F8CA0DE0070704C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 		CE9F477D1F8CBD190070704C /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		CE9F47821F8CDA210070704C /* SettingsPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
+		CEA272EC1FE4D5D00071937E /* ActionSheetDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetDatePicker.swift; sourceTree = "<group>"; };
 		CEA33A661FA4300D0032E0E8 /* MomentICloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentICloud.swift; sourceTree = "<group>"; };
 		CEA3E0D41FA9E70600F4D8A3 /* NewMomentsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMomentsPageViewController.swift; sourceTree = "<group>"; };
 		CEA8346C1FAC51530017933B /* MomentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentsTableViewCell.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 		CE998C8C1F9DBE4E00FBF050 /* Main files */ = {
 			isa = PBXGroup;
 			children = (
+				CE56F1511F88EBD900CEE704 /* Main.storyboard */,
 				CE90F7A21FCFC93C00100F28 /* SHA1.swift */,
 				CE1A149E1FC46FB30015CC91 /* MainNavigationController.swift */,
 				CE9F477D1F8CBD190070704C /* TabBar.swift */,
@@ -186,7 +189,6 @@
 				CE56F15C1F88EBD900CEE704 /* Info.plist */,
 				CE476B5D1FCD332C007AA3BD /* GoogleService-Info.plist */,
 				CE56F14D1F88EBD900CEE704 /* AppDelegate.swift */,
-				CE56F1511F88EBD900CEE704 /* Main.storyboard */,
 				CE56F1571F88EBD900CEE704 /* Assets.xcassets */,
 				CE56F1591F88EBD900CEE704 /* LaunchScreen.storyboard */,
 				CE56F1541F88EBD900CEE704 /* Moments.xcdatamodeld */,
@@ -198,6 +200,7 @@
 		CE9F477F1F8CC7C50070704C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CEA272EC1FE4D5D00071937E /* ActionSheetDatePicker.swift */,
 				CE58A29D1FCEFB8A00FD336B /* MomentPasscodeMode.swift */,
 				CE43495D1FBEEFF000775B0C /* MomentHud.swift */,
 				CE25E9E01FBED73A00F96AA3 /* MomentDateFormat.swift */,
@@ -316,9 +319,12 @@
 				"${BUILT_PRODUCTS_DIR}/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlecrimCoreData/AlecrimCoreData.framework",
+				"${BUILT_PRODUCTS_DIR}/FullFeedback/FullFeedback.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/TransitionableTab/TransitionableTab.framework",
+				"${BUILT_PRODUCTS_DIR}/WWCalendarTimeSelector/WWCalendarTimeSelector.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -326,9 +332,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActionSheetPicker_3_0.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlecrimCoreData.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FullFeedback.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionableTab.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WWCalendarTimeSelector.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,6 +398,7 @@
 				CE8C4B231FB1E64200F5A437 /* MomentColors.swift in Sources */,
 				CE9DF7051F9AF9260016153E /* MomentsDetailPage.swift in Sources */,
 				CE29E2971FA3485C001647E7 /* CloudSyncService.swift in Sources */,
+				CEA272ED1FE4D5D00071937E /* ActionSheetDatePicker.swift in Sources */,
 				CE9F47831F8CDA210070704C /* SettingsPage.swift in Sources */,
 				CE8F26E31FAB578200E71417 /* ColorsViewController.swift in Sources */,
 				CE1A149F1FC46FB30015CC91 /* MainNavigationController.swift in Sources */,
