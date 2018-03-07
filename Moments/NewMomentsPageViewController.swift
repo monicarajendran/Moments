@@ -39,7 +39,8 @@
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let Identifier = UIDevice.current.identifierForVendor?.uuidString
+        print(Identifier)
         momentColorLabel.layer.cornerRadius = momentColorLabel.frame.size.width / 2
         
         //hides the navigation bar hairline

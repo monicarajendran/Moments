@@ -54,6 +54,8 @@
 		CE43495D1FBEEFF000775B0C /* MomentHud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentHud.swift; path = ../MomentHud.swift; sourceTree = "<group>"; };
 		CE43EED81FA05C5E000C0AC9 /* Moments.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Moments.entitlements; sourceTree = "<group>"; };
 		CE476B5D1FCD332C007AA3BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CE4C690B2011EC2D0039373F /* MomentsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentsTests.swift; sourceTree = "<group>"; };
+		CE4C690D2011EC2D0039373F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE4D35121FC2FFB10083E4F1 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		CE56F14A1F88EBD900CEE704 /* Moments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moments.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE56F14D1F88EBD900CEE704 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -127,10 +129,20 @@
 			name = "Service Classes";
 			sourceTree = "<group>";
 		};
+		CE4C690A2011EC2D0039373F /* MomentsTests */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C690B2011EC2D0039373F /* MomentsTests.swift */,
+				CE4C690D2011EC2D0039373F /* Info.plist */,
+			);
+			path = MomentsTests;
+			sourceTree = "<group>";
+		};
 		CE56F1411F88EBD900CEE704 = {
 			isa = PBXGroup;
 			children = (
 				CE56F14C1F88EBD900CEE704 /* Moments */,
+				CE4C690A2011EC2D0039373F /* MomentsTests */,
 				CE56F14B1F88EBD900CEE704 /* Products */,
 				B9F9C5919F31116FDF597B06 /* Pods */,
 				877684109052C4AABD5626D6 /* Frameworks */,
@@ -255,7 +267,7 @@
 		CE56F1421F88EBD900CEE704 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = user;
 				TargetAttributes = {
