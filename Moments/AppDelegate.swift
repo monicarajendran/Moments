@@ -12,6 +12,7 @@ import AlecrimCoreData
 import NVActivityIndicatorView
 import CloudKit
 import Firebase
+import UserNotifications
 
 let container = PersistentContainer(name: "Moments")
 
@@ -23,8 +24,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
+        localNotification()
         
         return true
+    }
+    
+    func localNotification(){
+        
+        let center = UNUserNotificationCenter.current()
+        let options : UNAuthorizationOptions = [.alert, .sound]
+        
+        if #available(iOS 10.0, *) { center.requestAuthorization(options: options) { (success, err) in
+            if !success {
+                print("User Denied Local Notification")
+            }
+            }
+        }
+        else {
+            center.getNotificationSettings(completionHandler: { (settings) in
+                if settings.authorizationStatus != .authorized {
+                    print("Local Notification is not enabled in settings")
+                }
+            })
+        }
+        
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {

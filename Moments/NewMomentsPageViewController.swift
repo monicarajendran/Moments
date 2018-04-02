@@ -11,10 +11,13 @@
  import ActionSheetPicker_3_0
  import MBProgressHUD
  import Firebase
+ import WWCalendarTimeSelector
+ import UserNotifications
  
- class NewMomentsPageViewController: UITableViewController , UITextFieldDelegate {
+ class NewMomentsPageViewController: UITableViewController , UITextFieldDelegate , WWCalendarTimeSelectorProtocol  {
     
-    @IBOutlet weak var chooseDate: UIButton!
+    
+    @IBOutlet weak var chooseDateTime: UILabel!
     
     @IBOutlet weak var momentNameTextFeild: UITextField!
     
@@ -30,17 +33,18 @@
     
     var selectedColor : MomentColors?
     
+    var datePicker: UIDatePicker!
+
     var momentDate = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let Identifier = UIDevice.current.identifierForVendor?.uuidString
+        print(Identifier)
         momentColorLabel.layer.cornerRadius = momentColorLabel.frame.size.width / 2
         
         //hides the navigation bar hairline
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-        
-        chooseDate.setTitle("Choose a Date", for: .normal)
         
         momentNameTextFeild.autocapitalizationType = .words
         
@@ -68,9 +72,9 @@
             
             momentDate = date
             
-            dateFormatter.dateFormat = MomentDateFormat.short.rawValue
+            dateFormatter.dateFormat = MomentDateFormat.dateTime.rawValue
             
-            chooseDate.setTitle(dateFormatter.string(from: date), for: .normal)
+            chooseDateTime.text = dateFormatter.string(from: date).lowercased()
             
             momentColorLabel.backgroundColor = UIColor(hexString: (createdMoment?.color) ?? "")
             
@@ -110,27 +114,29 @@
         return true
     }
     
-    @IBAction func chooseADate(_ sender: UIButton) {
+    func showCalenderTimer(){
         
-        let datePicker = ActionSheetDatePicker(title: "", datePickerMode: UIDatePickerMode.date, selectedDate: NSDate() as Date!, doneBlock: {
-            picker, value, index in
-            
-            self.navigationItem.rightBarButtonItem?.isEnabled = true
-
-            self.momentDate = value as! Date
-            
-            self.dateFormatter.dateFormat = MomentDateFormat.short.rawValue
-            
-            self.chooseDate.setTitle(self.dateFormatter.string(from: self.momentDate), for: .normal)
-            
-            return
-            
-        }, cancel: { ActionStringCancelBlock in return }, origin: (sender as UIButton).superview!.superview)
+        let selector = WWCalendarTimeSelector.instantiate()
         
-        datePicker?.show()
-
+        // 2. You can then set delegate, and any customization options
+        selector.delegate = self
+        selector.optionTopPanelTitle = "Choose date and time!"
+        
+        // 3. Then you simply present it from your view controller when necessary!
+        self.present(selector, animated: true, completion: nil)
+    }
+    
+    func WWCalendarTimeSelectorDone(_ selector: WWCalendarTimeSelector, date: Date) {
+        
+        self.view.endEditing(true)
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
+        //since time ref
+        self.momentDate = date
+        self.dateFormatter.dateFormat = MomentDateFormat.dateTime.rawValue
+        self.chooseDateTime.text = dateFormatter.string(from: momentDate).lowercased()
     }
 
+   
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         if textField == self.momentNameTextFeild {
@@ -142,10 +148,9 @@
             
             momentDescTextFeild.resignFirstResponder()
             
-            chooseADate(chooseDate)
+            showCalenderTimer()
             
         }
-        
         return true
     }
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -196,6 +201,8 @@
         
         moment.color = self.selectedColor?.rawValue
         
+        notificationAlert(moment: moment)
+        
         do {
             
             try container.viewContext.save()
@@ -219,7 +226,7 @@
             return
         }
         
-        guard   "Choose a Date" != chooseDate.currentTitle else {
+        guard  self.chooseDateTime.text != "Choose" else {
             alertMessage("Choose a Date")
             return
         }
@@ -312,6 +319,7 @@
             
         case (2,0):
             
+            showCalenderTimer()
             momentDescTextFeild.resignFirstResponder()
             momentNameTextFeild.resignFirstResponder()
             
@@ -370,5 +378,26 @@
         
         selectedColor = color
         
+    }
+    
+    func notificationAlert(moment: Moment){
+        
+        let content = UNMutableNotificationContent()
+        content.title = moment.name ?? ""
+        content.body = moment.desc ?? ""
+        content.sound = .default()
+        
+        let notifyDate = Date(timeIntervalSince1970: TimeInterval(moment.momentTime - 60))
+        let triggerDate = Calendar.current.dateComponents([.year,.month,.day, .hour,.minute,.second], from: notifyDate)
+        let tiggerNotification = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+        
+        let identifier = "UYLLocalNotification"
+        let request = UNNotificationRequest(identifier: identifier,
+                                            content: content, trigger: tiggerNotification)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: { (err) in
+            if let err = err {
+                print("Unable to Add Notification Request \(err), \(err.localizedDescription)")
+            }
+        })
     }
  }

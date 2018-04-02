@@ -274,30 +274,29 @@
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SyD-eJ-fbb">
-                                                    <rect key="frame" x="0.0" y="0.0" width="42.5" height="44"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Date &amp; Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SyD-eJ-fbb">
+                                                    <rect key="frame" x="0.0" y="0.0" width="98" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uUn-tK-67V">
-                                                    <rect key="frame" x="141" y="0.0" width="200" height="44"/>
-                                                    <state key="normal" title="Choose a Date">
-                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="chooseADate:" destination="lPd-bW-Lrn" eventType="touchUpInside" id="vLM-mR-Bcg"/>
-                                                    </connections>
-                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2aG-Wp-Gy1">
+                                                    <rect key="frame" x="191" y="0.0" width="150" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="150" id="aUv-4F-hnl"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="uUn-tK-67V" secondAttribute="bottom" id="Si3-ez-C9v"/>
+                                                <constraint firstAttribute="bottom" secondItem="2aG-Wp-Gy1" secondAttribute="bottom" id="2km-pT-FHV"/>
+                                                <constraint firstItem="2aG-Wp-Gy1" firstAttribute="top" secondItem="ZCh-Oa-QWJ" secondAttribute="top" id="Nxd-tN-jWH"/>
                                                 <constraint firstAttribute="bottom" secondItem="SyD-eJ-fbb" secondAttribute="bottom" id="YhH-0D-gsW"/>
+                                                <constraint firstAttribute="trailing" secondItem="2aG-Wp-Gy1" secondAttribute="trailing" id="Yrl-yq-P1N"/>
                                                 <constraint firstItem="SyD-eJ-fbb" firstAttribute="top" secondItem="ZCh-Oa-QWJ" secondAttribute="top" id="ZHV-jb-Ntv"/>
-                                                <constraint firstItem="uUn-tK-67V" firstAttribute="top" secondItem="ZCh-Oa-QWJ" secondAttribute="top" id="doX-yW-ST2"/>
-                                                <constraint firstAttribute="trailing" secondItem="uUn-tK-67V" secondAttribute="trailing" id="gqd-Wd-bZX"/>
                                                 <constraint firstItem="SyD-eJ-fbb" firstAttribute="leading" secondItem="ZCh-Oa-QWJ" secondAttribute="leading" id="omp-JX-kjY"/>
-                                                <constraint firstItem="uUn-tK-67V" firstAttribute="leading" secondItem="SyD-eJ-fbb" secondAttribute="trailing" constant="98.5" id="u29-eB-SZ5"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -379,7 +378,7 @@
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="chooseDate" destination="uUn-tK-67V" id="Nsx-AZ-GEI"/>
+                        <outlet property="chooseDateTime" destination="2aG-Wp-Gy1" id="tKE-wm-4TO"/>
                         <outlet property="momentColorLabel" destination="bde-dh-Dhe" id="Xz9-b2-sQC"/>
                         <outlet property="momentDescTextFeild" destination="Edh-Rt-qRI" id="pO6-wo-N1G"/>
                         <outlet property="momentNameTextFeild" destination="QhO-lC-nBL" id="Iqf-Gq-pzf"/>
