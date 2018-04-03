@@ -21,6 +21,8 @@ class MomentsDetailPage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UIApplication.shared.statusBarStyle = .default
+
         navigationController?.navigationBar.tintColor = UIColor.white
         
         self.tabBarController?.tabBar.isHidden = true

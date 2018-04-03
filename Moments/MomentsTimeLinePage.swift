@@ -68,6 +68,8 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        UIApplication.shared.statusBarStyle = .default
+
         self.navigationController?.navigationBar.topItem?.title = "Moments"
         noResultsFound.isHidden = true
         
@@ -158,18 +160,24 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
     }
     
     @IBAction func addMomentsButton(_ sender: UIBarButtonItem) {
+      
+        ////-------> Old 
+//        guard let newMomentsPage = storyboard?.instantiateViewController(withIdentifier: "NewMomentsPageViewController") as? NewMomentsPageViewController
+//            
+//            else{
+//                return
+//        }
+//        
+//        newMomentsPage.mode = MomentMode.create.rawValue
+//        
+//        let navController = UINavigationController(rootViewController: newMomentsPage)
+//        
+//        self.present(navController, animated:true, completion: nil)
         
-        guard let newMomentsPage = storyboard?.instantiateViewController(withIdentifier: "NewMomentsPageViewController") as? NewMomentsPageViewController
-            
-            else{
-                return
+        guard let createMomentsVC = R.storyboard.main.createMomentsViewController() else {
+            return
         }
-        
-        newMomentsPage.mode = MomentMode.create.rawValue
-        
-        let navController = UINavigationController(rootViewController: newMomentsPage)
-        
-        self.present(navController, animated:true, completion: nil)
+        self.present(createMomentsVC, animated: true, completion: nil)
         
     }
     

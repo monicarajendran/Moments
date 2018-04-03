@@ -30,7 +30,6 @@
 		CE8C4B231FB1E64200F5A437 /* MomentColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8C4B221FB1E64200F5A437 /* MomentColors.swift */; };
 		CE8F26E31FAB578200E71417 /* ColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F26E21FAB578200E71417 /* ColorsViewController.swift */; };
 		CE8F26E51FAB582C00E71417 /* ColorsPageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F26E41FAB582C00E71417 /* ColorsPageExtension.swift */; };
-		CE90F7A31FCFC93D00100F28 /* SHA1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90F7A21FCFC93C00100F28 /* SHA1.swift */; };
 		CE90F7A51FCFEB1300100F28 /* PasscodeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90F7A41FCFEB1300100F28 /* PasscodeSettingsViewController.swift */; };
 		CE91EDAB1FB561D700CF6747 /* MomentMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91EDAA1FB561D700CF6747 /* MomentMode.swift */; };
 		CE91EDAD1FB5679000CF6747 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91EDAC1FB5679000CF6747 /* UIColor.swift */; };
@@ -41,6 +40,9 @@
 		CEA33A671FA4300D0032E0E8 /* MomentICloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA33A661FA4300D0032E0E8 /* MomentICloud.swift */; };
 		CEA3E0D51FA9E70600F4D8A3 /* NewMomentsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA3E0D41FA9E70600F4D8A3 /* NewMomentsPageViewController.swift */; };
 		CEA8346D1FAC51530017933B /* MomentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA8346C1FAC51530017933B /* MomentsTableViewCell.swift */; };
+		DD575F7A207356E200710888 /* App Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD575F79207356E200710888 /* App Extension.swift */; };
+		DDA68D8F207215AF00F289BA /* CreateMomentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA68D8E207215AF00F289BA /* CreateMomentsViewController.swift */; };
+		DDA68D9320721CD900F289BA /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA68D9220721CD900F289BA /* R.generated.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,7 +74,6 @@
 		CE8C4B221FB1E64200F5A437 /* MomentColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentColors.swift; sourceTree = "<group>"; };
 		CE8F26E21FAB578200E71417 /* ColorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsViewController.swift; sourceTree = "<group>"; };
 		CE8F26E41FAB582C00E71417 /* ColorsPageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsPageExtension.swift; sourceTree = "<group>"; };
-		CE90F7A21FCFC93C00100F28 /* SHA1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SHA1.swift; path = "../../../../Downloads/sha1-swift-master/SHA1.swift"; sourceTree = "<group>"; };
 		CE90F7A41FCFEB1300100F28 /* PasscodeSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeSettingsViewController.swift; sourceTree = "<group>"; };
 		CE91EDAA1FB561D700CF6747 /* MomentMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentMode.swift; sourceTree = "<group>"; };
 		CE91EDAC1FB5679000CF6747 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -83,6 +84,9 @@
 		CEA33A661FA4300D0032E0E8 /* MomentICloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentICloud.swift; sourceTree = "<group>"; };
 		CEA3E0D41FA9E70600F4D8A3 /* NewMomentsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMomentsPageViewController.swift; sourceTree = "<group>"; };
 		CEA8346C1FAC51530017933B /* MomentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentsTableViewCell.swift; sourceTree = "<group>"; };
+		DD575F79207356E200710888 /* App Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Extension.swift"; sourceTree = "<group>"; };
+		DDA68D8E207215AF00F289BA /* CreateMomentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMomentsViewController.swift; sourceTree = "<group>"; };
+		DDA68D9220721CD900F289BA /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +150,8 @@
 		CE56F14C1F88EBD900CEE704 /* Moments */ = {
 			isa = PBXGroup;
 			children = (
+				DDA68D9120721C0E00F289BA /* Helpers */,
+				DDA68D8D207214D100F289BA /* New Design */,
 				CE29E2981FA34867001647E7 /* Service Classes */,
 				CE998C8D1F9DF4A000FBF050 /* Supporting Files  */,
 				CE998C8C1F9DBE4E00FBF050 /* Main files */,
@@ -172,7 +178,6 @@
 		CE998C8C1F9DBE4E00FBF050 /* Main files */ = {
 			isa = PBXGroup;
 			children = (
-				CE90F7A21FCFC93C00100F28 /* SHA1.swift */,
 				CE1A149E1FC46FB30015CC91 /* MainNavigationController.swift */,
 				CE9F477D1F8CBD190070704C /* TabBar.swift */,
 			);
@@ -223,6 +228,23 @@
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
+		DDA68D8D207214D100F289BA /* New Design */ = {
+			isa = PBXGroup;
+			children = (
+				DDA68D8E207215AF00F289BA /* CreateMomentsViewController.swift */,
+			);
+			name = "New Design";
+			sourceTree = "<group>";
+		};
+		DDA68D9120721C0E00F289BA /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DD575F79207356E200710888 /* App Extension.swift */,
+				DDA68D9220721CD900F289BA /* R.generated.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -236,6 +258,7 @@
 				CE56F1481F88EBD900CEE704 /* Resources */,
 				1807176C1D266AC66CCD4C68 /* [CP] Embed Pods Frameworks */,
 				19C088B0CAA5EF9F426C7CA0 /* [CP] Copy Pods Resources */,
+				DDA68D9020721B3900F289BA /* R.swift */,
 			);
 			buildRules = (
 			);
@@ -316,9 +339,12 @@
 				"${BUILT_PRODUCTS_DIR}/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlecrimCoreData/AlecrimCoreData.framework",
+				"${BUILT_PRODUCTS_DIR}/Apploader/Apploader.framework",
+				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -326,9 +352,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActionSheetPicker_3_0.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlecrimCoreData.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apploader.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,6 +398,20 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DDA68D9020721B3900F289BA /* R.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = R.swift;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/Moments\"";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -390,6 +433,9 @@
 				CE9DF7051F9AF9260016153E /* MomentsDetailPage.swift in Sources */,
 				CE29E2971FA3485C001647E7 /* CloudSyncService.swift in Sources */,
 				CE9F47831F8CDA210070704C /* SettingsPage.swift in Sources */,
+				DDA68D8F207215AF00F289BA /* CreateMomentsViewController.swift in Sources */,
+				DD575F7A207356E200710888 /* App Extension.swift in Sources */,
+				DDA68D9320721CD900F289BA /* R.generated.swift in Sources */,
 				CE8F26E31FAB578200E71417 /* ColorsViewController.swift in Sources */,
 				CE1A149F1FC46FB30015CC91 /* MainNavigationController.swift in Sources */,
 				CE91EDAB1FB561D700CF6747 /* MomentMode.swift in Sources */,
@@ -398,7 +444,6 @@
 				CE56F14E1F88EBD900CEE704 /* AppDelegate.swift in Sources */,
 				CE9F477E1F8CBD190070704C /* TabBar.swift in Sources */,
 				CE4D35131FC2FFB10083E4F1 /* LoadingViewController.swift in Sources */,
-				CE90F7A31FCFC93D00100F28 /* SHA1.swift in Sources */,
 				CE58A29A1FCEE38700FD336B /* PasscodeViewController.swift in Sources */,
 				CE90F7A51FCFEB1300100F28 /* PasscodeSettingsViewController.swift in Sources */,
 				CEA3E0D51FA9E70600F4D8A3 /* NewMomentsPageViewController.swift in Sources */,
@@ -555,7 +600,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fullCreative.Moments;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "fb827953-1736-40e4-a4f3-3679a77bdf9d";
+				PROVISIONING_PROFILE = "c73485b7-e9d1-49c2-8b94-04579b8cdeb3";
 				PROVISIONING_PROFILE_SPECIFIER = "FullMoments dis profile";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -164,12 +164,8 @@ class PasscodeViewController: UIViewController , UITextFieldDelegate , AppTextfi
                             textFields.backgroundColor = UIColor(hexString: MomentColors.green.rawValue)
                         }
                         
-                        guard let hashPasscode = SHA1.hexString(from: confirmPasscodeText) else {
-                            return
-                        }
-                        
                         UserDefaults.standard.set(true, forKey: "passcodeEnabled")
-                        UserDefaults.standard.set(hashPasscode, forKey: "hashPasscode")
+                        UserDefaults.standard.set(confirmPasscodeText.sha1(), forKey: "hashPasscode")
                         
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                             self.dismiss(animated: true, completion: nil)
@@ -189,7 +185,7 @@ class PasscodeViewController: UIViewController , UITextFieldDelegate , AppTextfi
                     
                     let passcode = passcodeTextField1.text! + passcodeTextField2.text! + passcodeTextField3.text! + passcodeTextField4.text!
                     
-                    let hassPasscode = SHA1.hexString(from: passcode)
+                    let hassPasscode = passcode.sha1()
                     
                     if hassPasscode == UserDefaults.standard.string(forKey: "hashPasscode") {
                         

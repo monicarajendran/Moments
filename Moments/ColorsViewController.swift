@@ -47,6 +47,8 @@ class ColorsViewController: UITableViewController {
         
         title = "Choose Color"
         
+        UIApplication.shared.statusBarStyle = .default
+        
         let arrayOfLabels = [red,blue,pink,indigo,teal,cyan,pestoGreen,purple,lime,orange,gray]
         
         for index in 0..<arrayOfLabels.count{

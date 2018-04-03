@@ -24,6 +24,7 @@ class SettingsPage: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         
+        UIApplication.shared.statusBarStyle = .default
         self.navigationController?.navigationBar.topItem?.title = "Settings"
     }
     

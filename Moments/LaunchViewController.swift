@@ -8,6 +8,7 @@
 
 import UIKit
 import LocalAuthentication
+import CryptoSwift
 
 protocol AppTextfieldDelegate: class {
     func backspacePressed()
@@ -107,7 +108,7 @@ class LaunchViewController: UIViewController, UITextFieldDelegate, AppTextfieldD
         
         let enteredPasscode = textField1.text! + textField2.text!  + textField3.text!  + textField4.text!
         
-        let hashValue = SHA1.hexString(from: enteredPasscode)
+        let hashValue = enteredPasscode.sha1()
         
         if hashValue == UserDefaults.standard.string(forKey: "hashPasscode") {
             guard let tabBar = self.storyboard?.instantiateViewController(withIdentifier: "TabBar") else {

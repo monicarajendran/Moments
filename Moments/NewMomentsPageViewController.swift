@@ -238,7 +238,7 @@
         
         hud.label.text = "Moment created successfully"
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {  self.close()  } )
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {  self.close()  } )
         
     }
     
