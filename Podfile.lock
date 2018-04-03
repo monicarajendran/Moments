@@ -26,9 +26,6 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - NVActivityIndicatorView (4.1.1):
-    - NVActivityIndicatorView/Presenter (= 4.1.1)
-  - NVActivityIndicatorView/Presenter (4.1.1)
   - R.swift (4.0.0):
     - R.swift.Library (~> 4.0.0)
   - R.swift.Library (4.0.0)
@@ -41,7 +38,6 @@ DEPENDENCIES:
   - CryptoSwift
   - Firebase/Core
   - MBProgressHUD
-  - NVActivityIndicatorView
   - R.swift
 
 SPEC CHECKSUMS:
@@ -57,10 +53,9 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  NVActivityIndicatorView: 60109b9bf46efc2e71ab81453196ccdfdfeea870
   R.swift: d6a5ec2f55a8441dc0ed9f1f8b37d7d11ae85c66
   R.swift.Library: c3af34921024333546e23b70e70d0b4e0cffca75
 
-PODFILE CHECKSUM: eb38ead0aced19141fe627dcd1e4ca8b01157823
+PODFILE CHECKSUM: ff67ea52c1b3da62f003e3e2f56bb88fc858230b
 
 COCOAPODS: 1.4.0
