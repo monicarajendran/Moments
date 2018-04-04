@@ -177,8 +177,9 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         guard let createMomentsVC = R.storyboard.main.createMomentsViewController() else {
             return
         }
-        self.present(createMomentsVC, animated: true, completion: nil)
         
+        let navController = UINavigationController(rootViewController: createMomentsVC)
+        self.present(navController, animated: true, completion: nil)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

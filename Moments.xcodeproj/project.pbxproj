@@ -12,7 +12,6 @@
 		CE25E9E11FBED73A00F96AA3 /* MomentDateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE25E9E01FBED73A00F96AA3 /* MomentDateFormat.swift */; };
 		CE29E2971FA3485C001647E7 /* CloudSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE29E2961FA3485C001647E7 /* CloudSyncService.swift */; };
 		CE43495E1FBEEFF000775B0C /* MomentHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE43495D1FBEEFF000775B0C /* MomentHud.swift */; };
-		CE476B5E1FCD332C007AA3BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE476B5D1FCD332C007AA3BD /* GoogleService-Info.plist */; };
 		CE4D35131FC2FFB10083E4F1 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D35121FC2FFB10083E4F1 /* LoadingViewController.swift */; };
 		CE56F14E1F88EBD900CEE704 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE56F14D1F88EBD900CEE704 /* AppDelegate.swift */; };
 		CE56F1531F88EBD900CEE704 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE56F1511F88EBD900CEE704 /* Main.storyboard */; };
@@ -40,9 +39,13 @@
 		CEA33A671FA4300D0032E0E8 /* MomentICloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA33A661FA4300D0032E0E8 /* MomentICloud.swift */; };
 		CEA3E0D51FA9E70600F4D8A3 /* NewMomentsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA3E0D41FA9E70600F4D8A3 /* NewMomentsPageViewController.swift */; };
 		CEA8346D1FAC51530017933B /* MomentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA8346C1FAC51530017933B /* MomentsTableViewCell.swift */; };
+		DD4E49642074A4FE004E1630 /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E49632074A4FE004E1630 /* DescriptionTableViewCell.swift */; };
+		DD4E49662074BA55004E1630 /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E49652074BA55004E1630 /* DateTableViewCell.swift */; };
+		DD4E49682074D790004E1630 /* ColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E49672074D790004E1630 /* ColorTableViewCell.swift */; };
 		DD575F7A207356E200710888 /* App Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD575F79207356E200710888 /* App Extension.swift */; };
 		DDA68D8F207215AF00F289BA /* CreateMomentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA68D8E207215AF00F289BA /* CreateMomentsViewController.swift */; };
-		DDA68D9320721CD900F289BA /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA68D9220721CD900F289BA /* R.generated.swift */; };
+		DDFA1D672073BA0300BB9FD2 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFA1D662073BA0300BB9FD2 /* R.generated.swift */; };
+		DDFA1D692073BA6000BB9FD2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDFA1D682073BA6000BB9FD2 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +57,6 @@
 		CE29E2961FA3485C001647E7 /* CloudSyncService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudSyncService.swift; sourceTree = "<group>"; };
 		CE43495D1FBEEFF000775B0C /* MomentHud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MomentHud.swift; path = ../MomentHud.swift; sourceTree = "<group>"; };
 		CE43EED81FA05C5E000C0AC9 /* Moments.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Moments.entitlements; sourceTree = "<group>"; };
-		CE476B5D1FCD332C007AA3BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CE4D35121FC2FFB10083E4F1 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		CE56F14A1F88EBD900CEE704 /* Moments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moments.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE56F14D1F88EBD900CEE704 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,9 +86,13 @@
 		CEA33A661FA4300D0032E0E8 /* MomentICloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentICloud.swift; sourceTree = "<group>"; };
 		CEA3E0D41FA9E70600F4D8A3 /* NewMomentsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMomentsPageViewController.swift; sourceTree = "<group>"; };
 		CEA8346C1FAC51530017933B /* MomentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentsTableViewCell.swift; sourceTree = "<group>"; };
+		DD4E49632074A4FE004E1630 /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		DD4E49652074BA55004E1630 /* DateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
+		DD4E49672074D790004E1630 /* ColorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTableViewCell.swift; sourceTree = "<group>"; };
 		DD575F79207356E200710888 /* App Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Extension.swift"; sourceTree = "<group>"; };
 		DDA68D8E207215AF00F289BA /* CreateMomentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMomentsViewController.swift; sourceTree = "<group>"; };
-		DDA68D9220721CD900F289BA /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		DDFA1D662073BA0300BB9FD2 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		DDFA1D682073BA6000BB9FD2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,7 +195,7 @@
 			children = (
 				CE9F47791F8CA0DE0070704C /* .gitignore */,
 				CE56F15C1F88EBD900CEE704 /* Info.plist */,
-				CE476B5D1FCD332C007AA3BD /* GoogleService-Info.plist */,
+				DDFA1D682073BA6000BB9FD2 /* GoogleService-Info.plist */,
 				CE56F14D1F88EBD900CEE704 /* AppDelegate.swift */,
 				CE56F1511F88EBD900CEE704 /* Main.storyboard */,
 				CE56F1571F88EBD900CEE704 /* Assets.xcassets */,
@@ -231,7 +237,10 @@
 		DDA68D8D207214D100F289BA /* New Design */ = {
 			isa = PBXGroup;
 			children = (
+				DD4E49672074D790004E1630 /* ColorTableViewCell.swift */,
+				DD4E49632074A4FE004E1630 /* DescriptionTableViewCell.swift */,
 				DDA68D8E207215AF00F289BA /* CreateMomentsViewController.swift */,
+				DD4E49652074BA55004E1630 /* DateTableViewCell.swift */,
 			);
 			name = "New Design";
 			sourceTree = "<group>";
@@ -240,7 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				DD575F79207356E200710888 /* App Extension.swift */,
-				DDA68D9220721CD900F289BA /* R.generated.swift */,
+				DDFA1D662073BA0300BB9FD2 /* R.generated.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -320,7 +329,7 @@
 			files = (
 				CE9F477A1F8CA0DE0070704C /* .gitignore in Resources */,
 				CE56F15B1F88EBD900CEE704 /* LaunchScreen.storyboard in Resources */,
-				CE476B5E1FCD332C007AA3BD /* GoogleService-Info.plist in Resources */,
+				DDFA1D692073BA6000BB9FD2 /* GoogleService-Info.plist in Resources */,
 				CE56F1581F88EBD900CEE704 /* Assets.xcassets in Resources */,
 				CE56F1531F88EBD900CEE704 /* Main.storyboard in Resources */,
 			);
@@ -344,6 +353,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -356,6 +366,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,16 +437,19 @@
 				CE5C5E5F1F9F543000CE6EB4 /* MomentsTimeLinePage.swift in Sources */,
 				CE58A29C1FCEF76D00FD336B /* LaunchViewController.swift in Sources */,
 				CE57A71E1F8AF07200585633 /* momentsEntity.swift in Sources */,
+				DD4E49642074A4FE004E1630 /* DescriptionTableViewCell.swift in Sources */,
 				CE91EDAD1FB5679000CF6747 /* UIColor.swift in Sources */,
 				CE8C4B231FB1E64200F5A437 /* MomentColors.swift in Sources */,
+				DDFA1D672073BA0300BB9FD2 /* R.generated.swift in Sources */,
 				CE9DF7051F9AF9260016153E /* MomentsDetailPage.swift in Sources */,
 				CE29E2971FA3485C001647E7 /* CloudSyncService.swift in Sources */,
+				DD4E49662074BA55004E1630 /* DateTableViewCell.swift in Sources */,
 				CE9F47831F8CDA210070704C /* SettingsPage.swift in Sources */,
 				DDA68D8F207215AF00F289BA /* CreateMomentsViewController.swift in Sources */,
 				DD575F7A207356E200710888 /* App Extension.swift in Sources */,
-				DDA68D9320721CD900F289BA /* R.generated.swift in Sources */,
 				CE8F26E31FAB578200E71417 /* ColorsViewController.swift in Sources */,
 				CE1A149F1FC46FB30015CC91 /* MainNavigationController.swift in Sources */,
+				DD4E49682074D790004E1630 /* ColorTableViewCell.swift in Sources */,
 				CE91EDAB1FB561D700CF6747 /* MomentMode.swift in Sources */,
 				CEA8346D1FAC51530017933B /* MomentsTableViewCell.swift in Sources */,
 				CE58A29E1FCEFB8A00FD336B /* MomentPasscodeMode.swift in Sources */,
@@ -517,6 +531,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -559,6 +574,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -580,7 +596,7 @@
 				PROVISIONING_PROFILE = "d5d1ef64-4d52-4fa4-a86d-f77fd45b5f08";
 				PROVISIONING_PROFILE_SPECIFIER = "FullMoments dev profile";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -600,7 +616,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "c73485b7-e9d1-49c2-8b94-04579b8cdeb3";
 				PROVISIONING_PROFILE_SPECIFIER = "FullMoments dis profile";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

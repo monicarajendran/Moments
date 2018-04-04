@@ -42,7 +42,7 @@ class FeedBackViewController: UIViewController {
         
     }
     
-    func sendFeedBack(sender: UIBarButtonItem){
+    @objc func sendFeedBack(sender: UIBarButtonItem){
         
         if feedBackText.text.characters.count > 10 {
             

@@ -24,6 +24,10 @@ enum MomentColors : String {
     case gray = "AEAEAE"
     case green = "32D375"
     
+    var name: String {
+       return  String(describing: self).capitalized
+    }
+    
     static let allCases = [red,blue,pink,indigo,teal,cyan,pestoGreen,purple,lime,orange,gray]
     
 //    func uicolor() -> UIColor {

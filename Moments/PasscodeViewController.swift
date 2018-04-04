@@ -101,7 +101,7 @@ class PasscodeViewController: UIViewController , UITextFieldDelegate , AppTextfi
         self.dismiss(animated: true, completion: nil)
     }
     
-    func textfieldDidChange(textFeild: UITextField){
+    @objc func textfieldDidChange(textFeild: UITextField){
         
         let text = textFeild.text
         
