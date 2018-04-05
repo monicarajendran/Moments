@@ -106,15 +106,15 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func chooseADate(for cell: DateTableViewCell) {
-        
+
         view.endEditing(true)
         
         let datePicker = ActionSheetDatePicker(title: "", datePickerMode: UIDatePickerMode.date, selectedDate: NSDate() as Date?, doneBlock: {
-            picker, value, index in
+            picker, date, index in
             
             self.navigationItem.rightBarButtonItem?.isEnabled = true
             
-            self.momentDate = value as! Date
+            self.momentDate = date as! Date
             
             self.dateFormatter.dateFormat = MomentDateFormat.short.rawValue
             
@@ -155,24 +155,27 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
         view.endEditing(true)
     }
     
-    //    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    //
-    //        let descriptionTextfield = DescriptionTableViewCell()
-    //
-    //        switch textField {
-    //
-    //        case momentNameTextfield:
-    //            descriptionTextfield.becomeFirstResponder()
-    //        case descriptionTextfield:
-    //            descriptionTextfield.resignFirstResponder()
-    //            chooseADate(for: DateTableViewCell())
-    //        default:
-    //            print("Textfield return functuion breaks")
-    //
-    //        }
-    //
-    //        return true
-    //    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        let descriptionCell = tableView.cellForRow(at: [0,0]) as! DescriptionTableViewCell
+        
+        
+        switch textField {
+            
+        case momentNameTextfield:
+            descriptionCell.descriptionTextfield.becomeFirstResponder()
+            
+        case descriptionCell.descriptionTextfield:
+            descriptionCell.descriptionTextfield.resignFirstResponder()
+            
+            let dateCell = tableView.cellForRow(at: [0,1]) as! DateTableViewCell
+            chooseADate(for: dateCell)
+            
+        default:
+            print("Textfield return functuion breaks")
+        }
+        return true
+    }
     
     @IBAction func cancelButtonAction(_ sender: UIButton) {
         close()
@@ -284,7 +287,7 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
         if momentMode == .create {
             dismiss(animated: true, completion: nil)
         } else {
-            navigationController?.popToRootViewController(animated: true)
+            navigationController?.popViewController(animated: true)
         }
     }
 }

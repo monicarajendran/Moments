@@ -34,5 +34,4 @@ class ColorTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
-
 }

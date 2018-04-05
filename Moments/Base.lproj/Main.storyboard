@@ -27,7 +27,7 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reuseIdentifier" rowHeight="100" id="oD1-2N-dUK" customClass="MomentsTableViewCell" customModule="Moments" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reuseIdentifier" rowHeight="100" id="oD1-2N-dUK" customClass="MomentsTableViewCell" customModule="Moments" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="12" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oD1-2N-dUK" id="Raz-aD-uj9">
@@ -1105,6 +1105,9 @@
                                                 <color key="value" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="5FS-Jq-s9W" id="od7-4T-NUo"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pqp-ie-0O3">
                                         <rect key="frame" x="10" y="30" width="40" height="40"/>
@@ -1139,7 +1142,7 @@
                                 <rect key="frame" x="0.0" y="120" width="375" height="503"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="descriptionCell" id="zDF-RT-iyr" customClass="DescriptionTableViewCell" customModule="Moments" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="descriptionCell" id="zDF-RT-iyr" customClass="DescriptionTableViewCell" customModule="Moments" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zDF-RT-iyr" id="71f-it-Df3">
@@ -1168,7 +1171,7 @@
                                             <outlet property="descriptionTextfield" destination="Kyd-KK-7Sk" id="e5T-0z-lAB"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dateCell" id="B18-DL-TgD" customClass="DateTableViewCell" customModule="Moments" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dateCell" id="B18-DL-TgD" customClass="DateTableViewCell" customModule="Moments" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="B18-DL-TgD" id="yGX-c5-ZGr">
@@ -1197,7 +1200,7 @@
                                             <outlet property="dateTitle" destination="LEw-V3-eqP" id="BNT-0q-Gd0"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="colorCell" id="Z7e-hU-b9Z" customClass="ColorTableViewCell" customModule="Moments" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="colorCell" id="Z7e-hU-b9Z" customClass="ColorTableViewCell" customModule="Moments" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="116" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z7e-hU-b9Z" id="XWU-cx-UuH">
@@ -1249,10 +1252,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="F1C-6C-Vcw" firstAttribute="top" secondItem="5er-fV-UHU" secondAttribute="bottom" constant="-20" id="0Wp-dt-RZC"/>
                             <constraint firstItem="JAS-sy-QAq" firstAttribute="top" secondItem="MEr-D6-YLb" secondAttribute="bottom" id="3Ib-18-RyD"/>
                             <constraint firstAttribute="trailing" secondItem="F1C-6C-Vcw" secondAttribute="trailing" id="4lB-CY-Gl8"/>
                             <constraint firstItem="F1C-6C-Vcw" firstAttribute="leading" secondItem="SQH-1Y-zW6" secondAttribute="leading" id="HaZ-aJ-N30"/>
+                            <constraint firstItem="F1C-6C-Vcw" firstAttribute="top" secondItem="SQH-1Y-zW6" secondAttribute="top" id="Kg1-Ac-7eU"/>
                             <constraint firstItem="MEr-D6-YLb" firstAttribute="leading" secondItem="SQH-1Y-zW6" secondAttribute="leading" id="YlV-S8-Zuz"/>
                             <constraint firstItem="MEr-D6-YLb" firstAttribute="top" secondItem="F1C-6C-Vcw" secondAttribute="bottom" id="buV-g1-CwD"/>
                             <constraint firstAttribute="trailing" secondItem="MEr-D6-YLb" secondAttribute="trailing" id="fNm-mp-DHP"/>
@@ -1269,7 +1272,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xfu-SR-wHC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1455.2" y="1199.5502248875564"/>
+            <point key="canvasLocation" x="1377" y="1140"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="Efy-1m-NW9">
