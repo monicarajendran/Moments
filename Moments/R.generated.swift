@@ -48,14 +48,18 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 10 images.
+  /// This `R.image` struct is generated, and contains static references to 12 images.
   struct image {
     /// Image `Calender`.
     static let calender = Rswift.ImageResource(bundle: R.hostingBundle, name: "Calender")
     /// Image `Close`.
     static let close = Rswift.ImageResource(bundle: R.hostingBundle, name: "Close")
+    /// Image `Edit`.
+    static let edit = Rswift.ImageResource(bundle: R.hostingBundle, name: "Edit")
     /// Image `Icon-App-60x60@3x (1)`.
     static let iconApp60x603x1 = Rswift.ImageResource(bundle: R.hostingBundle, name: "Icon-App-60x60@3x (1)")
+    /// Image `More`.
+    static let more = Rswift.ImageResource(bundle: R.hostingBundle, name: "More")
     /// Image `Note`.
     static let note = Rswift.ImageResource(bundle: R.hostingBundle, name: "Note")
     /// Image `appicon`.
@@ -81,9 +85,19 @@ struct R: Rswift.Validatable {
       return UIKit.UIImage(resource: R.image.close, compatibleWith: traitCollection)
     }
     
+    /// `UIImage(named: "Edit", bundle: ..., traitCollection: ...)`
+    static func edit(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.edit, compatibleWith: traitCollection)
+    }
+    
     /// `UIImage(named: "Icon-App-60x60@3x (1)", bundle: ..., traitCollection: ...)`
     static func iconApp60x603x1(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.iconApp60x603x1, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "More", bundle: ..., traitCollection: ...)`
+    static func more(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.more, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "Note", bundle: ..., traitCollection: ...)`
@@ -220,6 +234,7 @@ struct _R: Rswift.Validatable {
       let bundle = R.hostingBundle
       let colorsViewController = StoryboardViewControllerResource<ColorsViewController>(identifier: "ColorsViewController")
       let createMomentsViewController = StoryboardViewControllerResource<CreateMomentsViewController>(identifier: "CreateMomentsViewController")
+      let detailsViewController = StoryboardViewControllerResource<DetailsViewController>(identifier: "DetailsViewController")
       let feedBackViewController = StoryboardViewControllerResource<FeedBackViewController>(identifier: "FeedBackViewController")
       let launchViewController = StoryboardViewControllerResource<LaunchViewController>(identifier: "LaunchViewController")
       let loadingViewController = StoryboardViewControllerResource<LoadingViewController>(identifier: "LoadingViewController")
@@ -238,6 +253,10 @@ struct _R: Rswift.Validatable {
       
       func createMomentsViewController(_: Void = ()) -> CreateMomentsViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: createMomentsViewController)
+      }
+      
+      func detailsViewController(_: Void = ()) -> DetailsViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: detailsViewController)
       }
       
       func feedBackViewController(_: Void = ()) -> FeedBackViewController? {
@@ -284,22 +303,25 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "Calender") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Calender' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "Close") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Close' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "More") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'More' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icons8-Timeline-20") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icons8-Timeline-20' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "Edit") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Edit' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "fingerprint-with-crosshair-focus (2)") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'fingerprint-with-crosshair-focus (2)' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icons8-Settings-20") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icons8-Settings-20' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "Note") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Note' is used in storyboard 'Main', but couldn't be loaded.") }
-        if _R.storyboard.main().launchViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'launchViewController' could not be loaded from storyboard 'Main' as 'LaunchViewController'.") }
-        if _R.storyboard.main().passcodeSettingsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'passcodeSettingsViewController' could not be loaded from storyboard 'Main' as 'PasscodeSettingsViewController'.") }
-        if _R.storyboard.main().settingsPage() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'settingsPage' could not be loaded from storyboard 'Main' as 'SettingsPage'.") }
         if _R.storyboard.main().newMomentsPageViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'newMomentsPageViewController' could not be loaded from storyboard 'Main' as 'NewMomentsPageViewController'.") }
-        if _R.storyboard.main().mainNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'mainNavigationController' could not be loaded from storyboard 'Main' as 'MainNavigationController'.") }
         if _R.storyboard.main().loadingViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'loadingViewController' could not be loaded from storyboard 'Main' as 'LoadingViewController'.") }
-        if _R.storyboard.main().momentsTimeLinePage() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'momentsTimeLinePage' could not be loaded from storyboard 'Main' as 'MomentsTimeLinePage'.") }
-        if _R.storyboard.main().tabBar() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'tabBar' could not be loaded from storyboard 'Main' as 'TabBar'.") }
         if _R.storyboard.main().passcodeViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'passcodeViewController' could not be loaded from storyboard 'Main' as 'PasscodeViewController'.") }
-        if _R.storyboard.main().colorsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'colorsViewController' could not be loaded from storyboard 'Main' as 'ColorsViewController'.") }
         if _R.storyboard.main().feedBackViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'feedBackViewController' could not be loaded from storyboard 'Main' as 'FeedBackViewController'.") }
         if _R.storyboard.main().createMomentsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'createMomentsViewController' could not be loaded from storyboard 'Main' as 'CreateMomentsViewController'.") }
+        if _R.storyboard.main().launchViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'launchViewController' could not be loaded from storyboard 'Main' as 'LaunchViewController'.") }
+        if _R.storyboard.main().detailsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'detailsViewController' could not be loaded from storyboard 'Main' as 'DetailsViewController'.") }
+        if _R.storyboard.main().settingsPage() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'settingsPage' could not be loaded from storyboard 'Main' as 'SettingsPage'.") }
+        if _R.storyboard.main().mainNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'mainNavigationController' could not be loaded from storyboard 'Main' as 'MainNavigationController'.") }
+        if _R.storyboard.main().momentsTimeLinePage() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'momentsTimeLinePage' could not be loaded from storyboard 'Main' as 'MomentsTimeLinePage'.") }
+        if _R.storyboard.main().tabBar() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'tabBar' could not be loaded from storyboard 'Main' as 'TabBar'.") }
+        if _R.storyboard.main().colorsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'colorsViewController' could not be loaded from storyboard 'Main' as 'ColorsViewController'.") }
+        if _R.storyboard.main().passcodeSettingsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'passcodeSettingsViewController' could not be loaded from storyboard 'Main' as 'PasscodeSettingsViewController'.") }
       }
       
       fileprivate init() {}

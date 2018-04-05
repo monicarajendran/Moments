@@ -9,3 +9,9 @@
 import Foundation
 import UIKit
 
+extension Int64 {
+    
+    var toDate: Date {
+        return Date(timeIntervalSince1970: TimeInterval(self))
+    }
+}

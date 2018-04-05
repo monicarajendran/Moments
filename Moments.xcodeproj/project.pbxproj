@@ -42,6 +42,7 @@
 		DD4E49642074A4FE004E1630 /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E49632074A4FE004E1630 /* DescriptionTableViewCell.swift */; };
 		DD4E49662074BA55004E1630 /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E49652074BA55004E1630 /* DateTableViewCell.swift */; };
 		DD4E49682074D790004E1630 /* ColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E49672074D790004E1630 /* ColorTableViewCell.swift */; };
+		DD4E496A20750B67004E1630 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E496920750B67004E1630 /* DetailsViewController.swift */; };
 		DD575F7A207356E200710888 /* App Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD575F79207356E200710888 /* App Extension.swift */; };
 		DDA68D8F207215AF00F289BA /* CreateMomentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA68D8E207215AF00F289BA /* CreateMomentsViewController.swift */; };
 		DDFA1D672073BA0300BB9FD2 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFA1D662073BA0300BB9FD2 /* R.generated.swift */; };
@@ -89,6 +90,7 @@
 		DD4E49632074A4FE004E1630 /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		DD4E49652074BA55004E1630 /* DateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
 		DD4E49672074D790004E1630 /* ColorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTableViewCell.swift; sourceTree = "<group>"; };
+		DD4E496920750B67004E1630 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		DD575F79207356E200710888 /* App Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Extension.swift"; sourceTree = "<group>"; };
 		DDA68D8E207215AF00F289BA /* CreateMomentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMomentsViewController.swift; sourceTree = "<group>"; };
 		DDFA1D662073BA0300BB9FD2 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 		DDA68D8D207214D100F289BA /* New Design */ = {
 			isa = PBXGroup;
 			children = (
+				DD4E496920750B67004E1630 /* DetailsViewController.swift */,
 				DD4E49672074D790004E1630 /* ColorTableViewCell.swift */,
 				DD4E49632074A4FE004E1630 /* DescriptionTableViewCell.swift */,
 				DDA68D8E207215AF00F289BA /* CreateMomentsViewController.swift */,
@@ -442,6 +445,7 @@
 				CE8C4B231FB1E64200F5A437 /* MomentColors.swift in Sources */,
 				DDFA1D672073BA0300BB9FD2 /* R.generated.swift in Sources */,
 				CE9DF7051F9AF9260016153E /* MomentsDetailPage.swift in Sources */,
+				DD4E496A20750B67004E1630 /* DetailsViewController.swift in Sources */,
 				CE29E2971FA3485C001647E7 /* CloudSyncService.swift in Sources */,
 				DD4E49662074BA55004E1630 /* DateTableViewCell.swift in Sources */,
 				CE9F47831F8CDA210070704C /* SettingsPage.swift in Sources */,
