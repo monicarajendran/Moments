@@ -23,7 +23,7 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
     var momentDate: Date = Date()
     let dateFormatter = DateFormatter()
     var selectedColor : MomentColors?
-    var toEditMoment: Moment?
+    var editMomentObj: Moment?
     var momentMode: MomentMode = .create
     
     override func viewDidLoad() {
@@ -31,19 +31,19 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
         
         if momentMode == .edit {
             
-            momentNameTextfield.text = toEditMoment?.name
+            momentNameTextfield.text = editMomentObj?.name
             
-            momentDescrption = toEditMoment?.desc ?? ""
+            momentDescrption = editMomentObj?.desc ?? ""
             
             self.momentNameTextfield.resignFirstResponder()
             
-            selectedColor = MomentColors(rawValue: (toEditMoment?.color) ?? MomentColors.red.rawValue)
+            selectedColor = MomentColors(rawValue: (editMomentObj?.color) ?? MomentColors.blue.rawValue)
             
-            momentDate = toEditMoment?.momentTime.toDate ?? Date()
+            momentDate = editMomentObj?.momentTime.toDate ?? Date()
             
             dateFormatter.dateFormat = MomentDateFormat.short.rawValue
             
-            createPageTopView.backgroundColor = UIColor(hexString: toEditMoment?.color ?? MomentColors.red.rawValue)
+            createPageTopView.backgroundColor = UIColor(hexString: editMomentObj?.color ?? MomentColors.blue.rawValue)
             
         } else {
             self.momentNameTextfield.becomeFirstResponder()
@@ -86,7 +86,7 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.colorCell, for: indexPath)!
             cell.delegate = self
-            cell.colorLabel.backgroundColor = UIColor(hexString: selectedColor?.rawValue ?? MomentColors.red.rawValue)
+            cell.colorLabel.backgroundColor = UIColor(hexString: selectedColor?.rawValue ?? MomentColors.blue.rawValue)
             cell.colorLabel.layer.cornerRadius = cell.colorLabel.frame.width / 2
             cell.colorButtonTitle.setTitle(selectedColor?.name ?? "Default Color", for: .normal)
             
@@ -148,13 +148,13 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
         
         UIApplication.shared.statusBarStyle = .lightContent
         tableView.tableFooterView = UIView(frame: .zero)
-        createPageTopView.backgroundColor = UIColor(hexString: selectedColor?.rawValue ?? MomentColors.red.rawValue)
+        createPageTopView.backgroundColor = UIColor(hexString: selectedColor?.rawValue ?? MomentColors.blue.rawValue)
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         view.endEditing(true)
     }
-    //
+    
     //    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     //
     //        let descriptionTextfield = DescriptionTableViewCell()
@@ -179,12 +179,12 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     @IBAction func saveAction(_ sender: UIButton) {
+       
         if momentMode == .create {
             createMoment(sender: sender)
         } else {
             editMoment()
         }
-        
     }
     
     func saveMoment(moment: Moment) -> Moment{
@@ -234,7 +234,7 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
     
     func editMoment() {
         
-        let editedMoment = saveMoment(moment: toEditMoment!)
+        let editedMoment = saveMoment(moment: editMomentObj!)
         
         updateICloud(moment: editedMoment)
         

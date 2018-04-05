@@ -14,9 +14,9 @@ protocol ColorsViewControllerDelegate {
 
 class ColorsViewController: UITableViewController {
     
-    @IBOutlet weak var red: UILabel!
-    
     @IBOutlet weak var blue: UILabel!
+    
+    @IBOutlet weak var red: UILabel!
     
     @IBOutlet weak var pink: UILabel!
     
@@ -49,22 +49,14 @@ class ColorsViewController: UITableViewController {
         self.navigationController?.navigationBar.isHidden = false
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(ColorsViewController.close))
         
-        let arrayOfLabels = [red,blue,pink,indigo,teal,cyan,pestoGreen,purple,lime,orange,gray]
+        let arrayOfLabels = [blue,red,pink,indigo,teal,cyan,pestoGreen,purple,lime,orange,gray]
         
         for index in 0..<arrayOfLabels.count{
-            
             circleShapeForLabel(label: arrayOfLabels[index]!)
-            
-            for colorIndex in 0..<MomentColors.allCases.count {
-                
-                if index == colorIndex {
-                    
-                    arrayOfLabels[index]?.backgroundColor = UIColor(hexString: MomentColors.allCases[colorIndex].rawValue)
-                }
-            }
         }
         tableView.tableFooterView = UIView()
     }
+    
     @objc func close () {
         self.navigationController?.popViewController(animated: true)
 

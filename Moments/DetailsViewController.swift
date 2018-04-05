@@ -24,19 +24,24 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         UIApplication.shared.statusBarStyle = .lightContent
-        editButtonOutlet.layer.cornerRadius = editButtonOutlet.frame.width / 2
-        editButtonOutlet.layer.shadowOffset = CGSize(width: 12, height: 10)
-        editButtonOutlet.layer.shadowColor = UIColor.black.cgColor
-        editButtonOutlet.layer.shadowOpacity = 0.7
-        editButtonOutlet.layer.shadowRadius = 25.0
+        setupShadowButton()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
-        displayDetailsOfMoment()
+        displayDetails()
         alertHud = getAlertHUD(srcView: self.view)
     }
     
-    func displayDetailsOfMoment() {
+    func setupShadowButton () {
+        editButtonOutlet.layer.cornerRadius = editButtonOutlet.frame.width / 2
+        editButtonOutlet.layer.shadowColor = UIColor.black.cgColor
+        editButtonOutlet.layer.shadowOffset = CGSize(width: 3, height: 2)
+        editButtonOutlet.layer.shadowOpacity = 0.9
+        editButtonOutlet.layer.shadowRadius = 5
+    }
+    
+    func displayDetails() {
+        
         momentTitle.text = selectedMoment?.name
         momentDesc.text = selectedMoment?.desc
         
@@ -44,7 +49,7 @@ class DetailsViewController: UIViewController {
         dateFormat.dateFormat = MomentDateFormat.long.rawValue
         date.text = dateFormat.string(from: (selectedMoment?.momentTime.toDate) ?? Date())
         
-        let momentColor: UIColor = UIColor(hexString: selectedMoment?.color ?? MomentColors.red.rawValue)
+        let momentColor: UIColor = UIColor(hexString: selectedMoment?.color ?? MomentColors.blue.rawValue)
         
         editButtonOutlet.backgroundColor = momentColor
         
@@ -52,11 +57,11 @@ class DetailsViewController: UIViewController {
     }
 
     @IBAction func editAction(_ sender: UIButton) {
-        guard let createPageVc = R.storyboard.main.createMomentsViewController() as? CreateMomentsViewController else {
+        guard let createPageVc = R.storyboard.main.createMomentsViewController() else {
             return
         }
         createPageVc.momentMode = .edit
-        createPageVc.toEditMoment = selectedMoment
+        createPageVc.editMomentObj = selectedMoment
         navigationController?.pushViewController(createPageVc, animated: true)
     }
     
