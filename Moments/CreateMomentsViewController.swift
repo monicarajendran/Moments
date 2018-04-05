@@ -205,6 +205,9 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
         moment.createdAt = Int64(currentDate)
         moment.modifiedAt = Int64(currentDate)
         
+        let timeString = self.dateFormatter.string(from: momentDate)
+        moment.searchToken = [momentNameTextfield.text!, " ", momentDescrption, " ", timeString].joined()
+                
         do {
             try container.viewContext.save()
         }
@@ -258,7 +261,6 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
             }
             
             moment.updateICloudRecord(record: record)
-            
             CloudSyncServices.addRecordToIColud(record: record)
             
         }
