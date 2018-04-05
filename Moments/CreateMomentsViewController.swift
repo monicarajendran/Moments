@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 import Apploader
 import SnapKit
 import ActionSheetPicker_3_0
@@ -22,19 +23,41 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
     var momentDate: Date = Date()
     let dateFormatter = DateFormatter()
     var selectedColor : MomentColors?
+    var toEditMoment: Moment?
+    var momentMode: MomentMode = .create
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if momentMode == .edit {
+            
+            momentNameTextfield.text = toEditMoment?.name
+            
+            momentDescrption = toEditMoment?.desc ?? ""
+            
+            self.momentNameTextfield.resignFirstResponder()
+            
+            selectedColor = MomentColors(rawValue: (toEditMoment?.color) ?? MomentColors.red.rawValue)
+            
+            momentDate = toEditMoment?.momentTime.toDate ?? Date()
+            
+            dateFormatter.dateFormat = MomentDateFormat.short.rawValue
+            
+            createPageTopView.backgroundColor = UIColor(hexString: toEditMoment?.color ?? MomentColors.red.rawValue)
+            
+        } else {
+            self.momentNameTextfield.becomeFirstResponder()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         self.navigationController?.navigationBar.isHidden = true
         setupView()
         alterHud = getAlertHUD(srcView: self.view)
         tableView.reloadData()
-        
     }
-   
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
@@ -45,19 +68,25 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
             
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.descriptionCell, for: indexPath)! 
             cell.delegate = self
-            
-            momentDescrption = cell.descriptionTextfield.text!
+            if momentMode == .create {
+                momentDescrption = cell.descriptionTextfield.text!
+            } else {
+                cell.descriptionTextfield.text = momentDescrption
+            }
             return cell
             
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.dateCell, for: indexPath)!
             cell.delegate = self
+            if momentMode == .edit {
+                cell.dateTitle.setTitle(dateFormatter.string(from: momentDate), for: .normal)
+            }
             return cell
             
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.colorCell, for: indexPath)!
             cell.delegate = self
-            cell.colorLabel.backgroundColor = UIColor(hexString: selectedColor?.rawValue ?? MomentColors.indigo.rawValue)
+            cell.colorLabel.backgroundColor = UIColor(hexString: selectedColor?.rawValue ?? MomentColors.red.rawValue)
             cell.colorLabel.layer.cornerRadius = cell.colorLabel.frame.width / 2
             cell.colorButtonTitle.setTitle(selectedColor?.name ?? "Default Color", for: .normal)
             
@@ -73,7 +102,7 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func addDescription(for cell: DescriptionTableViewCell) {
-        momentDescrption = cell.descriptionTextfield.text!
+        momentDescrption = cell.descriptionTextfield.text!.capitalized
     }
     
     func chooseADate(for cell: DateTableViewCell) {
@@ -86,9 +115,9 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
             self.navigationItem.rightBarButtonItem?.isEnabled = true
             
             self.momentDate = value as! Date
-
+            
             self.dateFormatter.dateFormat = MomentDateFormat.short.rawValue
-
+            
             cell.dateTitle.setTitle(self.dateFormatter.string(from: self.momentDate), for: .normal)
             
             return
@@ -100,7 +129,7 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
     
     func colorAction(for cell: ColorTableViewCell) {
         view.endEditing(true)
-                
+        
         guard let colorsVC = R.storyboard.main.colorsViewController() else {
             return
         }
@@ -119,43 +148,43 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
         
         UIApplication.shared.statusBarStyle = .lightContent
         tableView.tableFooterView = UIView(frame: .zero)
-        
-        self.momentNameTextfield.attributedPlaceholder = NSAttributedString(string: "Enter Title", attributes: [kCTForegroundColorAttributeName as NSAttributedStringKey: UIColor.white])
-        self.momentNameTextfield.becomeFirstResponder()
-        
-        createPageTopView.backgroundColor = UIColor(hexString: selectedColor?.rawValue ?? MomentColors.indigo.rawValue)
-
+        createPageTopView.backgroundColor = UIColor(hexString: selectedColor?.rawValue ?? MomentColors.red.rawValue)
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         view.endEditing(true)
     }
-//    
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        
-//        let descriptionTextfield = DescriptionTableViewCell()
-//
-//        switch textField {
-//            
-//        case momentNameTextfield:
-//            descriptionTextfield.becomeFirstResponder()
-//        case descriptionTextfield:
-//            descriptionTextfield.resignFirstResponder()
-//            chooseADate(for: DateTableViewCell())
-//        default:
-//            print("Textfield return functuion breaks")
-//            
-//        }
-//        
-//        return true
-//    }
+    //
+    //    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    //
+    //        let descriptionTextfield = DescriptionTableViewCell()
+    //
+    //        switch textField {
+    //
+    //        case momentNameTextfield:
+    //            descriptionTextfield.becomeFirstResponder()
+    //        case descriptionTextfield:
+    //            descriptionTextfield.resignFirstResponder()
+    //            chooseADate(for: DateTableViewCell())
+    //        default:
+    //            print("Textfield return functuion breaks")
+    //
+    //        }
+    //
+    //        return true
+    //    }
     
     @IBAction func cancelButtonAction(_ sender: UIButton) {
         close()
     }
     
     @IBAction func saveAction(_ sender: UIButton) {
-        createMoment(sender: sender)
+        if momentMode == .create {
+            createMoment(sender: sender)
+        } else {
+            editMoment()
+        }
+        
     }
     
     func saveMoment(moment: Moment) -> Moment{
@@ -196,15 +225,64 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
         moment.momentID = NSUUID().uuidString
         moment = saveMoment(moment: moment)
         
+        CloudSyncServices.addRecordToIColud(record: moment.toICloudRecord())
+        
         alterHud.showText(msg: "Moment Created Successfully!", detailMsg: "", delay: 1)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {  self.close()  } )
     }
     
+    func editMoment() {
+        
+        let editedMoment = saveMoment(moment: toEditMoment!)
+        
+        updateICloud(moment: editedMoment)
+        
+        alterHud.showText(msg: "Changes saved successfully", detailMsg: "", delay: 1)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            self.close()})
+    }
+    
+    func updateICloud(moment: Moment) {
+        
+        /// have check return
+        
+        CloudSyncServices.privateDb.fetch(withRecordID: CKRecordID(recordName: moment.momentID!)) { (record, error) in
+            
+            guard let record = record
+                
+                else {
+                    print("error in updating the record", error as Any)
+                    return
+            }
+            
+            moment.updateICloudRecord(record: record)
+            
+            CloudSyncServices.addRecordToIColud(record: record)
+            
+        }
+    }
+    
+    func deleteICloud(moment: Moment){
+        
+        CloudSyncServices.privateDb.delete(withRecordID: CKRecordID(recordName: moment.momentID!), completionHandler: { rec , err in
+            guard let record = rec else {
+                print("oopssss",err as Any)
+                return
+            }
+            print("successfully deleted",record)
+        })
+    }
+    
     func close() {
         
         momentNameTextfield.resignFirstResponder()
-//        momentDescTextfield.resignFirstResponder()
-        dismiss(animated: true, completion: nil)
+        
+        if momentMode == .create {
+            dismiss(animated: true, completion: nil)
+        } else {
+            navigationController?.popToRootViewController(animated: true)
+        }
     }
 }
