@@ -44,7 +44,7 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+
         UserDefaults.standard.set(true, forKey: "firstRun")
         
         UserDefaults.standard.synchronize()
@@ -65,7 +65,7 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         timelineSearchBar.backgroundImage = UIImage()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         UIApplication.shared.statusBarStyle = .default
@@ -74,38 +74,23 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         noResultsFound.isHidden = true
         
         self.tableView.reloadData()
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
-        //settings page will not get the right bar by doing this
         self.tabBarController?.navigationItem.rightBarButtonItem = nil
     }
 
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        
         timelineSearchBar.resignFirstResponder()
     }
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-    
         searchBar.setShowsCancelButton(true, animated: true)
         return true
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        /*
-         
-         if string is kind of number
-         check for date, month, year
-         
-         if string is kind of letters,
-         then monthname, momentName
-         
-         */
-        
+      
         print("entered search bar")
         
         Analytics.logEvent("moment_search", parameters: ["search_word": searchBar.text ?? ""])
@@ -121,25 +106,20 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         print("fetched objects: \(filteredObjects.count())")
         
         if filteredObjects.count() == 0 {
-            
             searchBarActive = false
-            
         }
         else{
-            
             self.tableView.backgroundView = .none
-            
             searchBarActive = true
         }
         
         self.tableView.reloadData()
-        
     }
     
     func queryTheDataFromDisk() {
         
         do {
-            try fetchTheMoments.performFetch()            
+            try fetchTheMoments.performFetch()
         }
         catch{
             
@@ -160,19 +140,6 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
     }
     
     @IBAction func addMomentsButton(_ sender: UIBarButtonItem) {
-      
-        ////-------> Old 
-//        guard let newMomentsPage = storyboard?.instantiateViewController(withIdentifier: "NewMomentsPageViewController") as? NewMomentsPageViewController
-//            
-//            else{
-//                return
-//        }
-//        
-//        newMomentsPage.mode = MomentMode.create.rawValue
-//        
-//        let navController = UINavigationController(rootViewController: newMomentsPage)
-//        
-//        self.present(navController, animated:true, completion: nil)
         
         guard let createMomentsVC = R.storyboard.main.createMomentsViewController() else {
             return
@@ -185,10 +152,8 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
     func numberOfSections(in tableView: UITableView) -> Int {
         
         if searchBarActive{
-            
             return 1
-        }
-        else {
+        } else {
             return self.fetchTheMoments.numberOfSections()
              }
     }
@@ -196,12 +161,8 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if searchBarActive {
-            
             return filteredObjects.execute().count
-            }
-            
-        else {
-            
+            } else {
             return fetchTheMoments.sections[section].numberOfObjects
         }
     }
@@ -254,8 +215,6 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         cell.viewForCell.layer.cornerRadius = 5
         
         dateFormatter.dateFormat = MomentDateFormat.monthAndYear.rawValue
-        
-        cell.cellHeader.text = dateFormatter.string(from: date)
         
         return cell
     }

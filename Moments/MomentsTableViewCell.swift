@@ -20,8 +20,6 @@ class MomentsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var viewForCell: UIView!
     
-    @IBOutlet weak var cellHeader: UILabel!
-
     @IBOutlet weak var viewForDate: UIView!
     
     override func setSelected(_ selected: Bool, animated: Bool) {

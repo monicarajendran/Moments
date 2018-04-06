@@ -24,7 +24,7 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         UIApplication.shared.statusBarStyle = .lightContent
-        setupShadowButton()
+        addShadow()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -32,12 +32,14 @@ class DetailsViewController: UIViewController {
         alertHud = getAlertHUD(srcView: self.view)
     }
     
-    func setupShadowButton () {
+    func addShadow () {
+        
         editButtonOutlet.layer.cornerRadius = editButtonOutlet.frame.width / 2
-        editButtonOutlet.layer.shadowColor = UIColor.black.cgColor
-        editButtonOutlet.layer.shadowOffset = CGSize(width: 3, height: 2)
-        editButtonOutlet.layer.shadowOpacity = 0.9
+        editButtonOutlet.layer.shadowColor = UIColor.black.withAlphaComponent(0.5).cgColor
+        editButtonOutlet.layer.shadowOffset = CGSize(width: 0, height: 1)
+        editButtonOutlet.layer.shadowOpacity = 1
         editButtonOutlet.layer.shadowRadius = 5
+        editButtonOutlet.layer.masksToBounds = false
     }
     
     func displayDetails() {
@@ -72,7 +74,7 @@ class DetailsViewController: UIViewController {
     @IBAction func moreButton(_ sender: UIButton) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in self.deleteMoment() }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         self.present(alert, animated: true, completion: nil)
     }
