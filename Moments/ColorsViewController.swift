@@ -9,16 +9,14 @@
 import UIKit
 
 protocol ColorsViewControllerDelegate {
-    
     func selectedColor(color: MomentColors)
 }
 
 class ColorsViewController: UITableViewController {
     
+    @IBOutlet weak var blue: UILabel!
     
     @IBOutlet weak var red: UILabel!
-    
-    @IBOutlet weak var blue: UILabel!
     
     @IBOutlet weak var pink: UILabel!
     
@@ -48,26 +46,20 @@ class ColorsViewController: UITableViewController {
         title = "Choose Color"
         
         UIApplication.shared.statusBarStyle = .default
+        self.navigationController?.navigationBar.isHidden = false
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(ColorsViewController.close))
         
-        let arrayOfLabels = [red,blue,pink,indigo,teal,cyan,pestoGreen,purple,lime,orange,gray]
+        let arrayOfLabels = [blue,red,pink,indigo,teal,cyan,pestoGreen,purple,lime,orange,gray]
         
         for index in 0..<arrayOfLabels.count{
-            
             circleShapeForLabel(label: arrayOfLabels[index]!)
-            
-            for colorIndex in 0..<MomentColors.allCases.count {
-                
-            if index == colorIndex {
-                
-                arrayOfLabels[index]?.backgroundColor = UIColor(hexString: MomentColors.allCases[colorIndex].rawValue)
-                
-                }
-            }
-
         }
-        
         tableView.tableFooterView = UIView()
-        
+    }
+    
+    @objc func close () {
+        self.navigationController?.popViewController(animated: true)
+
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -78,17 +70,13 @@ class ColorsViewController: UITableViewController {
     }
     
     @IBAction func cancel(_ sender: Any) {
-        
-        dismiss(animated: true, completion: nil)
+        close()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let color = MomentColors.allCases[indexPath.row]
-        
         delegate?.selectedColor(color: color)
-        
-        dismiss(animated: true, completion: nil)
-        
+        close()
     }
 }

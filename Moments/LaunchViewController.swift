@@ -73,7 +73,7 @@ class LaunchViewController: UIViewController, UITextFieldDelegate, AppTextfieldD
         authenticationWithTouchID()
     }
     
-    func textfieldDidChange(textFeild: UITextField){
+    @objc func textfieldDidChange(textFeild: UITextField){
         
         let text = textFeild.text
         

@@ -12,13 +12,7 @@ import UIKit
 
 extension ColorsViewController {
     
-//    func themeColors(label: UILabel){
-//        
-//            label.backgroundColor = UIColor(hexString: MomentColors.allCases[].rawValue)
-//    }
-    
     func circleShapeForLabel(label: UILabel){
-        
         label.layer.cornerRadius = label.frame.size.width / 2
     }
     

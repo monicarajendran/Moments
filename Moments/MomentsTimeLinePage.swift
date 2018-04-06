@@ -69,7 +69,7 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         super.viewDidAppear(animated)
         
         UIApplication.shared.statusBarStyle = .default
-
+        self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.topItem?.title = "Moments"
         noResultsFound.isHidden = true
         
@@ -177,8 +177,9 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         guard let createMomentsVC = R.storyboard.main.createMomentsViewController() else {
             return
         }
-        self.present(createMomentsVC, animated: true, completion: nil)
         
+        let navController = UINavigationController(rootViewController: createMomentsVC)
+        self.present(navController, animated: true, completion: nil)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -263,21 +264,27 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         
         timelineSearchBar.resignFirstResponder()
         
-        guard let pushToDetailMomentPage = storyboard?.instantiateViewController(withIdentifier: "NewMomentsPageViewController")  as? NewMomentsPageViewController else {   return  }
+        //----> Old
+//        guard let pushToDetailMomentPage = storyboard?.instantiateViewController(withIdentifier: "NewMomentsPageViewController")  as? NewMomentsPageViewController else {   return  }
+//
+//        pushToDetailMomentPage.mode = MomentMode.edit.rawValue
+//
+//
+//        pushToDetailMomentPage.createdMoment = momentObject
+//
+//        navigationController?.pushViewController(pushToDetailMomentPage, animated: true)
         
-        pushToDetailMomentPage.mode = MomentMode.edit.rawValue
-        
+        guard let detailsPageVc = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController else {
+            return
+        }
         if searchBarActive{
-            
             momentObject = filteredObjects.execute()[indexPath.row]
         }
         else{
-            
             momentObject = fetchTheMoments.object(at: indexPath)
         }
-        
-        pushToDetailMomentPage.createdMoment = momentObject
-        
-        navigationController?.pushViewController(pushToDetailMomentPage, animated: true)
+
+        detailsPageVc.selectedMoment = momentObject
+        navigationController?.pushViewController(detailsPageVc, animated: true)
     }
 }

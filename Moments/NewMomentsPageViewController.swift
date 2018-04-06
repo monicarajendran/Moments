@@ -210,7 +210,7 @@
     
     }
     
-    func  createMoment(sender: UIBarButtonItem) {
+    @objc func  createMoment(sender: UIBarButtonItem) {
         
         guard let momentName = momentNameTextFeild.text , !momentName.isEmpty   else {
             
@@ -242,7 +242,7 @@
         
     }
     
-    func editMoment(sender: UIBarButtonItem){
+    @objc func editMoment(sender: UIBarButtonItem){
         
         let editedMoment = saveMoment(moment: createdMoment!)
         
@@ -291,7 +291,7 @@
         })
 }
     
-    func close (){
+    @objc func close (){
         
         momentNameTextFeild.resignFirstResponder()
         momentDescTextFeild.resignFirstResponder()

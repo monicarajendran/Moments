@@ -29,6 +29,7 @@ PODS:
   - R.swift (4.0.0):
     - R.swift.Library (~> 4.0.0)
   - R.swift.Library (4.0.0)
+  - SnapKit (4.0.0)
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0
@@ -39,6 +40,7 @@ DEPENDENCIES:
   - Firebase/Core
   - MBProgressHUD
   - R.swift
+  - SnapKit (~> 4.0.0)
 
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: eef157d75e151f255c5333d26656c7fbfe905a51
@@ -55,7 +57,8 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   R.swift: d6a5ec2f55a8441dc0ed9f1f8b37d7d11ae85c66
   R.swift.Library: c3af34921024333546e23b70e70d0b4e0cffca75
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
-PODFILE CHECKSUM: ff67ea52c1b3da62f003e3e2f56bb88fc858230b
+PODFILE CHECKSUM: 1a0879e965b76acc7dfafc609897a1d5f4e55e8c
 
 COCOAPODS: 1.4.0

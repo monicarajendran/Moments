@@ -10,7 +10,7 @@ target 'Moments' do
     pod ‘Firebase/Core’
     pod 'CryptoSwift'
     pod 'R.swift'
-#    pod ‘SnapKit’
+    pod 'SnapKit', '~> 4.0.0'
     pod 'Apploader'
 
 end

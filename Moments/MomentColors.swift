@@ -11,8 +11,8 @@ import UIKit
 
 enum MomentColors : String {
     
-    case red = "E73F39"
     case blue = "039BE5"
+    case red = "E73F39"
     case pink = "EC407A"
     case indigo = "5C6BC0"
     case teal = "4DB6AC"
@@ -24,28 +24,9 @@ enum MomentColors : String {
     case gray = "AEAEAE"
     case green = "32D375"
     
-    static let allCases = [red,blue,pink,indigo,teal,cyan,pestoGreen,purple,lime,orange,gray]
+    var name: String {
+       return  String(describing: self).capitalized
+    }
     
-//    func uicolor() -> UIColor {
-//        
-//        var hexInt: UInt32 = 0
-//
-//        let scanner: Scanner = Scanner(string: "\(rawValue)")
-//
-//        scanner.charactersToBeSkipped = CharacterSet(charactersIn: "#")
-//
-//        scanner.scanHexInt32(&hexInt)
-//    
-//        let hexint = Int(hexInt)
-//        
-//        let red = CGFloat((hexint & 0xff0000) >> 16) / 255.0
-//        let green = CGFloat((hexint & 0xff00) >> 8) / 255.0
-//        let blue = CGFloat((hexint & 0xff) >> 0) / 255.0
-//        let alpha = CGFloat(1.0)
-//        
-//        let color = UIColor(red: red, green: green, blue: blue, alpha: alpha)
-//        
-//        return color
-//    }
-    
+    static let allCases = [blue,red,pink,indigo,teal,cyan,pestoGreen,purple,lime,orange,gray]
 }
