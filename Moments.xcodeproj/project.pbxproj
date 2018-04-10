@@ -45,7 +45,7 @@
 		DD4E496A20750B67004E1630 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E496920750B67004E1630 /* DetailsViewController.swift */; };
 		DD575F7A207356E200710888 /* App Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD575F79207356E200710888 /* App Extension.swift */; };
 		DDA68D8F207215AF00F289BA /* CreateMomentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA68D8E207215AF00F289BA /* CreateMomentsViewController.swift */; };
-		DDAEA456207CAAC1008DA841 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDAEA455207CAAC1008DA841 /* GoogleService-Info.plist */; };
+		DDAEA458207CC453008DA841 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDAEA457207CC453008DA841 /* GoogleService-Info.plist */; };
 		DDFA1D672073BA0300BB9FD2 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFA1D662073BA0300BB9FD2 /* R.generated.swift */; };
 /* End PBXBuildFile section */
 
@@ -93,7 +93,7 @@
 		DD4E496920750B67004E1630 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		DD575F79207356E200710888 /* App Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Extension.swift"; sourceTree = "<group>"; };
 		DDA68D8E207215AF00F289BA /* CreateMomentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMomentsViewController.swift; sourceTree = "<group>"; };
-		DDAEA455207CAAC1008DA841 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Moments app/Moments/Moments/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DDAEA457207CC453008DA841 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Moments App ios/Moments/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DDFA1D662073BA0300BB9FD2 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -188,7 +188,7 @@
 			children = (
 				CE9F47791F8CA0DE0070704C /* .gitignore */,
 				CE56F15C1F88EBD900CEE704 /* Info.plist */,
-				DDAEA455207CAAC1008DA841 /* GoogleService-Info.plist */,
+				DDAEA457207CC453008DA841 /* GoogleService-Info.plist */,
 				CE56F14D1F88EBD900CEE704 /* AppDelegate.swift */,
 				CE56F1511F88EBD900CEE704 /* Main.storyboard */,
 				CE56F1571F88EBD900CEE704 /* Assets.xcassets */,
@@ -332,7 +332,7 @@
 			files = (
 				CE9F477A1F8CA0DE0070704C /* .gitignore in Resources */,
 				CE56F15B1F88EBD900CEE704 /* LaunchScreen.storyboard in Resources */,
-				DDAEA456207CAAC1008DA841 /* GoogleService-Info.plist in Resources */,
+				DDAEA458207CC453008DA841 /* GoogleService-Info.plist in Resources */,
 				CE56F1581F88EBD900CEE704 /* Assets.xcassets in Resources */,
 				CE56F1531F88EBD900CEE704 /* Main.storyboard in Resources */,
 			);
