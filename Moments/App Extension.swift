@@ -15,3 +15,9 @@ extension Int64 {
         return Date(timeIntervalSince1970: TimeInterval(self))
     }
 }
+
+extension Int {
+    var int16Value: Int16 {
+        return Int16(self)
+    }
+}

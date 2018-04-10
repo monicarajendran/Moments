@@ -12,6 +12,7 @@ target 'Moments' do
     pod 'R.swift'
     pod 'SnapKit', '~> 4.0.0'
     pod 'Apploader'
+    pod 'SwiftDate'
 
 end
 
