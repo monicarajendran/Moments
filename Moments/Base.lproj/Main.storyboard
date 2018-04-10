@@ -23,15 +23,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="105" sectionHeaderHeight="12" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1hc-7E-UiN">
-                                <rect key="frame" x="0.0" y="114" width="375" height="504"/>
+                                <rect key="frame" x="0.0" y="129" width="375" height="489"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reuseIdentifier" rowHeight="105" id="oD1-2N-dUK" customClass="MomentsTableViewCell" customModule="Moments" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="12" width="375" height="105"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reuseIdentifier" rowHeight="100" id="oD1-2N-dUK" customClass="MomentsTableViewCell" customModule="Moments" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="12" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oD1-2N-dUK" id="Raz-aD-uj9">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="105"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JGL-J6-KXT">
@@ -140,6 +140,18 @@
                                     <outlet property="delegate" destination="1sq-fA-N6o" id="ZqO-Ic-JMY"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WB2-oi-ogw">
+                                <rect key="frame" x="301" y="544" width="54" height="54"/>
+                                <color key="backgroundColor" red="0.90588235289999997" green="0.2470588235" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="54" id="Fhc-dw-pCc"/>
+                                    <constraint firstAttribute="height" constant="54" id="Szw-L2-ZPK"/>
+                                </constraints>
+                                <state key="normal" image="Add"/>
+                                <connections>
+                                    <action selector="addNewMoment:" destination="1sq-fA-N6o" eventType="touchUpInside" id="7aB-0k-9EY"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Results Found..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXn-nn-ieK">
                                 <rect key="frame" x="113" y="298" width="149" height="49"/>
                                 <constraints>
@@ -162,12 +174,14 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="g1F-aw-VHc" firstAttribute="top" secondItem="WB2-oi-ogw" secondAttribute="bottom" constant="20" id="22s-69-ACs"/>
                             <constraint firstItem="aOD-TW-oUS" firstAttribute="top" secondItem="JeI-D2-20n" secondAttribute="bottom" constant="10" id="9so-gs-CWC"/>
                             <constraint firstAttribute="trailing" secondItem="aOD-TW-oUS" secondAttribute="trailing" id="M8G-Hr-apg"/>
                             <constraint firstItem="aOD-TW-oUS" firstAttribute="trailing" secondItem="1hc-7E-UiN" secondAttribute="trailing" id="NOS-ED-Azk"/>
-                            <constraint firstItem="1hc-7E-UiN" firstAttribute="top" secondItem="aOD-TW-oUS" secondAttribute="bottom" id="WtD-M2-bl3"/>
+                            <constraint firstItem="1hc-7E-UiN" firstAttribute="top" secondItem="aOD-TW-oUS" secondAttribute="bottom" constant="15" id="WtD-M2-bl3"/>
                             <constraint firstItem="aOD-TW-oUS" firstAttribute="leading" secondItem="1hc-7E-UiN" secondAttribute="leading" id="d0F-7x-zzp"/>
                             <constraint firstItem="g1F-aw-VHc" firstAttribute="top" secondItem="dXn-nn-ieK" secondAttribute="bottom" constant="271" id="hHc-pN-52w"/>
+                            <constraint firstAttribute="trailing" secondItem="WB2-oi-ogw" secondAttribute="trailing" constant="20" id="myy-f4-fa1"/>
                             <constraint firstAttribute="bottom" secondItem="1hc-7E-UiN" secondAttribute="bottom" id="pU2-Ga-1Vb"/>
                             <constraint firstItem="aOD-TW-oUS" firstAttribute="leading" secondItem="lwg-lA-idE" secondAttribute="leading" id="pyS-I1-cmw"/>
                             <constraint firstItem="aOD-TW-oUS" firstAttribute="centerX" secondItem="dXn-nn-ieK" secondAttribute="centerX" id="vcD-ZD-4xF"/>
@@ -175,6 +189,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="rNT-tp-gaa"/>
                     <connections>
+                        <outlet property="addButtonOutlet" destination="WB2-oi-ogw" id="opx-xF-CfY"/>
                         <outlet property="noResultsFound" destination="dXn-nn-ieK" id="KLk-be-w2e"/>
                         <outlet property="tableView" destination="1hc-7E-UiN" id="9hw-Ik-33Y"/>
                         <outlet property="timelineSearchBar" destination="aOD-TW-oUS" id="tUE-TO-VBE"/>
@@ -1870,6 +1885,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Add" width="24" height="24"/>
         <image name="Back Button" width="10" height="17"/>
         <image name="Calender" width="512" height="512"/>
         <image name="Edit" width="18" height="18"/>
