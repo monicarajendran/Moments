@@ -48,6 +48,7 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         
         tableView.delegate = self
         timelineSearchBar.delegate = self
+        self.automaticallyAdjustsScrollViewInsets = false
         
         self.queryTheDataFromDisk()
         
@@ -166,11 +167,22 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         label.text = dateFormater.string(from: momentObject?.momentDate ?? Date())
         label.frame = CGRect(x: 20, y: 15, width: tableView.frame.width, height: 30)
         
-        //Section headers will now scroll 
-        self.tableView.contentInset = UIEdgeInsetsMake(-40, 0, 0, 0)
+        //Section headers will now scroll
         view.addSubview(label)
-
+        
+        self.automaticallyAdjustsScrollViewInsets = false
+        
         return view
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let sectionHeaderHeight: CGFloat = 50
+        if (scrollView.contentOffset.y <= sectionHeaderHeight && scrollView.contentOffset.y >= 0) {
+            scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0)
+        } else if (scrollView.contentOffset.y >= sectionHeaderHeight) {
+            scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
