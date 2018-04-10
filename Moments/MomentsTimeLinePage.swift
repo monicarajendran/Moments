@@ -22,7 +22,7 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
     @IBOutlet weak var noResultsFound: UILabel!
     
     var searchBarActive = false
-        
+    
     var searchBarText = ""
     
     var momentObject : Moment?
@@ -31,11 +31,12 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
     
     lazy var fetchTheMoments : FetchRequestController<Moment> = {
         
-        let sortDescriptorss = NSSortDescriptor(key: "momentTime", ascending: false)
+        let sortByTime = NSSortDescriptor(key: "momentTime", ascending: false)
+        let sortByDate = NSSortDescriptor(key: "momentDate", ascending: false)
         
-        let query = container.viewContext.moment.sort(using: [sortDescriptorss])
+        let query = container.viewContext.moment.sort(using: [sortByDate, sortByTime])
         
-        return query.toFetchRequestController()
+        return query.toFetchRequestController(sectionNameKeyPath: "momentDate", cacheName: nil)
         
     }()
     
@@ -44,7 +45,7 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
     override func viewDidLoad() {
         
         super.viewDidLoad()
-
+        
         UserDefaults.standard.set(true, forKey: "firstRun")
         
         UserDefaults.standard.synchronize()
@@ -80,7 +81,7 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         super.viewDidDisappear(animated)
         self.tabBarController?.navigationItem.rightBarButtonItem = nil
     }
-
+    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         timelineSearchBar.resignFirstResponder()
     }
@@ -90,7 +91,7 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         return true
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-      
+        
         print("entered search bar")
         
         Analytics.logEvent("moment_search", parameters: ["search_word": searchBar.text ?? ""])
@@ -139,7 +140,8 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         tableView.reloadData()
     }
     
-    @IBAction func addMomentsButton(_ sender: UIBarButtonItem) {
+    
+    @IBAction func addNewMoment(_ sender: UIButton) {
         
         guard let createMomentsVC = R.storyboard.main.createMomentsViewController() else {
             return
@@ -155,18 +157,44 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
             return 1
         } else {
             return self.fetchTheMoments.numberOfSections()
-             }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let section = fetchTheMoments.sections[section]
+        return section.name
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
+        view.backgroundColor = .clear
+        
+        let dateFormater = DateFormatter()
+        dateFormater.dateFormat = MomentDateFormat.monthAndYear.rawValue
+        
+        let label = UILabel()
+        label.textColor = UIColor.black.withAlphaComponent(0.6)
+        label.text = dateFormater.string(from: momentObject?.momentDate ?? Date())
+        label.frame = CGRect(x: 20, y: 5, width: tableView.frame.width, height: 30)
+        view.addSubview(label)
+        
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if searchBarActive {
             return filteredObjects.execute().count
-            } else {
+        } else {
             return fetchTheMoments.sections[section].numberOfObjects
         }
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! MomentsTableViewCell
@@ -179,7 +207,7 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
             
             momentObject = fetchTheMoments.object(at: indexPath)
         }
-      
+        
         if (filteredObjects.count() == 0 && !searchBarText.isEmpty) {
             
             cell.isHidden = true
@@ -196,10 +224,10 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         cell.momentDescription.text = momentObject?.desc
         
         cell.date.text = "\(String(format: "%02d", momentObject?.day ?? 0))"
-
+        
         if let color = momentObject?.color
         {
-          
+            
             cell.viewForCell.backgroundColor = UIColor(hexString: color)
             cell.viewForDate.backgroundColor = UIColor(hexString: color)
         }
@@ -218,20 +246,10 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         
         return cell
     }
-   
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         timelineSearchBar.resignFirstResponder()
-        
-        //----> Old
-//        guard let pushToDetailMomentPage = storyboard?.instantiateViewController(withIdentifier: "NewMomentsPageViewController")  as? NewMomentsPageViewController else {   return  }
-//
-//        pushToDetailMomentPage.mode = MomentMode.edit.rawValue
-//
-//
-//        pushToDetailMomentPage.createdMoment = momentObject
-//
-//        navigationController?.pushViewController(pushToDetailMomentPage, animated: true)
         
         guard let detailsPageVc = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController else {
             return
@@ -242,7 +260,7 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         else{
             momentObject = fetchTheMoments.object(at: indexPath)
         }
-
+        
         detailsPageVc.selectedMoment = momentObject
         navigationController?.pushViewController(detailsPageVc, animated: true)
     }

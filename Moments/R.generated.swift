@@ -48,8 +48,12 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 12 images.
+  /// This `R.image` struct is generated, and contains static references to 14 images.
   struct image {
+    /// Image `Add`.
+    static let add = Rswift.ImageResource(bundle: R.hostingBundle, name: "Add")
+    /// Image `Back Button`.
+    static let backButton = Rswift.ImageResource(bundle: R.hostingBundle, name: "Back Button")
     /// Image `Calender`.
     static let calender = Rswift.ImageResource(bundle: R.hostingBundle, name: "Calender")
     /// Image `Close`.
@@ -74,6 +78,16 @@ struct R: Rswift.Validatable {
     static let icons8Settings20 = Rswift.ImageResource(bundle: R.hostingBundle, name: "icons8-Settings-20")
     /// Image `icons8-Timeline-20`.
     static let icons8Timeline20 = Rswift.ImageResource(bundle: R.hostingBundle, name: "icons8-Timeline-20")
+    
+    /// `UIImage(named: "Add", bundle: ..., traitCollection: ...)`
+    static func add(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.add, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "Back Button", bundle: ..., traitCollection: ...)`
+    static func backButton(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.backButton, compatibleWith: traitCollection)
+    }
     
     /// `UIImage(named: "Calender", bundle: ..., traitCollection: ...)`
     static func calender(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
@@ -302,11 +316,11 @@ struct _R: Rswift.Validatable {
       static func validate() throws {
         if UIKit.UIImage(named: "Calender") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Calender' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "Close") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Close' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "More") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'More' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icons8-Timeline-20") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icons8-Timeline-20' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "More") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'More' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "Edit") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Edit' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "fingerprint-with-crosshair-focus (2)") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'fingerprint-with-crosshair-focus (2)' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "Back Button") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Back Button' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icons8-Settings-20") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icons8-Settings-20' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "Note") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Note' is used in storyboard 'Main', but couldn't be loaded.") }
         if _R.storyboard.main().newMomentsPageViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'newMomentsPageViewController' could not be loaded from storyboard 'Main' as 'NewMomentsPageViewController'.") }
