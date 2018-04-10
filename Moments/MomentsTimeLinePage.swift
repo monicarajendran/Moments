@@ -30,7 +30,7 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         let sortByTime = NSSortDescriptor(key: "momentTime", ascending: false)
         let sortByDate = NSSortDescriptor(key: "momentDate", ascending: false)
         
-        let query = container.viewContext.moment.sort(using: [sortByDate, sortByTime])
+        let query = container.viewContext.moment.sort(using: [sortByTime, sortByDate])
         return query.toFetchRequestController(sectionNameKeyPath: "momentDate", cacheName: nil)
         
     }()
@@ -251,8 +251,12 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         } else{
             momentObject = fetchTheMoments.object(at: indexPath)
         }
-        
+        print("Selected Moment color -=======", momentObject?.color)
         detailsPageVc.selectedMoment = momentObject
         navigationController?.pushViewController(detailsPageVc, animated: true)
     }
+    
+    @IBAction func filterAction(_ sender: UIBarButtonItem) {
+    }  
+    
 }

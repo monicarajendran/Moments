@@ -46,6 +46,7 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
             createPageTopView.backgroundColor = UIColor(hexString: editMomentObj?.color ?? MomentColors.blue.rawValue)
             
         } else {
+            selectedColor = MomentColors.blue
             self.momentNameTextfield.becomeFirstResponder()
         }
     }
@@ -135,7 +136,6 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
             return
         }
         colorsVC.delegate = self
-        
         colorsVC.selectedColor = selectedColor
         
         navigationController?.pushViewController(colorsVC, animated: true)
@@ -159,7 +159,6 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         let descriptionCell = tableView.cellForRow(at: [0,0]) as! DescriptionTableViewCell
-        
         
         switch textField {
             
@@ -195,15 +194,18 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
         
         moment.name = momentNameTextfield.text
         moment.desc = momentDescrption
-        moment.color = self.selectedColor?.rawValue
+        moment.color = self.selectedColor?.rawValue ?? MomentColors.blue.rawValue
         
         self.dateFormatter.dateStyle = .long
         let seconds = momentDate.timeIntervalSince1970//self.datePicker.date.timeIntervalSince1970
-        moment.momentTime = Int64(seconds)
+        let momentTime = Int64(seconds)
         
+        moment.momentTime = momentTime
         //Moment timeline Card day
         dateFormatter.dateFormat = MomentDateFormat.date.rawValue
         moment.day = Int16(self.dateFormatter.string(from: momentDate))!
+        
+        moment.momentDate = momentTime.toDate.startOfDay
         
         let currentDate = Date().timeIntervalSince1970
         moment.createdAt = Int64(currentDate)
@@ -218,6 +220,7 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
         catch{
             print("Error:",error)
         }
+        tableView.reloadData()
         return moment
     }
     
@@ -227,24 +230,19 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
             alterHud.showText(msg: "Title is Required", detailMsg: "", delay: 1)
             return
         }
-        
         var moment = container.viewContext.moment.create()
         moment.momentID = NSUUID().uuidString
         moment = saveMoment(moment: moment)
         
         CloudSyncServices.addRecordToIColud(record: moment.toICloudRecord())
-        
         alterHud.showText(msg: "Moment Created Successfully!", detailMsg: "", delay: 1)
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {  self.close()  } )
     }
     
     func editMoment() {
         
         let editedMoment = saveMoment(moment: editMomentObj!)
-        
         updateICloud(moment: editedMoment)
-        
         alterHud.showText(msg: "Changes saved successfully", detailMsg: "", delay: 1)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
