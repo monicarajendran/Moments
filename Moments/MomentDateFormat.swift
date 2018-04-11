@@ -13,8 +13,11 @@ enum MomentDateFormat : String{
     case day = "EEE"
     case year = "yyyy"
     case month = "MMM"
+    case week = "dd - dd"
     case date = "dd"
     case short = "dd MMM yyyy"
     case monthAndYear = "MMMM yyyy"
     case long = "EEE dd MMM yy"
+    case `default` = "yyyy-MM-dd HH:mm:ss ZZZZ"
+    
 }

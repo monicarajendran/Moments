@@ -31,6 +31,8 @@ class DetailsViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         displayDetails()
+        print("Moment Id-----", selectedMoment?.momentId ,"\n", "Moment Name------", selectedMoment?.name,"\n","Moment Desc-----", selectedMoment?.desc,"\n", "Moment color-----", selectedMoment?.color,"\n", "Moment Time-----",selectedMoment?.momentTime,"\n", "Moment Date-----", selectedMoment?.momentDate,"\n","Moment Day-----", selectedMoment?.day,"\n", "Moment Month-----", selectedMoment?.month)
+        
         alertHud = getAlertHUD(srcView: self.view)
     }
     
@@ -87,7 +89,7 @@ class DetailsViewController: UIViewController {
             guard let moment = self.selectedMoment else { return }
             
             //Delete the moment first in iCLoud to have the reference of moment  
-            let recordId = CKRecordID(recordName: moment.momentID)
+            let recordId = CKRecordID(recordName: moment.momentId)
             CloudSyncServices.deleteICloudMoment(recordId: recordId)
             
             container.viewContext.delete(moment)

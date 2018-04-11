@@ -30,6 +30,7 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
     var searchBarText = ""
     var momentObject : Moment?
     var filteredObjects = Table<Moment>(context: container.viewContext)
+    var filterOption = MomentFilter.day
     
     lazy var fetchTheMoments : FetchRequestController<Moment> = {
         
@@ -155,32 +156,43 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         }
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let section = fetchTheMoments.sections[section]
-        return section.name
-    }
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
         view.backgroundColor = .clear
         
-        let dateFormater = DateFormatter()
-        dateFormater.dateFormat = MomentDateFormat.monthAndYear.rawValue
+        let sectionHeader = self.fetchTheMoments.sections[section].name
+        dateFormatter.dateFormat = MomentDateFormat.default.rawValue
+        let date = dateFormatter.date(from: sectionHeader)
         
         let label = UILabel()
-        label.textColor = UIColor.black.withAlphaComponent(0.6)
-        label.text = dateFormater.string(from: momentObject?.momentDate ?? Date())
         label.frame = CGRect(x: 20, y: 15, width: tableView.frame.width, height: 30)
+    
+        label.textColor = UIColor.black.withAlphaComponent(0.6)
+        switch filterOption {
+            
+        case .day:
+            dateFormatter.dateFormat = MomentDateFormat.monthAndYear.rawValue
+            label.text =  dateFormatter.string(from: date ?? Date())
+
+        case .month:
+            dateFormatter.dateFormat = MomentDateFormat.monthAndYear.rawValue
+            label.text = dateFormatter.string(from: date ?? Date())
+
+        case .week:
+            label.text = (date?.monthName ?? "") + " " + String(describing: date?.startWeek.day ?? 00) + " - " + String(describing: date?.endWeek.day ?? 00)
+            
+        case .year:
+            label.text = sectionHeader
         
-        //Section headers will now scroll
+        }
+        
         view.addSubview(label)
-        
         self.automaticallyAdjustsScrollViewInsets = false
-        
         return view
     }
-    
+
+    //Section headers will now scroll
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let sectionHeaderHeight: CGFloat = 50
@@ -261,15 +273,17 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         navigationController?.pushViewController(detailsPageVc, animated: true)
     }
     
-    func filter(by key: String) {
+    func filter(by key: String, ascending: Bool) {
         
-        let sortByFilter = NSSortDescriptor(key: key, ascending: true)
+        filterOption = MomentFilter(rawValue: key)!
+        
+        let sortByFilter = NSSortDescriptor(key: key, ascending: ascending)
         let sortByTime = NSSortDescriptor(key: "momentTime", ascending: false)
+        
         let query = container.viewContext.moment.sort(using: [sortByFilter, sortByTime])
         
         self.fetchTheMoments = query.toFetchRequestController(sectionNameKeyPath: key, cacheName: nil)
         
-        try? self.fetchTheMoments.refresh(using: [sortByFilter], keepOriginalSortDescriptors: true)
         try? self.fetchTheMoments.performFetch()
         try? container.viewContext.save()
         self.tableView.reloadData()
@@ -278,23 +292,26 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
     @IBAction func filterAction(_ sender: UIBarButtonItem) {
         
         let alert = UIAlertController(title: "Choose a Filter", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
-
-        alert.addAction(UIAlertAction(title: "Month", style: .default, handler: { action in
-            self.filter(by: MomentFilter.month.rawValue) }))
-        
-        alert.addAction(UIAlertAction(title: "Week", style: .default, handler: { action in
-            self.filter(by: MomentFilter.week.rawValue) }))
         
         alert.addAction(UIAlertAction(title: "Day", style: .default, handler: { action in
-            self.filter(by: MomentFilter.day.rawValue) }))
+            self.filter(by: MomentFilter.day.rawValue, ascending: false) }))
+
+        alert.addAction(UIAlertAction(title: "Month", style: .default, handler: { action in
+            self.filter(by: MomentFilter.month.rawValue, ascending: true) }
+        ))
+        
+        alert.addAction(UIAlertAction(title: "Week", style: .default, handler: { action in
+            self.filter(by: MomentFilter.week.rawValue, ascending: false) }
+        ))
         
         alert.addAction(UIAlertAction(title: "Year", style: .default, handler: { action in
-            self.filter(by: MomentFilter.year.rawValue) }))
+            self.filter(by: MomentFilter.year.rawValue, ascending: false) }
+            ))
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
-            self.filter(by: MomentFilter.month.rawValue) }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil //{ action in
+//            self.filter(by: MomentFilter.month.rawValue) }
+        ))
         
         self.present(alert, animated: true, completion: nil)
     }  
-    
 }

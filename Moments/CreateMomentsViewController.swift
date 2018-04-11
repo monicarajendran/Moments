@@ -186,7 +186,8 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
         moment.name = momentNameTextfield.text
         moment.desc = momentDescrption
         moment.color = self.selectedColor?.rawValue ?? MomentColors.blue.rawValue
-        
+        moment.year = momentDate.year.int16Value
+
         self.dateFormatter.dateStyle = .long
         let seconds = momentDate.timeIntervalSince1970//self.datePicker.date.timeIntervalSince1970
         let momentTime = Int64(seconds)
@@ -197,7 +198,9 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
         moment.day = Int16(self.dateFormatter.string(from: momentDate))!
         
         moment.momentDate = momentTime.toDate.startOfDay
-        moment.momentMonth = momentTime.toDate.month.int16Value
+        moment.momentMonth = momentTime.toDate.prevMonth.nextMonth(at: .start)
+        moment.momentWeek = momentTime.toDate.startWeek
+        moment.momentYear = momentDate.year.int16Value
         
         let currentDate = Date().timeIntervalSince1970
         moment.createdAt = Int64(currentDate)
@@ -223,7 +226,7 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
             return
         }
         var moment = container.viewContext.moment.create()
-        moment.momentID = NSUUID().uuidString
+        moment.momentId = NSUUID().uuidString
         moment = saveMoment(moment: moment)
         
         CloudSyncServices.addRecordToIColud(record: moment.toICloudRecord())
@@ -245,7 +248,7 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
         
         /// have check return
         
-        CloudSyncServices.privateDb.fetch(withRecordID: CKRecordID(recordName: moment.momentID)) { (record, error) in
+        CloudSyncServices.privateDb.fetch(withRecordID: CKRecordID(recordName: moment.momentId)) { (record, error) in
             
             guard let record = record else {
                     print("error in updating the record", error as Any)
@@ -253,13 +256,12 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
             }
             moment.updateICloudRecord(record: record)
             CloudSyncServices.addRecordToIColud(record: record)
-            
         }
     }
     
     func deleteICloud(moment: Moment){
         
-        CloudSyncServices.privateDb.delete(withRecordID: CKRecordID(recordName: moment.momentID), completionHandler: { rec , err in
+        CloudSyncServices.privateDb.delete(withRecordID: CKRecordID(recordName: moment.momentId), completionHandler: { rec , err in
             guard let record = rec else {
                 print("oopssss",err as Any)
                 return
