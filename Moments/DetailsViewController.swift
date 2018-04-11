@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 import Apploader
 
 class DetailsViewController: UIViewController {
@@ -19,9 +20,10 @@ class DetailsViewController: UIViewController {
     
     var selectedMoment: Moment?
     var alertHud: MBProgressHUD!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.navigationController?.navigationBar.isHidden = true
         UIApplication.shared.statusBarStyle = .lightContent
         addShadow()
@@ -52,9 +54,7 @@ class DetailsViewController: UIViewController {
         date.text = dateFormat.string(from: (selectedMoment?.momentTime.toDate) ?? Date())
         
         let momentColor: UIColor = UIColor(hexString: selectedMoment?.color ?? MomentColors.blue.rawValue)
-        
         editButtonOutlet.backgroundColor = momentColor
-        
         topview.backgroundColor = momentColor
     }
 
@@ -79,13 +79,16 @@ class DetailsViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func deleteMoment  () {
+    func deleteMoment() {
         
         let alert = UIAlertController(title: "Would you like to delete", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
-        
         alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { action in
             
             guard let moment = self.selectedMoment else { return }
+            
+            //Delete the moment first in iCLoud to have the reference of moment  
+            let recordId = CKRecordID(recordName: moment.momentID)
+            CloudSyncServices.deleteICloudMoment(recordId: recordId)
             
             container.viewContext.delete(moment)
             try!   container.viewContext.save()
@@ -98,7 +101,6 @@ class DetailsViewController: UIViewController {
         }))
         
         alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
-    
         self.present(alert, animated: true, completion: nil)
 
     }

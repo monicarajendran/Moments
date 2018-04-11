@@ -8,10 +8,16 @@
 
 
 import UIKit
-
 import AlecrimCoreData
-
 import Firebase
+
+enum MomentFilter: String {
+    
+    case day = "momentDate"
+    case month = "momentMonth"
+    case week = "momentWeek"
+    case year = "momentYear"
+}
 
 class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UISearchBarDelegate{
     
@@ -158,7 +164,7 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
         view.backgroundColor = .clear
-
+        
         let dateFormater = DateFormatter()
         dateFormater.dateFormat = MomentDateFormat.monthAndYear.rawValue
         
@@ -251,12 +257,44 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         } else{
             momentObject = fetchTheMoments.object(at: indexPath)
         }
-        print("Selected Moment color -=======", momentObject?.color)
         detailsPageVc.selectedMoment = momentObject
         navigationController?.pushViewController(detailsPageVc, animated: true)
     }
     
+    func filter(by key: String) {
+        
+        let sortByFilter = NSSortDescriptor(key: key, ascending: true)
+        let sortByTime = NSSortDescriptor(key: "momentTime", ascending: false)
+        let query = container.viewContext.moment.sort(using: [sortByFilter, sortByTime])
+        
+        self.fetchTheMoments = query.toFetchRequestController(sectionNameKeyPath: key, cacheName: nil)
+        
+        try? self.fetchTheMoments.refresh(using: [sortByFilter], keepOriginalSortDescriptors: true)
+        try? self.fetchTheMoments.performFetch()
+        try? container.viewContext.save()
+        self.tableView.reloadData()
+    }
+    
     @IBAction func filterAction(_ sender: UIBarButtonItem) {
+        
+        let alert = UIAlertController(title: "Choose a Filter", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+
+        alert.addAction(UIAlertAction(title: "Month", style: .default, handler: { action in
+            self.filter(by: MomentFilter.month.rawValue) }))
+        
+        alert.addAction(UIAlertAction(title: "Week", style: .default, handler: { action in
+            self.filter(by: MomentFilter.week.rawValue) }))
+        
+        alert.addAction(UIAlertAction(title: "Day", style: .default, handler: { action in
+            self.filter(by: MomentFilter.day.rawValue) }))
+        
+        alert.addAction(UIAlertAction(title: "Year", style: .default, handler: { action in
+            self.filter(by: MomentFilter.year.rawValue) }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+            self.filter(by: MomentFilter.month.rawValue) }))
+        
+        self.present(alert, animated: true, completion: nil)
     }  
     
 }
