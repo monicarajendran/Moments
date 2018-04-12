@@ -35,19 +35,14 @@ class LoadingViewController: UIViewController {
               let _ = momentObj.fromICloudRecordToMoment(record: momentRec)
                 
             do {
-                
                 try container.viewContext.save()
-            }
-            catch {
+            } catch {
                 print("Error in saving iCloud moment into coredata")
                 }
             }
-        }
-         else {
+        } else {
                 let alert = UIAlertController(title: "Error", message: "Sign In iCloud", preferredStyle: .alert)
-                
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                
                 self.present(alert, animated: true, completion: nil)
             }
         },

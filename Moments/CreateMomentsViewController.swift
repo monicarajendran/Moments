@@ -32,20 +32,15 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
         if momentMode == .edit {
             
             momentNameTextfield.text = editMomentObj?.name
-            
             momentDescrption = editMomentObj?.desc ?? ""
-            
             self.momentNameTextfield.resignFirstResponder()
-            
             selectedColor = MomentColors(rawValue: (editMomentObj?.color) ?? MomentColors.blue.rawValue)
-            
             momentDate = editMomentObj?.momentTime.toDate ?? Date()
-            
             dateFormatter.dateFormat = MomentDateFormat.short.rawValue
-            
             createPageTopView.backgroundColor = UIColor(hexString: editMomentObj?.color ?? MomentColors.blue.rawValue)
             
         } else {
+            selectedColor = MomentColors.blue
             self.momentNameTextfield.becomeFirstResponder()
         }
     }
@@ -63,6 +58,7 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         switch indexPath.row {
         case 0:
             
@@ -113,11 +109,8 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
             picker, date, index in
             
             self.navigationItem.rightBarButtonItem?.isEnabled = true
-            
             self.momentDate = date as! Date
-            
             self.dateFormatter.dateFormat = MomentDateFormat.short.rawValue
-            
             cell.dateTitle.setTitle(self.dateFormatter.string(from: self.momentDate), for: .normal)
             
             return
@@ -134,7 +127,6 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
             return
         }
         colorsVC.delegate = self
-        
         colorsVC.selectedColor = selectedColor
         
         navigationController?.pushViewController(colorsVC, animated: true)
@@ -158,7 +150,6 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         let descriptionCell = tableView.cellForRow(at: [0,0]) as! DescriptionTableViewCell
-        
         
         switch textField {
             
@@ -194,15 +185,22 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
         
         moment.name = momentNameTextfield.text
         moment.desc = momentDescrption
-        moment.color = self.selectedColor?.rawValue
-        
+        moment.color = self.selectedColor?.rawValue ?? MomentColors.blue.rawValue
+        moment.year = momentDate.year.int16Value
+
         self.dateFormatter.dateStyle = .long
         let seconds = momentDate.timeIntervalSince1970//self.datePicker.date.timeIntervalSince1970
-        moment.momentTime = Int64(seconds)
+        let momentTime = Int64(seconds)
         
+        moment.momentTime = momentTime
         //Moment timeline Card day
         dateFormatter.dateFormat = MomentDateFormat.date.rawValue
         moment.day = Int16(self.dateFormatter.string(from: momentDate))!
+        
+        moment.momentDate = momentTime.toDate.startOfDay
+        moment.momentMonth = momentTime.toDate.prevMonth.nextMonth(at: .start)
+        moment.momentWeek = momentTime.toDate.startWeek
+        moment.momentYear = momentDate.year.int16Value
         
         let currentDate = Date().timeIntervalSince1970
         moment.createdAt = Int64(currentDate)
@@ -217,6 +215,7 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
         catch{
             print("Error:",error)
         }
+        tableView.reloadData()
         return moment
     }
     
@@ -226,24 +225,19 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
             alterHud.showText(msg: "Title is Required", detailMsg: "", delay: 1)
             return
         }
-        
         var moment = container.viewContext.moment.create()
-        moment.momentID = NSUUID().uuidString
+        moment.momentId = NSUUID().uuidString
         moment = saveMoment(moment: moment)
         
         CloudSyncServices.addRecordToIColud(record: moment.toICloudRecord())
-        
         alterHud.showText(msg: "Moment Created Successfully!", detailMsg: "", delay: 1)
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {  self.close()  } )
     }
     
     func editMoment() {
         
         let editedMoment = saveMoment(moment: editMomentObj!)
-        
         updateICloud(moment: editedMoment)
-        
         alterHud.showText(msg: "Changes saved successfully", detailMsg: "", delay: 1)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
@@ -254,24 +248,20 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
         
         /// have check return
         
-        CloudSyncServices.privateDb.fetch(withRecordID: CKRecordID(recordName: moment.momentID!)) { (record, error) in
+        CloudSyncServices.privateDb.fetch(withRecordID: CKRecordID(recordName: moment.momentId)) { (record, error) in
             
-            guard let record = record
-                
-                else {
+            guard let record = record else {
                     print("error in updating the record", error as Any)
                     return
             }
-            
             moment.updateICloudRecord(record: record)
             CloudSyncServices.addRecordToIColud(record: record)
-            
         }
     }
     
     func deleteICloud(moment: Moment){
         
-        CloudSyncServices.privateDb.delete(withRecordID: CKRecordID(recordName: moment.momentID!), completionHandler: { rec , err in
+        CloudSyncServices.privateDb.delete(withRecordID: CKRecordID(recordName: moment.momentId), completionHandler: { rec , err in
             guard let record = rec else {
                 print("oopssss",err as Any)
                 return

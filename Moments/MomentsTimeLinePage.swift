@@ -8,141 +8,113 @@
 
 
 import UIKit
-
 import AlecrimCoreData
-
 import Firebase
+
+enum MomentFilter: String {
+    
+    case day = "momentDate"
+    case month = "momentMonth"
+    case week = "momentWeek"
+    case year = "momentYear"
+}
 
 class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UISearchBarDelegate{
     
     @IBOutlet weak var timelineSearchBar: UISearchBar!
-    
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var noResultsFound: UILabel!
+    @IBOutlet weak var addButtonOutlet: UIButton!
     
     var searchBarActive = false
-        
     var searchBarText = ""
-    
     var momentObject : Moment?
-    
     var filteredObjects = Table<Moment>(context: container.viewContext)
+    var filterOption = MomentFilter.day
     
     lazy var fetchTheMoments : FetchRequestController<Moment> = {
         
-        let sortDescriptorss = NSSortDescriptor(key: "momentTime", ascending: false)
+        let sortByTime = NSSortDescriptor(key: "momentTime", ascending: false)
+        let sortByDate = NSSortDescriptor(key: "momentDate", ascending: false)
         
-        let query = container.viewContext.moment.sort(using: [sortDescriptorss])
-        
-        return query.toFetchRequestController()
+        let query = container.viewContext.moment.sort(using: [sortByTime, sortByDate])
+        return query.toFetchRequestController(sectionNameKeyPath: "momentDate", cacheName: nil)
         
     }()
     
     let dateFormatter = DateFormatter()
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
         UserDefaults.standard.set(true, forKey: "firstRun")
-        
         UserDefaults.standard.synchronize()
         
+        addButtonShadow()
         dateFormatter.dateStyle = .long
         
         tableView.delegate = self
-        
         timelineSearchBar.delegate = self
+        self.automaticallyAdjustsScrollViewInsets = false
         
         self.queryTheDataFromDisk()
         
         tableView.tableFooterView = UIView(frame: .zero)
-        
         navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         
         //to remove the bottom and top line of the search bar
         timelineSearchBar.backgroundImage = UIImage()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         UIApplication.shared.statusBarStyle = .default
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.topItem?.title = "Moments"
+        
+        
         noResultsFound.isHidden = true
-        
         self.tableView.reloadData()
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
-        //settings page will not get the right bar by doing this
         self.tabBarController?.navigationItem.rightBarButtonItem = nil
     }
-
+    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        
         timelineSearchBar.resignFirstResponder()
     }
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-    
         searchBar.setShowsCancelButton(true, animated: true)
         return true
     }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        /*
-         
-         if string is kind of number
-         check for date, month, year
-         
-         if string is kind of letters,
-         then monthname, momentName
-         
-         */
-        
-        print("entered search bar")
         
         Analytics.logEvent("moment_search", parameters: ["search_word": searchBar.text ?? ""])
         
         let searchPredicate = NSPredicate(format: "searchToken CONTAINS[c] %@",searchText)
-        
         filteredObjects = container.viewContext.moment.filter(using: searchPredicate).sort(using: NSSortDescriptor(key: "createdAt", ascending: false))
-        
-        print(searchText)
         
         searchBarText = searchText
         
-        print("fetched objects: \(filteredObjects.count())")
-        
         if filteredObjects.count() == 0 {
-            
             searchBarActive = false
-            
-        }
-        else{
-            
+        } else{
             self.tableView.backgroundView = .none
-            
             searchBarActive = true
         }
-        
         self.tableView.reloadData()
-        
     }
     
     func queryTheDataFromDisk() {
         
         do {
-            try fetchTheMoments.performFetch()            
-        }
-        catch{
-            
+            try fetchTheMoments.performFetch()
+        } catch{
             print("error occured")
         }
     }
@@ -150,141 +122,230 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         
         searchBar.resignFirstResponder()
-        
         searchBarText = ""
         searchBar.text = nil
-        
         searchBarActive = false
         searchBar.setShowsCancelButton(false, animated: true)
         tableView.reloadData()
     }
     
-    @IBAction func addMomentsButton(_ sender: UIBarButtonItem) {
-      
-        ////-------> Old 
-//        guard let newMomentsPage = storyboard?.instantiateViewController(withIdentifier: "NewMomentsPageViewController") as? NewMomentsPageViewController
-//            
-//            else{
-//                return
-//        }
-//        
-//        newMomentsPage.mode = MomentMode.create.rawValue
-//        
-//        let navController = UINavigationController(rootViewController: newMomentsPage)
-//        
-//        self.present(navController, animated:true, completion: nil)
+    func addButtonShadow() {
+        
+        let buttonLayer = addButtonOutlet.layer
+        buttonLayer.cornerRadius = addButtonOutlet.frame.height / 2
+        buttonLayer.shadowColor = UIColor.black.withAlphaComponent(0.5).cgColor
+        buttonLayer.shadowOffset = CGSize(width: 0, height: 1)
+        buttonLayer.shadowRadius = 5
+        buttonLayer.shadowOpacity = 0.7
+        buttonLayer.masksToBounds = false
+    }
+    
+    @IBAction func addNewMoment(_ sender: UIButton) {
         
         guard let createMomentsVC = R.storyboard.main.createMomentsViewController() else {
             return
         }
-        
         let navController = UINavigationController(rootViewController: createMomentsVC)
         self.present(navController, animated: true, completion: nil)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        if searchBarActive{
-            
-            return 1
+        return searchBarActive ? 1 : self.fetchTheMoments.numberOfSections()
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
+        view.backgroundColor = .clear
+        
+        let sectionHeader = self.fetchTheMoments.sections[section].name
+        dateFormatter.dateFormat = MomentDateFormat.default.rawValue
+        let date = dateFormatter.date(from: sectionHeader)
+        
+        let label = UILabel()
+        label.frame = CGRect(x: 20, y: 10, width: tableView.frame.width, height: 30)
+        
+        label.textColor = UIColor.black.withAlphaComponent(0.6)
+        
+            switch filterOption {
+                
+            case .day:
+                dateFormatter.dateFormat = MomentDateFormat.dayMonthYear.rawValue
+                label.text =  dateFormatter.string(from: date ?? Date())
+                
+            case .month:
+                dateFormatter.dateFormat = MomentDateFormat.monthYear.rawValue
+                label.text = dateFormatter.string(from: date ?? Date())
+                
+            case .week:
+                label.text = (date?.monthName ?? "") + " " + String(describing: date?.startWeek.day ?? 00) + " - " + String(describing: date?.endWeek.day ?? 00)
+                
+            case .year:
+                label.text = sectionHeader
+                
+            }
+        
+        view.addSubview(label)
+        self.automaticallyAdjustsScrollViewInsets = false
+        return view
+    }
+    
+    //Section headers will now scroll
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let sectionHeaderHeight: CGFloat = 50
+        if (scrollView.contentOffset.y <= sectionHeaderHeight && scrollView.contentOffset.y >= 0) {
+            scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0)
+        } else if (scrollView.contentOffset.y >= sectionHeaderHeight) {
+            scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
         }
-        else {
-            return self.fetchTheMoments.numberOfSections()
-             }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        return filteredObjects.count() == 0 ? 0 : 40
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if searchBarActive {
-            
-            return filteredObjects.execute().count
-            }
-            
-        else {
-            
-            return fetchTheMoments.sections[section].numberOfObjects
-        }
+        return searchBarActive ? filteredObjects.execute().count : fetchTheMoments.sections[section].numberOfObjects
     }
-
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! MomentsTableViewCell
         
         if searchBarActive {
-            
             momentObject = filteredObjects.execute()[indexPath.row]
-        }
-        else {
-            
+        } else {
             momentObject = fetchTheMoments.object(at: indexPath)
         }
-      
+        
         if (filteredObjects.count() == 0 && !searchBarText.isEmpty) {
-            
             cell.isHidden = true
             noResultsFound.isHidden = false
-        }
-            
-        else {
-            
+        } else {
             noResultsFound.isHidden = true
         }
         
         cell.momentName.text = momentObject?.name
-        
         cell.momentDescription.text = momentObject?.desc
-        
         cell.date.text = "\(String(format: "%02d", momentObject?.day ?? 0))"
-
-        if let color = momentObject?.color
-        {
-          
+        
+        if let color = momentObject?.color {
             cell.viewForCell.backgroundColor = UIColor(hexString: color)
             cell.viewForDate.backgroundColor = UIColor(hexString: color)
         }
         
         let timeAsSeconds = momentObject?.momentTime
-        
         let date = Date(timeIntervalSince1970: TimeInterval(timeAsSeconds ?? 0))
         
         dateFormatter.dateFormat = MomentDateFormat.day.rawValue
-        
         cell.day.text = dateFormatter.string(from: date).uppercased()
-        
         cell.viewForCell.layer.cornerRadius = 5
-        
-        dateFormatter.dateFormat = MomentDateFormat.monthAndYear.rawValue
-        
-        cell.cellHeader.text = dateFormatter.string(from: date)
+        dateFormatter.dateFormat = MomentDateFormat.dayMonthYear.rawValue
         
         return cell
     }
-   
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         timelineSearchBar.resignFirstResponder()
-        
-        //----> Old
-//        guard let pushToDetailMomentPage = storyboard?.instantiateViewController(withIdentifier: "NewMomentsPageViewController")  as? NewMomentsPageViewController else {   return  }
-//
-//        pushToDetailMomentPage.mode = MomentMode.edit.rawValue
-//
-//
-//        pushToDetailMomentPage.createdMoment = momentObject
-//
-//        navigationController?.pushViewController(pushToDetailMomentPage, animated: true)
         
         guard let detailsPageVc = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController else {
             return
         }
         if searchBarActive{
             momentObject = filteredObjects.execute()[indexPath.row]
-        }
-        else{
+        } else{
             momentObject = fetchTheMoments.object(at: indexPath)
         }
-
         detailsPageVc.selectedMoment = momentObject
         navigationController?.pushViewController(detailsPageVc, animated: true)
+    }
+    
+    func filter(by key: String) {
+        
+        filterOption = MomentFilter(rawValue: key)!
+        
+        let sortByFilter = NSSortDescriptor(key: key, ascending: false)
+        let sortByTime = NSSortDescriptor(key: "momentTime", ascending: false)
+        
+        let query = container.viewContext.moment.sort(using: [sortByFilter, sortByTime])
+        
+        self.fetchTheMoments = query.toFetchRequestController(sectionNameKeyPath: key, cacheName: nil)
+        
+        try? self.fetchTheMoments.performFetch()
+        try? container.viewContext.save()
+        self.tableView.reloadData()
+    }
+    
+    var dayName = "Day"
+    var monthName = "Month"
+    var weekName = "Week"
+    var yearName = "Year"
+    
+    
+    let groupByValues = ["Day", "Month", "Week", "Year"]
+    
+    @IBAction func filterAction(_ sender: UIBarButtonItem) {
+        
+        let alert = UIAlertController(title: "Group By", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        alert.addAction(UIAlertAction(title: dayName, style: .default, handler: { action in
+            
+            self.setTheCheckMark(groupBy: .day)
+            self.filter(by: MomentFilter.day.rawValue) }))
+        
+        alert.addAction(UIAlertAction(title: monthName, style: .default, handler: { action in
+            
+            self.setTheCheckMark(groupBy: .month)
+            self.filter(by: MomentFilter.month.rawValue) }
+        ))
+        
+        alert.addAction(UIAlertAction(title: weekName, style: .default, handler: { action in
+            self.setTheCheckMark(groupBy: .week)
+            self.filter(by: MomentFilter.week.rawValue) }
+        ))
+        
+        alert.addAction(UIAlertAction(title: yearName, style: .default, handler: { action in
+            self.setTheCheckMark(groupBy: .year)
+            self.filter(by: MomentFilter.year.rawValue) }
+        ))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil ))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func setTheCheckMark(groupBy: MomentFilter){
+        
+        switch groupBy {
+        case .day:
+            dayName = "Day  ✔️"
+            monthName = "Month"
+            weekName = "Week"
+            yearName = "Year"
+        case .month:
+            dayName = "Day"
+            monthName = "Month  ✔️"
+            weekName = "Week"
+            yearName = "Year"
+            
+        case .week:
+            dayName = "Day"
+            monthName = "Month"
+            weekName = "Week  ✔️"
+            yearName = "Year"
+        case .year:
+            dayName = "Day"
+            monthName = "Month"
+            weekName = "Week"
+            yearName = "Year  ✔️"
+        }
     }
 }

@@ -51,7 +51,6 @@ class FeedBackViewController: UIViewController {
             Analytics.logEvent("feedback_sent", parameters: nil)
 
                 let hud = MomentHud.showHUD(vc: self.view)
-            
                 hud.label.text = "Thankyou for feedback"
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {

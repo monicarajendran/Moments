@@ -226,7 +226,7 @@
         
         var moment = container.viewContext.moment.create()
         
-        moment.momentID = NSUUID().uuidString
+        moment.momentId = NSUUID().uuidString
         
         moment = saveMoment(moment: moment)
         
@@ -263,7 +263,7 @@
         
         /// have check return
         
-        CloudSyncServices.privateDb.fetch(withRecordID: CKRecordID(recordName: moment.momentID!)) { (record, error) in
+        CloudSyncServices.privateDb.fetch(withRecordID: CKRecordID(recordName: moment.momentId)) { (record, error) in
             
             guard let record = record
                 
@@ -281,7 +281,7 @@
     
     func deleteICloud(moment: Moment){
         
-        CloudSyncServices.privateDb.delete(withRecordID: CKRecordID(recordName: moment.momentID!), completionHandler: { rec , err in
+        CloudSyncServices.privateDb.delete(withRecordID: CKRecordID(recordName: moment.momentId), completionHandler: { rec , err in
             guard let record = rec else {
                 print("oopssss",err as Any)
                 return

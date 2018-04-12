@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 import Apploader
 
 class DetailsViewController: UIViewController {
@@ -19,25 +20,30 @@ class DetailsViewController: UIViewController {
     
     var selectedMoment: Moment?
     var alertHud: MBProgressHUD!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.navigationController?.navigationBar.isHidden = true
         UIApplication.shared.statusBarStyle = .lightContent
-        setupShadowButton()
+        addShadow()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         displayDetails()
+        print("Moment Id-----", selectedMoment?.momentId ,"\n", "Moment Name------", selectedMoment?.name,"\n","Moment Desc-----", selectedMoment?.desc,"\n", "Moment color-----", selectedMoment?.color,"\n", "Moment Time-----",selectedMoment?.momentTime,"\n", "Moment Date-----", selectedMoment?.momentDate,"\n","Moment Day-----", selectedMoment?.day,"\n", "Moment Month-----", selectedMoment?.month)
+        
         alertHud = getAlertHUD(srcView: self.view)
     }
     
-    func setupShadowButton () {
+    func addShadow () {
+        
         editButtonOutlet.layer.cornerRadius = editButtonOutlet.frame.width / 2
-        editButtonOutlet.layer.shadowColor = UIColor.black.cgColor
-        editButtonOutlet.layer.shadowOffset = CGSize(width: 3, height: 2)
-        editButtonOutlet.layer.shadowOpacity = 0.9
+        editButtonOutlet.layer.shadowColor = UIColor.black.withAlphaComponent(0.5).cgColor
+        editButtonOutlet.layer.shadowOffset = CGSize(width: 0, height: 1)
+        editButtonOutlet.layer.shadowOpacity = 1
         editButtonOutlet.layer.shadowRadius = 5
+        editButtonOutlet.layer.masksToBounds = false
     }
     
     func displayDetails() {
@@ -50,9 +56,7 @@ class DetailsViewController: UIViewController {
         date.text = dateFormat.string(from: (selectedMoment?.momentTime.toDate) ?? Date())
         
         let momentColor: UIColor = UIColor(hexString: selectedMoment?.color ?? MomentColors.blue.rawValue)
-        
         editButtonOutlet.backgroundColor = momentColor
-        
         topview.backgroundColor = momentColor
     }
 
@@ -72,18 +76,21 @@ class DetailsViewController: UIViewController {
     @IBAction func moreButton(_ sender: UIButton) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in self.deleteMoment() }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         self.present(alert, animated: true, completion: nil)
     }
     
-    func deleteMoment  () {
+    func deleteMoment() {
         
         let alert = UIAlertController(title: "Would you like to delete", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
-        
         alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { action in
             
             guard let moment = self.selectedMoment else { return }
+            
+            //Delete the moment first in iCLoud to have the reference of moment  
+            let recordId = CKRecordID(recordName: moment.momentId)
+            CloudSyncServices.deleteICloudMoment(recordId: recordId)
             
             container.viewContext.delete(moment)
             try!   container.viewContext.save()
@@ -96,7 +103,6 @@ class DetailsViewController: UIViewController {
         }))
         
         alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
-    
         self.present(alert, animated: true, completion: nil)
 
     }
