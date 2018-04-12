@@ -187,7 +187,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rNT-tp-gaa">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="ZvX-8z-7MK">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="ZvX-8z-7MK">
                             <connections>
                                 <action selector="filterAction:" destination="1sq-fA-N6o" id="WCy-9f-STR"/>
                             </connections>
@@ -1448,6 +1448,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EyG-Hk-OmA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Moments" image="icons8-Timeline-20" id="xDE-Uv-sQP"/>
                     <toolbarItems/>
+                    <size key="freeformSize" width="375" height="667"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dIO-ZD-ux2">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

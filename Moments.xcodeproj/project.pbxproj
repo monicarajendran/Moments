@@ -39,11 +39,11 @@
 		CEA33A671FA4300D0032E0E8 /* MomentICloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA33A661FA4300D0032E0E8 /* MomentICloud.swift */; };
 		CEA3E0D51FA9E70600F4D8A3 /* NewMomentsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA3E0D41FA9E70600F4D8A3 /* NewMomentsPageViewController.swift */; };
 		CEA8346D1FAC51530017933B /* MomentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA8346C1FAC51530017933B /* MomentsTableViewCell.swift */; };
-		DD308F02207CE4FE002F1DCD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD308F01207CE4FE002F1DCD /* GoogleService-Info.plist */; };
 		DD4E49642074A4FE004E1630 /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E49632074A4FE004E1630 /* DescriptionTableViewCell.swift */; };
 		DD4E49662074BA55004E1630 /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E49652074BA55004E1630 /* DateTableViewCell.swift */; };
 		DD4E49682074D790004E1630 /* ColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E49672074D790004E1630 /* ColorTableViewCell.swift */; };
 		DD4E496A20750B67004E1630 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E496920750B67004E1630 /* DetailsViewController.swift */; };
+		DD50927F207EEB50004222F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD50927E207EEB50004222F4 /* GoogleService-Info.plist */; };
 		DD575F7A207356E200710888 /* App Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD575F79207356E200710888 /* App Extension.swift */; };
 		DDA68D8F207215AF00F289BA /* CreateMomentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA68D8E207215AF00F289BA /* CreateMomentsViewController.swift */; };
 		DDFA1D672073BA0300BB9FD2 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFA1D662073BA0300BB9FD2 /* R.generated.swift */; };
@@ -87,11 +87,11 @@
 		CEA33A661FA4300D0032E0E8 /* MomentICloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentICloud.swift; sourceTree = "<group>"; };
 		CEA3E0D41FA9E70600F4D8A3 /* NewMomentsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMomentsPageViewController.swift; sourceTree = "<group>"; };
 		CEA8346C1FAC51530017933B /* MomentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentsTableViewCell.swift; sourceTree = "<group>"; };
-		DD308F01207CE4FE002F1DCD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../.Trash/Moments app/Moments/Moments/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DD4E49632074A4FE004E1630 /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		DD4E49652074BA55004E1630 /* DateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
 		DD4E49672074D790004E1630 /* ColorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTableViewCell.swift; sourceTree = "<group>"; };
 		DD4E496920750B67004E1630 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		DD50927E207EEB50004222F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DD575F79207356E200710888 /* App Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Extension.swift"; sourceTree = "<group>"; };
 		DDA68D8E207215AF00F289BA /* CreateMomentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMomentsViewController.swift; sourceTree = "<group>"; };
 		DDFA1D662073BA0300BB9FD2 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
@@ -187,9 +187,9 @@
 			isa = PBXGroup;
 			children = (
 				CE9F47791F8CA0DE0070704C /* .gitignore */,
+				DD50927E207EEB50004222F4 /* GoogleService-Info.plist */,
 				CE56F15C1F88EBD900CEE704 /* Info.plist */,
 				CE56F14D1F88EBD900CEE704 /* AppDelegate.swift */,
-				DD308F01207CE4FE002F1DCD /* GoogleService-Info.plist */,
 				CE56F1511F88EBD900CEE704 /* Main.storyboard */,
 				CE56F1571F88EBD900CEE704 /* Assets.xcassets */,
 				CE56F1591F88EBD900CEE704 /* LaunchScreen.storyboard */,
@@ -332,7 +332,7 @@
 			files = (
 				CE9F477A1F8CA0DE0070704C /* .gitignore in Resources */,
 				CE56F15B1F88EBD900CEE704 /* LaunchScreen.storyboard in Resources */,
-				DD308F02207CE4FE002F1DCD /* GoogleService-Info.plist in Resources */,
+				DD50927F207EEB50004222F4 /* GoogleService-Info.plist in Resources */,
 				CE56F1581F88EBD900CEE704 /* Assets.xcassets in Resources */,
 				CE56F1531F88EBD900CEE704 /* Main.storyboard in Resources */,
 			);
