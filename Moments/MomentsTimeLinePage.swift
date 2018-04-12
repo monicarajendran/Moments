@@ -31,7 +31,7 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
     var momentObject : Moment?
     var filteredObjects = Table<Moment>(context: container.viewContext)
     var filterOption = MomentFilter.day
-
+    
     lazy var fetchTheMoments : FetchRequestController<Moment> = {
         
         let sortByTime = NSSortDescriptor(key: "momentTime", ascending: false)
@@ -73,7 +73,7 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.topItem?.title = "Moments"
         
-
+        
         noResultsFound.isHidden = true
         self.tableView.reloadData()
     }
@@ -151,11 +151,7 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        if searchBarActive{
-            return 1
-        } else {
-            return self.fetchTheMoments.numberOfSections()
-        }
+        return searchBarActive ? 1 : self.fetchTheMoments.numberOfSections()
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -169,31 +165,32 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         
         let label = UILabel()
         label.frame = CGRect(x: 20, y: 10, width: tableView.frame.width, height: 30)
-    
-        label.textColor = UIColor.black.withAlphaComponent(0.6)
-        switch filterOption {
-            
-        case .day:
-            dateFormatter.dateFormat = MomentDateFormat.dayMonthYear.rawValue
-            label.text =  dateFormatter.string(from: date ?? Date())
-
-        case .month:
-            dateFormatter.dateFormat = MomentDateFormat.monthYear.rawValue
-            label.text = dateFormatter.string(from: date ?? Date())
-
-        case .week:
-            label.text = (date?.monthName ?? "") + " " + String(describing: date?.startWeek.day ?? 00) + " - " + String(describing: date?.endWeek.day ?? 00)
-            
-        case .year:
-            label.text = sectionHeader
         
-        }
+        label.textColor = UIColor.black.withAlphaComponent(0.6)
+        
+            switch filterOption {
+                
+            case .day:
+                dateFormatter.dateFormat = MomentDateFormat.dayMonthYear.rawValue
+                label.text =  dateFormatter.string(from: date ?? Date())
+                
+            case .month:
+                dateFormatter.dateFormat = MomentDateFormat.monthYear.rawValue
+                label.text = dateFormatter.string(from: date ?? Date())
+                
+            case .week:
+                label.text = (date?.monthName ?? "") + " " + String(describing: date?.startWeek.day ?? 00) + " - " + String(describing: date?.endWeek.day ?? 00)
+                
+            case .year:
+                label.text = sectionHeader
+                
+            }
         
         view.addSubview(label)
         self.automaticallyAdjustsScrollViewInsets = false
         return view
     }
-
+    
     //Section headers will now scroll
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
@@ -206,16 +203,13 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        
+        return filteredObjects.count() == 0 ? 0 : 40
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if searchBarActive {
-            return filteredObjects.execute().count
-        } else {
-            return fetchTheMoments.sections[section].numberOfObjects
-        }
+        return searchBarActive ? filteredObjects.execute().count : fetchTheMoments.sections[section].numberOfObjects
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -321,7 +315,7 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         alert.addAction(UIAlertAction(title: yearName, style: .default, handler: { action in
             self.setTheCheckMark(groupBy: .year)
             self.filter(by: MomentFilter.year.rawValue) }
-            ))
+        ))
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil ))
         
@@ -352,7 +346,6 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
             monthName = "Month"
             weekName = "Week"
             yearName = "Year  ✔️"
-            
         }
     }
 }
