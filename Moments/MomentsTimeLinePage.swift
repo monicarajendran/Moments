@@ -31,7 +31,7 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
     var momentObject : Moment?
     var filteredObjects = Table<Moment>(context: container.viewContext)
     var filterOption = MomentFilter.day
-    
+
     lazy var fetchTheMoments : FetchRequestController<Moment> = {
         
         let sortByTime = NSSortDescriptor(key: "momentTime", ascending: false)
@@ -291,29 +291,68 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         self.tableView.reloadData()
     }
     
+    var dayName = "Day"
+    var monthName = "Month"
+    var weekName = "Week"
+    var yearName = "Year"
+    
+    
+    let groupByValues = ["Day", "Month", "Week", "Year"]
+    
     @IBAction func filterAction(_ sender: UIBarButtonItem) {
         
         let alert = UIAlertController(title: "Group By", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
-        
-        alert.addAction(UIAlertAction(title: "Day", style: .default, handler: { action in
+        alert.addAction(UIAlertAction(title: dayName, style: .default, handler: { action in
+            
+            self.setTheCheckMark(groupBy: .day)
             self.filter(by: MomentFilter.day.rawValue) }))
-
-        alert.addAction(UIAlertAction(title: "Month", style: .default, handler: { action in
+        
+        alert.addAction(UIAlertAction(title: monthName, style: .default, handler: { action in
+            
+            self.setTheCheckMark(groupBy: .month)
             self.filter(by: MomentFilter.month.rawValue) }
         ))
         
-        alert.addAction(UIAlertAction(title: "Week", style: .default, handler: { action in
+        alert.addAction(UIAlertAction(title: weekName, style: .default, handler: { action in
+            self.setTheCheckMark(groupBy: .week)
             self.filter(by: MomentFilter.week.rawValue) }
         ))
         
-        alert.addAction(UIAlertAction(title: "Year", style: .default, handler: { action in
+        alert.addAction(UIAlertAction(title: yearName, style: .default, handler: { action in
+            self.setTheCheckMark(groupBy: .year)
             self.filter(by: MomentFilter.year.rawValue) }
             ))
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil //{ action in
-//            self.filter(by: MomentFilter.month.rawValue) }
-        ))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil ))
         
         self.present(alert, animated: true, completion: nil)
-    }  
+    }
+    
+    func setTheCheckMark(groupBy: MomentFilter){
+        
+        switch groupBy {
+        case .day:
+            dayName = "Day  ✔️"
+            monthName = "Month"
+            weekName = "Week"
+            yearName = "Year"
+        case .month:
+            dayName = "Day"
+            monthName = "Month  ✔️"
+            weekName = "Week"
+            yearName = "Year"
+            
+        case .week:
+            dayName = "Day"
+            monthName = "Month"
+            weekName = "Week  ✔️"
+            yearName = "Year"
+        case .year:
+            dayName = "Day"
+            monthName = "Month"
+            weekName = "Week"
+            yearName = "Year  ✔️"
+            
+        }
+    }
 }

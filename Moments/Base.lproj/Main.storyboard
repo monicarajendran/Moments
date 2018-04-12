@@ -187,7 +187,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rNT-tp-gaa">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="ZvX-8z-7MK">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="More" id="ZvX-8z-7MK">
                             <connections>
                                 <action selector="filterAction:" destination="1sq-fA-N6o" id="WCy-9f-STR"/>
                             </connections>

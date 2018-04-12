@@ -21,3 +21,4 @@ extension Int {
         return Int16(self)
     }
 }
+
