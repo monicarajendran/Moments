@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2544B6282081660F0012684A /* TimeLineNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2544B6272081660F0012684A /* TimeLineNavigationController.swift */; };
 		29E6E1099EB928D3BC5475F8 /* Pods_Moments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13B8412405C341AEDC0F66E6 /* Pods_Moments.framework */; };
 		CE1A149F1FC46FB30015CC91 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1A149E1FC46FB30015CC91 /* MainNavigationController.swift */; };
 		CE25E9E11FBED73A00F96AA3 /* MomentDateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE25E9E01FBED73A00F96AA3 /* MomentDateFormat.swift */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		13B8412405C341AEDC0F66E6 /* Pods_Moments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2544B6272081660F0012684A /* TimeLineNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineNavigationController.swift; sourceTree = "<group>"; };
 		6CAE6FD318E0E5B289BFACE0 /* Pods-Moments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moments.release.xcconfig"; path = "Pods/Target Support Files/Pods-Moments/Pods-Moments.release.xcconfig"; sourceTree = "<group>"; };
 		7DBF22A1BDD71A3155648E06 /* Pods-Moments.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moments.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Moments/Pods-Moments.debug.xcconfig"; sourceTree = "<group>"; };
 		CE1A149E1FC46FB30015CC91 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				CE58A2991FCEE38700FD336B /* PasscodeViewController.swift */,
 				CE9DF7041F9AF9260016153E /* MomentsDetailPage.swift */,
 				CE618CC01FB9A29F0010171F /* FeedBackViewController.swift */,
+				2544B6272081660F0012684A /* TimeLineNavigationController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				CE9F47831F8CDA210070704C /* SettingsPage.swift in Sources */,
 				DDA68D8F207215AF00F289BA /* CreateMomentsViewController.swift in Sources */,
 				DD575F7A207356E200710888 /* App Extension.swift in Sources */,
+				2544B6282081660F0012684A /* TimeLineNavigationController.swift in Sources */,
 				CE8F26E31FAB578200E71417 /* ColorsViewController.swift in Sources */,
 				CE1A149F1FC46FB30015CC91 /* MainNavigationController.swift in Sources */,
 				DD4E49682074D790004E1630 /* ColorTableViewCell.swift in Sources */,
@@ -601,7 +605,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fullCreative.Moments;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d5d1ef64-4d52-4fa4-a86d-f77fd45b5f08";
+				PROVISIONING_PROFILE = "4b1b6f2d-d848-4919-8a2d-ce5d52b84504";
 				PROVISIONING_PROFILE_SPECIFIER = "FullMoments dev profile";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -616,13 +620,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Moments/Moments.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = U6EUGX9769;
 				INFOPLIST_FILE = Moments/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fullCreative.Moments;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c73485b7-e9d1-49c2-8b94-04579b8cdeb3";
+				PROVISIONING_PROFILE = "b54e2e43-da0f-431d-b64c-47484aee4eca";
 				PROVISIONING_PROFILE_SPECIFIER = "FullMoments dis profile";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
