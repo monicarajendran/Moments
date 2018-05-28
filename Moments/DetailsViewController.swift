@@ -126,7 +126,7 @@ class DetailsViewController: UIViewController {
         guard let moment = self.selectedMoment else { return }
         
         //Delete the moment first in iCLoud to have the reference of moment
-        let recordId = CKRecordID(recordName: moment.momentId)
+        let recordId = CKRecordID(recordName: moment.momentId!)
         CloudSyncServices.deleteICloudMoment(recordId: recordId)
         
         container.viewContext.delete(moment)
