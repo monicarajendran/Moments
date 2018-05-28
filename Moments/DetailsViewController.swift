@@ -10,31 +10,71 @@ import UIKit
 import CloudKit
 import Apploader
 
+class AppWithOutNavBarView: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)    
+        if self.navigationController?.viewControllers.last != self {
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+        }
+    }
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+
 class DetailsViewController: UIViewController {
 
     @IBOutlet weak var editButtonOutlet: UIButton!
     @IBOutlet weak var momentTitle: UILabel!
     @IBOutlet weak var momentDesc: UILabel!
     @IBOutlet weak var date: UILabel!
-    @IBOutlet weak var topview: UIView!
+    @IBOutlet weak var topview: UIView! 
     
     var selectedMoment: Moment?
     var alertHud: MBProgressHUD!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationController?.navigationBar.isHidden = true
+    
         UIApplication.shared.statusBarStyle = .lightContent
         addShadow()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         displayDetails()
-        print("Moment Id-----", selectedMoment?.momentId ,"\n", "Moment Name------", selectedMoment?.name,"\n","Moment Desc-----", selectedMoment?.desc,"\n", "Moment color-----", selectedMoment?.color,"\n", "Moment Time-----",selectedMoment?.momentTime,"\n", "Moment Date-----", selectedMoment?.momentDate,"\n","Moment Day-----", selectedMoment?.day,"\n", "Moment Month-----", selectedMoment?.month)
+//        print("Moment Id-----", selectedMoment?.momentId ,"\n", "Moment Name------", selectedMoment?.name,"\n","Moment Desc-----", selectedMoment?.desc,"\n", "Moment color-----", selectedMoment?.color,"\n", "Moment Time-----",selectedMoment?.momentTime,"\n", "Moment Date-----", selectedMoment?.momentDate,"\n","Moment Day-----", selectedMoment?.day,"\n", "Moment Month-----", selectedMoment?.month)
         
         alertHud = getAlertHUD(srcView: self.view)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+       
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+
     
     func addShadow () {
         
@@ -102,8 +142,17 @@ class DetailsViewController: UIViewController {
             
         }))
         
-        alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-
+        //Delete the moment first in iCLoud to have the reference of moment
+        let recordId = CKRecordID(recordName: moment.momentId!)
+        CloudSyncServices.deleteICloudMoment(recordId: recordId)
+        
+        container.viewContext.delete(moment)
+        try!   container.viewContext.save()
+        
+        self.alertHud.showText(msg: "Moment deleted successfully", detailMsg: "", delay: 1)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            _ = self.navigationController?.popToRootViewController(animated: true)
+        })
     }
 }
