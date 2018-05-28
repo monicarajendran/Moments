@@ -248,7 +248,7 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
         
         /// have check return
         
-        CloudSyncServices.privateDb.fetch(withRecordID: CKRecordID(recordName: moment.momentId)) { (record, error) in
+        CloudSyncServices.privateDb.fetch(withRecordID: CKRecordID(recordName: moment.momentId!)) { (record, error) in
             
             guard let record = record else {
                     print("error in updating the record", error as Any)
@@ -261,7 +261,7 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
     
     func deleteICloud(moment: Moment){
         
-        CloudSyncServices.privateDb.delete(withRecordID: CKRecordID(recordName: moment.momentId), completionHandler: { rec , err in
+        CloudSyncServices.privateDb.delete(withRecordID: CKRecordID(recordName: moment.momentId!), completionHandler: { rec , err in
             guard let record = rec else {
                 print("oopssss",err as Any)
                 return
