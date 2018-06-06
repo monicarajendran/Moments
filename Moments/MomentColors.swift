@@ -20,7 +20,6 @@ enum MomentColors : String {
     case pestoGreen = "00AA8D"
     case purple = "AB47BC"
     case lightGreen = "ABB64C"
-    case orange = "FF3D00"
     case gray = "607D8B"
     
     //Passcode
@@ -31,5 +30,5 @@ enum MomentColors : String {
        return  String(describing: self).capitalized
     }
     
-    static let allCases = [blue,brown,pink,indigo,teal,cyan,pestoGreen,purple,lightGreen,orange,gray]
+    static let allCases = [blue,brown,pink,indigo,teal,cyan,pestoGreen,purple,lightGreen,gray]
 }
