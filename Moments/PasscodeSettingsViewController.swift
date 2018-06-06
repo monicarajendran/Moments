@@ -16,6 +16,11 @@ class PasscodeSettingsViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         title = "TouchID & Passcode"
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .never
+        } else {
+            // Fallback on earlier versions
+        }
         passcodeCheck()
         
     }

@@ -26,6 +26,7 @@ class SettingsPage: UITableViewController {
         
         UIApplication.shared.statusBarStyle = .default
         self.navigationController?.navigationBar.topItem?.title = "Settings"
+       
     }
     
     @IBAction func deleteAllMoments(_ sender: UIButton) {
@@ -44,7 +45,7 @@ class SettingsPage: UITableViewController {
         
         for moment in moments {
             
-            let recordId = CKRecordID(recordName: moment.momentId)
+            let recordId = CKRecordID(recordName: moment.momentId!)
             CloudSyncServices.privateDb.delete(withRecordID: recordId) { (recordId, err) in
                 if err == nil {
                     print("Moment is deleted in iCloud, id:", recordId)

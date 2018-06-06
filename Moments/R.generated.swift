@@ -48,7 +48,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 16 images.
+  /// This `R.image` struct is generated, and contains static references to 19 images.
   struct image {
     /// Image `Add`.
     static let add = Rswift.ImageResource(bundle: R.hostingBundle, name: "Add")
@@ -64,12 +64,18 @@ struct R: Rswift.Validatable {
     static let filter = Rswift.ImageResource(bundle: R.hostingBundle, name: "Filter")
     /// Image `Icon-App-60x60@3x (1)`.
     static let iconApp60x603x1 = Rswift.ImageResource(bundle: R.hostingBundle, name: "Icon-App-60x60@3x (1)")
+    /// Image `Me-Normal`.
+    static let meNormal = Rswift.ImageResource(bundle: R.hostingBundle, name: "Me-Normal")
     /// Image `More Black`.
     static let moreBlack = Rswift.ImageResource(bundle: R.hostingBundle, name: "More Black")
     /// Image `More`.
     static let more = Rswift.ImageResource(bundle: R.hostingBundle, name: "More")
     /// Image `Note`.
     static let note = Rswift.ImageResource(bundle: R.hostingBundle, name: "Note")
+    /// Image `Recents-Normal`.
+    static let recentsNormal = Rswift.ImageResource(bundle: R.hostingBundle, name: "Recents-Normal")
+    /// Image `Recents-Selected`.
+    static let recentsSelected = Rswift.ImageResource(bundle: R.hostingBundle, name: "Recents-Selected")
     /// Image `appicon`.
     static let appicon = Rswift.ImageResource(bundle: R.hostingBundle, name: "appicon")
     /// Image `fingerprint-with-crosshair-focus (1)`.
@@ -118,6 +124,11 @@ struct R: Rswift.Validatable {
       return UIKit.UIImage(resource: R.image.iconApp60x603x1, compatibleWith: traitCollection)
     }
     
+    /// `UIImage(named: "Me-Normal", bundle: ..., traitCollection: ...)`
+    static func meNormal(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.meNormal, compatibleWith: traitCollection)
+    }
+    
     /// `UIImage(named: "More Black", bundle: ..., traitCollection: ...)`
     static func moreBlack(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.moreBlack, compatibleWith: traitCollection)
@@ -131,6 +142,16 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "Note", bundle: ..., traitCollection: ...)`
     static func note(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.note, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "Recents-Normal", bundle: ..., traitCollection: ...)`
+    static func recentsNormal(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.recentsNormal, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "Recents-Selected", bundle: ..., traitCollection: ...)`
+    static func recentsSelected(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.recentsSelected, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "appicon", bundle: ..., traitCollection: ...)`
@@ -262,6 +283,7 @@ struct _R: Rswift.Validatable {
       let bundle = R.hostingBundle
       let colorsViewController = StoryboardViewControllerResource<ColorsViewController>(identifier: "ColorsViewController")
       let createMomentsViewController = StoryboardViewControllerResource<CreateMomentsViewController>(identifier: "CreateMomentsViewController")
+      let detailsNavigationController = StoryboardViewControllerResource<DetailsNavigationController>(identifier: "DetailsNavigationController")
       let detailsViewController = StoryboardViewControllerResource<DetailsViewController>(identifier: "DetailsViewController")
       let feedBackViewController = StoryboardViewControllerResource<FeedBackViewController>(identifier: "FeedBackViewController")
       let launchViewController = StoryboardViewControllerResource<LaunchViewController>(identifier: "LaunchViewController")
@@ -272,8 +294,10 @@ struct _R: Rswift.Validatable {
       let newMomentsPageViewController = StoryboardViewControllerResource<NewMomentsPageViewController>(identifier: "NewMomentsPageViewController")
       let passcodeSettingsViewController = StoryboardViewControllerResource<PasscodeSettingsViewController>(identifier: "PasscodeSettingsViewController")
       let passcodeViewController = StoryboardViewControllerResource<PasscodeViewController>(identifier: "PasscodeViewController")
+      let settingsNavigationController = StoryboardViewControllerResource<SettingsNavigationController>(identifier: "SettingsNavigationController")
       let settingsPage = StoryboardViewControllerResource<SettingsPage>(identifier: "SettingsPage")
       let tabBar = StoryboardViewControllerResource<TabBar>(identifier: "TabBar")
+      let timeLineNavigationController = StoryboardViewControllerResource<TimeLineNavigationController>(identifier: "TimeLineNavigationController")
       
       func colorsViewController(_: Void = ()) -> ColorsViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: colorsViewController)
@@ -281,6 +305,10 @@ struct _R: Rswift.Validatable {
       
       func createMomentsViewController(_: Void = ()) -> CreateMomentsViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: createMomentsViewController)
+      }
+      
+      func detailsNavigationController(_: Void = ()) -> DetailsNavigationController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: detailsNavigationController)
       }
       
       func detailsViewController(_: Void = ()) -> DetailsViewController? {
@@ -319,6 +347,10 @@ struct _R: Rswift.Validatable {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: passcodeViewController)
       }
       
+      func settingsNavigationController(_: Void = ()) -> SettingsNavigationController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: settingsNavigationController)
+      }
+      
       func settingsPage(_: Void = ()) -> SettingsPage? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: settingsPage)
       }
@@ -327,19 +359,26 @@ struct _R: Rswift.Validatable {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: tabBar)
       }
       
+      func timeLineNavigationController(_: Void = ()) -> TimeLineNavigationController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: timeLineNavigationController)
+      }
+      
       static func validate() throws {
         if UIKit.UIImage(named: "Calender") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Calender' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "Add") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Add' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "icon") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "Close") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Close' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "More") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'More' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "icons8-Timeline-20") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icons8-Timeline-20' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "icon") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "Edit") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Edit' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "fingerprint-with-crosshair-focus (2)") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'fingerprint-with-crosshair-focus (2)' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "Me-Normal") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Me-Normal' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "Back Button") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Back Button' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "icons8-Settings-20") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icons8-Settings-20' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "Recents-Normal") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Recents-Normal' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "fingerprint-with-crosshair-focus (2)") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'fingerprint-with-crosshair-focus (2)' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "Note") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Note' is used in storyboard 'Main', but couldn't be loaded.") }
+        if _R.storyboard.main().detailsNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'detailsNavigationController' could not be loaded from storyboard 'Main' as 'DetailsNavigationController'.") }
         if _R.storyboard.main().newMomentsPageViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'newMomentsPageViewController' could not be loaded from storyboard 'Main' as 'NewMomentsPageViewController'.") }
         if _R.storyboard.main().loadingViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'loadingViewController' could not be loaded from storyboard 'Main' as 'LoadingViewController'.") }
+        if _R.storyboard.main().settingsNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'settingsNavigationController' could not be loaded from storyboard 'Main' as 'SettingsNavigationController'.") }
         if _R.storyboard.main().passcodeViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'passcodeViewController' could not be loaded from storyboard 'Main' as 'PasscodeViewController'.") }
         if _R.storyboard.main().feedBackViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'feedBackViewController' could not be loaded from storyboard 'Main' as 'FeedBackViewController'.") }
         if _R.storyboard.main().createMomentsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'createMomentsViewController' could not be loaded from storyboard 'Main' as 'CreateMomentsViewController'.") }
@@ -349,6 +388,7 @@ struct _R: Rswift.Validatable {
         if _R.storyboard.main().mainNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'mainNavigationController' could not be loaded from storyboard 'Main' as 'MainNavigationController'.") }
         if _R.storyboard.main().momentsTimeLinePage() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'momentsTimeLinePage' could not be loaded from storyboard 'Main' as 'MomentsTimeLinePage'.") }
         if _R.storyboard.main().tabBar() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'tabBar' could not be loaded from storyboard 'Main' as 'TabBar'.") }
+        if _R.storyboard.main().timeLineNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'timeLineNavigationController' could not be loaded from storyboard 'Main' as 'TimeLineNavigationController'.") }
         if _R.storyboard.main().colorsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'colorsViewController' could not be loaded from storyboard 'Main' as 'ColorsViewController'.") }
         if _R.storyboard.main().passcodeSettingsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'passcodeSettingsViewController' could not be loaded from storyboard 'Main' as 'PasscodeSettingsViewController'.") }
       }

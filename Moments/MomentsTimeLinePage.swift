@@ -21,7 +21,7 @@ enum MomentFilter: String {
 
 class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UISearchBarDelegate{
     
-    @IBOutlet weak var timelineSearchBar: UISearchBar!
+    //@IBOutlet weak var timelineSearchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noResultsFound: UILabel!
     @IBOutlet weak var addButtonOutlet: UIButton!
@@ -42,6 +42,8 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         
     }()
     
+    var timelineSearchBar: UISearchBar!
+    
     let dateFormatter = DateFormatter()
     
     override func viewDidLoad() {
@@ -54,16 +56,21 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         dateFormatter.dateStyle = .long
         
         tableView.delegate = self
-        timelineSearchBar.delegate = self
-        self.automaticallyAdjustsScrollViewInsets = false
-        
         self.queryTheDataFromDisk()
         
+        configureSearch()
+        
+        //timelineSearchBar.delegate = self
+        //self.automaticallyAdjustsScrollViewInsets = false
+    
         tableView.tableFooterView = UIView(frame: .zero)
         navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         
         //to remove the bottom and top line of the search bar
-        timelineSearchBar.backgroundImage = UIImage()
+        //timelineSearchBar.backgroundImage = UIImage()
+    
+        self.extendedLayoutIncludesOpaqueBars = true
+        self.edgesForExtendedLayout = UIRectEdge.bottom
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,7 +79,6 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         UIApplication.shared.statusBarStyle = .default
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.topItem?.title = "Moments"
-        
         
         noResultsFound.isHidden = true
         self.tableView.reloadData()
@@ -90,6 +96,24 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         searchBar.setShowsCancelButton(true, animated: true)
         return true
+    }
+    
+    func configureSearch() {
+        
+        let searchbar = UISearchBar()
+        searchbar.delegate = self
+        searchbar.showsCancelButton = false
+        searchbar.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 55)
+        searchbar.layer.position = CGPoint(x: self.view.bounds.width/2, y: 100)
+        searchbar.searchBarStyle = .minimal
+        searchbar.layer.borderWidth = 1
+        searchbar.layer.borderColor = UIColor.clear.cgColor
+        searchbar.setImage(UIImage(), for: .clear, state: .normal)
+        searchbar.placeholder = "Search"
+        //searchbar.tintColor = UIColor.groupTableViewBackground
+        searchbar.backgroundImage = UIImage()
+        self.timelineSearchBar = searchbar
+        self.tableView.tableHeaderView = searchbar
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -164,8 +188,8 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         let date = dateFormatter.date(from: sectionHeader)
         
         let label = UILabel()
-        label.frame = CGRect(x: 20, y: 10, width: tableView.frame.width, height: 30)
-        
+        label.frame = CGRect(x: 10, y: 15, width: tableView.frame.width, height: 30)
+        label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = UIColor.black.withAlphaComponent(0.6)
         
             switch filterOption {
@@ -266,6 +290,14 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
             momentObject = fetchTheMoments.object(at: indexPath)
         }
         detailsPageVc.selectedMoment = momentObject
+        
+        
+//        guard let createMomentsVC = R.storyboard.main.createMomentsViewController() else {
+//            return
+//        }
+//        let navController = UINavigationController(rootViewController: createMomentsVC)
+//        self.present(navController, animated: true, completion: nil)
+        
         navigationController?.pushViewController(detailsPageVc, animated: true)
     }
     
@@ -326,26 +358,26 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         
         switch groupBy {
         case .day:
-            dayName = "Day  ✔️"
+            dayName = "Day ✔︎"
             monthName = "Month"
             weekName = "Week"
             yearName = "Year"
         case .month:
             dayName = "Day"
-            monthName = "Month  ✔️"
+            monthName = "Month ✔︎"
             weekName = "Week"
             yearName = "Year"
             
         case .week:
             dayName = "Day"
             monthName = "Month"
-            weekName = "Week  ✔️"
+            weekName = "Week ✔︎"
             yearName = "Year"
         case .year:
             dayName = "Day"
             monthName = "Month"
             weekName = "Week"
-            yearName = "Year  ✔️"
+            yearName = "Year ✔︎"
         }
     }
 }

@@ -14,7 +14,7 @@ extension Moment {
     
     func toICloudRecord() -> CKRecord {
         
-        let recordID = CKRecordID(recordName: self.momentId)
+        let recordID = CKRecordID(recordName: self.momentId!)
         let record = CKRecord(recordType: "Moment", recordID: recordID)
         
         record["name"] = self.name as CKRecordValue?

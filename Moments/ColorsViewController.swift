@@ -16,7 +16,7 @@ class ColorsViewController: UITableViewController {
     
     @IBOutlet weak var blue: UILabel!
     
-    @IBOutlet weak var brown: UILabel!
+    //@IBOutlet weak var brown: UILabel!
     
     @IBOutlet weak var pink: UILabel!
     
@@ -32,7 +32,7 @@ class ColorsViewController: UITableViewController {
     
     @IBOutlet weak var lightGreen: UILabel!
     
-    @IBOutlet weak var orange: UILabel!
+    //@IBOutlet weak var orange: UILabel!
     
     @IBOutlet weak var gray: UILabel!
         
@@ -49,7 +49,7 @@ class ColorsViewController: UITableViewController {
         self.navigationController?.navigationBar.isHidden = false
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(ColorsViewController.close))
         
-        let arrayOfLabels = [blue,brown,pink,indigo,teal,cyan,pestoGreen,purple,lightGreen,orange,gray]
+        let arrayOfLabels = [blue,pink,indigo,teal,cyan,pestoGreen,purple,lightGreen,gray]
         
         for index in 0..<arrayOfLabels.count{
             circleShapeForLabel(label: arrayOfLabels[index]!)

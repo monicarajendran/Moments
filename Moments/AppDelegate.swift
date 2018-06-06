@@ -14,6 +14,7 @@ import Firebase
 
 let container = PersistentContainer(name: "Moments")
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate  {
     
