@@ -40,3 +40,46 @@ class MainNavigationController: UINavigationController {
     }
 }
 
+class TimeLineNavigationController: UINavigationController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //[self.navigationController.interactivePopGestureRecognizer setDelegate:nil];
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+}
+
+
+class DetailsNavigationController: UINavigationController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //[self.navigationController.interactivePopGestureRecognizer setDelegate:nil];
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+}
+
+class SettingsNavigationController: UINavigationController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //[self.navigationController.interactivePopGestureRecognizer setDelegate:nil];
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+}
+

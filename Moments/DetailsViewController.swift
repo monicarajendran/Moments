@@ -143,10 +143,10 @@ class DetailsViewController: UIViewController {
         }))
         
         //Delete the moment first in iCLoud to have the reference of moment
-        let recordId = CKRecordID(recordName: moment.momentId!)
+        let recordId = CKRecordID(recordName: selectedMoment!.momentId!)
         CloudSyncServices.deleteICloudMoment(recordId: recordId)
         
-        container.viewContext.delete(moment)
+        container.viewContext.delete(selectedMoment!)
         try!   container.viewContext.save()
         
         self.alertHud.showText(msg: "Moment deleted successfully", detailMsg: "", delay: 1)

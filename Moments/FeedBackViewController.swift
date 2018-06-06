@@ -1,3 +1,4 @@
+
 //
 //  FeedBackViewController.swift
 //  Moments
@@ -7,11 +8,8 @@
 //
 
 import UIKit
-
 import ActionSheetPicker_3_0
-
 import MBProgressHUD
-
 import Firebase
 
 class FeedBackViewController: UIViewController {
@@ -29,6 +27,12 @@ class FeedBackViewController: UIViewController {
         
         self.navigationController?.navigationBar.topItem?.title = " "
         
+        if #available(iOS 11.0, *) {
+            self.navigationItem.largeTitleDisplayMode = .never
+        } else {
+            // Fallback on earlier versions
+        }
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Send", style: .plain, target: self, action: #selector(sendFeedBack(sender:)))
     }
     
@@ -37,9 +41,7 @@ class FeedBackViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        
         self.feedBackText.setContentOffset(.zero, animated: false)
-        
     }
     
     @objc func sendFeedBack(sender: UIBarButtonItem){

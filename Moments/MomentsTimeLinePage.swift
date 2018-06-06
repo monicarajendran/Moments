@@ -358,26 +358,26 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         
         switch groupBy {
         case .day:
-            dayName = "Day  ✔️"
+            dayName = "Day ✔︎"
             monthName = "Month"
             weekName = "Week"
             yearName = "Year"
         case .month:
             dayName = "Day"
-            monthName = "Month  ✔️"
+            monthName = "Month ✔︎"
             weekName = "Week"
             yearName = "Year"
             
         case .week:
             dayName = "Day"
             monthName = "Month"
-            weekName = "Week  ✔️"
+            weekName = "Week ✔︎"
             yearName = "Year"
         case .year:
             dayName = "Day"
             monthName = "Month"
             weekName = "Week"
-            yearName = "Year  ✔️"
+            yearName = "Year ✔︎"
         }
     }
 }

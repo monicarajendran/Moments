@@ -31,9 +31,6 @@ class PasscodeViewController: UIViewController , UITextFieldDelegate , AppTextfi
         super.viewDidLoad()
         
         setupDelegates()
-        
-        //title = "Passcode Lock"
-        
         passcodeSubHeading.alpha = 0.6
         
         arrayOfTextFields = [passcodeTextField1,passcodeTextField2,passcodeTextField3,passcodeTextField4]

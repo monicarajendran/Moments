@@ -294,6 +294,7 @@ struct _R: Rswift.Validatable {
       let newMomentsPageViewController = StoryboardViewControllerResource<NewMomentsPageViewController>(identifier: "NewMomentsPageViewController")
       let passcodeSettingsViewController = StoryboardViewControllerResource<PasscodeSettingsViewController>(identifier: "PasscodeSettingsViewController")
       let passcodeViewController = StoryboardViewControllerResource<PasscodeViewController>(identifier: "PasscodeViewController")
+      let settingsNavigationController = StoryboardViewControllerResource<SettingsNavigationController>(identifier: "SettingsNavigationController")
       let settingsPage = StoryboardViewControllerResource<SettingsPage>(identifier: "SettingsPage")
       let tabBar = StoryboardViewControllerResource<TabBar>(identifier: "TabBar")
       let timeLineNavigationController = StoryboardViewControllerResource<TimeLineNavigationController>(identifier: "TimeLineNavigationController")
@@ -346,6 +347,10 @@ struct _R: Rswift.Validatable {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: passcodeViewController)
       }
       
+      func settingsNavigationController(_: Void = ()) -> SettingsNavigationController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: settingsNavigationController)
+      }
+      
       func settingsPage(_: Void = ()) -> SettingsPage? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: settingsPage)
       }
@@ -364,7 +369,6 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "Close") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Close' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "More") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'More' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "icon") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "icons8-Timeline-20") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icons8-Timeline-20' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "Edit") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Edit' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "Me-Normal") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Me-Normal' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "Back Button") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Back Button' is used in storyboard 'Main', but couldn't be loaded.") }
@@ -374,6 +378,7 @@ struct _R: Rswift.Validatable {
         if _R.storyboard.main().detailsNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'detailsNavigationController' could not be loaded from storyboard 'Main' as 'DetailsNavigationController'.") }
         if _R.storyboard.main().newMomentsPageViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'newMomentsPageViewController' could not be loaded from storyboard 'Main' as 'NewMomentsPageViewController'.") }
         if _R.storyboard.main().loadingViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'loadingViewController' could not be loaded from storyboard 'Main' as 'LoadingViewController'.") }
+        if _R.storyboard.main().settingsNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'settingsNavigationController' could not be loaded from storyboard 'Main' as 'SettingsNavigationController'.") }
         if _R.storyboard.main().passcodeViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'passcodeViewController' could not be loaded from storyboard 'Main' as 'PasscodeViewController'.") }
         if _R.storyboard.main().feedBackViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'feedBackViewController' could not be loaded from storyboard 'Main' as 'FeedBackViewController'.") }
         if _R.storyboard.main().createMomentsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'createMomentsViewController' could not be loaded from storyboard 'Main' as 'CreateMomentsViewController'.") }

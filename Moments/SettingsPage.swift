@@ -26,6 +26,7 @@ class SettingsPage: UITableViewController {
         
         UIApplication.shared.statusBarStyle = .default
         self.navigationController?.navigationBar.topItem?.title = "Settings"
+       
     }
     
     @IBAction func deleteAllMoments(_ sender: UIButton) {

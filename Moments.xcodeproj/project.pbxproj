@@ -232,7 +232,6 @@
 				CE58A2991FCEE38700FD336B /* PasscodeViewController.swift */,
 				CE9DF7041F9AF9260016153E /* MomentsDetailPage.swift */,
 				CE618CC01FB9A29F0010171F /* FeedBackViewController.swift */,
-				2544B6272081660F0012684A /* TimeLineNavigationController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -388,6 +387,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alertify/Alertify.framework",
 				"${BUILT_PRODUCTS_DIR}/Apploader/Apploader.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/FullFeedback/FullFeedback.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
@@ -403,6 +403,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alertify.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apploader.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FullFeedback.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
@@ -456,7 +457,6 @@
 				CE9F47831F8CDA210070704C /* SettingsPage.swift in Sources */,
 				DDA68D8F207215AF00F289BA /* CreateMomentsViewController.swift in Sources */,
 				DD575F7A207356E200710888 /* App Extension.swift in Sources */,
-				2544B6282081660F0012684A /* TimeLineNavigationController.swift in Sources */,
 				CE8F26E31FAB578200E71417 /* ColorsViewController.swift in Sources */,
 				CE1A149F1FC46FB30015CC91 /* MainNavigationController.swift in Sources */,
 				DD4E49682074D790004E1630 /* ColorTableViewCell.swift in Sources */,
