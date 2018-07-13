@@ -1400,7 +1400,6 @@
                     <toolbarItems/>
                     <size key="freeformSize" width="375" height="667"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="dIO-ZD-ux2">
-                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.99006078264920339" green="1" blue="0.98099934359471463" alpha="0.09401755136986302" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" white="0.98746744791666663" alpha="1" colorSpace="calibratedWhite"/>

@@ -19,7 +19,7 @@ enum MomentFilter: String {
     case year = "momentYear"
 }
 
-class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UISearchBarDelegate{
+class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UISearchBarDelegate {
     
     //@IBOutlet weak var timelineSearchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -48,6 +48,8 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        registerForPreviewing(with: self, sourceView: tableView)
         
         UserDefaults.standard.set(true, forKey: "firstRun")
         UserDefaults.standard.synchronize()
@@ -380,4 +382,29 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
             yearName = "Year ✔︎"
         }
     }
+}
+
+
+extension MomentsTimeLinePage: UIViewControllerPreviewingDelegate {
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        
+        guard let indexPath = tableView.indexPathForRow(at: location),
+            let cell = tableView.cellForRow(at: indexPath) else {
+                return nil }
+        
+        guard let detailViewController =
+            storyboard?.instantiateViewController(
+                withIdentifier: "DetailsViewController") as?
+            DetailsViewController else { return nil }
+
+        detailViewController.selectedMoment = fetchTheMoments.object(at: indexPath)
+        
+        return detailViewController
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        self.navigationController?.pushViewController(viewControllerToCommit, animated: true)
+    }
+    
 }
