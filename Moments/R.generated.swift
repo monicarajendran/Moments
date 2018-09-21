@@ -13,6 +13,7 @@ struct R: Rswift.Validatable {
   fileprivate static let hostingBundle = Bundle(for: R.Class.self)
   
   static func validate() throws {
+    try font.validate()
     try intern.validate()
   }
   
@@ -21,12 +22,28 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.file` struct is generated, and contains static references to 2 files.
+  /// This `R.file` struct is generated, and contains static references to 10 files.
   struct file {
     /// Resource file `.gitignore`.
     static let gitignore = Rswift.FileResource(bundle: R.hostingBundle, name: ".gitignore", pathExtension: "")
     /// Resource file `GoogleService-Info.plist`.
     static let googleServiceInfoPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "GoogleService-Info", pathExtension: "plist")
+    /// Resource file `Info.plist`.
+    static let infoPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "Info", pathExtension: "plist")
+    /// Resource file `Lato-Bold.ttf`.
+    static let latoBoldTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Lato-Bold", pathExtension: "ttf")
+    /// Resource file `Lato-Medium.ttf`.
+    static let latoMediumTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Lato-Medium", pathExtension: "ttf")
+    /// Resource file `Lato-Semibold.ttf`.
+    static let latoSemiboldTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Lato-Semibold", pathExtension: "ttf")
+    /// Resource file `SFProDisplay-Bold.ttf`.
+    static let sfProDisplayBoldTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "SFProDisplay-Bold", pathExtension: "ttf")
+    /// Resource file `SFProDisplay-Medium.ttf`.
+    static let sfProDisplayMediumTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "SFProDisplay-Medium", pathExtension: "ttf")
+    /// Resource file `SFProDisplay-Regular.ttf`.
+    static let sfProDisplayRegularTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "SFProDisplay-Regular", pathExtension: "ttf")
+    /// Resource file `SFProDisplay-Semibold.ttf`.
+    static let sfProDisplaySemiboldTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "SFProDisplay-Semibold", pathExtension: "ttf")
     
     /// `bundle.url(forResource: ".gitignore", withExtension: "")`
     static func gitignore(_: Void = ()) -> Foundation.URL? {
@@ -40,11 +57,119 @@ struct R: Rswift.Validatable {
       return fileResource.bundle.url(forResource: fileResource)
     }
     
+    /// `bundle.url(forResource: "Info", withExtension: "plist")`
+    static func infoPlist(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.infoPlist
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "Lato-Bold", withExtension: "ttf")`
+    static func latoBoldTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.latoBoldTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "Lato-Medium", withExtension: "ttf")`
+    static func latoMediumTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.latoMediumTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "Lato-Semibold", withExtension: "ttf")`
+    static func latoSemiboldTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.latoSemiboldTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "SFProDisplay-Bold", withExtension: "ttf")`
+    static func sfProDisplayBoldTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.sfProDisplayBoldTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "SFProDisplay-Medium", withExtension: "ttf")`
+    static func sfProDisplayMediumTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.sfProDisplayMediumTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "SFProDisplay-Regular", withExtension: "ttf")`
+    static func sfProDisplayRegularTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.sfProDisplayRegularTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "SFProDisplay-Semibold", withExtension: "ttf")`
+    static func sfProDisplaySemiboldTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.sfProDisplaySemiboldTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
     fileprivate init() {}
   }
   
-  /// This `R.font` struct is generated, and contains static references to 0 fonts.
-  struct font {
+  /// This `R.font` struct is generated, and contains static references to 7 fonts.
+  struct font: Rswift.Validatable {
+    /// Font `Lato-Bold`.
+    static let latoBold = Rswift.FontResource(fontName: "Lato-Bold")
+    /// Font `Lato-Medium`.
+    static let latoMedium = Rswift.FontResource(fontName: "Lato-Medium")
+    /// Font `Lato-Semibold`.
+    static let latoSemibold = Rswift.FontResource(fontName: "Lato-Semibold")
+    /// Font `SFProDisplay-Bold`.
+    static let sfProDisplayBold = Rswift.FontResource(fontName: "SFProDisplay-Bold")
+    /// Font `SFProDisplay-Medium`.
+    static let sfProDisplayMedium = Rswift.FontResource(fontName: "SFProDisplay-Medium")
+    /// Font `SFProDisplay-Regular`.
+    static let sfProDisplayRegular = Rswift.FontResource(fontName: "SFProDisplay-Regular")
+    /// Font `SFProDisplay-Semibold`.
+    static let sfProDisplaySemibold = Rswift.FontResource(fontName: "SFProDisplay-Semibold")
+    
+    /// `UIFont(name: "Lato-Bold", size: ...)`
+    static func latoBold(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: latoBold, size: size)
+    }
+    
+    /// `UIFont(name: "Lato-Medium", size: ...)`
+    static func latoMedium(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: latoMedium, size: size)
+    }
+    
+    /// `UIFont(name: "Lato-Semibold", size: ...)`
+    static func latoSemibold(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: latoSemibold, size: size)
+    }
+    
+    /// `UIFont(name: "SFProDisplay-Bold", size: ...)`
+    static func sfProDisplayBold(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: sfProDisplayBold, size: size)
+    }
+    
+    /// `UIFont(name: "SFProDisplay-Medium", size: ...)`
+    static func sfProDisplayMedium(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: sfProDisplayMedium, size: size)
+    }
+    
+    /// `UIFont(name: "SFProDisplay-Regular", size: ...)`
+    static func sfProDisplayRegular(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: sfProDisplayRegular, size: size)
+    }
+    
+    /// `UIFont(name: "SFProDisplay-Semibold", size: ...)`
+    static func sfProDisplaySemibold(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: sfProDisplaySemibold, size: size)
+    }
+    
+    static func validate() throws {
+      if R.font.sfProDisplayBold(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'SFProDisplay-Bold' could not be loaded, is 'SFProDisplay-Bold.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.latoSemibold(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Lato-Semibold' could not be loaded, is 'Lato-Semibold.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.sfProDisplayMedium(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'SFProDisplay-Medium' could not be loaded, is 'SFProDisplay-Medium.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.latoBold(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Lato-Bold' could not be loaded, is 'Lato-Bold.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.latoMedium(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Lato-Medium' could not be loaded, is 'Lato-Medium.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.sfProDisplaySemibold(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'SFProDisplay-Semibold' could not be loaded, is 'SFProDisplay-Semibold.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.sfProDisplayRegular(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'SFProDisplay-Regular' could not be loaded, is 'SFProDisplay-Regular.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+    }
+    
     fileprivate init() {}
   }
   

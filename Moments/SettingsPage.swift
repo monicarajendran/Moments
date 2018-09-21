@@ -10,6 +10,7 @@ import UIKit
 import AlecrimCoreData
 import CoreData
 import CloudKit
+import FullFeedback
 
 class SettingsPage: UITableViewController {
     
@@ -18,49 +19,13 @@ class SettingsPage: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String , let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String else { return }
-        labelVersion.text = "\(version)(\(build))"
+        labelVersion.text = Utils.getAppVersion()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         
         UIApplication.shared.statusBarStyle = .default
         self.navigationController?.navigationBar.topItem?.title = "Settings"
-       
-    }
-    
-    @IBAction func deleteAllMoments(_ sender: UIButton) {
-        
-        let alert = UIAlertController(title: "Would you like to delete all Moments", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
-        
-        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
-            self.deleteAll() }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func deleteAll () {
-        
-        let moments = container.viewContext.moment
-        
-        for moment in moments {
-            
-            let recordId = CKRecordID(recordName: moment.momentId!)
-            CloudSyncServices.privateDb.delete(withRecordID: recordId) { (recordId, err) in
-                if err == nil {
-                    print("Moment is deleted in iCloud, id:", recordId)
-                } else {
-                    print("Error occured in deleting moment in icloud", err)
-                }
-            }
-        }
-        
-        moments.deleteAll()
-        do {
-            try container.viewContext.save()
-        } catch {
-            print("Error in deleting the moments")
-        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -69,9 +34,18 @@ class SettingsPage: UITableViewController {
         
         //feedback
         case (0,0):
+            guard let feedbackvc = FeedbackViewController.initialize(loopToDoKey: "agtzfmxvb3BhYmFja3IRCxIETG9vcBiAgKCBz82QCgw", feedbackCardTitle: "IOS Full Moments Feedback") else {
+                return
+            }
             
-            guard let feedBackPage = storyboard?.instantiateViewController(withIdentifier: "FeedBackViewController") else { return }
-            navigationController?.pushViewController(feedBackPage, animated: true)
+            let themeColour = UIColor(hexString: "ee5353")
+            feedbackvc.navBarColor = themeColour
+            feedbackvc.statusBarStyle = .lightContent
+            feedbackvc.titleColor = UIColor.white
+            feedbackvc.segmentControlTintColor = themeColour
+            feedbackvc.appInfo = ["App Version": Utils.getAppVersion()]
+            
+            self.present(feedbackvc, animated: true, completion: nil)
         
         //passcode
         case (1,0) :

@@ -44,10 +44,32 @@
 		DD4E49682074D790004E1630 /* ColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E49672074D790004E1630 /* ColorTableViewCell.swift */; };
 		DD4E496A20750B67004E1630 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E496920750B67004E1630 /* DetailsViewController.swift */; };
 		DD50927F207EEB50004222F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD50927E207EEB50004222F4 /* GoogleService-Info.plist */; };
+		DD52A41B20CAB9D4001F2E0D /* MomentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52A41A20CAB9D4001F2E0D /* MomentsTests.swift */; };
 		DD575F7A207356E200710888 /* App Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD575F79207356E200710888 /* App Extension.swift */; };
 		DDA68D8F207215AF00F289BA /* CreateMomentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA68D8E207215AF00F289BA /* CreateMomentsViewController.swift */; };
+		DDD1C95B2154D6F80060E79B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1C95A2154D6F80060E79B /* Utils.swift */; };
+		DDD1C9612154D9170060E79B /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1C9602154D9170060E79B /* AppFonts.swift */; };
+		DDD1C9632154D91E0060E79B /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1C9622154D91E0060E79B /* FontManager.swift */; };
+		DDD1C96E2154E0390060E79B /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDD1C96D2154E0360060E79B /* Lato-Bold.ttf */; };
+		DDD1C9702154E0470060E79B /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDD1C96F2154E0430060E79B /* Lato-Medium.ttf */; };
+		DDD1C9722154E0510060E79B /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDD1C9712154E04E0060E79B /* Lato-Semibold.ttf */; };
+		DDD1C97C2154E5770060E79B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE56F15C1F88EBD900CEE704 /* Info.plist */; };
+		DDD1C9802154E7C60060E79B /* SFProDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDD1C97D2154E7BB0060E79B /* SFProDisplay-Bold.ttf */; };
+		DDD1C9812154E7C60060E79B /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDD1C97E2154E7BE0060E79B /* SFProDisplay-Regular.ttf */; };
+		DDD1C9822154E7C60060E79B /* SFProDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDD1C97F2154E7C20060E79B /* SFProDisplay-Medium.ttf */; };
+		DDD1C9842154E7F90060E79B /* SFProDisplay-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDD1C9832154E7F50060E79B /* SFProDisplay-Semibold.ttf */; };
 		DDFA1D672073BA0300BB9FD2 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFA1D662073BA0300BB9FD2 /* R.generated.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DD52A41D20CAB9D4001F2E0D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE56F1421F88EBD900CEE704 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE56F1491F88EBD900CEE704;
+			remoteInfo = Moments;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		601E60E75782CDB369AA1F8E /* Pods-Moments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moments.release.xcconfig"; path = "Pods/Target Support Files/Pods-Moments/Pods-Moments.release.xcconfig"; sourceTree = "<group>"; };
@@ -92,8 +114,21 @@
 		DD4E49672074D790004E1630 /* ColorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTableViewCell.swift; sourceTree = "<group>"; };
 		DD4E496920750B67004E1630 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		DD50927E207EEB50004222F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DD52A41820CAB9D3001F2E0D /* MomentsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MomentsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD52A41A20CAB9D4001F2E0D /* MomentsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentsTests.swift; sourceTree = "<group>"; };
+		DD52A41C20CAB9D4001F2E0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD575F79207356E200710888 /* App Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Extension.swift"; sourceTree = "<group>"; };
 		DDA68D8E207215AF00F289BA /* CreateMomentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMomentsViewController.swift; sourceTree = "<group>"; };
+		DDD1C95A2154D6F80060E79B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		DDD1C9602154D9170060E79B /* AppFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
+		DDD1C9622154D91E0060E79B /* FontManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
+		DDD1C96D2154E0360060E79B /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		DDD1C96F2154E0430060E79B /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
+		DDD1C9712154E04E0060E79B /* Lato-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Semibold.ttf"; sourceTree = "<group>"; };
+		DDD1C97D2154E7BB0060E79B /* SFProDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Bold.ttf"; sourceTree = "<group>"; };
+		DDD1C97E2154E7BE0060E79B /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Regular.ttf"; sourceTree = "<group>"; };
+		DDD1C97F2154E7C20060E79B /* SFProDisplay-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Medium.ttf"; sourceTree = "<group>"; };
+		DDD1C9832154E7F50060E79B /* SFProDisplay-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Semibold.ttf"; sourceTree = "<group>"; };
 		DDFA1D662073BA0300BB9FD2 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +139,13 @@
 			files = (
 				CE67CDCD1FCD26CD008C92B0 /* CloudKit.framework in Frameworks */,
 				99DAA33DF61846F53205D465 /* Pods_Moments.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD52A41520CAB9D3001F2E0D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				CE56F14C1F88EBD900CEE704 /* Moments */,
+				DD52A41920CAB9D4001F2E0D /* MomentsTests */,
 				CE56F14B1F88EBD900CEE704 /* Products */,
 				877684109052C4AABD5626D6 /* Frameworks */,
 				02C4C2FF91B9F4486C369EDF /* Pods */,
@@ -151,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				CE56F14A1F88EBD900CEE704 /* Moments.app */,
+				DD52A41820CAB9D3001F2E0D /* MomentsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -158,6 +202,7 @@
 		CE56F14C1F88EBD900CEE704 /* Moments */ = {
 			isa = PBXGroup;
 			children = (
+				DDD1C95C2154D8D20060E79B /* CustomFonts */,
 				DDA68D9120721C0E00F289BA /* Helpers */,
 				DDA68D8D207214D100F289BA /* New Design */,
 				CE29E2981FA34867001647E7 /* Service Classes */,
@@ -236,6 +281,15 @@
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
+		DD52A41920CAB9D4001F2E0D /* MomentsTests */ = {
+			isa = PBXGroup;
+			children = (
+				DD52A41A20CAB9D4001F2E0D /* MomentsTests.swift */,
+				DD52A41C20CAB9D4001F2E0D /* Info.plist */,
+			);
+			path = MomentsTests;
+			sourceTree = "<group>";
+		};
 		DDA68D8D207214D100F289BA /* New Design */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,10 +305,35 @@
 		DDA68D9120721C0E00F289BA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				DDD1C9602154D9170060E79B /* AppFonts.swift */,
+				DDD1C9622154D91E0060E79B /* FontManager.swift */,
 				DD575F79207356E200710888 /* App Extension.swift */,
+				DDD1C95A2154D6F80060E79B /* Utils.swift */,
 				DDFA1D662073BA0300BB9FD2 /* R.generated.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		DDD1C95C2154D8D20060E79B /* CustomFonts */ = {
+			isa = PBXGroup;
+			children = (
+				DDD1C97D2154E7BB0060E79B /* SFProDisplay-Bold.ttf */,
+				DDD1C97F2154E7C20060E79B /* SFProDisplay-Medium.ttf */,
+				DDD1C97E2154E7BE0060E79B /* SFProDisplay-Regular.ttf */,
+				DDD1C9832154E7F50060E79B /* SFProDisplay-Semibold.ttf */,
+				DDD1C96C2154E0160060E79B /* Lato */,
+			);
+			name = CustomFonts;
+			sourceTree = "<group>";
+		};
+		DDD1C96C2154E0160060E79B /* Lato */ = {
+			isa = PBXGroup;
+			children = (
+				DDD1C96D2154E0360060E79B /* Lato-Bold.ttf */,
+				DDD1C96F2154E0430060E79B /* Lato-Medium.ttf */,
+				DDD1C9712154E04E0060E79B /* Lato-Semibold.ttf */,
+			);
+			name = Lato;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,7 +349,6 @@
 				CE56F1481F88EBD900CEE704 /* Resources */,
 				DDA68D9020721B3900F289BA /* R.swift */,
 				9F0B9A654A278216235F8A93 /* [CP] Embed Pods Frameworks */,
-				4442C793AF0E1596EDF59755 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -281,13 +359,31 @@
 			productReference = CE56F14A1F88EBD900CEE704 /* Moments.app */;
 			productType = "com.apple.product-type.application";
 		};
+		DD52A41720CAB9D3001F2E0D /* MomentsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD52A42120CAB9D4001F2E0D /* Build configuration list for PBXNativeTarget "MomentsTests" */;
+			buildPhases = (
+				DD52A41420CAB9D3001F2E0D /* Sources */,
+				DD52A41520CAB9D3001F2E0D /* Frameworks */,
+				DD52A41620CAB9D3001F2E0D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DD52A41E20CAB9D4001F2E0D /* PBXTargetDependency */,
+			);
+			name = MomentsTests;
+			productName = MomentsTests;
+			productReference = DD52A41820CAB9D3001F2E0D /* MomentsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		CE56F1421F88EBD900CEE704 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = user;
 				TargetAttributes = {
@@ -297,6 +393,9 @@
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -304,6 +403,12 @@
 								enabled = 1;
 							};
 						};
+					};
+					DD52A41720CAB9D3001F2E0D = {
+						CreatedOnToolsVersion = 9.4;
+						DevelopmentTeam = U6EUGX9769;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CE56F1491F88EBD900CEE704;
 					};
 				};
 			};
@@ -321,6 +426,7 @@
 			projectRoot = "";
 			targets = (
 				CE56F1491F88EBD900CEE704 /* Moments */,
+				DD52A41720CAB9D3001F2E0D /* MomentsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -331,31 +437,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE9F477A1F8CA0DE0070704C /* .gitignore in Resources */,
+				DDD1C96E2154E0390060E79B /* Lato-Bold.ttf in Resources */,
 				CE56F15B1F88EBD900CEE704 /* LaunchScreen.storyboard in Resources */,
+				DDD1C9842154E7F90060E79B /* SFProDisplay-Semibold.ttf in Resources */,
+				DDD1C9702154E0470060E79B /* Lato-Medium.ttf in Resources */,
+				DDD1C9722154E0510060E79B /* Lato-Semibold.ttf in Resources */,
+				DDD1C9822154E7C60060E79B /* SFProDisplay-Medium.ttf in Resources */,
 				DD50927F207EEB50004222F4 /* GoogleService-Info.plist in Resources */,
+				DDD1C9812154E7C60060E79B /* SFProDisplay-Regular.ttf in Resources */,
 				CE56F1581F88EBD900CEE704 /* Assets.xcassets in Resources */,
+				DDD1C9802154E7C60060E79B /* SFProDisplay-Bold.ttf in Resources */,
 				CE56F1531F88EBD900CEE704 /* Main.storyboard in Resources */,
+				DDD1C97C2154E5770060E79B /* Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD52A41620CAB9D3001F2E0D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4442C793AF0E1596EDF59755 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Moments/Pods-Moments-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4676D1FC057E53E63D7C3B2F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -446,17 +552,20 @@
 				CE5C5E5F1F9F543000CE6EB4 /* MomentsTimeLinePage.swift in Sources */,
 				CE58A29C1FCEF76D00FD336B /* LaunchViewController.swift in Sources */,
 				CE57A71E1F8AF07200585633 /* momentsEntity.swift in Sources */,
+				DDD1C95B2154D6F80060E79B /* Utils.swift in Sources */,
 				DD4E49642074A4FE004E1630 /* DescriptionTableViewCell.swift in Sources */,
 				CE91EDAD1FB5679000CF6747 /* UIColor.swift in Sources */,
 				CE8C4B231FB1E64200F5A437 /* MomentColors.swift in Sources */,
 				DDFA1D672073BA0300BB9FD2 /* R.generated.swift in Sources */,
 				CE9DF7051F9AF9260016153E /* MomentsDetailPage.swift in Sources */,
 				DD4E496A20750B67004E1630 /* DetailsViewController.swift in Sources */,
+				DDD1C9612154D9170060E79B /* AppFonts.swift in Sources */,
 				CE29E2971FA3485C001647E7 /* CloudSyncService.swift in Sources */,
 				DD4E49662074BA55004E1630 /* DateTableViewCell.swift in Sources */,
 				CE9F47831F8CDA210070704C /* SettingsPage.swift in Sources */,
 				DDA68D8F207215AF00F289BA /* CreateMomentsViewController.swift in Sources */,
 				DD575F7A207356E200710888 /* App Extension.swift in Sources */,
+				DDD1C9632154D91E0060E79B /* FontManager.swift in Sources */,
 				CE8F26E31FAB578200E71417 /* ColorsViewController.swift in Sources */,
 				CE1A149F1FC46FB30015CC91 /* MainNavigationController.swift in Sources */,
 				DD4E49682074D790004E1630 /* ColorTableViewCell.swift in Sources */,
@@ -473,7 +582,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DD52A41420CAB9D3001F2E0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD52A41B20CAB9D4001F2E0D /* MomentsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DD52A41E20CAB9D4001F2E0D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE56F1491F88EBD900CEE704 /* Moments */;
+			targetProxy = DD52A41D20CAB9D4001F2E0D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CE56F1511F88EBD900CEE704 /* Main.storyboard */ = {
@@ -632,6 +757,68 @@
 			};
 			name = Release;
 		};
+		DD52A41F20CAB9D4001F2E0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U6EUGX9769;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = MomentsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.full.MomentsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Moments.app/Moments";
+			};
+			name = Debug;
+		};
+		DD52A42020CAB9D4001F2E0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U6EUGX9769;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = MomentsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.full.MomentsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Moments.app/Moments";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -649,6 +836,15 @@
 			buildConfigurations = (
 				CE56F1601F88EBD900CEE704 /* Debug */,
 				CE56F1611F88EBD900CEE704 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD52A42120CAB9D4001F2E0D /* Build configuration list for PBXNativeTarget "MomentsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD52A41F20CAB9D4001F2E0D /* Debug */,
+				DD52A42020CAB9D4001F2E0D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

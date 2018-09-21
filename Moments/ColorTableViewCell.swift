@@ -17,7 +17,11 @@ class ColorTableViewCell: UITableViewCell {
 
     var delegate: ColorTableViewCellDelegate?
     
-    @IBOutlet weak var colorLabel: UILabel!
+    @IBOutlet weak var colorLabel: UILabel! {
+        didSet {
+            colorLabel.font = AppFont.regular(size: 17)
+        }
+    }
     @IBOutlet weak var colorButtonTitle: UIButton!
     
     override func awakeFromNib() {

@@ -40,9 +40,21 @@ class AppWithOutNavBarView: UIViewController {
 class DetailsViewController: UIViewController {
 
     @IBOutlet weak var editButtonOutlet: UIButton!
-    @IBOutlet weak var momentTitle: UILabel!
-    @IBOutlet weak var momentDesc: UILabel!
-    @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var momentTitle: UILabel! {
+        didSet {
+            momentTitle.font = AppFont.medium(size: 30)
+        }
+    }
+    @IBOutlet weak var momentDesc: UILabel! {
+        didSet {
+            momentDesc.font = AppFont.regular(size: 18)
+        }
+    }
+    @IBOutlet weak var date: UILabel! {
+        didSet {
+            date.font = AppFont.regular(size: 18)
+        }
+    }
     @IBOutlet weak var topview: UIView! 
     
     var selectedMoment: Moment?
@@ -104,7 +116,7 @@ class DetailsViewController: UIViewController {
         guard let createPageVc = R.storyboard.main.createMomentsViewController() else {
             return
         }
-        createPageVc.momentMode = .edit
+        MOMENT_MODE = .edit
         createPageVc.editMomentObj = selectedMoment
         navigationController?.pushViewController(createPageVc, animated: true)
     }

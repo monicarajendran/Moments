@@ -14,13 +14,26 @@
  
  class NewMomentsPageViewController: UITableViewController , UITextFieldDelegate {
     
-    @IBOutlet weak var chooseDate: UIButton!
-    
-    @IBOutlet weak var momentNameTextFeild: UITextField!
-    
-    @IBOutlet weak var momentDescTextFeild: UITextField!
-    
-    @IBOutlet weak var momentColorLabel: UILabel!
+    @IBOutlet weak var chooseDate: UIButton! {
+        didSet {
+            chooseDate.titleLabel?.font = AppFont.medium(size: 17)
+        }
+    }
+    @IBOutlet weak var momentNameTextFeild: UITextField! {
+        didSet {
+            momentNameTextFeild.font = AppFont.medium(size: 17)
+        }
+    }
+    @IBOutlet weak var momentDescTextFeild: UITextField! {
+        didSet {
+            momentDescTextFeild.font = AppFont.medium(size: 17)
+        }
+    }
+    @IBOutlet weak var momentColorLabel: UILabel! {
+        didSet {
+            momentColorLabel.font = AppFont.medium(size: 17)
+        }
+    }
     
     let dateFormatter = DateFormatter()
     
@@ -43,6 +56,7 @@
         chooseDate.setTitle("Choose a Date", for: .normal)
         
         momentNameTextFeild.autocapitalizationType = .words
+        momentNameTextFeild.font = AppFont.medium(size: 17)
         
         momentDescTextFeild.autocapitalizationType = .sentences
         
@@ -57,7 +71,6 @@
             navigationController?.navigationBar.topItem?.title = " "
             
             momentNameTextFeild.text = createdMoment?.name
-            
             momentDescTextFeild.text = createdMoment?.desc
             
             selectedColor = MomentColors(rawValue: (createdMoment?.color) ?? "")
@@ -77,7 +90,7 @@
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(editMoment(sender:)))
             
             navigationItem.rightBarButtonItem?.isEnabled = false
-
+            
         }
         else{
             
@@ -95,7 +108,7 @@
     override func viewWillAppear(_ animated: Bool) {
         
         momentColorLabel.backgroundColor = UIColor(hexString: (selectedColor?.rawValue) ?? "")
-    
+        
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -116,7 +129,7 @@
             picker, value, index in
             
             self.navigationItem.rightBarButtonItem?.isEnabled = true
-
+            
             self.momentDate = value as! Date
             
             self.dateFormatter.dateFormat = MomentDateFormat.short.rawValue
@@ -128,9 +141,9 @@
         }, cancel: { ActionStringCancelBlock in return }, origin: (sender as UIButton).superview!.superview)
         
         datePicker?.show()
-
+        
     }
-
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         if textField == self.momentNameTextFeild {
@@ -187,12 +200,12 @@
         dateFormatter.dateFormat = MomentDateFormat.date.rawValue
         
         moment.day = Int16(self.dateFormatter.string(from: momentDate))!
-//        dateFormatter.dateFormat = "EEE"
-//
-//        moment.month = (Int16(self.dateFormatter.string(from: datePicker)))!
-//        dateFormatter.dateFormat = "yyyy"
-//
-//        moment.year = Int16(self.dateFormatter.string(from: datePicker))!
+        //        dateFormatter.dateFormat = "EEE"
+        //
+        //        moment.month = (Int16(self.dateFormatter.string(from: datePicker)))!
+        //        dateFormatter.dateFormat = "yyyy"
+        //
+        //        moment.year = Int16(self.dateFormatter.string(from: datePicker))!
         
         moment.color = self.selectedColor?.rawValue
         
@@ -207,7 +220,7 @@
         }
         
         return moment
-    
+        
     }
     
     @objc func  createMoment(sender: UIBarButtonItem) {
@@ -215,7 +228,7 @@
         guard let momentName = momentNameTextFeild.text , !momentName.isEmpty   else {
             
             alertMessage("All Fields Required")
-
+            
             return
         }
         
@@ -270,7 +283,7 @@
                 else {
                     print("error in updating the record", error as Any)
                     return
-                     }
+            }
             
             moment.updateICloudRecord(record: record)
             
@@ -287,25 +300,25 @@
                 return
             }
             print("successfully deleted",record)
-
+            
         })
-}
+    }
     
     @objc func close (){
         
         momentNameTextFeild.resignFirstResponder()
         momentDescTextFeild.resignFirstResponder()
         
-            if MomentMode.create.rawValue == self.mode {
-                
-                self.dismiss(animated: true, completion: nil)
-            }
-            else {
-                _ = self.navigationController?.popViewController(animated: true)
-            }
+        if MomentMode.create.rawValue == self.mode {
+            
+            self.dismiss(animated: true, completion: nil)
+        }
+        else {
+            _ = self.navigationController?.popViewController(animated: true)
+        }
         
     }
-   
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         switch (indexPath.section,indexPath.row) {
@@ -317,8 +330,8 @@
             
         case (3,0):
             
-          navigationItem.rightBarButtonItem?.isEnabled = true
-          
+            navigationItem.rightBarButtonItem?.isEnabled = true
+            
             guard let colorsVC = storyboard?.instantiateViewController(withIdentifier: "ColorsViewController") as? ColorsViewController else {
                 return
             }
@@ -341,7 +354,7 @@
                 guard let createdMoment = self.createdMoment else { return }
                 
                 self.deleteICloud(moment: createdMoment)
-
+                
                 container.viewContext.delete(createdMoment)
                 
                 Analytics.logEvent("moment_deleted", parameters: nil)
@@ -355,14 +368,14 @@
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {                _ = self.navigationController?.popViewController(animated: true) })
                 
             } ))
-                self.present(alert, animated: true, completion: nil)
-          
+            self.present(alert, animated: true, completion: nil)
+            
         default:
             
             print("Default Case")
         }
     }
-}
+ }
  
  extension NewMomentsPageViewController: ColorsViewControllerDelegate {
     

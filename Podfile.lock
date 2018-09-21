@@ -1,26 +1,31 @@
 PODS:
   - ActionSheetPicker-3.0 (2.3.0)
-  - Alamofire (4.7.1)
+  - Alamofire (4.7.2)
   - AlecrimCoreData (5.2)
-  - Alertify (1.0)
+  - Alertify (4.0)
   - Apploader (1.1):
     - MBProgressHUD (~> 1.0.0)
-  - CryptoSwift (0.9.0)
-  - Firebase/Core (4.12.0):
-    - FirebaseAnalytics (= 4.1.0)
-    - FirebaseCore (= 4.0.19)
-  - FirebaseAnalytics (4.1.0):
-    - FirebaseCore (~> 4.0)
-    - FirebaseInstanceID (~> 2.0)
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - CryptoSwift (0.10.0)
+  - Firebase/Core (5.1.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 5.0.1)
+  - Firebase/CoreOnly (5.1.0):
+    - FirebaseCore (= 5.0.2)
+  - FirebaseAnalytics (5.0.1):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
     - nanopb (~> 0.3)
-  - FirebaseCore (4.0.19):
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-  - FirebaseInstanceID (2.0.10):
-    - FirebaseCore (~> 4.0)
-  - GoogleToolboxForMac/Defines (2.1.3)
-  - GoogleToolboxForMac/NSData+zlib (2.1.3):
-    - GoogleToolboxForMac/Defines (= 2.1.3)
+  - FirebaseCore (5.0.2):
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+  - FirebaseInstanceID (3.0.0):
+    - FirebaseCore (~> 5.0)
+  - FullFeedback (0.1.7):
+    - Alamofire (~> 4.7)
+    - MBProgressHUD (= 1.0.0)
+  - GoogleToolboxForMac/Defines (2.1.4)
+  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
+    - GoogleToolboxForMac/Defines (= 2.1.4)
   - MBProgressHUD (1.0.0)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
@@ -36,28 +41,51 @@ PODS:
 DEPENDENCIES:
   - ActionSheetPicker-3.0
   - Alamofire
-  - AlecrimCoreData
+  - AlecrimCoreData (~> 5.2)
   - Alertify
   - Apploader
   - CryptoSwift
   - Firebase/Core
+  - FullFeedback (~> 0.1.4)
   - MBProgressHUD
   - R.swift
   - SnapKit (~> 4.0.0)
   - SwiftDate
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - ActionSheetPicker-3.0
+    - Alamofire
+    - AlecrimCoreData
+    - Alertify
+    - Apploader
+    - CryptoSwift
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseInstanceID
+    - FullFeedback
+    - GoogleToolboxForMac
+    - MBProgressHUD
+    - nanopb
+    - R.swift
+    - R.swift.Library
+    - SnapKit
+    - SwiftDate
+
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: eef157d75e151f255c5333d26656c7fbfe905a51
-  Alamofire: 68d7d521118d49c615a8d2214d87cdf525599d30
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   AlecrimCoreData: 6bf4d91fcc82b66157004cb49f1b60aafb80787d
-  Alertify: 7d452a2ef539b4b37e02383d4de038a8eab0cc7a
+  Alertify: a861d0399750d88e18cae593fa81dda309867152
   Apploader: 939a1e537cf45c753baab7cc726e82cab67b737d
-  CryptoSwift: bca8c5b653dcc2d9734409242a070ff53bafac86
-  Firebase: d7fdf40e4d6c841849c52919f437fd3a0009ded0
-  FirebaseAnalytics: 3dfae28d4a5e06f86c4fae830efc2ad3fadb19bc
-  FirebaseCore: ff49ebb37e0f63a570d78c4f1c1c0befe8659d5c
-  FirebaseInstanceID: 8d20d890d65c917f9f7d9950b6e10a760ad34321
-  GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
+  CryptoSwift: 6c778d69282bed3b4e975ff97a79d074f20bb011
+  Firebase: e08fb0795f35707aeb1d8a715c731c45bdf6fd56
+  FirebaseAnalytics: b3628aea54c50464c32c393fb2ea032566e7ecc2
+  FirebaseCore: b81044df1044c0857a0737c6324678b72d4f7f00
+  FirebaseInstanceID: 83e0040351565df711a5db3d8ebe5ea21aca998a
+  FullFeedback: 5d7424d06fa6cd8307f0581d56b3608c14f8e4fd
+  GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   R.swift: d6a5ec2f55a8441dc0ed9f1f8b37d7d11ae85c66
@@ -65,6 +93,6 @@ SPEC CHECKSUMS:
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftDate: 7b56d42a221f582047287deb256b23fc5ed49a60
 
-PODFILE CHECKSUM: 5151c71e1b1d956dac4f7a5797bd4c4743e44e92
+PODFILE CHECKSUM: c6a6f9262607be60255400f122796773c66cd7db
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3

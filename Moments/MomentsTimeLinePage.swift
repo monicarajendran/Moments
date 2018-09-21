@@ -11,6 +11,8 @@ import UIKit
 import AlecrimCoreData
 import Firebase
 
+var MOMENT_MODE: MomentMode = .create
+
 enum MomentFilter: String {
     
     case day = "momentDate"
@@ -19,7 +21,7 @@ enum MomentFilter: String {
     case year = "momentYear"
 }
 
-class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UISearchBarDelegate{
+class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UISearchBarDelegate {
     
     //@IBOutlet weak var timelineSearchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -31,6 +33,9 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
     var momentObject : Moment?
     var filteredObjects = Table<Moment>(context: container.viewContext)
     var filterOption = MomentFilter.day
+    
+    let startButtonColour: UIColor = UIColor(hexString: "FD1C00")
+    let endButtonColour: UIColor = UIColor(hexString: "FF4200")
     
     lazy var fetchTheMoments : FetchRequestController<Moment> = {
         
@@ -49,10 +54,12 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        registerForPreviewing(with: self, sourceView: tableView)
+        
         UserDefaults.standard.set(true, forKey: "firstRun")
         UserDefaults.standard.synchronize()
-        
         addButtonShadow()
+        
         dateFormatter.dateStyle = .long
         
         tableView.delegate = self
@@ -162,10 +169,11 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         buttonLayer.shadowRadius = 5
         buttonLayer.shadowOpacity = 0.7
         buttonLayer.masksToBounds = false
-    }
-    
-    @IBAction func addNewMoment(_ sender: UIButton) {
         
+    }
+
+    @IBAction func addNewMoment(_ sender: UIButton) {
+        MOMENT_MODE = .create
         guard let createMomentsVC = R.storyboard.main.createMomentsViewController() else {
             return
         }
@@ -243,7 +251,7 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! MomentsTableViewCell
-        
+
         if searchBarActive {
             momentObject = filteredObjects.execute()[indexPath.row]
         } else {
@@ -278,7 +286,7 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        MOMENT_MODE = .create
         timelineSearchBar.resignFirstResponder()
         
         guard let detailsPageVc = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController else {
@@ -380,4 +388,29 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
             yearName = "Year ✔︎"
         }
     }
+}
+
+
+extension MomentsTimeLinePage: UIViewControllerPreviewingDelegate {
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        
+        guard let indexPath = tableView.indexPathForRow(at: location),
+            let cell = tableView.cellForRow(at: indexPath) else {
+                return nil }
+        
+        guard let detailViewController =
+            storyboard?.instantiateViewController(
+                withIdentifier: "DetailsViewController") as?
+            DetailsViewController else { return nil }
+
+        detailViewController.selectedMoment = fetchTheMoments.object(at: indexPath)
+        
+        return detailViewController
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        self.navigationController?.pushViewController(viewControllerToCommit, animated: true)
+    }
+    
 }

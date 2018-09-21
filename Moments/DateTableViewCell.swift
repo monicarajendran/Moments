@@ -14,7 +14,11 @@ class DateTableViewCell: UITableViewCell {
 
     var delegate: DateTableviewDelegate?
 
-    @IBOutlet weak var dateTitle: UIButton!
+    @IBOutlet weak var dateTitle: UIButton! {
+        didSet {
+            dateTitle.titleLabel?.font = AppFont.regular(size: 17)
+        }
+    }
     
     @IBAction func chooseDateAction(_ sender: Any) {
         delegate?.chooseADate(for: self)
