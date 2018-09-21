@@ -28,12 +28,11 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
     let dateFormatter = DateFormatter()
     var selectedColor : MomentColors?
     var editMomentObj: Moment?
-    var momentMode: MomentMode = .create
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if momentMode == .edit {
+        if MOMENT_MODE == .edit {
             
             momentNameTextfield.text = editMomentObj?.name
             momentDescrption = editMomentObj?.desc ?? ""
@@ -68,17 +67,18 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
             
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.descriptionCell, for: indexPath)! 
             cell.delegate = self
-            if momentMode == .create {
-                momentDescrption = cell.descriptionTextfield.text!
+            
+            if MOMENT_MODE == .create {
+                momentDescrption = cell.descTextView.text!
             } else {
-                cell.descriptionTextfield.text = momentDescrption
+                cell.descTextView.text = momentDescrption
             }
             return cell
             
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.dateCell, for: indexPath)!
             cell.delegate = self
-            if momentMode == .edit {
+            if MOMENT_MODE == .edit {
                 cell.dateTitle.setTitle(dateFormatter.string(from: momentDate), for: .normal)
             }
             return cell
@@ -102,7 +102,7 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func addDescription(for cell: DescriptionTableViewCell) {
-        momentDescrption = cell.descriptionTextfield.text!.capitalized
+        momentDescrption = cell.descTextView.text!.capitalized
     }
     
     func chooseADate(for cell: DateTableViewCell) {
@@ -158,10 +158,10 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
         switch textField {
             
         case momentNameTextfield:
-            descriptionCell.descriptionTextfield.becomeFirstResponder()
+            descriptionCell.descTextView.becomeFirstResponder()
             
-        case descriptionCell.descriptionTextfield:
-            descriptionCell.descriptionTextfield.resignFirstResponder()
+        case descriptionCell.descTextView:
+            descriptionCell.descTextView.resignFirstResponder()
             
             let dateCell = tableView.cellForRow(at: [0,1]) as! DateTableViewCell
             chooseADate(for: dateCell)
@@ -178,7 +178,7 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBAction func saveAction(_ sender: UIButton) {
        
-        if momentMode == .create {
+        if MOMENT_MODE == .create {
             createMoment(sender: sender)
         } else {
             editMoment()
@@ -278,7 +278,7 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
         
         momentNameTextfield.resignFirstResponder()
         
-        if momentMode == .create {
+        if MOMENT_MODE == .create {
             dismiss(animated: true, completion: nil)
         } else {
             navigationController?.popViewController(animated: true)

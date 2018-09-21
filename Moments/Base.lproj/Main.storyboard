@@ -1100,25 +1100,22 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add Description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kyd-KK-7Sk">
-                                                    <rect key="frame" x="20" y="0.0" width="350" height="43.5"/>
-                                                    <nil key="textColor"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Add Desc" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1ID-fj-tPD">
+                                                    <rect key="frame" x="15" y="10" width="360" height="33.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                    <connections>
-                                                        <action selector="descriptionAction:" destination="zDF-RT-iyr" eventType="editingDidEnd" id="bak-jp-b2R"/>
-                                                        <outlet property="delegate" destination="5FS-Jq-s9W" id="mWd-Aa-OED"/>
-                                                    </connections>
-                                                </textField>
+                                                </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Kyd-KK-7Sk" firstAttribute="top" secondItem="71f-it-Df3" secondAttribute="top" id="21l-vE-mTQ"/>
-                                                <constraint firstAttribute="bottom" secondItem="Kyd-KK-7Sk" secondAttribute="bottom" id="J1t-bW-546"/>
-                                                <constraint firstAttribute="trailing" secondItem="Kyd-KK-7Sk" secondAttribute="trailing" constant="5" id="Srs-1q-6Gu"/>
-                                                <constraint firstItem="Kyd-KK-7Sk" firstAttribute="leading" secondItem="71f-it-Df3" secondAttribute="leading" constant="20" id="coA-Mj-6Yu"/>
+                                                <constraint firstAttribute="bottom" secondItem="1ID-fj-tPD" secondAttribute="bottom" id="8hi-BY-ypa"/>
+                                                <constraint firstAttribute="trailing" secondItem="1ID-fj-tPD" secondAttribute="trailing" id="Smr-IA-Zc2"/>
+                                                <constraint firstItem="1ID-fj-tPD" firstAttribute="top" secondItem="71f-it-Df3" secondAttribute="top" constant="10" id="nub-u4-4yc"/>
+                                                <constraint firstItem="1ID-fj-tPD" firstAttribute="leading" secondItem="71f-it-Df3" secondAttribute="leading" constant="15" id="wZp-X0-jxo"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="descriptionTextfield" destination="Kyd-KK-7Sk" id="e5T-0z-lAB"/>
+                                            <outlet property="descTextView" destination="1ID-fj-tPD" id="W1x-NZ-hyU"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dateCell" id="B18-DL-TgD" customClass="DateTableViewCell" customModule="Moments" customModuleProvider="target">
@@ -1223,7 +1220,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xfu-SR-wHC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1396" y="1138"/>
+            <point key="canvasLocation" x="1396" y="1137.481259370315"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="Efy-1m-NW9">
@@ -1304,7 +1301,7 @@
                                     <constraint firstAttribute="height" constant="20" id="Mzu-8E-Y5M"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZK-AJ-PXE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZK-AJ-PXE">
                                 <rect key="frame" x="60" y="205.5" width="310" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -1361,16 +1358,16 @@
                             <constraint firstItem="KmY-pl-smI" firstAttribute="top" secondItem="nXY-Ax-cTL" secondAttribute="bottom" id="89c-cf-lhy"/>
                             <constraint firstItem="nXY-Ax-cTL" firstAttribute="leading" secondItem="fv5-3Z-mnX" secondAttribute="leading" id="AW5-YH-O2d"/>
                             <constraint firstItem="nXY-Ax-cTL" firstAttribute="top" secondItem="gpe-TW-McS" secondAttribute="bottom" constant="30" id="EAs-OD-rpi"/>
+                            <constraint firstItem="gZK-AJ-PXE" firstAttribute="centerY" secondItem="nXY-Ax-cTL" secondAttribute="centerY" id="IeM-x6-OGo"/>
                             <constraint firstItem="jr4-8T-cR9" firstAttribute="leading" secondItem="fv5-3Z-mnX" secondAttribute="leading" constant="20" id="KlI-L5-MAv"/>
                             <constraint firstItem="KmY-pl-smI" firstAttribute="leading" secondItem="fv5-3Z-mnX" secondAttribute="leading" id="Kwm-V4-5Kf"/>
-                            <constraint firstItem="fv5-3Z-mnX" firstAttribute="trailing" secondItem="gZK-AJ-PXE" secondAttribute="trailing" constant="5" id="ORs-cL-ApC"/>
                             <constraint firstItem="fv5-3Z-mnX" firstAttribute="trailing" secondItem="nXY-Ax-cTL" secondAttribute="trailing" id="Qde-85-y15"/>
                             <constraint firstItem="gpe-TW-McS" firstAttribute="leading" secondItem="fv5-3Z-mnX" secondAttribute="leading" id="QpP-YW-hYF"/>
-                            <constraint firstItem="gZK-AJ-PXE" firstAttribute="leading" secondItem="jr4-8T-cR9" secondAttribute="trailing" constant="20" id="UI4-CJ-bRQ"/>
                             <constraint firstItem="fv5-3Z-mnX" firstAttribute="trailing" secondItem="gpe-TW-McS" secondAttribute="trailing" id="YuR-GW-rzg"/>
                             <constraint firstItem="REt-YN-MsJ" firstAttribute="top" secondItem="efV-fQ-Pb5" secondAttribute="top" constant="130" id="ahQ-LM-a8N"/>
                             <constraint firstItem="gpe-TW-McS" firstAttribute="top" secondItem="efV-fQ-Pb5" secondAttribute="top" id="bHZ-3m-vBv"/>
-                            <constraint firstItem="nXY-Ax-cTL" firstAttribute="top" secondItem="gZK-AJ-PXE" secondAttribute="bottom" constant="-46" id="jTa-OF-AIo"/>
+                            <constraint firstItem="fv5-3Z-mnX" firstAttribute="trailing" secondItem="gZK-AJ-PXE" secondAttribute="trailing" constant="5" id="ef9-G4-O0Y"/>
+                            <constraint firstItem="gZK-AJ-PXE" firstAttribute="leading" secondItem="jr4-8T-cR9" secondAttribute="trailing" constant="20" id="gZx-6a-3fm"/>
                             <constraint firstItem="REt-YN-MsJ" firstAttribute="leading" secondItem="fv5-3Z-mnX" secondAttribute="leading" constant="15" id="v8I-v0-ffY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fv5-3Z-mnX"/>

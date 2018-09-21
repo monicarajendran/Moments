@@ -11,6 +11,8 @@ import UIKit
 import AlecrimCoreData
 import Firebase
 
+var MOMENT_MODE: MomentMode = .create
+
 enum MomentFilter: String {
     
     case day = "momentDate"
@@ -171,7 +173,7 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
     }
 
     @IBAction func addNewMoment(_ sender: UIButton) {
-        
+        MOMENT_MODE = .create
         guard let createMomentsVC = R.storyboard.main.createMomentsViewController() else {
             return
         }
@@ -249,7 +251,7 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! MomentsTableViewCell
-        
+
         if searchBarActive {
             momentObject = filteredObjects.execute()[indexPath.row]
         } else {
@@ -284,7 +286,7 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        MOMENT_MODE = .create
         timelineSearchBar.resignFirstResponder()
         
         guard let detailsPageVc = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController else {

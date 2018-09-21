@@ -12,32 +12,58 @@ protocol DescriptionTableViewDelegate {
     func addDescription(for cell: DescriptionTableViewCell)
 }
 
-class DescriptionTableViewCell: UITableViewCell, UITextFieldDelegate {
-    
-    @IBOutlet weak var descriptionTextfield: UITextField! {
-        didSet {
-            descriptionTextfield.font = AppFont.regular(size: 17)
-            
-        }
-    }
+class DescriptionTableViewCell: UITableViewCell, UITextViewDelegate {
     
     var delegate: DescriptionTableViewDelegate?
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        descriptionTextfield.delegate = self
+    @IBOutlet weak var descTextView: UITextView! {
+        didSet {
+          
+            descTextView.text = "Add Description..."
+            descTextView.font = AppFont.regular(size: 16)
+            descTextView.textContainer.maximumNumberOfLines = 2
+        }
     }
     
-    @IBAction func descriptionAction(_ sender: UITextField) {
-        delegate?.addDescription(for: self)
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        descTextView.delegate = self
+        
+        if MOMENT_MODE == .create {
+            descTextView.textColor = .lightGray
+        } else {
+            descTextView.textColor = .black
+            descTextView.alpha = 0.8
+        }
     }
-   
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if MOMENT_MODE == .create {
+            if descTextView.textColor == .lightGray &&  descTextView.isFirstResponder {
+                descTextView.text = nil
+                descTextView.textColor = .black
+                delegate?.addDescription(for: self)
+            }
+        } else {
+            descTextView.textColor = .black
+            descTextView.alpha = 0.8
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if MOMENT_MODE == .create {
+            if descTextView.text.isEmpty || descTextView.text == "" {
+                descTextView.textColor = .lightGray
+                descTextView.text = "Add Description..."
+            }
+        }
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         delegate?.addDescription(for: self)
         return true
     }

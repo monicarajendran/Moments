@@ -116,7 +116,7 @@ class DetailsViewController: UIViewController {
         guard let createPageVc = R.storyboard.main.createMomentsViewController() else {
             return
         }
-        createPageVc.momentMode = .edit
+        MOMENT_MODE = .edit
         createPageVc.editMomentObj = selectedMoment
         navigationController?.pushViewController(createPageVc, animated: true)
     }
