@@ -16,7 +16,11 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var createPageTopView: UIView!
-    @IBOutlet weak var momentNameTextfield: UITextField!
+    @IBOutlet weak var momentNameTextfield: UITextField! {
+        didSet {
+            momentNameTextfield.font = AppFont.medium(size: 20)
+        }
+    }
     
     var alterHud: MBProgressHUD!
     var momentDescrption: String = ""

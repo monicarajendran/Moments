@@ -138,7 +138,7 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WB2-oi-ogw">
                                 <rect key="frame" x="301" y="544" width="54" height="54"/>
-                                <color key="backgroundColor" red="0.90588235289999997" green="0.2470588235" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.93333333330000001" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="54" id="Fhc-dw-pCc"/>
                                     <constraint firstAttribute="height" constant="54" id="Szw-L2-ZPK"/>
@@ -184,7 +184,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Moments" id="rNT-tp-gaa">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="More" id="ZvX-8z-7MK">
-                            <color key="tintColor" red="0.91372549020000005" green="0.1176470588" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.93333333330000001" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="filterAction:" destination="1sq-fA-N6o" id="WCy-9f-STR"/>
                             </connections>
@@ -808,9 +808,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.93333333333333335" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <color key="selectedImageTintColor" red="0.9137254901960784" green="0.11764705882352941" blue="0.38823529411764707" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.93333333333333335" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="EyG-Hk-OmA" kind="relationship" relationship="viewControllers" id="EPR-AG-cqf"/>
@@ -1100,11 +1100,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kyd-KK-7Sk">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add Description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kyd-KK-7Sk">
                                                     <rect key="frame" x="20" y="0.0" width="350" height="43.5"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next"/>
+                                                    <nil key="textColor"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <connections>
                                                         <action selector="descriptionAction:" destination="zDF-RT-iyr" eventType="editingDidEnd" id="bak-jp-b2R"/>
                                                         <outlet property="delegate" destination="5FS-Jq-s9W" id="mWd-Aa-OED"/>
@@ -1394,12 +1393,11 @@
         <scene sceneID="QDw-f9-six">
             <objects>
                 <navigationController storyboardIdentifier="TimeLineNavigationController" extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="EyG-Hk-OmA" customClass="TimeLineNavigationController" customModule="Moments" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Moments" image="Recents-Normal" id="xDE-Uv-sQP">
-                        <color key="badgeColor" red="0.91372549020000005" green="0.1176470588" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="Moments" image="Recents-Normal" id="xDE-Uv-sQP"/>
                     <toolbarItems/>
                     <size key="freeformSize" width="375" height="667"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="dIO-ZD-ux2">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.99006078264920339" green="1" blue="0.98099934359471463" alpha="0.09401755136986302" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" white="0.98746744791666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -1443,7 +1441,7 @@
             <objects>
                 <navigationController storyboardIdentifier="SettingsNavigationController" extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="hy7-wc-tSQ" customClass="SettingsNavigationController" customModule="Moments" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="Me-Normal" id="JvF-vA-8IL">
-                        <color key="badgeColor" red="0.91372549020000005" green="0.1176470588" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="badgeColor" red="0.92549019610000005" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="xP0-QU-ojW">
@@ -1559,36 +1557,6 @@
                                                 <constraint firstAttribute="trailing" secondItem="HtR-mC-6lS" secondAttribute="trailing" id="gZ5-Lq-2eY"/>
                                                 <constraint firstAttribute="bottom" secondItem="TCh-CD-RKr" secondAttribute="bottom" id="gz7-48-mTD"/>
                                                 <constraint firstItem="HtR-mC-6lS" firstAttribute="top" secondItem="q22-6a-bfE" secondAttribute="top" id="qbw-7h-Wrd"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection id="LIu-r8-0JI">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="2Qq-NU-z0W">
-                                        <rect key="frame" x="0.0" y="275" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Qq-NU-z0W" id="noY-iK-6EQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sTm-y9-Abg">
-                                                    <rect key="frame" x="10" y="0.0" width="311" height="43.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <state key="normal" title="Delete All Moments">
-                                                        <color key="titleColor" red="1" green="0.23921568630000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="deleteAllMoments:" destination="CW6-eO-cee" eventType="touchUpInside" id="nhq-C0-ny4"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="sTm-y9-Abg" secondAttribute="bottom" id="JT5-4N-PVd"/>
-                                                <constraint firstItem="sTm-y9-Abg" firstAttribute="leading" secondItem="noY-iK-6EQ" secondAttribute="leading" constant="10" id="U6o-vq-iV7"/>
-                                                <constraint firstItem="sTm-y9-Abg" firstAttribute="top" secondItem="noY-iK-6EQ" secondAttribute="top" id="XCm-uK-3u3"/>
-                                                <constraint firstAttribute="trailing" secondItem="sTm-y9-Abg" secondAttribute="trailing" constant="20" id="wOC-yl-zTe"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

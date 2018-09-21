@@ -47,6 +47,17 @@
 		DD52A41B20CAB9D4001F2E0D /* MomentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52A41A20CAB9D4001F2E0D /* MomentsTests.swift */; };
 		DD575F7A207356E200710888 /* App Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD575F79207356E200710888 /* App Extension.swift */; };
 		DDA68D8F207215AF00F289BA /* CreateMomentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA68D8E207215AF00F289BA /* CreateMomentsViewController.swift */; };
+		DDD1C95B2154D6F80060E79B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1C95A2154D6F80060E79B /* Utils.swift */; };
+		DDD1C9612154D9170060E79B /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1C9602154D9170060E79B /* AppFonts.swift */; };
+		DDD1C9632154D91E0060E79B /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1C9622154D91E0060E79B /* FontManager.swift */; };
+		DDD1C96E2154E0390060E79B /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDD1C96D2154E0360060E79B /* Lato-Bold.ttf */; };
+		DDD1C9702154E0470060E79B /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDD1C96F2154E0430060E79B /* Lato-Medium.ttf */; };
+		DDD1C9722154E0510060E79B /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDD1C9712154E04E0060E79B /* Lato-Semibold.ttf */; };
+		DDD1C97C2154E5770060E79B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE56F15C1F88EBD900CEE704 /* Info.plist */; };
+		DDD1C9802154E7C60060E79B /* SFProDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDD1C97D2154E7BB0060E79B /* SFProDisplay-Bold.ttf */; };
+		DDD1C9812154E7C60060E79B /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDD1C97E2154E7BE0060E79B /* SFProDisplay-Regular.ttf */; };
+		DDD1C9822154E7C60060E79B /* SFProDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDD1C97F2154E7C20060E79B /* SFProDisplay-Medium.ttf */; };
+		DDD1C9842154E7F90060E79B /* SFProDisplay-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDD1C9832154E7F50060E79B /* SFProDisplay-Semibold.ttf */; };
 		DDFA1D672073BA0300BB9FD2 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFA1D662073BA0300BB9FD2 /* R.generated.swift */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +119,16 @@
 		DD52A41C20CAB9D4001F2E0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD575F79207356E200710888 /* App Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Extension.swift"; sourceTree = "<group>"; };
 		DDA68D8E207215AF00F289BA /* CreateMomentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMomentsViewController.swift; sourceTree = "<group>"; };
+		DDD1C95A2154D6F80060E79B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		DDD1C9602154D9170060E79B /* AppFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
+		DDD1C9622154D91E0060E79B /* FontManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
+		DDD1C96D2154E0360060E79B /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		DDD1C96F2154E0430060E79B /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
+		DDD1C9712154E04E0060E79B /* Lato-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Semibold.ttf"; sourceTree = "<group>"; };
+		DDD1C97D2154E7BB0060E79B /* SFProDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Bold.ttf"; sourceTree = "<group>"; };
+		DDD1C97E2154E7BE0060E79B /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Regular.ttf"; sourceTree = "<group>"; };
+		DDD1C97F2154E7C20060E79B /* SFProDisplay-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Medium.ttf"; sourceTree = "<group>"; };
+		DDD1C9832154E7F50060E79B /* SFProDisplay-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Semibold.ttf"; sourceTree = "<group>"; };
 		DDFA1D662073BA0300BB9FD2 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -181,6 +202,7 @@
 		CE56F14C1F88EBD900CEE704 /* Moments */ = {
 			isa = PBXGroup;
 			children = (
+				DDD1C95C2154D8D20060E79B /* CustomFonts */,
 				DDA68D9120721C0E00F289BA /* Helpers */,
 				DDA68D8D207214D100F289BA /* New Design */,
 				CE29E2981FA34867001647E7 /* Service Classes */,
@@ -283,10 +305,35 @@
 		DDA68D9120721C0E00F289BA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				DDD1C9602154D9170060E79B /* AppFonts.swift */,
+				DDD1C9622154D91E0060E79B /* FontManager.swift */,
 				DD575F79207356E200710888 /* App Extension.swift */,
+				DDD1C95A2154D6F80060E79B /* Utils.swift */,
 				DDFA1D662073BA0300BB9FD2 /* R.generated.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		DDD1C95C2154D8D20060E79B /* CustomFonts */ = {
+			isa = PBXGroup;
+			children = (
+				DDD1C97D2154E7BB0060E79B /* SFProDisplay-Bold.ttf */,
+				DDD1C97F2154E7C20060E79B /* SFProDisplay-Medium.ttf */,
+				DDD1C97E2154E7BE0060E79B /* SFProDisplay-Regular.ttf */,
+				DDD1C9832154E7F50060E79B /* SFProDisplay-Semibold.ttf */,
+				DDD1C96C2154E0160060E79B /* Lato */,
+			);
+			name = CustomFonts;
+			sourceTree = "<group>";
+		};
+		DDD1C96C2154E0160060E79B /* Lato */ = {
+			isa = PBXGroup;
+			children = (
+				DDD1C96D2154E0360060E79B /* Lato-Bold.ttf */,
+				DDD1C96F2154E0430060E79B /* Lato-Medium.ttf */,
+				DDD1C9712154E04E0060E79B /* Lato-Semibold.ttf */,
+			);
+			name = Lato;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,6 +393,9 @@
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -387,10 +437,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE9F477A1F8CA0DE0070704C /* .gitignore in Resources */,
+				DDD1C96E2154E0390060E79B /* Lato-Bold.ttf in Resources */,
 				CE56F15B1F88EBD900CEE704 /* LaunchScreen.storyboard in Resources */,
+				DDD1C9842154E7F90060E79B /* SFProDisplay-Semibold.ttf in Resources */,
+				DDD1C9702154E0470060E79B /* Lato-Medium.ttf in Resources */,
+				DDD1C9722154E0510060E79B /* Lato-Semibold.ttf in Resources */,
+				DDD1C9822154E7C60060E79B /* SFProDisplay-Medium.ttf in Resources */,
 				DD50927F207EEB50004222F4 /* GoogleService-Info.plist in Resources */,
+				DDD1C9812154E7C60060E79B /* SFProDisplay-Regular.ttf in Resources */,
 				CE56F1581F88EBD900CEE704 /* Assets.xcassets in Resources */,
+				DDD1C9802154E7C60060E79B /* SFProDisplay-Bold.ttf in Resources */,
 				CE56F1531F88EBD900CEE704 /* Main.storyboard in Resources */,
+				DDD1C97C2154E5770060E79B /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,17 +552,20 @@
 				CE5C5E5F1F9F543000CE6EB4 /* MomentsTimeLinePage.swift in Sources */,
 				CE58A29C1FCEF76D00FD336B /* LaunchViewController.swift in Sources */,
 				CE57A71E1F8AF07200585633 /* momentsEntity.swift in Sources */,
+				DDD1C95B2154D6F80060E79B /* Utils.swift in Sources */,
 				DD4E49642074A4FE004E1630 /* DescriptionTableViewCell.swift in Sources */,
 				CE91EDAD1FB5679000CF6747 /* UIColor.swift in Sources */,
 				CE8C4B231FB1E64200F5A437 /* MomentColors.swift in Sources */,
 				DDFA1D672073BA0300BB9FD2 /* R.generated.swift in Sources */,
 				CE9DF7051F9AF9260016153E /* MomentsDetailPage.swift in Sources */,
 				DD4E496A20750B67004E1630 /* DetailsViewController.swift in Sources */,
+				DDD1C9612154D9170060E79B /* AppFonts.swift in Sources */,
 				CE29E2971FA3485C001647E7 /* CloudSyncService.swift in Sources */,
 				DD4E49662074BA55004E1630 /* DateTableViewCell.swift in Sources */,
 				CE9F47831F8CDA210070704C /* SettingsPage.swift in Sources */,
 				DDA68D8F207215AF00F289BA /* CreateMomentsViewController.swift in Sources */,
 				DD575F7A207356E200710888 /* App Extension.swift in Sources */,
+				DDD1C9632154D91E0060E79B /* FontManager.swift in Sources */,
 				CE8F26E31FAB578200E71417 /* ColorsViewController.swift in Sources */,
 				CE1A149F1FC46FB30015CC91 /* MainNavigationController.swift in Sources */,
 				DD4E49682074D790004E1630 /* ColorTableViewCell.swift in Sources */,

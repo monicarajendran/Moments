@@ -32,6 +32,9 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
     var filteredObjects = Table<Moment>(context: container.viewContext)
     var filterOption = MomentFilter.day
     
+    let startButtonColour: UIColor = UIColor(hexString: "FD1C00")
+    let endButtonColour: UIColor = UIColor(hexString: "FF4200")
+    
     lazy var fetchTheMoments : FetchRequestController<Moment> = {
         
         let sortByTime = NSSortDescriptor(key: "momentTime", ascending: false)
@@ -53,8 +56,8 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         
         UserDefaults.standard.set(true, forKey: "firstRun")
         UserDefaults.standard.synchronize()
-        
         addButtonShadow()
+        
         dateFormatter.dateStyle = .long
         
         tableView.delegate = self
@@ -164,8 +167,9 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         buttonLayer.shadowRadius = 5
         buttonLayer.shadowOpacity = 0.7
         buttonLayer.masksToBounds = false
+        
     }
-    
+
     @IBAction func addNewMoment(_ sender: UIButton) {
         
         guard let createMomentsVC = R.storyboard.main.createMomentsViewController() else {

@@ -14,7 +14,12 @@ protocol DescriptionTableViewDelegate {
 
 class DescriptionTableViewCell: UITableViewCell, UITextFieldDelegate {
     
-    @IBOutlet weak var descriptionTextfield: UITextField!
+    @IBOutlet weak var descriptionTextfield: UITextField! {
+        didSet {
+            descriptionTextfield.font = AppFont.regular(size: 17)
+            
+        }
+    }
     
     var delegate: DescriptionTableViewDelegate?
     
@@ -32,6 +37,7 @@ class DescriptionTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
         delegate?.addDescription(for: self)
         return true
     }
