@@ -32,8 +32,10 @@ class MomentsTests: XCTestCase {
         }
     } 
     
-    func testMethod() {
+    func test_toDate() {
         
+        let fridayOct = Int64(1540548940).toDate
+        XCTAssert(fridayOct == Date(timeIntervalSince1970: TimeInterval(1540548940)))
     }
     
 }
