@@ -160,16 +160,10 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
         case momentNameTextfield:
             descriptionCell.descTextView.becomeFirstResponder()
             
-        case descriptionCell.descTextView:
-            descriptionCell.descTextView.resignFirstResponder()
-            
-            let dateCell = tableView.cellForRow(at: [0,1]) as! DateTableViewCell
-            chooseADate(for: dateCell)
-            
         default:
             print("Textfield return functuion breaks")
         }
-        return true
+        return false
     }
     
     @IBAction func cancelButtonAction(_ sender: UIButton) {
