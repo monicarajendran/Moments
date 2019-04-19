@@ -10,16 +10,13 @@ import UIKit
 
 class PasscodeViewController: UIViewController , UITextFieldDelegate , AppTextfieldDelegate  {
 
-    
-    @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var passcodeTextField1: UITextField!
     @IBOutlet weak var passcodeTextField2: AppTextfield!
     @IBOutlet weak var passcodeTextField3: AppTextfield!
     @IBOutlet weak var passcodeTextField4: AppTextfield!
     @IBOutlet weak var passcodeSubHeading: UILabel!
-    @IBOutlet weak var passcodeHeading: UILabel!
     
-    var mode = MomentPasscode.setPAsscode.rawValue
+    var mode = MomentPasscode.setPasscode.rawValue
     
     var setPasscodeText = ""
     
@@ -42,11 +39,10 @@ class PasscodeViewController: UIViewController , UITextFieldDelegate , AppTextfi
     
     override func viewWillAppear(_ animated: Bool) {
         
-        passcodeSubHeading.text = "Set Passcode"
+        passcodeSubHeading.text = "Set New Passcode"
         
-        if mode == "review" {
-            passcodeSubHeading.text = "Review Passcode"
-            passcodeHeading.text = nil
+        if mode == MomentPasscode.removePasscode.rawValue {
+            passcodeSubHeading.text = "Remove Your Passcode"
         }
         
         passcodeTextField1.becomeFirstResponder()
@@ -92,7 +88,7 @@ class PasscodeViewController: UIViewController , UITextFieldDelegate , AppTextfi
         })
     }
     
-    @IBAction func cancelItem(_ sender: UIBarButtonItem) {
+    @IBAction func cancelItem(_ sender: UIButton) {
         
         self.activeTextField.resignFirstResponder()
         self.dismiss(animated: true, completion: nil)
@@ -123,7 +119,7 @@ class PasscodeViewController: UIViewController , UITextFieldDelegate , AppTextfi
                 passcodeTextField4.resignFirstResponder()
                 
                 // set mode
-                if mode == MomentPasscode.setPAsscode.rawValue
+                if mode == MomentPasscode.setPasscode.rawValue
                 {
                     for textFields in arrayOfTextFields {
                         self.setPasscodeText += textFields.text!
@@ -132,7 +128,7 @@ class PasscodeViewController: UIViewController , UITextFieldDelegate , AppTextfi
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                         
-                        self.passcodeSubHeading.text = "Confirm Passcode"
+                        self.passcodeSubHeading.text = "Confirm Your Passcode"
                         
                         for textFields in self.arrayOfTextFields {
                             textFields.text = nil

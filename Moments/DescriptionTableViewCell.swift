@@ -18,7 +18,7 @@ class DescriptionTableViewCell: UITableViewCell, UITextViewDelegate {
     
     @IBOutlet weak var descTextView: UITextView! {
         didSet {
-          
+
             descTextView.text = "Add Description..."
             descTextView.font = AppFont.regular(size: 16)
             descTextView.textContainer.maximumNumberOfLines = 2
@@ -65,6 +65,10 @@ class DescriptionTableViewCell: UITableViewCell, UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         delegate?.addDescription(for: self)
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
         return true
     }
 }

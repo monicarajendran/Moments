@@ -11,8 +11,8 @@ import CloudKit
 
 class CloudSyncServices {
     
-    typealias completionHandler  = (_ momentRec : [CKRecord]) -> Void
-    typealias batchHandler  = (_ momentRec : [CKRecord] , _ error : Error?) -> Void
+    typealias completionHandler  = (_ momentRec: [CKRecord]) -> Void
+    typealias batchHandler  = (_ momentRec: [CKRecord] , _ error: Error?) -> Void
     
     static let privateDb = customContainer.privateCloudDatabase
     static let customContainer = CKContainer(identifier: "iCloud.com.fullCreative.Moments")
@@ -28,7 +28,7 @@ class CloudSyncServices {
         })
     }
  
-    static func fetchAllMomentsWithCursor(cursor : CKQueryCursor? = nil , batch :@escaping batchHandler, completion: @escaping completionHandler){
+    static func fetchAllMomentsWithCursor(cursor: CKQueryCursor? = nil , batch: @escaping batchHandler, completion: @escaping completionHandler) {
         
         var queryOperation : CKQueryOperation
         var momentRecord : [CKRecord] = []
@@ -39,7 +39,7 @@ class CloudSyncServices {
             let query = CKQuery(recordType: "Moment", predicate: NSPredicate(value: true))
             queryOperation = CKQueryOperation(query: query)
         }
-        queryOperation.resultsLimit = 10
+        queryOperation.resultsLimit = 15
         
         queryOperation.recordFetchedBlock = { record in
             momentRecord.append(record)
@@ -59,7 +59,7 @@ class CloudSyncServices {
                 }
             } else{
                 if err?.localizedDescription == "This request requires an authenticated account"{
-                    batch(momentRecord,err)
+                    batch(momentRecord, err)
                 }
                 print("error in fetching icloud moments")
             }

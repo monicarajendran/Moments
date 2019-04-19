@@ -211,7 +211,10 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
                 label.text = dateFormatter.string(from: date ?? Date())
                 
             case .week:
-                label.text = (date?.monthName ?? "") + " " + String(describing: date?.startWeek.day ?? 00) + " - " + String(describing: date?.endWeek.day ?? 00)
+                let monthName = (date?.monthName ?? "")
+                let weekFirstDay = String(describing: date?.startWeek.day ?? 00)
+                let weekLastDay = String(describing: date?.endWeek.day ?? 00)
+                label.text = monthName + " " + weekFirstDay + " - " + weekLastDay
                 
             case .year:
                 label.text = sectionHeader
