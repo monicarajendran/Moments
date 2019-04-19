@@ -27,24 +27,27 @@ class PasscodeSettingsViewController: UITableViewController {
     
     @IBOutlet weak var passcode: UISwitch!
     
-    @IBOutlet weak var touchID: UISwitch!
+    @IBOutlet weak var touchID: UISwitch! {
+        didSet {
+            touchID.isOn = UserDefaults.standard.bool(forKey: "touchEnabled")
+        }
+    }
     
     @IBOutlet weak var changePasscode: UISwitch!
     
     func passcodeCheck(){
         
         if UserDefaults.standard.bool(forKey: "passcodeEnabled"){
-    
             passcode.isOn = true
+            touchID.isOn = UserDefaults.standard.bool(forKey: "touchEnabled")
             tableView.cellForRow(at: [2,0])?.isHidden = false
             tableView.cellForRow(at: [1,0])?.isHidden = false
-            touchID.isOn = true
             UserDefaults.standard.set(true, forKey: "touchEnabled")
 
         }
         else{
-            
             passcode.isOn = false
+            touchID.isOn = false
             tableView.cellForRow(at: [1,0])?.isHidden = true
             tableView.cellForRow(at: [2,0])?.isHidden = true
         }
@@ -61,7 +64,7 @@ class PasscodeSettingsViewController: UITableViewController {
         guard let passcodeVc = storyboard?.instantiateViewController(withIdentifier: "PasscodeViewController") as? PasscodeViewController else { return }
         navigationController?.present(passcodeVc, animated: true, completion:  nil)
     
-        passcodeVc.mode = MomentPasscode.reviewPasscode.rawValue
+        passcodeVc.mode = MomentPasscode.removePasscode.rawValue
         }
     }
     
@@ -74,6 +77,7 @@ class PasscodeSettingsViewController: UITableViewController {
             
         else{
             UserDefaults.standard.removeObject(forKey: "touchEnabled")
+            UserDefaults.standard.synchronize()
         }
     }
     

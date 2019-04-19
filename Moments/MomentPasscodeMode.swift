@@ -9,8 +9,8 @@
 import Foundation
 
 enum MomentPasscode : String {
-    case setPAsscode = "set"
+    case setPasscode = "set"
     case confirmPasscode = "confirm"
     case enterPasscode = "enter"
-    case reviewPasscode = "review"
+    case removePasscode = "remove"
 }
