@@ -18,7 +18,7 @@ class DescriptionTableViewCell: UITableViewCell, UITextViewDelegate {
     
     @IBOutlet weak var descTextView: UITextView! {
         didSet {
-          
+
             descTextView.text = "Add Description..."
             descTextView.font = AppFont.regular(size: 16)
             descTextView.textContainer.maximumNumberOfLines = 2

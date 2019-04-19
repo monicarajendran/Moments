@@ -1,7 +1,7 @@
 PODS:
   - ActionSheetPicker-3.0 (2.3.0)
   - Alamofire (4.7.2)
-  - AlecrimCoreData (6.0.1)
+  - AlecrimCoreData (5.2)
   - Alertify (4.0)
   - Apploader (1.1):
     - MBProgressHUD (~> 1.0.0)
@@ -41,7 +41,7 @@ PODS:
 DEPENDENCIES:
   - ActionSheetPicker-3.0
   - Alamofire
-  - AlecrimCoreData
+  - AlecrimCoreData (~> 5.2)
   - Alertify
   - Apploader
   - CryptoSwift
@@ -76,7 +76,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: eef157d75e151f255c5333d26656c7fbfe905a51
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
-  AlecrimCoreData: 6322b8ef39975d79ecf930b5af4782907845a705
+  AlecrimCoreData: 6bf4d91fcc82b66157004cb49f1b60aafb80787d
   Alertify: a861d0399750d88e18cae593fa81dda309867152
   Apploader: 939a1e537cf45c753baab7cc726e82cab67b737d
   CryptoSwift: 6c778d69282bed3b4e975ff97a79d074f20bb011
@@ -93,6 +93,6 @@ SPEC CHECKSUMS:
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftDate: 7b56d42a221f582047287deb256b23fc5ed49a60
 
-PODFILE CHECKSUM: ba09c7d39d9dff054e9ef8468da9336113a5cb34
+PODFILE CHECKSUM: c6a6f9262607be60255400f122796773c66cd7db
 
 COCOAPODS: 1.5.3
