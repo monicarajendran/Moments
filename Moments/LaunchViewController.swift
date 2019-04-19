@@ -32,6 +32,11 @@ class LaunchViewController: UIViewController, UITextFieldDelegate, AppTextfieldD
     @IBOutlet weak var textField2: AppTextfield!
     @IBOutlet weak var textField3: AppTextfield!
     @IBOutlet weak var textField4: AppTextfield!
+    @IBOutlet weak var touchIdButton: UIButton! {
+        didSet {
+            touchIdButton.isEnabled = UserDefaults.standard.bool(forKey: "touchEnabled")
+        }
+    }
     
     var arrayOfTextFields : [UITextField] = []
     var activeTextField = UITextField()
@@ -53,9 +58,12 @@ class LaunchViewController: UIViewController, UITextFieldDelegate, AppTextfieldD
             authenticationWithTouchID()
         }
         else{
-            
             textField1.becomeFirstResponder()
         }
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
     }
     
     func setupDelegates() {
@@ -104,7 +112,7 @@ class LaunchViewController: UIViewController, UITextFieldDelegate, AppTextfieldD
         }
     }
     
-    func verifyPasscode(){
+    func verifyPasscode() {
         
         let enteredPasscode = textField1.text! + textField2.text!  + textField3.text!  + textField4.text!
         
