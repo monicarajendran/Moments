@@ -9,6 +9,8 @@
 import UIKit
 import MBProgressHUD
 import CloudKit
+import AlecrimCoreData
+import CoreData
 
 class LoadingViewController: UIViewController {
     
@@ -19,39 +21,59 @@ class LoadingViewController: UIViewController {
        
         navigationController?.setNavigationBarHidden(true, animated: false)
         activityIndicator.startAnimating()
-        fetchICloudRecord()
+        
+        DispatchQueue.main.async {
+             self.fetchICloudRecord()
+        }
     }
 
-    func fetchICloudRecord(){
+    func fetchICloudRecord() {
         
         CloudSyncServices.fetchAllMomentsWithCursor(batch: { (bathMomentRec , error) in
-            if error == nil {
-            print(bathMomentRec)
-            
-            for momentRec in bathMomentRec {
-  
-                let momentObj = container.viewContext.moment.create()
-                
-              let _ = momentObj.fromICloudRecordToMoment(record: momentRec)
-                
-            do {
-                try container.viewContext.save()
-            } catch {
-                print("Error in saving iCloud moment into coredata")
-                }
-            }
-        } else {
+           
+            guard error == nil else {
                 let alert = UIAlertController(title: "Error", message: "Sign In iCloud", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
+                return
             }
+            
+            let context = container.viewContext
+            
+            _ = bathMomentRec.compactMap({ rec in
+                let momentObj = context.moment.create()
+                
+                let record = Record(record: rec)
+                
+                let moment_coredata = momentObj.fromICloudRecordToMoment(record: record) //setting
+                
+                print(moment_coredata)
+            })
+            
+            context.perform {
+                self.save(context: context)
+            }
+            
         },
         completion: { moment in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1 , execute: {
-                guard let tabBar = self.storyboard?.instantiateViewController(withIdentifier: "TabBar") else {
-                    return }
-                self.navigationController?.pushViewController(tabBar, animated: false)
-            })
+            self.moveToTImeLinePage()
         })
+    }
+    
+    func save(context: NSManagedObjectContext) {
+        do {
+            try context.moment.context.save()
+        } catch {
+            print("Error in saving iCloud moment into coredata")
+        }
+    }
+    
+    func moveToTImeLinePage() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1 , execute: {
+            guard let tabBar = self.storyboard?.instantiateViewController(withIdentifier: "TabBar") else {
+                return }
+            self.navigationController?.pushViewController(tabBar, animated: false)
+        })
+
     }
 }
