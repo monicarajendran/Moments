@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -46,6 +46,8 @@
 		DD50927F207EEB50004222F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD50927E207EEB50004222F4 /* GoogleService-Info.plist */; };
 		DD52A41B20CAB9D4001F2E0D /* MomentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52A41A20CAB9D4001F2E0D /* MomentsTests.swift */; };
 		DD575F7A207356E200710888 /* App Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD575F79207356E200710888 /* App Extension.swift */; };
+		DD623837226957150046C99A /* Moment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD623835226957140046C99A /* Moment+CoreDataClass.swift */; };
+		DD62383C22699E490046C99A /* Moment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD62383B22699E490046C99A /* Moment+CoreDataProperties.swift */; };
 		DDA68D8F207215AF00F289BA /* CreateMomentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA68D8E207215AF00F289BA /* CreateMomentsViewController.swift */; };
 		DDD1C95B2154D6F80060E79B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1C95A2154D6F80060E79B /* Utils.swift */; };
 		DDD1C9612154D9170060E79B /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1C9602154D9170060E79B /* AppFonts.swift */; };
@@ -53,7 +55,6 @@
 		DDD1C96E2154E0390060E79B /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDD1C96D2154E0360060E79B /* Lato-Bold.ttf */; };
 		DDD1C9702154E0470060E79B /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDD1C96F2154E0430060E79B /* Lato-Medium.ttf */; };
 		DDD1C9722154E0510060E79B /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDD1C9712154E04E0060E79B /* Lato-Semibold.ttf */; };
-		DDD1C97C2154E5770060E79B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE56F15C1F88EBD900CEE704 /* Info.plist */; };
 		DDD1C9802154E7C60060E79B /* SFProDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDD1C97D2154E7BB0060E79B /* SFProDisplay-Bold.ttf */; };
 		DDD1C9812154E7C60060E79B /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDD1C97E2154E7BE0060E79B /* SFProDisplay-Regular.ttf */; };
 		DDD1C9822154E7C60060E79B /* SFProDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDD1C97F2154E7C20060E79B /* SFProDisplay-Medium.ttf */; };
@@ -118,6 +119,8 @@
 		DD52A41A20CAB9D4001F2E0D /* MomentsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentsTests.swift; sourceTree = "<group>"; };
 		DD52A41C20CAB9D4001F2E0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD575F79207356E200710888 /* App Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Extension.swift"; sourceTree = "<group>"; };
+		DD623835226957140046C99A /* Moment+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Moment+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DD62383B22699E490046C99A /* Moment+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Moment+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DDA68D8E207215AF00F289BA /* CreateMomentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMomentsViewController.swift; sourceTree = "<group>"; };
 		DDD1C95A2154D6F80060E79B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		DDD1C9602154D9170060E79B /* AppFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
@@ -256,6 +259,8 @@
 		CE9F477F1F8CC7C50070704C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				DD62383B22699E490046C99A /* Moment+CoreDataProperties.swift */,
+				DD623835226957140046C99A /* Moment+CoreDataClass.swift */,
 				CE58A29D1FCEFB8A00FD336B /* MomentPasscodeMode.swift */,
 				CE43495D1FBEEFF000775B0C /* MomentHud.swift */,
 				CE25E9E01FBED73A00F96AA3 /* MomentDateFormat.swift */,
@@ -417,6 +422,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -448,7 +454,6 @@
 				CE56F1581F88EBD900CEE704 /* Assets.xcassets in Resources */,
 				DDD1C9802154E7C60060E79B /* SFProDisplay-Bold.ttf in Resources */,
 				CE56F1531F88EBD900CEE704 /* Main.storyboard in Resources */,
-				DDD1C97C2154E5770060E79B /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,11 +535,15 @@
 			inputPaths = (
 			);
 			name = R.swift;
+			outputFileListPaths = (
+				"",
+			);
 			outputPaths = (
+				"$(SRCROOT)/R.generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/Moments\"";
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"generate\" \"$SRCROOT\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -558,6 +567,7 @@
 				CE8C4B231FB1E64200F5A437 /* MomentColors.swift in Sources */,
 				DDFA1D672073BA0300BB9FD2 /* R.generated.swift in Sources */,
 				CE9DF7051F9AF9260016153E /* MomentsDetailPage.swift in Sources */,
+				DD623837226957150046C99A /* Moment+CoreDataClass.swift in Sources */,
 				DD4E496A20750B67004E1630 /* DetailsViewController.swift in Sources */,
 				DDD1C9612154D9170060E79B /* AppFonts.swift in Sources */,
 				CE29E2971FA3485C001647E7 /* CloudSyncService.swift in Sources */,
@@ -565,6 +575,7 @@
 				CE9F47831F8CDA210070704C /* SettingsPage.swift in Sources */,
 				DDA68D8F207215AF00F289BA /* CreateMomentsViewController.swift in Sources */,
 				DD575F7A207356E200710888 /* App Extension.swift in Sources */,
+				DD62383C22699E490046C99A /* Moment+CoreDataProperties.swift in Sources */,
 				DDD1C9632154D91E0060E79B /* FontManager.swift in Sources */,
 				CE8F26E31FAB578200E71417 /* ColorsViewController.swift in Sources */,
 				CE1A149F1FC46FB30015CC91 /* MainNavigationController.swift in Sources */,
@@ -708,7 +719,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -725,7 +737,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = U6EUGX9769;
 				INFOPLIST_FILE = Moments/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fullCreative.Moments;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4b1b6f2d-d848-4919-8a2d-ce5d52b84504";
@@ -747,7 +762,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = U6EUGX9769;
 				INFOPLIST_FILE = Moments/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fullCreative.Moments;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "b54e2e43-da0f-431d-b64c-47484aee4eca";
@@ -779,7 +797,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = MomentsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.full.MomentsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -810,7 +832,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = MomentsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.full.MomentsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
