@@ -82,13 +82,23 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        UIApplication.shared.statusBarStyle = .default
+        navigationController?.view.backgroundColor = UIColor(rawRGBValue: 242, green: 242, blue: 247, alpha: 1)
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+            navigationItem.largeTitleDisplayMode = .automatic
+        } else {
+            // Fallback on earlier versions
+        }
+
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.topItem?.title = "Moments"
         
         noResultsFound.isHidden = true
         self.tableView.reloadData()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
     }
     
     override func viewDidDisappear(_ animated: Bool) {
