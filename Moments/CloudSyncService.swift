@@ -8,6 +8,9 @@
 
 import Foundation
 import CloudKit
+import Keys
+
+let keys = MomentsKeys()
 
 class CloudSyncServices {
     
@@ -15,7 +18,7 @@ class CloudSyncServices {
     typealias batchHandler  = (_ momentRec: [CKRecord] , _ error: Error?) -> Void
     
     static let privateDb = customContainer.privateCloudDatabase
-    static let customContainer = CKContainer(identifier: "iCloud.com.fullCreative.Moments")
+    static let customContainer = CKContainer(identifier: keys.containerId)
     
     static func addRecordToIColud(record: CKRecord){
         

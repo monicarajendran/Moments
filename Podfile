@@ -17,6 +17,16 @@ target 'Moments' do
 
 end
 
+plugin 'cocoapods-keys', {
+    :project => "Moments",
+    :keys => [
+    "containerId"
+    ],
+    :configs => ["production", "staging"]}
+
+
+
+
 
 
 
