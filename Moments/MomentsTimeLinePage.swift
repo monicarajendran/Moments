@@ -21,7 +21,7 @@ enum MomentFilter: String {
     case year = "momentYear"
 }
 
-class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UISearchBarDelegate {
+class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UISearchBarDelegate, MomentDelegate {
     
     //@IBOutlet weak var timelineSearchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -82,6 +82,7 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.tableView.reloadData()
         navigationController?.view.backgroundColor = UIColor(rawRGBValue: 242, green: 242, blue: 247, alpha: 1)
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
@@ -94,7 +95,6 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         self.navigationController?.navigationBar.topItem?.title = "Moments"
         
         noResultsFound.isHidden = true
-        self.tableView.reloadData()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -187,10 +187,17 @@ class MomentsTimeLinePage: UIViewController , UITableViewDataSource,UITableViewD
         guard let createMomentsVC = R.storyboard.main.createMomentsViewController() else {
             return
         }
+        createMomentsVC.momentDelegate = self
         let navController = UINavigationController(rootViewController: createMomentsVC)
+        
         self.present(navController, animated: true, completion: nil)
     }
     
+    //Moment deelgate
+    func createdMoment() {
+        self.tableView.reloadData()
+    }
+
     func numberOfSections(in tableView: UITableView) -> Int {
         
         return searchBarActive ? 1 : self.fetchTheMoments.numberOfSections()

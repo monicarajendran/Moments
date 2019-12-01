@@ -29,6 +29,8 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
     var selectedColor : MomentColors?
     var editMomentObj: Moment?
     
+    weak var momentDelegate: MomentDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -229,7 +231,10 @@ class CreateMomentsViewController: UIViewController, UITableViewDelegate, UITabl
         
         CloudSyncServices.addRecordToIColud(record: moment.toICloudRecord())
         alterHud.showText(msg: "Moment Created Successfully!", detailMsg: "", delay: 1)
+        momentDelegate?.createdMoment()
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {  self.close()  } )
+        
     }
     
     func editMoment() {
