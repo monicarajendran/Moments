@@ -26,6 +26,7 @@ PODS:
   - GoogleToolboxForMac/Defines (2.1.4)
   - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
     - GoogleToolboxForMac/Defines (= 2.1.4)
+  - Keys (1.0.1)
   - MBProgressHUD (1.0.0)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
@@ -47,13 +48,14 @@ DEPENDENCIES:
   - CryptoSwift
   - Firebase/Core
   - FullFeedback (~> 0.1.4)
+  - Keys (from `Pods/CocoaPodsKeys`)
   - MBProgressHUD
   - R.swift
   - SnapKit (~> 4.0.0)
   - SwiftDate
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - ActionSheetPicker-3.0
     - Alamofire
     - AlecrimCoreData
@@ -73,6 +75,10 @@ SPEC REPOS:
     - SnapKit
     - SwiftDate
 
+EXTERNAL SOURCES:
+  Keys:
+    :path: Pods/CocoaPodsKeys
+
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: eef157d75e151f255c5333d26656c7fbfe905a51
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
@@ -86,6 +92,7 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: 83e0040351565df711a5db3d8ebe5ea21aca998a
   FullFeedback: 5d7424d06fa6cd8307f0581d56b3608c14f8e4fd
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
+  Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   R.swift: d6a5ec2f55a8441dc0ed9f1f8b37d7d11ae85c66
@@ -93,6 +100,6 @@ SPEC CHECKSUMS:
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftDate: 7b56d42a221f582047287deb256b23fc5ed49a60
 
-PODFILE CHECKSUM: c6a6f9262607be60255400f122796773c66cd7db
+PODFILE CHECKSUM: 160472c0a2fef230aebe92464e2624fc0148e348
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.3

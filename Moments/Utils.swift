@@ -15,7 +15,7 @@ class Utils {
         guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String , let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String else {
             return ""
         }
-        return version + build
+        return version + "(\(build))"
     }
     
 }

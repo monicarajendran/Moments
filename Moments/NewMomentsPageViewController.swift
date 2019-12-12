@@ -12,6 +12,10 @@
  import MBProgressHUD
  import Firebase
  
+ protocol MomentDelegate: class {
+    func createdMoment()
+ }
+ 
  class NewMomentsPageViewController: UITableViewController , UITextFieldDelegate {
     
     @IBOutlet weak var chooseDate: UIButton! {
